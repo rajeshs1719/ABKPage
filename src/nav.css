@@ -1,0 +1,66 @@
+/* =========================================
+   HAMBURGER BUTTON
+========================================= */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: #333;
+  border-radius: 2px;
+}
+
+
+/* =========================================
+   MOBILE NAV (HIDDEN BY DEFAULT)
+========================================= */
+@media (max-width: 768px) {
+  /* Show hamburger */
+  .hamburger {
+    display: flex;
+  }
+
+  /* Hide desktop links */
+  ul {
+    position: absolute;
+    top: 90px;
+    left: 0;
+    width: 100%;
+    padding: 20px 0;
+    background: white;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px !important;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.05);
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: 0.3s ease;
+  }
+
+  /* When toggled open */
+  .nav-open {
+    max-height: 400px;
+    opacity: 1;
+  }
+
+  /* Hide right buttons */
+  .nav-actions {
+    display: none !important;
+  }
+}
+
+
+/* =========================================
+   TABLETS
+========================================= */
+@media (max-width: 1024px) {
+  ul {
+    gap: 20px;
+  }
+}

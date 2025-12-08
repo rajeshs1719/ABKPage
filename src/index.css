@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500&display=swap');
+
+:root {
+  --bg-cream: #fdfbf7;
+  --bg-sage: #cddbc8;
+  --primary-green: #3f5540;
+  --pin-red: #e76f51;
+  --pin-blue: #2a9d8f;
+  --pin-purple: #9b5de5;
+  --pin-green: #2ecc71;
+  --pin-dark: #333;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg-cream);
+  overflow-x: hidden;
+  color: #333;
+}
