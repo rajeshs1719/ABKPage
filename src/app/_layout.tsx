@@ -1,47 +1,57 @@
-import React, { ReactNode, useState } from "react";
-import { COLORS } from "../constants/colors";
-import logoFull from "../assets/logo.png";
-import "../nav.css"; // <-- NEW
+import React, { useState, ReactNode } from "react";
+import { NavLink } from "react-router-dom";
+import logoMain from "../assets/logo.png";
 
-interface LayoutProps {
-  children?: ReactNode;
-}
-
-export default function Layout({ children }: LayoutProps) {
+export default function Layout({ children }: { children?: ReactNode }) {
   const [open, setOpen] = useState(false);
 
   return (
     <>
-      <nav style={styles.nav}>
-        {/* LEFT: LOGO */}
-        <div style={styles.logoContainer}>
-          <img
-            src={logoFull}
-            alt="ABK - AOTS DOSOKAI"
-            style={styles.logoImage}
-          />
+      <nav style={styles.header}>
+        {/* LEFT LOGO + TEXT + SECOND LOGO */}
+        <div style={styles.left}>
+          <img src={logoMain} alt="ABK Logo" style={styles.logoMain} />
         </div>
 
-        {/* MOBILE MENU BUTTON */}
-        <div className="hamburger" onClick={() => setOpen(!open)}>
-          <span />
-          <span />
-          <span />
-        </div>
+        {/* NAV LINKS */}
+        <ul style={styles.navLinks}>
+          <li style={styles.navItem}>
+            <NavLink to="/" style={styles.link}>
+              Home
+            </NavLink>
+          </li>
 
-        {/* CENTER NAV LINKS */}
-        <ul style={styles.navLinks} className={open ? "nav-open" : ""}>
-          <li style={styles.navItem}>Home</li>
-          <li style={styles.navItem}>Courses</li>
-          <li style={styles.navItem}>About Us</li>
-          <li style={styles.navItem}>Contact Us</li>
-          <li style={styles.navItem}>Blog</li>
+          <li style={styles.navItem}>
+            <NavLink to="/gallery" style={styles.link}>
+              Gallery
+            </NavLink>
+          </li>
+
+          <li style={styles.navItem}>
+            <NavLink to="/events" style={styles.link}>
+              Events
+            </NavLink>
+          </li>
+
+          <li style={styles.navItem}>
+            <NavLink to="/blog" style={styles.link}>
+              Blog
+            </NavLink>
+          </li>
+          
+          <li style={styles.navItem}>
+            <NavLink to="/contact" style={styles.link}>
+              Contact Us
+            </NavLink>
+          </li>
         </ul>
 
-        {/* RIGHT BUTTONS */}
-        <div style={styles.navActions} className="nav-actions">
+        {/* BUTTONS RIGHT */}
+        <div style={styles.buttons}>
           <button style={styles.btnOutline}>Book Demo</button>
-          <button style={styles.btnSolid}>Contact Us</button>
+          <NavLink to="/contact">
+            <button style={styles.btnSolid}>Contact Us</button>
+          </NavLink>
         </div>
       </nav>
 
@@ -49,65 +59,92 @@ export default function Layout({ children }: LayoutProps) {
     </>
   );
 }
+
 const styles: { [key: string]: React.CSSProperties } = {
-  nav: {
+  header: {
+    width: "100%",
+    height: "90px",
+    background: "#ffffff",
     display: "flex",
-    justifyContent: "space-between",
     alignItems: "center",
-    padding: "15px 4%",
-    background: "#fff",
-    boxShadow: "0 2px 10px rgba(0,0,0,0.05)",
+    justifyContent: "space-between",
+    padding: "0 3%",
+    borderRadius: "8px",
+    boxShadow: "0 1px 6px rgba(0,0,0,0.08)",
+    fontFamily: "'Poppins', sans-serif",
     position: "sticky",
     top: 0,
     zIndex: 100,
-    fontFamily: "'Poppins', sans-serif",
-    height: "90px",
   },
-  logoContainer: {
+
+  /* LEFT SECTION */
+  left: {
     display: "flex",
     alignItems: "center",
+    gap: "14px",
   },
-  logoImage: {
-    height: "55px",
-    width: "auto",
+  logoMain: {
+    height: "52px",
   },
+  logoSecondary: {
+    height: "40px",
+  },
+
+  logoText: { display: "flex", flexDirection: "column" },
+
+  title: {
+    margin: 0,
+    fontSize: "20px",
+    fontWeight: 600,
+  },
+  subtitle: {
+    margin: 0,
+    fontSize: "12px",
+    color: "#555",
+  },
+
+  /* NAV LINKS */
   navLinks: {
-    display: "flex",
-    gap: "40px",
     listStyle: "none",
-    fontSize: "16px",
+    display: "flex",
+    alignItems: "center",
+    gap: "48px",
     margin: 0,
     padding: 0,
-    transition: "0.3s ease",
   },
   navItem: {
-    cursor: "pointer",
-    fontWeight: "400",
+    fontSize: "18px",
   },
-  navActions: {
+  link: {
+    textDecoration: "none",
+    color: "#222",
+    fontWeight: 400,
+  },
+
+  /* RIGHT BUTTONS */
+  buttons: {
     display: "flex",
-    gap: "15px",
+    alignItems: "center",
+    gap: "18px",
   },
+
   btnOutline: {
-    padding: "10px 25px",
-    fontSize: "16px",
+    padding: "10px 24px",
+    background: "transparent",
+    border: "2px solid #2F4B36",
+    color: "#2F4B36",
+    borderRadius: "6px",
+    fontSize: "18px",
     cursor: "pointer",
-    backgroundColor: "transparent",
-    color: COLORS.primaryGreen,
-    border: `1.5px solid ${COLORS.primaryGreen}`,
-    borderRadius: "4px",
-    fontWeight: "500",
-    fontFamily: "'Poppins', sans-serif",
   },
+
   btnSolid: {
-    padding: "10px 25px",
-    fontSize: "16px",
+    padding: "10px 26px",
+    background: "#2F4B36",
+    color: "white",
+    borderRadius: "6px",
+    fontSize: "18px",
     cursor: "pointer",
-    backgroundColor: COLORS.primaryGreen,
-    color: "#fff",
     border: "none",
-    borderRadius: "4px",
-    fontWeight: "500",
-    fontFamily: "'Poppins', sans-serif",
   },
 };

@@ -1,0 +1,280 @@
+import React from "react";
+import "./Blog.css";
+
+// --- Types ---
+interface BlogPost {
+  id: number;
+  title: string;
+  description: string;
+  author: string;
+  date: string;
+  image: string;
+}
+
+interface SuccessStory {
+  id: number;
+  name: string;
+  role: string;
+  company: string;
+  graduation: string;
+  period: string;
+  image: string;
+}
+
+// --- Dummy Data ---
+const FEATURED_BLOGS: BlogPost[] = [
+  {
+    id: 1,
+    title: "Business Etiquettes in Japan",
+    description:
+      "How do you create compelling presentations that wow your colleagues and impress your managers?",
+    author: "Meera",
+    date: "20 Jan 2025",
+    image:
+      "https://media.bizj.us/view/img/7077382/thinkstockphotos-480693371.jpg",
+  },
+  {
+    id: 2,
+    title: "Business Etiquettes in Japan",
+    description:
+      "How do you create compelling presentations that wow your colleagues and impress your managers?",
+    author: "Meera",
+    date: "22 Jan 2025",
+    image:
+      "https://media.bizj.us/view/img/7077382/thinkstockphotos-480693371.jpg",
+  },
+  {
+    id: 3,
+    title: "Business Etiquettes in Japan",
+    description:
+      "How do you create compelling presentations that wow your colleagues and impress your managers?",
+    author: "Meera",
+    date: "25 Jan 2025",
+    image:
+      "https://media.bizj.us/view/img/7077382/thinkstockphotos-480693371.jpg",
+  },
+];
+
+const SUCCESS_STORIES: SuccessStory[] = [
+  {
+    id: 1,
+    name: "Shreyas M",
+    role: "Software Engineer",
+    company: "Rakuten Group",
+    graduation: "JLPT N3 Graduate",
+    period: "June 2022 - March 2023",
+    image: "https://placehold.co/150x150/e0e0e0/333?text=SM",
+  },
+  {
+    id: 2,
+    name: "Meera H S",
+    role: "Software Engineer",
+    company: "Rakuten Group",
+    graduation: "JLPT N3 Graduate",
+    period: "June 2022 - March 2023",
+    image: "https://placehold.co/150x150/e0e0e0/333?text=MH",
+  },
+  {
+    id: 3,
+    name: "Sharan K",
+    role: "Software Engineer",
+    company: "Rakuten Group",
+    graduation: "JLPT N3 Graduate",
+    period: "June 2022 - March 2023",
+    image: "https://placehold.co/150x150/e0e0e0/333?text=SK",
+  },
+  {
+    id: 4,
+    name: "Shreyas M",
+    role: "Software Engineer",
+    company: "Rakuten Group",
+    graduation: "JLPT N3 Graduate",
+    period: "June 2022 - March 2023",
+    image: "https://placehold.co/150x150/e0e0e0/333?text=SM",
+  },
+  {
+    id: 5,
+    name: "Meera H S",
+    role: "Software Engineer",
+    company: "Rakuten Group",
+    graduation: "JLPT N3 Graduate",
+    period: "June 2022 - March 2023",
+    image: "https://placehold.co/150x150/e0e0e0/333?text=MH",
+  },
+  {
+    id: 6,
+    name: "Sharan K",
+    role: "Software Engineer",
+    company: "Rakuten Group",
+    graduation: "JLPT N3 Graduate",
+    period: "June 2022 - March 2023",
+    image: "https://placehold.co/150x150/e0e0e0/333?text=SK",
+  },
+];
+
+const Blog = () => {
+  const [visibleCount, setVisibleCount] = React.useState(6);
+  const [blogVisibleCount, setBlogVisibleCount] = React.useState(3);
+
+  return (
+    <div className="blog-page">
+      {/* --- Top Hero Section --- */}
+      <section className="blog-hero-section">
+        <div className="hero-content">
+          <div className="hero-banner">
+            {/* Background image should be set in CSS or via inline style with your asset */}
+            <div className="hero-text">
+              <h1>
+                From India to Japan <br />{" "}
+                <span>Stories, Culture & Careers</span>
+              </h1>
+              <p>
+                Discover inspiring journeys, Japanese cultural insights, career
+                guidance, and language-learning resources — all in one place.
+              </p>
+              <button className="btn-primary">Join Us</button>
+            </div>
+            {/* Decorative Lanterns would be part of the background image */}
+          </div>
+
+          <div className="hero-sidebar-widget">
+            <h3>Success Stories</h3>
+
+            {/* FIRST TWO FULL CARDS */}
+            {SUCCESS_STORIES.slice(0, 2).map((s) => (
+              <div key={s.id} className="mini-story-card full">
+                <div className="red-circle-bg"></div>
+
+                <img src={s.image} alt={s.name} className="story-avatar-sm" />
+
+                <h4>{s.name}</h4>
+                <p className="role">
+                  {s.role} <br />
+                  {s.company}
+                </p>
+
+                <p className="grad">{s.graduation}</p>
+                <p className="date">{s.period}</p>
+              </div>
+            ))}
+
+            {/* Scroll to full section */}
+            <button
+              className="btn-full-width"
+              onClick={() => {
+                const section = document.getElementById(
+                  "success-stories-section"
+                );
+                section?.scrollIntoView({ behavior: "smooth" });
+              }}
+            >
+              View All
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* --- Featured Blogs Section --- */}
+      <section className="featured-section">
+        <h2 className="section-title">Featured Blogs</h2>
+        <div className="blogs-grid">
+          {FEATURED_BLOGS.slice(0, blogVisibleCount).map((blog) => (
+            <div key={blog.id} className="blog-card">
+              {/* Removed the 'japan-sun-overlay' div. Just the image now. */}
+              <div className="blog-image-wrapper">
+                <img src={blog.image} alt={blog.title} />
+              </div>
+
+              <div className="blog-content">
+                <div className="blog-header">
+                  <h3>{blog.title}</h3>
+                  <span className="arrow-icon">↗</span>
+                </div>
+                <p>{blog.description}</p>
+
+                <div className="blog-meta">
+                  {/* Using a placeholder for the author avatar */}
+                  <img
+                    src="https://placehold.co/40x40"
+                    alt={blog.author}
+                    className="author-img"
+                  />
+                  <div className="meta-text">
+                    <span className="author-name">{blog.author}</span>
+                    <span className="blog-date">{blog.date}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="center-btn">
+          {blogVisibleCount < FEATURED_BLOGS.length ? (
+            <button
+              className="btn-primary"
+              onClick={() => setBlogVisibleCount((prev) => prev + 3)}
+            >
+              View More
+            </button>
+          ) : FEATURED_BLOGS.length > 3 ? (
+            <button
+              className="btn-primary"
+              onClick={() => setBlogVisibleCount(3)}
+            >
+              View Less
+            </button>
+          ) : null}
+        </div>
+      </section>
+
+      {/* --- Success Stories Section --- */}
+      <section className="stories-section" id="success-stories-section">
+        <h2 className="section-title">
+          From India To Japan : Student Success Stories
+        </h2>
+        <div className="stories-grid">
+          {SUCCESS_STORIES.slice(0, visibleCount).map((story) => (
+            <div key={story.id} className="story-card">
+              <div className="story-card-top">
+                <div className="story-sun"></div>
+                <img
+                  src={story.image}
+                  alt={story.name}
+                  className="story-avatar"
+                />
+              </div>
+              <div className="story-card-content">
+                <h3>{story.name}</h3>
+                <p className="role">
+                  {story.role}
+                  <br />
+                  {story.company}
+                </p>
+                <div className="divider"></div>
+                <p className="grad-badge">{story.graduation}</p>
+                <p className="period">{story.period}</p>
+                <button className="btn-secondary">Read My Story</button>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="center-btn">
+          {visibleCount < SUCCESS_STORIES.length ? (
+            <button
+              className="btn-primary"
+              onClick={() => setVisibleCount((prev) => prev + 3)}
+            >
+              View More
+            </button>
+          ) : SUCCESS_STORIES.length > 6 ? (
+            <button className="btn-primary" onClick={() => setVisibleCount(6)}>
+              View Less
+            </button>
+          ) : null}
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default Blog;

@@ -1,0 +1,175 @@
+:root {
+  --brown: #3b2a1a;
+  --btn-blue: #8CA6AD;
+  --radius: 14px;
+  --max-width: 1100px;
+}
+
+/* PAGE */
+.events-page {
+  font-family: Georgia, serif;
+  color: var(--brown);
+}
+
+/* HERO */
+.events-hero {
+  height: 420px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  padding: 40px 80px;
+}
+
+.events-hero-content {
+  max-width: 480px;
+  color: #000000;
+}
+
+.events-hero-content h1 {
+  font-size: 48px;
+  margin-bottom: 14px;
+}
+
+.events-hero-content p {
+  font-size: 18px;
+  margin-bottom: 22px;
+}
+
+.community-btn {
+  background: #27512a;
+  color: #fff;
+  padding: 12px 22px;
+  border-radius: 6px;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+}
+
+/* LOWER SECTION BACKGROUND */
+.events-bottom-bg {
+  background-size: cover;
+  background-position: top;
+  padding: 60px 0;
+}
+
+/* EVENT LIST */
+.events-list {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* EVENT CARD WITH BACKGROUND IMAGE */
+.event-card {
+  padding: 28px;
+  border-radius: var(--radius);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Dark overlay so text is readable */
+.event-card::before {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+}
+
+.event-left {
+  flex: 1;
+  position: relative;
+  /* above overlay */
+  z-index: 2;
+}
+
+.event-title {
+  font-size: 30px;
+  margin-bottom: 12px;
+  color: #000000;
+}
+
+.event-desc {
+  margin-bottom: 14px;
+}
+
+.event-info {
+  margin-bottom: 6px;
+  color: #000000;
+  
+}
+
+.event-btn {
+  margin-top: 12px;
+  background: var(--btn-blue);
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  color: white;
+}
+
+/* SCROLL AREA */
+.event-right {
+  width: 250px;
+  height: 250px;
+  overflow: hidden;
+  border-radius: 12px;
+  position: relative;
+  z-index: 2;
+}
+
+.scroll-box {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 12px;
+  padding-bottom: 6px;
+}
+
+.scroll-box::-webkit-scrollbar {
+  height: 8px;
+}
+
+.scroll-box::-webkit-scrollbar-thumb {
+  background: #666;
+  border-radius: 4px;
+}
+
+/* IMAGES */
+.scroll-img {
+  width: 230px;
+  height: 230px;
+  object-fit: cover;
+  border-radius: 12px;
+  flex-shrink: 0;
+  scroll-snap-align: center;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.scroll-img:hover {
+  transform: scale(1.05);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .event-card {
+    flex-direction: column;
+  }
+
+  .event-right {
+    width: 100%;
+    height: 260px;
+  }
+
+  .scroll-img {
+    width: 260px;
+    height: 260px;
+  }
+}

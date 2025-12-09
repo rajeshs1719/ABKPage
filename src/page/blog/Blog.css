@@ -1,0 +1,441 @@
+/* --- Variables --- */
+
+
+:root {
+    --primary-red: #B91C1C;
+    /* Deep Japan Red */
+    --primary-red-hover: #991b1b;
+    --bg-cream: #FFFDF5;
+    /* Light paper/cream color */
+    --bg-beige: #FDEBD0;
+    /* Darker beige for bottom section */
+    --text-dark: #1F2937;
+    --text-gray: #4B5563;
+    --font-serif: "Times New Roman", Times, serif;
+    /* Or Playfair Display if you have it */
+    --font-sans: "Arial", sans-serif;
+}
+
+.blog-page {
+    width: 100%;
+    overflow-x: hidden;
+    font-family: var(--font-sans);
+    color: var(--text-dark);
+}
+
+/* --- Buttons --- */
+.btn-primary {
+    background-color: var(--primary-red);
+    color: white;
+    padding: 10px 24px;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-red-hover);
+}
+
+.btn-secondary {
+    background-color: #9f3e3e;
+    /* Muted red/brown */
+    color: white;
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.center-btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+/* --- 1. Hero Section --- */
+.blog-hero-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.hero-content {
+    display: grid;
+    grid-template-columns: 2.5fr 1fr;
+    gap: 30px;
+    align-items: stretch;   /* ✔ Forces the right column to match left height */
+}
+
+
+.hero-banner {
+    background: linear-gradient(to bottom, #ffe4d6, #d67c7c);
+    /* Fallback/Placeholder gradient */
+    /* Add your background image here: */
+    background-image: url('../../assets/BlogLeft.png');
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 550px;
+    position: relative;
+}
+
+.hero-text h1 {
+    font-family: var(--font-serif);
+    color: #8B0000;
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.hero-text p {
+    max-width: 500px;
+    margin-bottom: 25px;
+    line-height: 1.5;
+    font-weight: 500;
+}
+
+/* Sidebar Widget */
+.hero-sidebar-widget {
+    background-color: #FCE7D4;
+     height: 100%;    
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.hero-sidebar-widget h3 {
+    margin-bottom: 20px;
+    font-family: var(--font-serif);
+}
+
+.mini-story-card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    position: relative;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+.mini-story-card.full {
+  padding: 20px;
+  margin-bottom: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  position: relative;
+  text-align: center;
+}
+
+
+.mini-story-card.preview {
+    opacity: 0.7;
+    height: 60px;
+    /* Cut off look */
+    margin-bottom: 20px;
+}
+
+.red-circle-bg {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 60px;
+    height: 60px;
+    background-color: var(--primary-red);
+    border-radius: 50%;
+}
+
+.story-avatar-sm {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid white;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 2;
+}
+
+.btn-full-width {
+    width: 100%;
+    background-color: var(--primary-red);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* --- 2. Featured Blogs --- */
+/* --- 2. Featured Blogs --- */
+.featured-section {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: var(--text-dark);
+}
+
+.blogs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.blog-card {
+    background: white;
+    border: 1px solid #e5e7eb; /* Subtle light gray border */
+    border-radius: 8px; /* Rounded corners for the whole card */
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.blog-card:hover {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.blog-image-wrapper {
+    width: 100%;
+    height: 220px; /* Fixed height for consistency */
+    overflow: hidden;
+    background-color: #f9f9f9;
+    padding: 20px; /* Adds the white space around the image seen in your design */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.blog-image-wrapper img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Ensures the whole art (sun + people) is visible without cropping */
+    transition: transform 0.3s ease;
+}
+
+/* Optional: Slight zoom on hover */
+.blog-card:hover .blog-image-wrapper img {
+    transform: scale(1.05);
+}
+
+.blog-content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.blog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+.blog-header h3 {
+    color: #b91c1c; /* The red color for the title */
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.arrow-icon {
+    font-size: 1.2rem;
+    color: #b91c1c;
+    margin-left: 10px;
+}
+
+.blog-content p {
+    font-size: 0.95rem;
+    color: #6B7280; /* Gray text */
+    margin-bottom: 24px;
+    line-height: 1.5;
+    flex-grow: 1;
+}
+
+/* Author Section at bottom */
+.blog-meta {
+    display: flex;
+    align-items: center;
+    margin-top: auto; /* Pushes this to the bottom of the card */
+}
+
+.author-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 12px;
+}
+
+.meta-text {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.85rem;
+}
+
+.author-name {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.blog-date {
+    color: #9CA3AF; /* Lighter gray for date */
+    margin-top: 2px;
+}
+/* --- 3. Success Stories Section --- */
+.stories-section {
+    background-color: var(--bg-beige);
+    /* Pattern placeholder - replace with actual pattern image if available */
+    background-image: url('../../assets/BlogStory.png');
+    /* background-image: radial-gradient(#e6cfb8 1px, transparent 1px); */
+    padding: 60px 20px;
+    margin-top: 60px;
+}
+
+.stories-section h2 {
+    text-align: left;
+    margin-bottom: 50px;
+}
+
+.stories-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+.story-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    border: 1px solid #dcdcdc;
+    /* Red bottom border */
+    border-bottom: 5px solid var(--primary-red);
+}
+
+.story-card-top {
+    height: 80px;
+    position: relative;
+    margin-bottom: 40px;
+    /* Space for avatar */
+}
+
+/* The red sun decoration in the card */
+.story-sun {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary-red);
+    border-radius: 50%;
+}
+
+/* Wavy background top effect - simplified */
+.story-card-top::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: #f0f0f0;
+    border-bottom-left-radius: 50% 20px;
+    border-bottom-right-radius: 50% 20px;
+}
+
+.story-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid white;
+    position: absolute;
+    left: 20px;
+    bottom: -30px;
+    /* Half overlapping */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.story-card-content {
+    padding: 0 20px 20px 20px;
+    text-align: left;
+}
+
+.story-card-content h3 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.story-card-content .role {
+    font-size: 0.9rem;
+    color: var(--text-gray);
+    margin-bottom: 15px;
+}
+
+.story-card-content .divider {
+    height: 1px;
+    background-color: #eee;
+    margin: 10px 0;
+}
+
+.grad-badge {
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: #000;
+}
+
+.story-card-content .period {
+    font-size: 0.8rem;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+/* --- Mobile Responsive --- */
+@media (max-width: 768px) {
+    .hero-content {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-banner {
+        min-height: 300px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .hero-text p {
+        margin: 0 auto 25px;
+    }
+
+    .hero-sidebar-widget {
+        display: none;
+        /* Often sidebars are hidden on mobile, or move to bottom */
+    }
+}
