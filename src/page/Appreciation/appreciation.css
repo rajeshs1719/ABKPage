@@ -1,0 +1,230 @@
+.appreciation-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(180deg, #fbcfe8 0%, #ffffff 60%);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  position: relative;
+  /* Increased padding to push everything down and avoid header overlap */
+  padding-top: 6rem; 
+  padding-bottom: 5rem;
+
+}
+
+/* --- Header --- */
+.header-section {
+  text-align: center;
+  margin-bottom: 2rem; /* Reduced margin since we have padding */
+  z-index: 5;
+  padding: 0 1rem;
+  position: relative;
+}
+
+.header-section h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #000;
+  margin-bottom: 0.5rem;
+}
+
+.header-section p {
+  color: #444;
+  max-width: 500px;
+  margin: 0 auto;
+  font-size: 1rem;
+}
+
+/* --- Interaction Stage --- */
+.interaction-area {
+  position: relative;
+  width: 100%;
+  height: 600px; 
+  display: flex;
+  justify-content: center;
+  align-items: flex-end; /* Envelope at bottom */
+  perspective: 1200px;
+  /* Added margin top to ensure cards arc doesn't hit the text */
+  margin-top: 20px; 
+}
+
+/* --- Envelope --- */
+.envelope-wrapper {
+  position: relative;
+  width: 320px;
+  height: 220px;
+  cursor: pointer;
+  transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transform: translateY(100px); /* Start lower */
+  z-index: 10;
+}
+
+/* Envelope stays relatively low to allow card arc above it */
+.envelope-wrapper.active {
+  transform: translateY(20px); 
+}
+
+.envelope-back {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #eebb73;
+  border-radius: 0 0 5px 5px;
+  z-index: 1;
+}
+
+.envelope-pocket {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fdd888;
+  clip-path: polygon(0 100%, 100% 100%, 50% 45%);
+  z-index: 20;
+  pointer-events: none; 
+}
+
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fdd888;
+  clip-path: polygon(0 0, 100% 0, 50% 55%);
+  transform-origin: top;
+  transition: transform 0.6s ease-in-out, z-index 0.6s;
+  z-index: 25;
+}
+
+.envelope-wrapper.open .envelope-flap {
+  transform: rotateX(180deg);
+  z-index: 0;
+}
+
+/* --- Card Logic --- */
+.card-stack {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  overflow: visible; 
+}
+
+.testimonial-card {
+  position: absolute;
+  left: 20px; /* Center relative to envelope: (320 - 280) / 2 */
+  bottom: 10px;
+  width: 280px;
+  height: 380px;
+  background-color: #1a1a1a;
+  color: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  
+  /* Smooth transition for moving between positions */
+  transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transform-origin: center bottom;
+}
+
+/* --- POSITIONS (The Semi-Circle Arc) --- */
+
+/* 1. HIDDEN (Start inside envelope) */
+.testimonial-card.hidden {
+  transform: translateY(100%) scale(0.5);
+  opacity: 0;
+  z-index: 1;
+}
+
+/* 2. ACTIVE (Center Top) - The user reads this */
+.testimonial-card.active {
+  /* Moved UP significantly, centered, no rotation */
+  transform: translate(0px, -220px) rotate(0deg) scale(1);
+  opacity: 1;
+  z-index: 30; /* Top most */
+  cursor: pointer;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+}
+
+/* 3. NEXT (Right Side) - Visible peeking */
+.testimonial-card.next {
+  /* Moved Right & Down, Rotated Right */
+  transform: translate(300px, -80px) rotate(20deg) scale(0.9);
+  opacity: 0.9;
+  z-index: 25; 
+  pointer-events: none; /* User clicks active first */
+}
+
+/* 4. PREV (Left Side) - Visible history */
+.testimonial-card.prev {
+  /* Moved Left & Down, Rotated Left */
+  transform: translate(-300px, -80px) rotate(-20deg) scale(0.9);
+  opacity: 0.9;
+  z-index: 25;
+  pointer-events: none;
+}
+
+/* 5. WAITING (Far Right) */
+.testimonial-card.waiting {
+  transform: translate(400px, 100px) rotate(45deg) scale(0.5);
+  opacity: 0; 
+  z-index: 1;
+}
+
+/* 6. DISCARDED (Far Left) */
+.testimonial-card.discarded {
+  transform: translate(-400px, 100px) rotate(-45deg) scale(0.5);
+  opacity: 0; 
+  z-index: 1;
+}
+
+/* --- Card Content --- */
+.card-stars {
+  color: #fff;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.card-text {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #e0e0e0;
+  font-style: italic;
+}
+
+.card-author h4 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  margin-top: 1rem;
+}
+
+.card-author span {
+  font-size: 0.8rem;
+  color: #aaa;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  /* Tighter semi-circle for mobile screens */
+  .testimonial-card.next {
+    transform: translate(120px, -150px) rotate(15deg) scale(0.85);
+    opacity: 0.6;
+  }
+  
+  .testimonial-card.prev {
+    transform: translate(-120px, -150px) rotate(-15deg) scale(0.85);
+    opacity: 0.6;
+  }
+}

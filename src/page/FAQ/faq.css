@@ -1,0 +1,123 @@
+/* src/page/FAQ/faq.css */
+
+.faq-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+    padding: 4rem 2rem;
+    min-height: 60vh;
+    background-color: #fff;
+    /* or transparent based on your page */
+    flex-wrap: wrap;
+}
+
+/* --- Left Side: Character Image --- */
+.faq-image-wrapper {
+    flex: 0 0 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.faq-character {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Animation class for the "Idea" state to give it a pop */
+.faq-character.active {
+    transform: scale(1.05);
+    animation: bulbPop 0.4s ease-out;
+}
+
+@keyframes bulbPop {
+    0% {
+        transform: scale(0.95);
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: scale(1.08);
+    }
+
+    100% {
+        transform: scale(1.05);
+    }
+}
+
+/* --- Right Side: FAQ Content --- */
+.faq-content {
+    flex: 0 0 600px;
+    background-color: #5555ff;
+    /* Matches the blue in your image */
+    padding: 2.5rem;
+    border-radius: 8px;
+    /* Sharp or slight radius based on design */
+    color: white;
+    box-shadow: 0 10px 30px rgba(85, 85, 255, 0.2);
+}
+
+.faq-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.faq-item:last-child {
+    border-bottom: none;
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: color 0.2s;
+}
+
+.faq-question:hover {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out, padding 0.3s;
+    opacity: 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.faq-answer.open {
+    max-height: 200px;
+    /* Adjust based on content length */
+    opacity: 1;
+    padding-bottom: 1.5rem;
+}
+
+/* Chevron Icon Rotation */
+.icon-chevron {
+    transition: transform 0.3s ease;
+}
+
+.icon-chevron.rotate {
+    transform: rotate(180deg);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .faq-container {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .faq-content {
+        flex: 1;
+        width: 100%;
+    }
+}

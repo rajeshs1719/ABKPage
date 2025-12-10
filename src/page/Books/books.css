@@ -1,0 +1,250 @@
+.books-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #ffffff 0%, #fce7f3 100%);
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+  position: relative;
+  perspective: 2000px; /* Stronger perspective for 3D depth */
+  padding: 2rem;
+}
+
+.books-header {
+  position: absolute;
+  top: 8%;
+  text-align: center;
+  z-index: 20;
+}
+
+.books-header h1 {
+  font-size: 3rem;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+}
+
+.books-header p {
+  color: #6b7280;
+}
+
+/* --- The Book Stage --- */
+.book-stage {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-style: preserve-3d;
+}
+
+/* --- 3D Book Wrapper --- */
+.book-wrapper {
+  position: absolute;
+  width: 300px;
+  height: 440px;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+  transform-origin: center center;
+}
+
+/* --- CAROUSEL POSITIONS --- */
+
+/* 1. ACTIVE (Center) */
+.book-wrapper.active {
+  transform: translateX(0) translateZ(0) rotateY(0deg);
+  z-index: 20;
+}
+
+/* 2. PREV (Left) */
+.book-wrapper.prev {
+  transform: translateX(-380px) translateZ(-150px) rotateY(25deg);
+  z-index: 10;
+  opacity: 0.7;
+  pointer-events: none;
+  filter: brightness(0.85);
+}
+
+/* 3. NEXT (Right) */
+.book-wrapper.next {
+  transform: translateX(380px) translateZ(-150px) rotateY(-25deg);
+  z-index: 10;
+  opacity: 0.7;
+  pointer-events: none;
+  filter: brightness(0.85);
+}
+
+/* 4. HIDDEN */
+.book-wrapper.hidden-left {
+  transform: translateX(-700px) translateZ(-300px);
+  opacity: 0;
+}
+.book-wrapper.hidden-right {
+  transform: translateX(700px) translateZ(-300px);
+  opacity: 0;
+}
+
+/* --- OPEN STATE (Active Only) --- */
+.book-wrapper.active.open {
+  /* Shift right to center the open book spread */
+  transform: translateX(150px) translateZ(50px);
+  /* Changed from default to pointer so user knows to click to close/next */
+  cursor: pointer;
+}
+
+/* --- BOOK PARTS --- */
+
+/* Common styles for all faces */
+.book-cover, .right-page, .book-back, .left-page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px 8px 8px 4px;
+  backface-visibility: hidden;
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+  box-shadow: 5px 5px 20px rgba(0,0,0,0.25);
+}
+
+/* --- FRONT COVER GROUP (Rotates) --- */
+/* We wrap Front Cover and Left Page in a group to rotate together */
+.cover-group {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transform-origin: left; /* Hinge on the left spine */
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+  z-index: 10;
+}
+
+.book-wrapper.open .cover-group {
+  transform: rotateY(-180deg);
+}
+
+/* Front Face of Cover */
+.book-cover {
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  text-align: center;
+  color: #fff;
+  backface-visibility: hidden; /* Hides when flipped */
+}
+
+/* Back Face of Cover (The Left Page when open) */
+.left-page {
+  z-index: 1;
+  background-color: #fff;
+  transform: rotateY(180deg); /* Faces opposite direction */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  border-right: 1px solid #ddd; /* Gutter shadow */
+}
+
+/* Spine Effect (On the Cover) */
+.book-cover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 100%;
+  background-color: inherit;
+  filter: brightness(0.7);
+  transform: rotateY(90deg) translateX(-20px) translateZ(-20px);
+  transform-origin: left;
+}
+
+/* --- RIGHT PAGE (Stationary) --- */
+.right-page {
+  background-color: #fff;
+  z-index: 5; /* Behind cover initially */
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  border-left: 1px solid #eee;
+}
+
+/* --- PAGE CONTENT STYLING --- */
+.page-header {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #333;
+  text-align: center;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 0.5rem;
+  width: 100%;
+}
+
+.page-content {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #555;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.page-number {
+  margin-top: auto;
+  font-size: 0.8rem;
+  color: #999;
+  text-align: center;
+  width: 100%;
+}
+
+/* --- BACK COVER (Static) --- */
+.book-back {
+  background-color: #333;
+  transform: translateZ(-2px);
+  z-index: 1;
+}
+
+/* Decoration */
+.decoration-circle {
+  width: 80px;
+  height: 80px;
+  border: 2px solid rgba(255,255,255,0.4);
+  border-radius: 50%;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+}
+
+/* Paper Stack Effect (Thickness on right) */
+.right-page::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  right: 0;
+  width: 38px;
+  height: 98%;
+  background: linear-gradient(90deg, #f5f5f5, #e0e0e0);
+  transform: rotateY(90deg) translateX(19px);
+  transform-origin: right;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .book-wrapper { width: 260px; height: 380px; }
+  .book-wrapper.prev { transform: translateX(-150px) translateZ(-100px) rotateY(20deg); }
+  .book-wrapper.next { transform: translateX(150px) translateZ(-100px) rotateY(-20deg); }
+  .book-wrapper.active.open { transform: translateX(20px) translateZ(20px); }
+  /* On mobile, full spread might be too wide, adjust shift */
+}
