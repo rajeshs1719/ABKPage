@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Blog.css";
+import BlogDetails from "../blogDetails/blogdetails";
 
 // --- Types ---
 interface BlogPost {
@@ -35,23 +36,23 @@ const FEATURED_BLOGS: BlogPost[] = [
   },
   {
     id: 2,
-    title: "Business Etiquettes in Japan",
+    title: "Living in Tokyo: A Beginner's Guide",
     description:
-      "How do you create compelling presentations that wow your colleagues and impress your managers?",
-    author: "Meera",
+      "Tips for finding accommodation, navigating the subway, and making friends during your first month.",
+    author: "Shreyas",
     date: "22 Jan 2025",
     image:
-      "https://media.bizj.us/view/img/7077382/thinkstockphotos-480693371.jpg",
+      "https://images.unsplash.com/photo-1542051841857-5f90071e7989?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
   },
   {
     id: 3,
-    title: "Business Etiquettes in Japan",
+    title: "Cracking the JLPT N2",
     description:
-      "How do you create compelling presentations that wow your colleagues and impress your managers?",
-    author: "Meera",
+      "A comprehensive study guide and resource list to help you pass the N2 exam.",
+    author: "Sharan",
     date: "25 Jan 2025",
     image:
-      "https://media.bizj.us/view/img/7077382/thinkstockphotos-480693371.jpg",
+      "https://images.unsplash.com/photo-1480796927426-f609979314bd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
   },
 ];
 
@@ -110,11 +111,33 @@ const SUCCESS_STORIES: SuccessStory[] = [
     period: "June 2022 - March 2023",
     image: "https://placehold.co/150x150/e0e0e0/333?text=SK",
   },
+  {
+    id: 6,
+    name: "Sharan K",
+    role: "Software Engineer",
+    company: "Rakuten Group",
+    graduation: "JLPT N3 Graduate",
+    period: "June 2022 - March 2023",
+    image: "https://placehold.co/150x150/e0e0e0/333?text=SK",
+  },
 ];
 
 const Blog = () => {
-  const [visibleCount, setVisibleCount] = React.useState(6);
-  const [blogVisibleCount, setBlogVisibleCount] = React.useState(3);
+  const [visibleCount, setVisibleCount] = useState(6);
+  const [blogVisibleCount, setBlogVisibleCount] = useState(3);
+  const [selectedStory, setSelectedStory] = useState<SuccessStory | null>(null);
+
+  const handleReadStory = (story: SuccessStory) => {
+    setSelectedStory(story);
+  };
+
+  const handleBack = () => {
+    setSelectedStory(null);
+  };
+
+  if (selectedStory) {
+    return <BlogDetails onBack={handleBack} storyData={selectedStory} />;
+  }
 
   return (
     <div className="blog-page">
@@ -122,7 +145,6 @@ const Blog = () => {
       <section className="blog-hero-section">
         <div className="hero-content">
           <div className="hero-banner">
-            {/* Background image should be set in CSS or via inline style with your asset */}
             <div className="hero-text">
               <h1>
                 From India to Japan <br />{" "}
@@ -134,31 +156,22 @@ const Blog = () => {
               </p>
               <button className="btn-primary">Join Us</button>
             </div>
-            {/* Decorative Lanterns would be part of the background image */}
           </div>
 
           <div className="hero-sidebar-widget">
             <h3>Success Stories</h3>
-
-            {/* FIRST TWO FULL CARDS */}
             {SUCCESS_STORIES.slice(0, 2).map((s) => (
               <div key={s.id} className="mini-story-card full">
                 <div className="red-circle-bg"></div>
-
                 <img src={s.image} alt={s.name} className="story-avatar-sm" />
-
                 <h4>{s.name}</h4>
                 <p className="role">
-                  {s.role} <br />
-                  {s.company}
+                  {s.role} <br /> {s.company}
                 </p>
-
                 <p className="grad">{s.graduation}</p>
                 <p className="date">{s.period}</p>
               </div>
             ))}
-
-            {/* Scroll to full section */}
             <button
               className="btn-full-width"
               onClick={() => {
@@ -180,20 +193,16 @@ const Blog = () => {
         <div className="blogs-grid">
           {FEATURED_BLOGS.slice(0, blogVisibleCount).map((blog) => (
             <div key={blog.id} className="blog-card">
-              {/* Removed the 'japan-sun-overlay' div. Just the image now. */}
               <div className="blog-image-wrapper">
                 <img src={blog.image} alt={blog.title} />
               </div>
-
               <div className="blog-content">
                 <div className="blog-header">
                   <h3>{blog.title}</h3>
                   <span className="arrow-icon">↗</span>
                 </div>
                 <p>{blog.description}</p>
-
                 <div className="blog-meta">
-                  {/* Using a placeholder for the author avatar */}
                   <img
                     src="https://placehold.co/40x40"
                     alt={blog.author}
@@ -235,8 +244,8 @@ const Blog = () => {
         <div className="stories-grid">
           {SUCCESS_STORIES.slice(0, visibleCount).map((story) => (
             <div key={story.id} className="story-card">
+              {/* Top part is just spacing for avatar now */}
               <div className="story-card-top">
-                <div className="story-sun"></div>
                 <img
                   src={story.image}
                   alt={story.name}
@@ -250,10 +259,16 @@ const Blog = () => {
                   <br />
                   {story.company}
                 </p>
-                <div className="divider"></div>
+                {/* Removed divider div as per design request */}
                 <p className="grad-badge">{story.graduation}</p>
                 <p className="period">{story.period}</p>
-                <button className="btn-secondary">Read My Story</button>
+                
+                <button 
+                  className="btn-secondary"
+                  onClick={() => handleReadStory(story)}
+                >
+                  Read My Story
+                </button>
               </div>
             </div>
           ))}

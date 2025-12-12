@@ -1,441 +1,493 @@
 /* --- Variables --- */
-
-
 :root {
-    --primary-red: #B91C1C;
-    /* Deep Japan Red */
-    --primary-red-hover: #991b1b;
-    --bg-cream: #FFFDF5;
-    /* Light paper/cream color */
-    --bg-beige: #FDEBD0;
-    /* Darker beige for bottom section */
-    --text-dark: #1F2937;
-    --text-gray: #4B5563;
-    --font-serif: "Times New Roman", Times, serif;
-    /* Or Playfair Display if you have it */
-    --font-sans: "Arial", sans-serif;
+  --primary-red: #C3002F; /* Japan Red */
+  --primary-red-hover: #a00026;
+  --button-brown: #A03C3C; /* The specific button color from image */
+  --bg-cream: #FFFDF5;
+  --bg-beige: #FDEBD0;
+  --text-dark: #1F2937;
+  --text-gray: #4B5563;
+  --font-serif: "Times New Roman", Times, serif;
+  --font-sans: "Arial", sans-serif;
 }
 
 .blog-page {
-    width: 100%;
-    overflow-x: hidden;
-    font-family: var(--font-sans);
-    color: var(--text-dark);
+  width: 100%;
+  overflow-x: hidden;
+  font-family: var(--font-sans);
+  color: var(--text-dark);
 }
 
 /* --- Buttons --- */
 .btn-primary {
-    background-color: var(--primary-red);
-    color: white;
-    padding: 10px 24px;
-    border: none;
-    border-radius: 4px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.3s;
+  background-color: var(--primary-red);
+  color: white;
+  padding: 10px 24px;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
 }
 
 .btn-primary:hover {
-    background-color: var(--primary-red-hover);
+  background-color: var(--primary-red-hover);
 }
 
+/* Updated Button Style for Cards to match reference */
 .btn-secondary {
-    background-color: #9f3e3e;
-    /* Muted red/brown */
-    color: white;
-    width: 100%;
-    padding: 8px;
-    border: none;
-    border-radius: 4px;
-    margin-top: 10px;
-    cursor: pointer;
+  background-color: var(--button-brown);
+  color: white;
+  width: 100%;
+  padding: 10px 14px; /* Reduced padding slightly */
+  border: none;
+  border-radius: 8px;
+  margin-top: auto; 
+  cursor: pointer;
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+  transition: background-color 0.2s, transform 0.2s;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.btn-secondary:hover {
+  background-color: #8a3232;
+  transform: translateY(-2px);
 }
 
 .center-btn {
-    display: flex;
-    justify-content: center;
-    margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px; /* Reduced margin */
 }
 
 /* --- 1. Hero Section --- */
 .blog-hero-section {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px; /* Reduced padding */
 }
 
 .hero-content {
-    display: grid;
-    grid-template-columns: 2.5fr 1fr;
-    gap: 30px;
-    align-items: stretch;   /* ✔ Forces the right column to match left height */
+  display: grid;
+  grid-template-columns: 2.5fr 1fr;
+  gap: 20px; /* Reduced gap */
+  align-items: stretch; 
 }
 
-
 .hero-banner {
-    background: linear-gradient(to bottom, #ffe4d6, #d67c7c);
-    /* Fallback/Placeholder gradient */
-    /* Add your background image here: */
-    background-image: url('../../assets/BlogLeft.png');
-    background-size: cover;
-    background-position: center;
-    border-radius: 8px;
-    padding: 60px 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-height: 550px;
-    position: relative;
+  background: linear-gradient(to bottom, #ffe4d6, #d67c7c);
+  background-image: url('../../assets/BlogLeft.png');
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+  padding: 40px; /* Reduced padding */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 400px; /* Reduced min-height */
+  position: relative;
+  transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.hero-banner:hover {
+  transform: scale(1.01);
 }
 
 .hero-text h1 {
-    font-family: var(--font-serif);
-    color: #8B0000;
-    font-size: 2.5rem;
-    line-height: 1.2;
-    margin-bottom: 20px;
+  font-family: var(--font-serif);
+  color: #8B0000;
+  font-size: 2.2rem; /* Adjusted size */
+  line-height: 1.2;
+  margin-bottom: 15px;
 }
 
 .hero-text p {
-    max-width: 500px;
-    margin-bottom: 25px;
-    line-height: 1.5;
-    font-weight: 500;
+  max-width: 500px;
+  margin-bottom: 20px;
+  line-height: 1.5;
+  font-weight: 500;
 }
 
 /* Sidebar Widget */
 .hero-sidebar-widget {
-    background-color: #FCE7D4;
-     height: 100%;    
-    border-radius: 8px;
-    padding: 20px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    
+  background-color: #FCE7D4;
+  height: 100%;    
+  border-radius: 8px;
+  padding: 15px; /* Reduced padding */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .hero-sidebar-widget h3 {
-    margin-bottom: 20px;
-    font-family: var(--font-serif);
+  margin-bottom: 15px;
+  font-family: var(--font-serif);
 }
 
+/* Generic Sidebar Card Wrapper */
 .mini-story-card {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    width: 100%;
-    position: relative;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    margin-bottom: 15px;
-    overflow: hidden;
-}
-
-.mini-story-card.full {
-  padding: 20px;
-  margin-bottom: 20px;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  width: 100%;
   position: relative;
-  text-align: center;
+  margin-bottom: 10px;
 }
 
-
-.mini-story-card.preview {
-    opacity: 0.7;
-    height: 60px;
-    /* Cut off look */
-    margin-bottom: 20px;
+/* --- UPDATED SIDEBAR SUCCESS STORY CARD --- */
+.mini-story-card.full {
+  background-image: url('../../assets/BlogCardmini.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  
+  border-radius: 0;
+  box-shadow: none;
+  filter: drop-shadow(0 5px 15px rgba(0,0,0,0.08));
+  
+  position: relative;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  min-height: 100px; /* Reduced height to remove extra space */
+  padding: 0;
+  margin-bottom: 10px;
+  
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), filter 0.4s ease;
+  cursor: pointer;
 }
 
-.red-circle-bg {
-    position: absolute;
-    top: -20px;
-    right: -20px;
-    width: 60px;
-    height: 60px;
-    background-color: var(--primary-red);
-    border-radius: 50%;
+.mini-story-card.full:hover {
+  transform: translateY(-5px);
+  filter: drop-shadow(0 15px 30px rgba(0,0,0,0.15));
+  z-index: 10;
 }
 
+.mini-story-card.full .red-circle-bg {
+  display: none;
+}
+
+/* Avatar Styling for Sidebar */
 .story-avatar-sm {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid white;
-    margin-bottom: 10px;
-    position: relative;
-    z-index: 2;
+  width: 75px; /* Slightly smaller avatar */
+  height: 75px;
+  border-radius: 50%;
+  object-fit: cover;
+  position: absolute;
+  top: 30px;
+  left: 20px;
+  z-index: 5;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  border: none; 
+  margin: 0;
+}
+
+/* Typography for Sidebar Cards */
+.mini-story-card.full h4 {
+  margin-top: 120px; /* Reduced margin */
+  margin-bottom: 8px;
+  padding: 0 20px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #000;
+  font-family: var(--font-sans);
+}
+
+.mini-story-card.full .role {
+  padding: 0 20px;
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  color: #111;
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+.mini-story-card.full .grad {
+  padding: 0 20px;
+  font-weight: 800;
+  font-size: 0.9rem;
+  color: #000;
+  margin-bottom: 3px;
+}
+
+.mini-story-card.full .date {
+  padding: 0 20px;
+  font-family: var(--font-serif);
+  font-size: 0.85rem;
+  color: #000;
+  margin-bottom: 20px;
 }
 
 .btn-full-width {
-    width: 100%;
-    background-color: var(--primary-red);
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 4px;
-    cursor: pointer;
+  width: 100%;
+  background-color: var(--primary-red);
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 /* --- 2. Featured Blogs --- */
-/* --- 2. Featured Blogs --- */
 .featured-section {
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 0 20px;
+  max-width: 1200px;
+  margin: 20px auto; /* Reduced margin */
+  padding: 0 20px;
 }
 
 .section-title {
-    font-family: var(--font-serif);
-    font-size: 2rem;
-    margin-bottom: 30px;
-    color: var(--text-dark);
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: var(--text-dark);
 }
 
 .blogs-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
 }
 
 .blog-card {
-    background: white;
-    border: 1px solid #e5e7eb; /* Subtle light gray border */
-    border-radius: 8px; /* Rounded corners for the whole card */
-    overflow: hidden;
-    transition: box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
 }
 
 .blog-card:hover {
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  transform: translateY(-8px);
+  box-shadow: 0 15px 25px rgba(0,0,0,0.1);
 }
 
 .blog-image-wrapper {
-    width: 100%;
-    height: 220px; /* Fixed height for consistency */
-    overflow: hidden;
-    background-color: #f9f9f9;
-    padding: 20px; /* Adds the white space around the image seen in your design */
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background-color: #f9f9f9;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .blog-image-wrapper img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain; /* Ensures the whole art (sun + people) is visible without cropping */
-    transition: transform 0.3s ease;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.5s ease;
 }
 
-/* Optional: Slight zoom on hover */
 .blog-card:hover .blog-image-wrapper img {
-    transform: scale(1.05);
+  transform: scale(1.08);
 }
 
 .blog-content {
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 .blog-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;
 }
 
 .blog-header h3 {
-    color: #b91c1c; /* The red color for the title */
-    font-size: 1.25rem;
-    font-weight: 700;
-    margin: 0;
-    line-height: 1.4;
+  color: #b91c1c;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.3;
+  transition: color 0.3s;
+}
+
+.blog-card:hover .blog-header h3 {
+  color: var(--primary-red-hover);
 }
 
 .arrow-icon {
-    font-size: 1.2rem;
-    color: #b91c1c;
-    margin-left: 10px;
+  font-size: 1.1rem;
+  color: #b91c1c;
+  margin-left: 8px;
+  transition: transform 0.3s;
+}
+
+.blog-card:hover .arrow-icon {
+  transform: translate(3px, -3px);
 }
 
 .blog-content p {
-    font-size: 0.95rem;
-    color: #6B7280; /* Gray text */
-    margin-bottom: 24px;
-    line-height: 1.5;
-    flex-grow: 1;
+  font-size: 0.9rem;
+  color: #6B7280;
+  margin-bottom: 20px;
+  line-height: 1.5;
+  flex-grow: 1;
 }
 
-/* Author Section at bottom */
 .blog-meta {
-    display: flex;
-    align-items: center;
-    margin-top: auto; /* Pushes this to the bottom of the card */
+  display: flex;
+  align-items: center;
+  margin-top: auto;
 }
 
 .author-img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 12px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
 }
 
 .meta-text {
-    display: flex;
-    flex-direction: column;
-    font-size: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.8rem;
 }
 
 .author-name {
-    font-weight: 600;
-    color: var(--text-dark);
+  font-weight: 600;
+  color: var(--text-dark);
 }
 
 .blog-date {
-    color: #9CA3AF; /* Lighter gray for date */
-    margin-top: 2px;
+  color: #9CA3AF;
+  margin-top: 2px;
 }
+
 /* --- 3. Success Stories Section --- */
 .stories-section {
-    background-color: var(--bg-beige);
-    /* Pattern placeholder - replace with actual pattern image if available */
-    background-image: url('../../assets/BlogStory.png');
-    /* background-image: radial-gradient(#e6cfb8 1px, transparent 1px); */
-    padding: 60px 20px;
-    margin-top: 60px;
+  background-color: var(--bg-beige);
+  background-image: url('../../assets/BlogStory.png');
+  padding: 40px 20px; /* Reduced vertical padding */
+  margin-top: 40px;
 }
 
 .stories-section h2 {
-    text-align: left;
-    margin-bottom: 50px;
+  text-align: left;
+  margin-bottom: 30px;
 }
 
 .stories-grid {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
 }
 
+/* --- REDESIGNED CARD USING BACKGROUND IMAGE --- */
 .story-card {
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    overflow: hidden;
-    position: relative;
-    text-align: center;
-    border: 1px solid #dcdcdc;
-    /* Red bottom border */
-    border-bottom: 5px solid var(--primary-red);
+  background-image: url('../../assets/BlogCard.png'); 
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  
+  border-radius: 0;
+  box-shadow: none; 
+  filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1)); 
+  
+  position: relative;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  min-height: 480px; /* Optimized height */
+  padding: 0;
+  border: none;
+
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), filter 0.4s ease;
+  cursor: pointer;
+}
+
+.story-card:hover {
+  transform: translateY(-10px);
+  filter: drop-shadow(0 25px 40px rgba(0,0,0,0.2));
+  z-index: 10;
 }
 
 .story-card-top {
-    height: 80px;
-    position: relative;
-    margin-bottom: 40px;
-    /* Space for avatar */
-}
-
-/* The red sun decoration in the card */
-.story-sun {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 40px;
-    height: 40px;
-    background-color: var(--primary-red);
-    border-radius: 50%;
-}
-
-/* Wavy background top effect - simplified */
-.story-card-top::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    background: #f0f0f0;
-    border-bottom-left-radius: 50% 20px;
-    border-bottom-right-radius: 50% 20px;
+  height: 120px;
+  position: relative;
+  background: transparent;
 }
 
 .story-avatar {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid white;
-    position: absolute;
-    left: 20px;
-    bottom: -30px;
-    /* Half overlapping */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  position: absolute;
+  top: 35px;
+  left: 25px;
+  z-index: 5;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15); 
+  transition: transform 0.4s ease;
+}
+
+.story-card:hover .story-avatar {
+  transform: scale(1.05);
 }
 
 .story-card-content {
-    padding: 0 20px 20px 20px;
-    text-align: left;
+  padding: 40px 30px 40px 30px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 .story-card-content h3 {
-    font-size: 1.2rem;
-    margin-bottom: 5px;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #000;
+  font-family: var(--font-sans);
 }
 
 .story-card-content .role {
-    font-size: 0.9rem;
-    color: var(--text-gray);
-    margin-bottom: 15px;
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  color: #111;
+  margin-bottom: 15px;
+  line-height: 1.3;
 }
 
 .story-card-content .divider {
-    height: 1px;
-    background-color: #eee;
-    margin: 10px 0;
+  display: none;
 }
 
 .grad-badge {
-    font-weight: bold;
-    font-size: 0.9rem;
-    color: #000;
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: #000;
+  margin-bottom: 4px;
 }
 
 .story-card-content .period {
-    font-size: 0.8rem;
-    color: #666;
-    margin-bottom: 15px;
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  color: #000;
+  margin-bottom: 25px;
 }
 
-/* --- Mobile Responsive --- */
+/* Mobile Responsive */
 @media (max-width: 768px) {
-    .hero-content {
-        grid-template-columns: 1fr;
-    }
-
-    .hero-banner {
-        min-height: 300px;
-        align-items: center;
-        text-align: center;
-    }
-
-    .hero-text p {
-        margin: 0 auto 25px;
-    }
-
-    .hero-sidebar-widget {
-        display: none;
-        /* Often sidebars are hidden on mobile, or move to bottom */
-    }
+  .hero-content {
+    grid-template-columns: 1fr;
+  }
+  .hero-sidebar-widget {
+    display: none;
+  }
+  .story-card {
+    min-height: 450px;
+  }
+  .story-card-content h3 {
+    font-size: 1.6rem;
+  }
 }

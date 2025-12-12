@@ -1,0 +1,439 @@
+/* Main Container */
+.blog-details-container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #fffaf5; /* Light creamy background matching the theme */
+  font-family: 'Poppins', sans-serif; /* Assuming a clean sans-serif font */
+  overflow-x: hidden;
+}
+
+/* --- Hero Section --- */
+.blog-hero {
+  position: relative;
+  width: 100%;
+  height: 300px; /* Adjust based on asset aspect ratio */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.blog-hero-bg-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.blog-hero-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center bottom; /* Shows the mountain/tower better */
+}
+
+.blog-hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  margin-left: 50%; /* Offset to the right slightly to avoid the Eiffel tower if it's on the left */
+  margin-top: -50px;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #333;
+  margin: 0;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  color: #555;
+  margin-top: 10px;
+}
+
+/* --- Content Wrapper --- */
+.blog-content-wrapper {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  /* Negative margin to pull content up over the hero bg transition line */
+  margin-top: 60px; 
+  padding-bottom: 80px;
+}
+
+.blog-content-inner {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+/* --- Profile Card --- */
+.profile-card-container {
+  position: relative;
+  width: 300px;
+  flex-shrink: 0;
+  /* Aspect ratio roughly matching the card asset */
+  min-height: 400px; 
+}
+
+.profile-card-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  /* Use fill to stretch the frame if needed, or contain to keep aspect ratio */
+  object-fit: fill; 
+  filter: drop-shadow(0px 10px 20px rgba(0,0,0,0.1));
+}
+
+.profile-card-content {
+  position: relative;
+  z-index: 2;
+  padding: 60px 20px 30px 20px; /* Top padding to clear the flag decoration */
+  
+  /* UPDATED: Left align content inside the card */
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Aligns flex children (img) to start */
+  
+  height: 100%;
+}
+
+.profile-image-wrapper {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 20px;
+  border: 4px solid #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  /* Ensure wrapper itself doesn't stretch oddly if aligning left */
+  flex-shrink: 0;
+}
+
+.profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-info {
+  width: 100%;
+}
+
+.profile-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #000;
+  margin: 0 0 5px 0;
+}
+
+.profile-role {
+  font-size: 1rem;
+  color: #555;
+  margin: 0;
+}
+
+.profile-company {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 15px 0;
+}
+
+.profile-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 15px;
+}
+
+.badge-text {
+  font-weight: 700;
+  color: #000;
+}
+
+.profile-date {
+  font-size: 0.9rem;
+  color: #777;
+  border-top: 1px solid #eee;
+  padding-top: 10px;
+  width: 100%;
+}
+
+/* --- Story Text Section --- */
+.story-text-container {
+  flex-grow: 1;
+  background-color: #ffffff; 
+  padding: 40px; 
+  position: relative;
+  border-radius: 20px; 
+  border-bottom: 12px solid #FF8C42; 
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
+}
+
+/* UPDATED: Rocket positioned Top-Left relative to this container */
+.story-rocket {
+  position: absolute;
+  top: -50px; /* Pulled further up to sit on the corner */
+  left: -50px; /* Adjusted left position */
+  width: 120px; /* Slightly larger */
+  height: auto;
+  transform: rotate(-15deg); /* Slight tilt to match the flight path */
+  /* animation: floatRocket 3s ease-in-out infinite; */
+  z-index: 10;
+}
+
+/* @keyframes floatRocket {
+  0%, 100% { transform: translateY(0) rotate(-15deg); }
+  50% { transform: translateY(-10px) rotate(-10deg); }
+} */
+
+.story-heading {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 25px;
+}
+
+.story-body {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #444;
+}
+
+.story-body p {
+  margin-bottom: 20px;
+}
+
+.story-quote {
+  display: flex;
+  margin: 30px 0;
+}
+
+.quote-bar {
+  width: 4px;
+  background-color: #FF8C42; 
+  margin-right: 15px;
+  border-radius: 2px;
+}
+
+.story-quote p {
+  font-style: italic;
+  font-weight: 600;
+  color: #222;
+  font-size: 1.15rem;
+  margin: 0;
+}
+
+/* --- Decoration: Books --- */
+/* UPDATED: Absolute position Bottom-Right */
+.decoration-books {
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  width: 150px;
+  height: auto;
+  z-index: 5;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 900px) {
+  .blog-content-inner {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .profile-card-container {
+    width: 100%;
+    max-width: 350px;
+    margin-bottom: 40px;
+  }
+  
+  .blog-hero {
+    height: 400px;
+  }
+  
+  .blog-hero-content {
+    margin-left: 0;
+  }
+  
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .story-text-container {
+    padding: 30px; 
+  }
+  
+  /* Adjust rocket for mobile to not go off-screen */
+  .story-rocket {
+    left: 0;
+    top: -50px;
+  }
+}
+
+@media (max-width: 600px) {
+  .story-rocket { 
+    width: 60px;
+    top: -40px;
+  }
+}
+
+
+.bottom-section-content {
+  display: flex;
+  flex-direction: column;
+  gap: 60px; /* Space between the full-width cards below */
+}
+
+/* --- Journey Section Card --- */
+.journey-section-card {
+  background-color: #FFF6E8; 
+  border: 2px solid #FD7B50;
+  border-radius: 10px;
+  padding: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  margin: 15px 30px;
+}
+
+.journey-content {
+  flex: 1;
+  padding-right: 20px;
+  z-index: 2;
+}
+
+.section-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 15px;
+}
+
+.journey-content p {
+  color: #444;
+  line-height: 1.6;
+  font-size: 20px;
+}
+
+.journey-image-wrapper {
+  flex: 0 0 200px;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.journey-map-img {
+  width: 100%;
+  height: auto;
+  max-width: 200px;
+}
+
+/* --- Features Container (Learning, Challenges, Career) --- */
+.features-container {
+  display: flex;
+  flex-direction: column;
+  margin: 40px 0 ;
+  gap: 60px; 
+  background-color: #FFF8E8;
+}
+
+
+.feature-row {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding: 30px 50px;
+}
+
+.feature-row.reverse {
+  flex-direction: row-reverse;
+}
+
+.feature-image-col {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.feature-img {
+  max-width: 100%;
+  height: auto;
+  max-height: 350px; 
+  object-fit: contain;
+}
+
+.feature-text-col {
+  flex: 1.5; 
+}
+
+.feature-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 15px;
+}
+
+.feature-text-col p {
+  color: #444;
+  line-height: 1.7;
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+.moments-section {
+  width: 100%;
+  margin-top: 60px;
+  padding: 30px 20px;
+  text-align: center;
+  background-color: #FFF8E8;
+}
+
+.moments-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 40px;
+}
+
+.moments-gallery {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.moment-card {
+  flex: 1;
+  min-width: 200px;
+  height: 220px; /* Fixed height for clean grid */
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.moment-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
