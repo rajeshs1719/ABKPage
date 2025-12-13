@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import "./Blog.css";
 import BlogDetails from "../blogDetails/blogdetails";
+import ProfilePic from "../../assets/idea.png"; // Fallback/Placeholder
+import HeroBg from '../../assets/BlogLeft.png';
+import CardBg from '../../assets/BlogCardmini.png'; // Imported Card Background
 
 // --- Types ---
 interface BlogPost {
@@ -111,15 +114,6 @@ const SUCCESS_STORIES: SuccessStory[] = [
     period: "June 2022 - March 2023",
     image: "https://placehold.co/150x150/e0e0e0/333?text=SK",
   },
-  {
-    id: 6,
-    name: "Sharan K",
-    role: "Software Engineer",
-    company: "Rakuten Group",
-    graduation: "JLPT N3 Graduate",
-    period: "June 2022 - March 2023",
-    image: "https://placehold.co/150x150/e0e0e0/333?text=SK",
-  },
 ];
 
 const Blog = () => {
@@ -135,6 +129,13 @@ const Blog = () => {
     setSelectedStory(null);
   };
 
+  const scrollToStories = () => {
+    const section = document.getElementById("success-stories-section");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   if (selectedStory) {
     return <BlogDetails onBack={handleBack} storyData={selectedStory} />;
   }
@@ -142,45 +143,56 @@ const Blog = () => {
   return (
     <div className="blog-page">
       {/* --- Top Hero Section --- */}
-      <section className="blog-hero-section">
-        <div className="hero-content">
-          <div className="hero-banner">
-            <div className="hero-text">
+      <section className="blog-top-section">
+        <div className="container-custom top-grid">
+          {/* Left Hero Banner */}
+          <div
+            className="hero-banner"
+            style={{ backgroundImage: `url(${HeroBg})` }}
+          >
+            <div className="hero-overlay-content">
               <h1>
-                From India to Japan <br />{" "}
-                <span>Stories, Culture & Careers</span>
+                From India to Japan <br />
+                <span className="hero-sub">Stories, Culture & Careers</span>
               </h1>
               <p>
                 Discover inspiring journeys, Japanese cultural insights, career
                 guidance, and language-learning resources — all in one place.
               </p>
-              <button className="btn-primary">Join Us</button>
+              <button className="btn-primary-hero">Join Us</button>
             </div>
           </div>
 
-          <div className="hero-sidebar-widget">
+          {/* Right Sidebar: Vertical Success Cards */}
+          <div className="success-sidebar">
             <h3>Success Stories</h3>
-            {SUCCESS_STORIES.slice(0, 2).map((s) => (
-              <div key={s.id} className="mini-story-card full">
-                <div className="red-circle-bg"></div>
-                <img src={s.image} alt={s.name} className="story-avatar-sm" />
-                <h4>{s.name}</h4>
-                <p className="role">
-                  {s.role} <br /> {s.company}
-                </p>
-                <p className="grad">{s.graduation}</p>
-                <p className="date">{s.period}</p>
-              </div>
-            ))}
-            <button
-              className="btn-full-width"
-              onClick={() => {
-                const section = document.getElementById(
-                  "success-stories-section"
-                );
-                section?.scrollIntoView({ behavior: "smooth" });
-              }}
-            >
+            <div className="sidebar-list">
+              {/* Taking the first 2 stories from the main list */}
+              {SUCCESS_STORIES.slice(0, 2).map((story) => (
+                <div 
+                  key={story.id} 
+                  className="sidebar-story-card"
+                  style={{ backgroundImage: `url(${CardBg})` }}
+                >
+                  {/* Avatar Wrapper positioned by CSS to match background */}
+                  <div className="sidebar-card-top">
+                    <div className="sidebar-img-wrapper">
+                      <img src={story.image} alt={story.name} />
+                    </div>
+                  </div>
+                  
+                  {/* Text Content */}
+                  <div className="sidebar-text">
+                      <h4>{story.name}</h4>
+                      <p>
+                        {story.role} <br /> {story.company}
+                      </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            {/* Updated Button with onClick event */}
+            <button className="btn-block-red" onClick={scrollToStories}>
               View All
             </button>
           </div>
@@ -243,15 +255,18 @@ const Blog = () => {
         </h2>
         <div className="stories-grid">
           {SUCCESS_STORIES.slice(0, visibleCount).map((story) => (
-            <div key={story.id} className="story-card">
-              {/* Top part is just spacing for avatar now */}
+            <div
+              key={story.id}
+              className="story-card"
+              style={{ backgroundImage: `url(${CardBg})` }}
+            >
+              {/* Profile Pic Positioned by CSS */}
               <div className="story-card-top">
-                <img
-                  src={story.image}
-                  alt={story.name}
-                  className="story-avatar"
-                />
+                <div className="main-story-avatar">
+                   <img src={story.image} alt={story.name} />
+                </div>
               </div>
+
               <div className="story-card-content">
                 <h3>{story.name}</h3>
                 <p className="role">
@@ -259,11 +274,13 @@ const Blog = () => {
                   <br />
                   {story.company}
                 </p>
-                {/* Removed divider div as per design request */}
-                <p className="grad-badge">{story.graduation}</p>
-                <p className="period">{story.period}</p>
                 
-                <button 
+                <div className="story-info-block">
+                    <p className="grad-badge">{story.graduation}</p>
+                    <p className="period">{story.period}</p>
+                </div>
+
+                <button
                   className="btn-secondary"
                   onClick={() => handleReadStory(story)}
                 >

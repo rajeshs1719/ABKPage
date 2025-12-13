@@ -2,7 +2,7 @@
 :root {
   --primary-red: #C3002F; /* Japan Red */
   --primary-red-hover: #a00026;
-  --button-brown: #A03C3C; /* The specific button color from image */
+  --button-brown: #A03C3C;
   --bg-cream: #FFFDF5;
   --bg-beige: #FDEBD0;
   --text-dark: #1F2937;
@@ -34,21 +34,52 @@
   background-color: var(--primary-red-hover);
 }
 
-/* Updated Button Style for Cards to match reference */
+.btn-primary-hero {
+  background-color: #A0182D; /* slightly darker for hero */
+  color: white;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+  font-size: 1rem;
+  margin-left: 34px;
+  width: 168px;
+  height: 54px;
+}
+
+.btn-block-red {
+  display: block;
+  width: 100%;
+  background-color: #B91C1C;
+  color: white;
+  text-align: center;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: 15px;
+  font-family: var(--font-serif);
+}
+
 .btn-secondary {
   background-color: var(--button-brown);
   color: white;
-  width: 100%;
-  padding: 10px 14px; /* Reduced padding slightly */
+  width: auto;
+  min-width: 70%; /* Ensure it's not too small */
+  padding: 10px 30px;
   border: none;
-  border-radius: 8px;
-  margin-top: auto; 
+  border-radius: 6px;
+  margin-top: auto;
+  margin-right: 15px;
   cursor: pointer;
   font-family: var(--font-serif);
-  font-size: 1.1rem;
+  font-size: 1rem;
   letter-spacing: 0.5px;
   transition: background-color 0.2s, transform 0.2s;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  align-self: center; /* Centers the button horizontally */
 }
 
 .btn-secondary:hover {
@@ -59,235 +90,219 @@
 .center-btn {
   display: flex;
   justify-content: center;
-  margin-top: 20px; /* Reduced margin */
+  margin-top: 30px;
 }
 
 /* --- 1. Hero Section --- */
-.blog-hero-section {
-  max-width: 1200px;
+.blog-top-section {
+  padding: 50px 0;
+  max-width: 1300px;
   margin: 0 auto;
-  padding: 20px; /* Reduced padding */
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
-.hero-content {
+.top-grid {
   display: grid;
-  grid-template-columns: 2.5fr 1fr;
-  gap: 20px; /* Reduced gap */
-  align-items: stretch; 
+  grid-template-columns: 3.0fr 1fr;
+  gap: 30px;
 }
 
 .hero-banner {
-  background: linear-gradient(to bottom, #ffe4d6, #d67c7c);
-  background-image: url('../../assets/BlogLeft.png');
+  position: relative;
   background-size: cover;
   background-position: center;
-  border-radius: 8px;
-  padding: 40px; /* Reduced padding */
+  border-radius: 12px;
+  min-height: 480px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 400px; /* Reduced min-height */
-  position: relative;
-  transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-.hero-banner:hover {
-  transform: scale(1.01);
-}
-
-.hero-text h1 {
-  font-family: var(--font-serif);
-  color: #8B0000;
-  font-size: 2.2rem; /* Adjusted size */
-  line-height: 1.2;
-  margin-bottom: 15px;
-}
-
-.hero-text p {
-  max-width: 500px;
-  margin-bottom: 20px;
-  line-height: 1.5;
-  font-weight: 500;
-}
-
-/* Sidebar Widget */
-.hero-sidebar-widget {
-  background-color: #FCE7D4;
-  height: 100%;    
-  border-radius: 8px;
-  padding: 15px; /* Reduced padding */
-  text-align: center;
-  display: flex;
-  flex-direction: column;
   align-items: center;
+  padding-left: 50px;
+  overflow: hidden;
 }
 
-.hero-sidebar-widget h3 {
-  margin-bottom: 15px;
+.hero-overlay-content {
+  max-width: 80%;
+  z-index: 2;
+}
+
+.hero-banner h1 {
   font-family: var(--font-serif);
+  color: #BF0330;
+  font-size: 64px;
+  line-height: 1.1;
+  margin-bottom: 15px;
+  margin-left: 35px;
 }
 
-/* Generic Sidebar Card Wrapper */
-.mini-story-card {
-  width: 100%;
-  position: relative;
-  margin-bottom: 10px;
+.hero-banner .hero-sub {
+  color: #6D342F;
+  font-size: 48px;
+  font-weight: 500;
+  display: block;
+  margin-top: 5px;
 }
 
-/* --- UPDATED SIDEBAR SUCCESS STORY CARD --- */
-.mini-story-card.full {
-  background-image: url('../../assets/BlogCardmini.png');
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  background-color: transparent;
-  
-  border-radius: 0;
-  box-shadow: none;
-  filter: drop-shadow(0 5px 15px rgba(0,0,0,0.08));
-  
-  position: relative;
-  text-align: left;
+.hero-banner p {
+  font-size: 24px;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 15px;
+  font-weight: 500;
+  margin-left: 35px;
+}
+
+/* --- Sidebar Styling --- */
+.success-sidebar {
+  background-color: #FFE4C4; /* Beige background */
+  border-radius: 12px;
+  padding: 5px;
   display: flex;
   flex-direction: column;
-  min-height: 100px; /* Reduced height to remove extra space */
-  padding: 0;
-  margin-bottom: 10px;
-  
-  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), filter 0.4s ease;
-  cursor: pointer;
 }
 
-.mini-story-card.full:hover {
-  transform: translateY(-5px);
-  filter: drop-shadow(0 15px 30px rgba(0,0,0,0.15));
+.success-sidebar h3 {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  margin: 10px 0;
+  color: #000;
+  font-weight: 700;
+  text-align: center;
+}
+
+.sidebar-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex-grow: 1;
+}
+
+/* Updated Sidebar Card using Background Image */
+.sidebar-story-card {
+  background-color: transparent;
+  background-size: 80% 100%; /* Adjusted as requested */
+  background-repeat: no-repeat;
+  background-position: top center;
+  
+  border-radius: 8px;
+  box-shadow: none; /* Removed shadow from container to avoid floating shadow */
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+  min-height: 280px;
+  border: none;
+  position: relative;
+}
+
+/* Wrapper for positioning avatar */
+.sidebar-card-top {
+  height: 90px;
+  position: relative;
+  width: 70%; /* Limit width to match background */
+  margin: 0 auto; /* Center alignment */
+}
+
+.sidebar-img-wrapper {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  background: #eee;
+  
+  /* Absolute positioning relative to the centered top wrapper */
+  position: absolute;
+  top: 30px; 
+  left: 10px; /* Slight offset inside the card area */
   z-index: 10;
 }
 
-.mini-story-card.full .red-circle-bg {
-  display: none;
-}
-
-/* Avatar Styling for Sidebar */
-.story-avatar-sm {
-  width: 75px; /* Slightly smaller avatar */
-  height: 75px;
-  border-radius: 50%;
+.sidebar-img-wrapper img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  position: absolute;
-  top: 30px;
-  left: 20px;
-  z-index: 5;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-  border: none; 
-  margin: 0;
 }
 
-/* Typography for Sidebar Cards */
-.mini-story-card.full h4 {
-  margin-top: 120px; /* Reduced margin */
-  margin-bottom: 8px;
-  padding: 0 20px;
-  font-size: 1.3rem;
-  font-weight: 700;
+.sidebar-text {
+  text-align: left;
+  width: 70%; /* Limit width to match background */
+  padding: 0 10px 20px;
+  margin: 5px auto 0; /* Center horizontally */
+}
+
+.sidebar-text h4 {
+  font-size: 1.6rem;
+  margin: 40px 0 5px 0;
   color: #000;
+  font-weight: 700;
   font-family: var(--font-sans);
 }
 
-.mini-story-card.full .role {
-  padding: 0 20px;
-  font-family: var(--font-serif);
-  font-size: 0.95rem;
-  color: #111;
-  margin-bottom: 10px;
-  line-height: 1.3;
+.sidebar-text p {
+  font-size: 1.1rem;
+  margin: 0;
+  color: #444;
+  line-height: 1.4;
 }
 
-.mini-story-card.full .grad {
-  padding: 0 20px;
-  font-weight: 800;
-  font-size: 0.9rem;
-  color: #000;
-  margin-bottom: 3px;
-}
-
-.mini-story-card.full .date {
-  padding: 0 20px;
-  font-family: var(--font-serif);
-  font-size: 0.85rem;
-  color: #000;
-  margin-bottom: 20px;
-}
-
-.btn-full-width {
-  width: 100%;
-  background-color: var(--primary-red);
-  color: white;
-  border: none;
-  padding: 10px;
-  border-radius: 4px;
-  cursor: pointer;
-}
 
 /* --- 2. Featured Blogs --- */
 .featured-section {
-  max-width: 1200px;
-  margin: 20px auto; /* Reduced margin */
+  max-width: 1300px;
+  margin: 40px auto;
   padding: 0 20px;
 }
 
 .section-title {
   font-family: var(--font-serif);
-  font-size: 1.8rem;
-  margin-bottom: 20px;
+  font-size: 2.2rem;
+  margin-bottom: 40px;
   color: var(--text-dark);
+  font-weight: 700;
 }
 
 .blogs-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
 }
 
 .blog-card {
   background: white;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #eee;
   border-radius: 8px;
   overflow: hidden;
-  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
   cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.02);
 }
 
 .blog-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 15px 25px rgba(0,0,0,0.1);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.08);
 }
 
 .blog-image-wrapper {
   width: 100%;
-  height: 200px;
+  height: 220px;
   overflow: hidden;
   background-color: #f9f9f9;
-  padding: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 20px;
 }
 
 .blog-image-wrapper img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  transition: transform 0.5s ease;
-}
-
-.blog-card:hover .blog-image-wrapper img {
-  transform: scale(1.08);
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
 }
 
 .blog-content {
-  padding: 20px;
+  padding: 25px;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -297,82 +312,76 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .blog-header h3 {
   color: #b91c1c;
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   font-weight: 700;
   margin: 0;
   line-height: 1.3;
-  transition: color 0.3s;
-}
-
-.blog-card:hover .blog-header h3 {
-  color: var(--primary-red-hover);
 }
 
 .arrow-icon {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: #b91c1c;
   margin-left: 8px;
-  transition: transform 0.3s;
-}
-
-.blog-card:hover .arrow-icon {
-  transform: translate(3px, -3px);
 }
 
 .blog-content p {
-  font-size: 0.9rem;
-  color: #6B7280;
-  margin-bottom: 20px;
-  line-height: 1.5;
-  flex-grow: 1;
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 25px;
+  line-height: 1.6;
 }
 
 .blog-meta {
   display: flex;
   align-items: center;
   margin-top: auto;
+  padding-top: 15px;
+  border-top: 1px solid #f0f0f0;
 }
 
 .author-img {
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   object-fit: cover;
-  margin-right: 10px;
+  margin-right: 12px;
 }
 
 .meta-text {
   display: flex;
   flex-direction: column;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
 }
 
 .author-name {
   font-weight: 600;
-  color: var(--text-dark);
+  color: #333;
 }
 
 .blog-date {
-  color: #9CA3AF;
-  margin-top: 2px;
+  color: #999;
+  font-size: 0.8rem;
 }
+
 
 /* --- 3. Success Stories Section --- */
 .stories-section {
   background-color: var(--bg-beige);
-  background-image: url('../../assets/BlogStory.png');
-  padding: 40px 20px; /* Reduced vertical padding */
-  margin-top: 40px;
+  background-image: url('../../assets/BlogStory.png'); 
+  background-size: cover;
+  padding: 60px 20px;
+  margin-top: 60px;
 }
 
 .stories-section h2 {
-  text-align: left;
-  margin-bottom: 30px;
+  max-width: 1300px;
+  margin: 0 auto 40px auto;
+  font-size: 2.2rem;
 }
 
 .stories-grid {
@@ -380,114 +389,145 @@
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 30px;
+  gap: 35px;
 }
 
-/* --- REDESIGNED CARD USING BACKGROUND IMAGE --- */
+/* --- Story Cards Main Section --- */
 .story-card {
-  background-image: url('../../assets/BlogCard.png'); 
+  /* Use image for background as requested */
   background-size: 100% 100%;
   background-repeat: no-repeat;
-  background-color: transparent;
-  
-  border-radius: 0;
-  box-shadow: none; 
-  filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1)); 
-  
+  background-position: center;
+
+  border-radius: 8px;
+  /* If background image includes border, remove this. Keeping as fallback/accent */
+  /* border-bottom: 6px solid #C3002F;  */ 
+
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   position: relative;
-  text-align: left;
   display: flex;
   flex-direction: column;
-  min-height: 480px; /* Optimized height */
+  
+  /* Adjusted Height and Width for "Medium" Look */
+  min-height: 400px; /* Reduced from 460px */
+  width: 320px; /* Constrain width to prevent excessive expansion */
+  margin: 0 auto; 
+  
   padding: 0;
-  border: none;
-
-  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), filter 0.4s ease;
+  transition: transform 0.3s ease;
   cursor: pointer;
+  overflow: visible; /* Changed to visible to allow profile pic to overlap if needed */
 }
 
-.story-card:hover {
-  transform: translateY(-10px);
-  filter: drop-shadow(0 25px 40px rgba(0,0,0,0.2));
+
+/* Profile Avatar Container */
+.story-card-top {
+  height: 125px; /* Space reserved for top area */
+  position: relative;
+  width: 100%;
+}
+
+.main-story-avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid white;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  background: #eee;
+  
+  /* Positioning */
+  position: absolute;
+  top: 40px; /* Adjust this to sit correctly over the wave in your background image */
+  left: 20px; /* Left align position */
   z-index: 10;
 }
 
-.story-card-top {
-  height: 120px;
-  position: relative;
-  background: transparent;
-}
-
-.story-avatar {
-  width: 110px;
-  height: 110px;
-  border-radius: 50%;
+.main-story-avatar img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  position: absolute;
-  top: 35px;
-  left: 25px;
-  z-index: 5;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15); 
-  transition: transform 0.4s ease;
-}
-
-.story-card:hover .story-avatar {
-  transform: scale(1.05);
 }
 
 .story-card-content {
-  padding: 40px 30px 40px 30px;
+  padding: 20px 25px 30px 25px;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  /* Left Align Text */
+  align-items: flex-start; 
+  text-align: left;
+  z-index: 5;
 }
 
 .story-card-content h3 {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 700;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   color: #000;
   font-family: var(--font-sans);
+  margin-top: 10px;
 }
 
 .story-card-content .role {
   font-family: var(--font-serif);
-  font-size: 1.2rem;
-  color: #111;
+  font-size: 1.05rem;
+  color: #333;
   margin-bottom: 15px;
-  line-height: 1.3;
+  line-height: 1.4;
+  font-weight: 500;
 }
 
-.story-card-content .divider {
-  display: none;
+.story-info-block {
+    margin-bottom: 25px;
 }
 
 .grad-badge {
-  font-weight: 800;
-  font-size: 1.1rem;
+  font-weight: 700;
+  font-size: 1rem;
   color: #000;
-  margin-bottom: 4px;
+  margin-bottom: 5px;
 }
 
 .story-card-content .period {
   font-family: var(--font-serif);
-  font-size: 1rem;
-  color: #000;
-  margin-bottom: 25px;
+  font-size: 0.9rem;
+  color: #555;
+  margin: 0;
 }
 
 /* Mobile Responsive */
-@media (max-width: 768px) {
-  .hero-content {
+@media (max-width: 1024px) {
+  .top-grid {
     grid-template-columns: 1fr;
   }
-  .hero-sidebar-widget {
-    display: none;
+  
+  .success-sidebar {
+    max-width: 500px;
+    margin: 0 auto;
+    width: 100%;
   }
+
+  .hero-banner {
+    min-height: 400px;
+    padding: 30px;
+  }
+  
+  .hero-overlay-content {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-banner h1 {
+    font-size: 2rem;
+  }
+  
+  .hero-banner .hero-sub {
+    font-size: 1.5rem;
+  }
+  
   .story-card {
-    min-height: 450px;
-  }
-  .story-card-content h3 {
-    font-size: 1.6rem;
+    min-height: 400px;
   }
 }

@@ -1,5 +1,7 @@
 import React, { useState, ReactNode } from "react";
 import { NavLink } from "react-router-dom";
+
+// Replaced local import with a placeholder for stability
 import logoMain from "../assets/logo.png";
 
 export default function Layout({ children }: { children?: ReactNode }) {
@@ -7,6 +9,49 @@ export default function Layout({ children }: { children?: ReactNode }) {
 
   return (
     <>
+      {/* Adding a style block to handle pseudo-classes (:hover) 
+        and active states which are difficult with inline styles alone.
+      */}
+      <style>{`
+        .nav-link {
+          text-decoration: none;
+          color: #222;
+          font-weight: 400;
+          font-size: 18px;
+          position: relative;
+          transition: color 0.3s ease;
+          padding-bottom: 5px; /* Space for the underline */
+        }
+
+        /* Hover Effect */
+        .nav-link:hover {
+          color: #2F4B36; /* Green from your button */
+        }
+
+        /* Active Effect (class added by NavLink) */
+        .nav-link.active {
+          color: #2F4B36;
+          font-weight: 600;
+        }
+
+        /* Animated Underline Effect */
+        .nav-link::after {
+          content: '';
+          position: absolute;
+          width: 0;
+          height: 2px;
+          bottom: 0;
+          left: 0;
+          background-color: #2F4B36;
+          transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+          width: 100%;
+        }
+      `}</style>
+
       <nav style={styles.header}>
         {/* LEFT LOGO + TEXT + SECOND LOGO */}
         <div style={styles.left}>
@@ -16,32 +61,57 @@ export default function Layout({ children }: { children?: ReactNode }) {
         {/* NAV LINKS */}
         <ul style={styles.navLinks}>
           <li style={styles.navItem}>
-            <NavLink to="/" style={styles.link}>
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                isActive ? "nav-link active" : "nav-link"
+              }
+            >
               Home
             </NavLink>
           </li>
 
           <li style={styles.navItem}>
-            <NavLink to="/gallery" style={styles.link}>
+            <NavLink
+              to="/gallery"
+              className={({ isActive }) =>
+                isActive ? "nav-link active" : "nav-link"
+              }
+            >
               Gallery
             </NavLink>
           </li>
 
           <li style={styles.navItem}>
-            <NavLink to="/events" style={styles.link}>
+            <NavLink
+              to="/events"
+              className={({ isActive }) =>
+                isActive ? "nav-link active" : "nav-link"
+              }
+            >
               Events
             </NavLink>
           </li>
 
           <li style={styles.navItem}>
-            <NavLink to="/blog" style={styles.link}>
+            <NavLink
+              to="/blog"
+              className={({ isActive }) =>
+                isActive ? "nav-link active" : "nav-link"
+              }
+            >
               Blog
             </NavLink>
           </li>
-          
+
           <li style={styles.navItem}>
-            <NavLink to="/contact" style={styles.link}>
-              Contact Us
+            <NavLink
+              to="/course"
+              className={({ isActive }) =>
+                isActive ? "nav-link active" : "nav-link"
+              }
+            >
+              Course
             </NavLink>
           </li>
         </ul>
@@ -85,6 +155,7 @@ const styles: { [key: string]: React.CSSProperties } = {
   },
   logoMain: {
     height: "52px",
+    objectFit: "contain",
   },
   logoSecondary: {
     height: "40px",
@@ -113,12 +184,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     padding: 0,
   },
   navItem: {
-    fontSize: "18px",
-  },
-  link: {
-    textDecoration: "none",
-    color: "#222",
-    fontWeight: 400,
+    // fontSize is now handled in the CSS class to ensure consistency
   },
 
   /* RIGHT BUTTONS */

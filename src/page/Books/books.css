@@ -1,6 +1,5 @@
 .books-container {
   width: 100%;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,7 +14,7 @@
 
 .books-header {
   position: absolute;
-  top: 8%;
+  top: 0%;
   text-align: center;
   z-index: 20;
 }
@@ -103,8 +102,8 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  height: 80%;
   border-radius: 4px 8px 8px 4px;
   backface-visibility: hidden;
   transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);

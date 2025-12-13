@@ -1,55 +1,78 @@
-/* src/page/gallery.css */
+/* --- GLOBAL RESETS --- */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@400;500&family=Courier+Prime&display=swap');
 
-/* --- Hero Section (Top Half) --- */
+.gallery-page-container {
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+/* --- HERO SECTION --- */
 .hero-section {
     position: relative;
-    min-height: 70vh;
-    /* Full height on desktop */
+    min-height: 90vh;
+    /* Slightly taller to accommodate aligned images */
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 80px;
-
-    /* Background handled in gallery.tsx */
+    justify-content: center;
+    /* Center text vertically */
+    padding: 80px 20px;
+    overflow: hidden;
+    /* Hide polaroids that stick out */
+    background-color: #fdfbf7;
+    /* Fallback pattern if images fail */
+    background-image: radial-gradient(#e5e5e5 1px, transparent 1px);
+    background-size: 20px 20px;
+    margin-bottom: 10px;
 }
 
-.hero-text {
+.Gallery-text {
     text-align: center;
-    max-width: 600px;
-    z-index: 10;
-    padding: 0 20px;
-    /* Safety padding for mobile */
+    max-width: 700px;
+    z-index: 60;
+    /* Higher than hover state of polaroids so text is always readable */
+    position: relative;
+    background: rgba(253, 251, 247, 0.6);
+    /* Subtle backdrop to ensure readability */
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    /* No negative margin needed with proper flex centering */
+    margin-top: -250px;
 }
 
-.hero-text h1 {
+.Gallery-text h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 3rem;
+    font-size: 3.5rem;
     color: #1a1a1a;
     margin-bottom: 20px;
-    line-height: 1.2;
+    line-height: 1.1;
+    letter-spacing: -1px;
 }
 
-.hero-text p {
-    color: #555;
+.Gallery-text p {
+    color: #444;
     line-height: 1.6;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+    font-weight: 300;
 }
 
-/* --- Polaroid Styling --- */
+/* --- POLAROID STYLING --- */
 .polaroid {
     background: white;
-    padding: 15px 15px 40px 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    padding: 12px 12px 45px 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
     position: absolute;
-    width: 220px;
-    transition: transform 0.3s ease;
-    /* Ensure they don't overflow the screen horizontally */
-    max-width: 45vw;
+    width: 200px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 10;
 }
 
 .polaroid:hover {
-    transform: scale(1.05) !important;
+    transform: scale(1.1) rotate(0deg) !important;
     z-index: 50;
+    /* Bring to front on hover, but below text z-index(60) if they overlap */
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.25);
 }
 
 .polaroid img {
@@ -57,244 +80,245 @@
     height: 180px;
     object-fit: cover;
     background-color: #eee;
+    filter: sepia(0.2);
+    transition: filter 0.3s;
+}
+
+.polaroid:hover img {
+    filter: sepia(0);
 }
 
 .polaroid .caption {
     text-align: center;
-    margin-top: 15px;
-    font-family: 'Courier New', monospace;
-    font-size: 12px;
-    text-transform: uppercase;
-    color: #333;
+    position: absolute;
+    bottom: 15px;
+    left: 0;
+    right: 0;
+    font-family: 'Courier Prime', monospace;
+    font-size: 14px;
+    color: #555;
+    letter-spacing: 1px;
 }
 
-/* --- Pins --- */
-.pin {
-    width: 15px;
-    height: 15px;
+/* --- PINS --- */
+.pin-head {
+    width: 16px;
+    height: 16px;
     border-radius: 50%;
     position: absolute;
-    top: -5px;
+    top: -6px;
     left: 50%;
     transform: translateX(-50%);
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-    z-index: 2;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.3);
+    z-index: 5;
 }
 
-/* --- Static Positioning (Desktop Defaults) --- */
+/* --- POSITIONING (STAGGERED TO FIX OVERLAP) --- */
+
+/* Top Left - Moved higher and further left */
 .p-1 {
-    top: 15%;
-    left: 10%;
+    top: 2%;
+    left: 2%;
     transform: rotate(-8deg);
 }
 
+/* Top Right - Moved higher and further right */
 .p-2 {
-    top: 18%;
-    right: 12%;
+    top: 2%;
+    right: 2%;
+    transform: rotate(8deg);
+}
+
+/* Bottom Row - Staggered inwards to avoid vertical overlap with top row */
+
+/* Bottom Left */
+.p-3 {
+    bottom: 5%;
+    left: 12%;
     transform: rotate(5deg);
 }
 
-.p-3 {
-    bottom: 15%;
-    left: 15%;
-    transform: rotate(12deg);
-}
-
+/* Center Bottom */
 .p-4 {
-    bottom: 25%;
+    bottom: 5%;
     left: 40%;
-    transform: rotate(-3deg);
-    width: 180px;
+    transform: rotate(5deg);
+    z-index: 5;
 }
 
+/* Bottom Right */
 .p-5 {
-    bottom: 10%;
-    right: 20%;
-    transform: rotate(-10deg);
+    bottom: 5%;
+    right: 12%;
+    transform: rotate(-5deg);
 }
 
-
-/* --- Gallery Section (Bottom Half) --- */
+/* --- GALLERY SECTION --- */
 .gallery-section {
-    padding: 80px 10%;
-    /* Background handled in gallery.tsx */
+    padding: 100px 10%;
+    min-height: 100vh;
+    background-color: #eaece5;
+    /* Soft sage backup */
 }
 
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    /* 3 Columns for Desktop */
-    gap: 60px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 60px 40px;
     margin-bottom: 60px;
 }
 
 .gallery-item {
     background: white;
-    padding: 15px 15px 50px 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 10px 10px 50px 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
     position: relative;
-    transition: transform 0.3s;
+    transition: transform 0.3s ease;
+    border-radius: 2px;
 }
 
-/* Organic Tilt Effect */
-.gallery-item:nth-child(odd) {
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Random rotation effect for grid items */
+.gallery-item:nth-child(3n+1) {
     transform: rotate(1deg);
 }
 
-.gallery-item:nth-child(even) {
-    transform: rotate(-1deg);
+.gallery-item:nth-child(3n+2) {
+    transform: rotate(-1.5deg);
+}
+
+.gallery-item:nth-child(3n+3) {
+    transform: rotate(0.5deg);
+}
+
+.gallery-item:hover {
+    transform: scale(1.02) rotate(0deg) !important;
 }
 
 .gallery-item img {
     width: 100%;
-    height: 250px;
+    height: 260px;
     object-fit: cover;
+    display: block;
 }
 
 .gallery-pin {
-    width: 20px;
-    height: 20px;
+    width: 14px;
+    height: 14px;
     border-radius: 50%;
     position: absolute;
-    top: -10px;
+    top: -7px;
     left: 50%;
     transform: translateX(-50%);
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 2;
 }
 
 .gallery-caption {
     text-align: center;
-    margin-top: 15px;
+    position: absolute;
+    bottom: 15px;
+    width: 100%;
+    left: 0;
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
-    font-size: 14px;
+    font-size: 13px;
     color: #333;
-}
-
-.load-more-container {
-    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .btn-load-more {
-    background-color: var(--primary-green);
+    background-color: #2c3e50;
     color: white;
-    padding: 15px 40px;
+    padding: 16px 48px;
     border: none;
-    font-size: 16px;
-    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
     cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s;
+    transition: all 0.3s;
+    border-radius: 50px;
 }
 
 .btn-load-more:hover {
-    opacity: 0.9;
+    background-color: #e74c3c;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
 }
 
-
-/* =========================================
-   RESPONSIVE QUERIES
-   ========================================= */
-
-/* --- Tablet (max-width: 1024px) --- */
+/* --- RESPONSIVE --- */
 @media (max-width: 1024px) {
-    .hero-section {
-        min-height: 60vh;
-        /* Reduce height slightly */
+    .Gallery-text h1 {
+        font-size: 2.5rem;
     }
 
-    /* Change grid to 2 Columns */
-    .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 40px;
+    .p-2,
+    .p-3 {
+        display: none;
     }
 
-    /* Adjust positioning of hero polaroids for tablet */
+    /* Hide some to reduce clutter on tablets */
     .p-1 {
-        top: 10%;
-        left: 2%;
+        top: 5%;
+        left: 5%;
     }
 
-    .p-2 {
-        top: 12%;
-        right: 2%;
+    .p-5 {
+        bottom: 5%;
+        right: 5%;
     }
 
     .p-4 {
         display: none;
     }
-
-    /* Hide the middle one to save space */
 }
 
-/* --- Mobile (max-width: 768px) --- */
 @media (max-width: 768px) {
-
-    /* 1. Hero Section Adjustments */
     .hero-section {
         min-height: auto;
-        padding-bottom: 350px;
-        /* Add padding at bottom for the stacked polaroids */
+        padding: 60px 20px 120px 20px;
     }
 
-    .hero-text h1 {
+    .Gallery-text h1 {
         font-size: 2rem;
-        /* Smaller Title */
     }
 
-    .hero-text p {
-        font-size: 1rem;
-    }
-
-    /* 2. Hero Polaroid Positioning for Mobile 
-       We move them to the bottom half of the hero section so they don't cover text 
-    */
+    /* On mobile, stack them neatly at the bottom or hide */
     .p-1 {
         top: auto;
-        bottom: 120px;
+        bottom: 20px;
         left: 5%;
         transform: rotate(-5deg);
-        width: 160px;
-    }
-
-    .p-2 {
-        top: auto;
-        bottom: 140px;
-        right: 5%;
-        transform: rotate(5deg);
-        width: 160px;
+        width: 140px;
     }
 
     .p-5 {
         top: auto;
         bottom: 20px;
-        right: 25%;
-        transform: rotate(-3deg);
-        width: 170px;
-        z-index: 20;
-        /* Bring center bottom one to front */
+        right: 5%;
+        transform: rotate(5deg);
+        width: 140px;
     }
 
-    /* Hide cluttered ones on mobile */
+    .p-2,
     .p-3,
     .p-4 {
         display: none;
     }
 
-    /* 3. Gallery Section Adjustments */
-    .gallery-section {
-        padding: 60px 5%;
-        /* Less side padding */
-    }
+    /* Clean look for mobile */
 
-    /* Stack Grid to 1 Column */
     .gallery-grid {
         grid-template-columns: 1fr;
-        gap: 50px;
+        gap: 40px;
     }
 
     .gallery-item {
-        /* Remove rotation on mobile for cleaner look, or keep it subtle */
         transform: rotate(0deg) !important;
     }
 }

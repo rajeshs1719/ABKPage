@@ -1,4 +1,11 @@
 import React, { useState } from 'react';
+
+// ==========================================
+// INSTRUCTIONS FOR LOCAL USE:
+// 1. Uncomment the import below.
+// 2. Remove the <style> block inside the component.
+// ==========================================
+
 import './appreciation.css';
 
 const testimonials = [
@@ -50,33 +57,29 @@ const Appreciation: React.FC = () => {
       // Move to next card
       setCurrentIndex(currentIndex + 1);
     } else {
-      // End of stack -> Scroll Down
-      handleScrollDown();
+      // End of stack -> For demo purposes we can log or reset
+      console.log("End of testimonials");
     }
-  };
-
-  const handleScrollDown = () => {
-    window.scrollBy({
-      top: window.innerHeight * 0.8,
-      behavior: 'smooth'
-    });
   };
 
   // 3. Determine class based on position relative to 'currentIndex'
   const getCardClass = (index: number) => {
     if (!isEnvelopeOpen) return 'hidden';
 
-    if (index === currentIndex) return 'active';         // Center (Top of Arc)
-    if (index === currentIndex - 1) return 'prev';       // Left Side (Visible)
-    if (index === currentIndex + 1) return 'next';       // Right Side (Visible)
-    if (index < currentIndex - 1) return 'discarded';    // Far Left (Hidden)
-    if (index > currentIndex + 1) return 'waiting';      // Far Right (Hidden)
+    if (index === currentIndex) return 'active';        // Center (Top of Arc)
+    if (index === currentIndex - 1) return 'prev';      // Left Side (Visible)
+    if (index === currentIndex + 1) return 'next';      // Right Side (Visible)
+    if (index < currentIndex - 1) return 'discarded';   // Far Left (Hidden)
+    if (index > currentIndex + 1) return 'waiting';     // Far Right (Hidden)
     
     return '';
   };
 
   return (
     <div className="appreciation-container">
+      {/* TEMPORARY CSS FOR PREVIEW - Remove this block locally */}
+
+
       <div className="header-section">
         <h1>Words of Appreciation</h1>
         <p>Testimonials of our students and partners describing their experience.</p>

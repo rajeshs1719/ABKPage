@@ -88,7 +88,7 @@ const Books: React.FC = () => {
   return (
     <div className="books-container">
       <div className="books-header">
-        <h1>Our Resources</h1>
+        <h1>Our Courses</h1>
         <p>Click to open. Click again to continue.</p>
       </div>
 
