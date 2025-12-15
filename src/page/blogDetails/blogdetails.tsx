@@ -13,11 +13,15 @@ import Careers from "../../assets/Careers.png";
 import Message from "../../assets/Message.png";
 import Gallery1 from '../../assets/Gallery1.png'
 
+import { useParams } from "react-router-dom";
+
+
 // Using a placeholder or the sample pic if you have it.
 // Assuming CuSamplePic.png is the user profile based on your list.
 import ProfilePic from "../../assets/CuSamplePic.png";
 
 const BlogDetails: React.FC = () => {
+  const { id } = useParams();
   return (
     <div className="blog-details-container">
       {/* Hero Section */}

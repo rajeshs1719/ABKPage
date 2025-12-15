@@ -8,6 +8,7 @@ import Events from "./page/Event/Event";
 import ContactUs from "./page/contactUs/contact";
 import Blog from "./page/blog/Blog";
 import Course from "./page/Course/course";
+import BlogDetails from "./page/blogDetails/blogdetails";
 
 export default function App() {
   return (
@@ -20,6 +21,8 @@ export default function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/course" element={<Course />} />
           <Route path="/contact" element={<ContactUs />} />
+
+          <Route path="/blog/:id" element={<BlogDetails />} />
 
           {/* Redirect unknown routes */}
           <Route path="*" element={<Navigate to="/" replace />} />

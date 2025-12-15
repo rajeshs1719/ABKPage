@@ -6,7 +6,8 @@ import {
   ArrowUpRight,
 } from "lucide-react";
 
-import "./Blog.css"
+import "./Blog.css";
+import { useNavigate } from "react-router-dom";
 
 // --- Types ---
 
@@ -134,6 +135,10 @@ const FeaturedBlogCarousel: React.FC<{ items: BlogPost[] }> = ({ items }) => {
   const goToSlide = (i: number) =>
     setCurrentIndex(Math.min(Math.max(0, i), maxIndex));
 
+  const goToDetails = (id: number) => {
+    navigate(`/blog/${id}`);
+  };
+
   return (
     <div className="fb-container">
       <div className="section-header">
@@ -201,10 +206,13 @@ const StudentSuccessCarousel: React.FC<{ items: SuccessStory[] }> = ({
   items,
 }) => {
   const [activeIndex, setActiveIndex] = useState(2); // Start with Sharan K (index 2)
-
+  const navigate = useNavigate();
   const handleNext = () => setActiveIndex((p) => (p + 1) % items.length);
   const handlePrev = () =>
     setActiveIndex((p) => (p - 1 + items.length) % items.length);
+  const goToDetails = (id: number) => {
+    navigate(`/blog/${id}`);
+  };
 
   return (
     <div className="ss-full-section">
@@ -230,7 +238,6 @@ const StudentSuccessCarousel: React.FC<{ items: SuccessStory[] }> = ({
             return (
               <div key={item.id} className={`ss-card ${status}`}>
                 <div className="ss-card-inner">
-
                   <div className="ss-profile-img">
                     <img src={item.image} alt={item.name} />
                   </div>
@@ -239,7 +246,12 @@ const StudentSuccessCarousel: React.FC<{ items: SuccessStory[] }> = ({
                     <div className="ss-role">{item.role}</div>
                     <div className="ss-company">{item.company}</div>
                     <div className="ss-detail">{item.detail}</div>
-                    <button className="ss-btn">Ready My Story</button>
+                    <button
+                      className="ss-btn"
+                      onClick={() => goToDetails(item.id)}
+                    >
+                      Read My Story
+                    </button>
                   </div>
                 </div>
               </div>
@@ -282,8 +294,6 @@ export default function BlogAndStoriesPage() {
                 guidance, and language-learning resources — all in one place.
               </p>
               <button className="join-btn">Join Us</button>
-
-
             </div>
 
             <div className="hero-sidebar">
