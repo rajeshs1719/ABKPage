@@ -10,6 +10,7 @@
   perspective: 2000px;
   /* Stronger perspective for 3D depth */
   padding: 2rem;
+  background-image: linear-gradient(rgb(255, 255, 255), rgb(189, 82, 165));
 }
 
 .books-header {
@@ -20,14 +21,14 @@
 }
 
 .books-header h1 {
-  font-size: 3rem;
+  font-size: 40px;
   color: var(--text-dark);
   /* Mapped #1f2937 to text-dark (#1a1a1a) */
   margin-bottom: 0.5rem;
 }
 
 .books-header p {
-  color: var(--text-gray);
+  color: var(--text-gray-lite);
   /* Mapped #6b7280 */
 }
 
@@ -152,7 +153,7 @@
   color: white;
 }
 
-.bookDes{
+.bookDes {
   width: 200px;
   margin-left: 35px;
   margin-bottom: -3px;

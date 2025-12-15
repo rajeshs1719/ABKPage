@@ -300,7 +300,7 @@ export default function BlogAndStoriesPage() {
               <h3 className="sidebar-title">Success Stories</h3>
               <div className="sidebar-list">
                 {/* Show first 4 only */}
-                {SUCCESS_STORIES.slice(0, 4).map((story) => (
+                {SUCCESS_STORIES.slice(0, 5).map((story) => (
                   <div key={story.id} className="sidebar-item">
                     <img
                       src={story.image}

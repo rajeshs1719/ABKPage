@@ -1,5 +1,9 @@
 import React from "react";
+
+import { useEffect } from "react";
+
 import "./landingPage.css";
+import "./cherryblosson.css";
 
 // --- IMAGE IMPORTS ---
 // IMPORTANT: Please rename your uploaded files to match these names
@@ -19,14 +23,51 @@ import fgTrees from "../../assets/Home/4.svg";
 import lanternRound from "../../assets/Home/5.svg";
 import lanternCylinder from "../../assets/Home/6.svg";
 
+const PETAL_COUNT = 100;
+
 const LandingPage: React.FC = () => {
+ useEffect(() => {
+  const container = document.querySelector(".landing-page-container");
+  if (!container) return;
+
+  const petals: HTMLDivElement[] = [];
+
+  for (let i = 0; i < PETAL_COUNT; i++) {
+    const petal = document.createElement("div");
+    petal.className = "petal";
+
+    const size = Math.random() * 6 + 10;
+    const drift = Math.random() * 200 - 100; // 🔥 random left/right
+    const rotate = Math.random() * 360;
+    const duration = Math.random() * 6 + 8;
+    const delay = Math.random() * 5;
+
+    petal.style.width = `${size}px`;
+    petal.style.height = `${size}px`;
+    petal.style.left = `${Math.random() * 100}%`;
+
+    // 🔥 CSS variables for randomness
+    petal.style.setProperty("--drift", `${drift}px`);
+    petal.style.setProperty("--rotate", `${rotate}deg`);
+
+    petal.style.animationDuration = `${duration}s`;
+    petal.style.animationDelay = `${delay}s`;
+
+    container.appendChild(petal);
+    petals.push(petal);
+  }
+
+  return () => {
+    petals.forEach(p => p.remove());
+  };
+}, []);
+
   return (
     <div className="landing-page-container">
-      {/* 1. Left Content Section */}
-      <section className="landing-page-container">
+      <section className="hero-section">
         <div className="hero-grid">
           <div className="hero-left">
-            <h1 className="hero-title">
+            <h1 className="LP-hero-title">
               Start your Japanese learning journey here!
             </h1>
 

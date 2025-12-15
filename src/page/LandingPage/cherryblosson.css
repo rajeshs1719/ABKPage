@@ -1,0 +1,56 @@
+/* Petal base */
+.petal {
+  position: absolute;
+  top: -10%;
+  width: 14px;
+  height: 14px;
+  background: #f9a8d4;
+  border-radius: 60% 40% 60% 40%;
+  opacity: 0.9;
+  pointer-events: none;
+  z-index: 15;
+
+  animation: petal-fall linear infinite;
+}
+
+/* Shine */
+.petal::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0)
+  );
+  border-radius: inherit;
+}
+
+/* 🌸 REALISTIC FALL */
+@keyframes petal-fall {
+  0% {
+    transform: translate(0, -10vh) rotate(0deg);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  50% {
+    transform: translate(
+        calc(var(--drift) * 0.5),
+        50vh
+      )
+      rotate(calc(var(--rotate) * 0.5));
+  }
+
+  100% {
+    transform: translate(
+        var(--drift),
+        120vh
+      )
+      rotate(var(--rotate));
+    opacity: 0.3;
+  }
+}
