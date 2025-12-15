@@ -1,41 +1,86 @@
-import React from 'react';
-import './landingPage.css';
+import React from "react";
+import "./landingPage.css";
 
-// Import the image from your assets folder. 
-// Note: We use the exact filename "Desktop - 31.png" as shown in your directory list.
-import HeroBg from '../../assets/HeroBg.png';
+// --- IMAGE IMPORTS ---
+// IMPORTANT: Please rename your uploaded files to match these names
+// and move them to your 'src/assets' folder.
+//
+// image_177320.png -> OrangeHills.png
+// image_177303.png -> RedHills.png
+// image_1772fc.png -> ForegroundTrees.png
+// image_17737a.jpg -> Pagoda.png (Try to use a transparent PNG if possible)
+// image_1772e1.png -> LanternRound.png
+// image_1772dc.png -> LanternCylinder.png
+
+import pagoda from "../../assets/Home/1.svg"; // or .jpg
+import bgHills from "../../assets/Home/2.svg";
+import midHills from "../../assets/Home/3.svg";
+import fgTrees from "../../assets/Home/4.svg";
+import lanternRound from "../../assets/Home/5.svg";
+import lanternCylinder from "../../assets/Home/6.svg";
 
 const LandingPage: React.FC = () => {
   return (
     <div className="landing-page-container">
-      {/* Hero Section */}
-      {/* FIX: Apply the background image using the style prop.
-         This connects the imported 'HeroBg' variable to the CSS background-image property.
-      */}
-      <section 
-        className="landing-hero" 
-        style={{ backgroundImage: `url('${HeroBg}')` }}
-      >
-        <div className="landing-hero-overlay"></div>
-        
-        <div className="landing-hero-content">
-          <h1 className="landing-title">
-            Start your Japanese <br />
-            learning journey here
-          </h1>
-          
-          <p className="landing-subtitle">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-            Integer sed massa blandit, faucibus quam sed, feugiat massa.
-          </p>
-          
-          <div className="landing-cta-group">
-            <button className="Get-Started">Get Started</button>
-            <button className="Book-Demo-btn">Book Demo</button>
+      {/* 1. Left Content Section */}
+      <section className="landing-page-container">
+        <div className="hero-grid">
+          <div className="hero-left">
+            <h1 className="hero-title">
+              Start your Japanese learning journey here!
+            </h1>
+
+            <p className="hero-description">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+              sed massa blandit, faucibus quam sed, feugiat massa.
+            </p>
+
+            <div className="hero-buttons">
+              <button className="btn btn-demo">Book Demo</button>
+              <button className="btn btn-start">Get Started</button>
+            </div>
           </div>
         </div>
       </section>
 
+      {/* 2. Right/Bottom Visuals Section (Layers) */}
+      <div className="hero-visuals">
+        {/* Layer 1: Furthest Background (Orange Dunes/Hills) */}
+        <img
+          src={bgHills}
+          alt="Background Hills"
+          className="layer layer-bg-hills"
+        />
+
+        {/* Layer 2: Middle Ground (Red Hills) */}
+        <img
+          src={midHills}
+          alt="Middle Red Hills"
+          className="layer layer-mid-hills"
+        />
+
+        {/* Layer 3: Main Subject (Pagoda & Houses) */}
+        <img
+          src={pagoda}
+          alt="Pagoda and Houses"
+          className="layer layer-pagoda"
+        />
+
+        {/* Layer 4: Foreground (Dark Red Trees) */}
+        <img
+          src={fgTrees}
+          alt="Foreground Trees"
+          className="layer layer-fg-trees"
+        />
+
+        {/* Layer 5: Floating Elements (Lanterns) */}
+        <img src={lanternRound} alt="Lantern" className="lantern lantern-1" />
+        <img
+          src={lanternCylinder}
+          alt="Lantern"
+          className="lantern lantern-2"
+        />
+      </div>
     </div>
   );
 };

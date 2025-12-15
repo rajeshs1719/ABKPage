@@ -1,308 +1,315 @@
- /* --- Main Container --- */
- .appreciation-container {
-   width: 100%;
-   height: 100vh;
-   /* Fixed height to viewport */
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   background: linear-gradient(180deg, #fbcfe8 0%, #ffffff 60%);
-   font-family: 'Inter', sans-serif;
-   overflow: hidden;
-   /* STRICTLY REMOVE SCROLL BARS */
-   position: relative;
-   padding-top: 2rem;
-   /* Reduced top padding */
-   box-sizing: border-box;
- }
+/* --- Main Container --- */
+.appreciation-container {
+  width: 100%;
+  height: 100vh;
+  /* Fixed height to viewport */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(180deg, var(--bg-pink) 0%, var(--white) 60%);
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+  /* STRICTLY REMOVE SCROLL BARS */
+  position: relative;
+  padding-top: 2rem;
+  /* Reduced top padding */
+  box-sizing: border-box;
+}
 
- /* --- Header --- */
- .header-section {
-   text-align: center;
-   margin-bottom: 0.5rem;
-   /* Reduced margin */
-   z-index: 50;
-   /* Ensure header stays visible/on top if needed, though we aim for no overlap */
-   padding: 0 1rem;
-   position: relative;
-   flex-shrink: 0;
- }
+/* --- Header --- */
+.header-section {
+  text-align: center;
+  margin-bottom: 0.5rem;
+  /* Reduced margin */
+  z-index: 50;
+  /* Ensure header stays visible/on top if needed, though we aim for no overlap */
+  padding: 0 1rem;
+  position: relative;
+  flex-shrink: 0;
+}
 
- .header-section h1 {
-   font-size: 2.2rem;
-   /* Slightly smaller to save vertical space */
-   font-weight: 800;
-   color: #000;
-   margin-bottom: 0.5rem;
- }
+.header-section h1 {
+  font-size: 2.2rem;
+  /* Slightly smaller to save vertical space */
+  font-weight: 800;
+  color: var(--black);
+  margin-bottom: 0.5rem;
+}
 
- .header-section p {
-   color: #444;
-   max-width: 500px;
-   margin: 0 auto;
-   font-size: 0.95rem;
- }
+.header-section p {
+  color: var(--text-light);
+  /* Mapped #444 to text-light (#555) */
+  max-width: 500px;
+  margin: 0 auto;
+  font-size: 0.95rem;
+}
 
- /* --- Interaction Stage --- */
- .interaction-area {
-   position: relative;
-   width: 100%;
-   flex: 1;
-   /* Take remaining height */
-   display: flex;
-   justify-content: center;
-   align-items: flex-end;
-   /* Align envelope to bottom */
-   perspective: 1200px;
-   padding-bottom: 40px;
-   /* Space from bottom edge */
-   overflow: visible;
-   /* Allow card to stick out top */
-   z-index: 10;
- }
+/* --- Interaction Stage --- */
+.interaction-area {
+  position: relative;
+  width: 100%;
+  flex: 1;
+  /* Take remaining height */
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  /* Align envelope to bottom */
+  perspective: 1200px;
+  padding-bottom: 40px;
+  /* Space from bottom edge */
+  overflow: visible;
+  /* Allow card to stick out top */
+  z-index: 10;
+}
 
- /* --- Envelope --- */
- .envelope-wrapper {
-   position: relative;
-   width: 320px;
-   height: 200px;
-   /* Slightly shorter envelope */
-   cursor: pointer;
-   transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
-   transform: translateY(100px);
-   /* Start lower */
-   z-index: 10;
- }
+/* --- Envelope --- */
+.envelope-wrapper {
+  position: relative;
+  width: 320px;
+  height: 200px;
+  /* Slightly shorter envelope */
+  cursor: pointer;
+  transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+  /* transform: translateY(100px); */
+  /* Start lower */
+  z-index: 10;
+}
 
- .envelope-wrapper.active {
-   transform: translateY(0px);
- }
+.envelope-wrapper.active {
+  transform: translateY(0px);
+}
 
- .envelope-back {
-   position: absolute;
-   bottom: 0;
-   width: 100%;
-   height: 100%;
-   background-color: #eebb73;
-   border-radius: 0 0 5px 5px;
-   z-index: 1;
- }
+.envelope-back {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--envelope-dark);
+  /* #eebb73 */
+  border-radius: 0 0 5px 5px;
+  z-index: 1;
+}
 
- .envelope-pocket {
-   position: absolute;
-   bottom: 0;
-   left: 0;
-   width: 100%;
-   height: 100%;
-   background-color: #fdd888;
-   clip-path: polygon(0 100%, 100% 100%, 50% 45%);
-   z-index: 20;
-   pointer-events: none;
- }
+.envelope-pocket {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--envelope-light);
+  /* #fdd888 */
+  clip-path: polygon(0 100%, 100% 100%, 50% 45%);
+  z-index: 20;
+  pointer-events: none;
+}
 
- .envelope-flap {
-   position: absolute;
-   top: 0;
-   left: 0;
-   width: 100%;
-   height: 100%;
-   background-color: #fdd888;
-   clip-path: polygon(0 0, 100% 0, 50% 55%);
-   transform-origin: top;
-   transition: transform 0.6s ease-in-out, z-index 0.6s;
-   z-index: 25;
- }
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--envelope-light);
+  /* #fdd888 */
+  clip-path: polygon(0 0, 100% 0, 50% 55%);
+  transform-origin: top;
+  transition: transform 0.6s ease-in-out, z-index 0.6s;
+  z-index: 25;
+}
 
- .envelope-wrapper.open .envelope-flap {
-   transform: rotateX(180deg);
-   z-index: 0;
- }
+.envelope-wrapper.open .envelope-flap {
+  transform: rotateX(180deg);
+  z-index: 0;
+}
 
- /* --- Card Logic --- */
- .card-stack {
-   position: absolute;
-   bottom: 0;
-   left: 0;
-   width: 100%;
-   height: 100%;
-   z-index: 5;
-   overflow: visible;
+/* --- Card Logic --- */
+.card-stack {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  overflow: visible;
 
- }
+}
 
- .testimonial-card {
-   position: absolute;
-   left: 40px;
-   /* (320 - 280) / 2 */
-   bottom: 10px;
-   width: 240px;
-   height: 320px;
-   /* Reduced height to avoid header collision */
-   background-color: #1a1a1a;
-   color: #fff;
-   padding: 1.5rem;
-   border-radius: 12px;
-   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-   display: flex;
-   flex-direction: column;
-   justify-content: space-between;
-   transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
-   transform-origin: center bottom;
-   box-sizing: border-box;
- }
+.testimonial-card {
+  position: absolute;
+  left: 25px;
+  /* (320 - 280) / 2 */
+  bottom: 10px;
+  width: 270px;
+  height: 320px;
+  /* Reduced height to avoid header collision */
+  background-color: var(--text-dark);
+  /* #1a1a1a */
+  color: var(--white);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(var(--black-rgb), 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transform-origin: center bottom;
+  box-sizing: border-box;
+}
 
- /* --- POSITIONS --- */
- .testimonial-card.hidden {
-   transform: translateY(100%) scale(0.5);
-   opacity: 0;
-   z-index: 1;
- }
+/* --- POSITIONS --- */
+.testimonial-card.hidden {
+  transform: translateY(100%) scale(0.5);
+  opacity: 0;
+  z-index: 1;
+}
 
- .testimonial-card.active {
-   /* Reduced upward translation so it doesn't hit the header */
-   transform: translate(0px, -150px) rotate(0deg) scale(1);
-   opacity: 1;
-   z-index: 30;
-   cursor: pointer;
-   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
- }
+.testimonial-card.active {
+  /* Reduced upward translation so it doesn't hit the header */
+  transform: translate(0px, -150px) rotate(0deg) scale(1);
+  opacity: 1;
+  z-index: 30;
+  cursor: pointer;
+  box-shadow: 0 20px 50px rgba(var(--black-rgb), 0.4);
+}
 
- .testimonial-card.next {
-   transform: translate(250px, -50px) rotate(15deg) scale(0.85);
-   opacity: 0.8;
-   z-index: 25;
-   pointer-events: none;
-   filter: blur(1px);
- }
+.testimonial-card.next {
+  transform: translate(250px, -50px) rotate(15deg) scale(0.85);
+  opacity: 0.8;
+  z-index: 25;
+  pointer-events: none;
+  filter: blur(1px);
+}
 
- .testimonial-card.prev {
-   transform: translate(-250px, -50px) rotate(-15deg) scale(0.85);
-   opacity: 0.8;
-   z-index: 25;
-   pointer-events: none;
-   filter: blur(1px);
- }
+.testimonial-card.prev {
+  transform: translate(-250px, -50px) rotate(-15deg) scale(0.85);
+  opacity: 0.8;
+  z-index: 25;
+  pointer-events: none;
+  filter: blur(1px);
+}
 
- .testimonial-card.waiting {
-   transform: translate(400px, 50px) rotate(30deg) scale(0.5);
-   opacity: 0;
-   z-index: 1;
- }
+.testimonial-card.waiting {
+  transform: translate(400px, 50px) rotate(30deg) scale(0.5);
+  opacity: 0;
+  z-index: 1;
+}
 
- .testimonial-card.discarded {
-   transform: translate(-400px, 50px) rotate(-30deg) scale(0.5);
-   opacity: 0;
-   z-index: 1;
- }
+.testimonial-card.discarded {
+  transform: translate(-400px, 50px) rotate(-30deg) scale(0.5);
+  opacity: 0;
+  z-index: 1;
+}
 
- /* --- Card Content --- */
- .card-stars {
-   color: #fff;
-   font-size: 1.2rem;
-   margin-bottom: 0.5rem;
- }
+/* --- Card Content --- */
+.card-stars {
+  color: var(--white);
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
 
- .card-text {
-   font-size: 0.9rem;
-   line-height: 1.4;
-   color: #e0e0e0;
-   font-style: italic;
- }
+.card-text {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: var(--gray-border);
+  /* Mapped #e0e0e0 to gray-border */
+  font-style: italic;
+}
 
- .card-author h4 {
-   margin: 0;
-   font-size: 0.95rem;
-   font-weight: 600;
-   color: #fff;
-   margin-top: 0.5rem;
- }
+.card-author h4 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-top: 0.5rem;
+}
 
- .card-author span {
-   font-size: 0.75rem;
-   color: #aaa;
- }
+.card-author span {
+  font-size: 0.75rem;
+  color: var(--text-subtle);
+  /* #aaa */
+}
 
- /* --- Responsive Design --- */
- @media (max-width: 768px) {
-   .header-section h1 {
-     font-size: 1.8rem;
-   }
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+  .header-section h1 {
+    font-size: 1.8rem;
+  }
 
-   .envelope-wrapper {
-     width: 280px;
-     height: 180px;
-   }
+  .envelope-wrapper {
+    width: 280px;
+    height: 180px;
+  }
 
-   /* Smaller card for mobile to ensure fit */
-   .testimonial-card {
-     width: 240px;
-     height: 280px;
-     left: 20px;
-     padding: 1.2rem;
-   }
+  /* Smaller card for mobile to ensure fit */
+  .testimonial-card {
+    width: 240px;
+    height: 280px;
+    left: 20px;
+    padding: 1.2rem;
+  }
 
-   .testimonial-card.active {
-     transform: translate(0px, -130px) rotate(0deg) scale(1);
-   }
+  .testimonial-card.active {
+    transform: translate(0px, -130px) rotate(0deg) scale(1);
+  }
 
-   .testimonial-card.next {
-     transform: translate(140px, -90px) rotate(10deg) scale(0.8);
-     opacity: 0.6;
-   }
+  .testimonial-card.next {
+    transform: translate(140px, -90px) rotate(10deg) scale(0.8);
+    opacity: 0.6;
+  }
 
-   .testimonial-card.prev {
-     transform: translate(-140px, -90px) rotate(-10deg) scale(0.8);
-     opacity: 0.6;
-   }
+  .testimonial-card.prev {
+    transform: translate(-140px, -90px) rotate(-10deg) scale(0.8);
+    opacity: 0.6;
+  }
 
-   .testimonial-card.waiting {
-     transform: translate(200px, 0px) rotate(20deg) scale(0.5);
-   }
+  .testimonial-card.waiting {
+    transform: translate(200px, 0px) rotate(20deg) scale(0.5);
+  }
 
-   .testimonial-card.discarded {
-     transform: translate(-200px, 0px) rotate(-20deg) scale(0.5);
-   }
- }
+  .testimonial-card.discarded {
+    transform: translate(-200px, 0px) rotate(-20deg) scale(0.5);
+  }
+}
 
- @media (max-width: 480px) {
-   .appreciation-container {
-     padding-top: 1.5rem;
-   }
+@media (max-width: 480px) {
+  .appreciation-container {
+    padding-top: 1.5rem;
+  }
 
-   .header-section h1 {
-     font-size: 1.5rem;
-   }
+  .header-section h1 {
+    font-size: 1.5rem;
+  }
 
-   .header-section p {
-     font-size: 0.85rem;
-   }
+  .header-section p {
+    font-size: 0.85rem;
+  }
 
-   .envelope-wrapper {
-     width: 260px;
-     height: 160px;
-   }
+  .envelope-wrapper {
+    width: 260px;
+    height: 160px;
+  }
 
-   /* Even compact card for small phones */
-   .testimonial-card {
-     width: 220px;
-     height: 260px;
-     left: 20px;
-     padding: 1rem;
-   }
+  /* Even compact card for small phones */
+  .testimonial-card {
+    width: 220px;
+    height: 260px;
+    left: 20px;
+    padding: 1rem;
+  }
 
-   .testimonial-card.active {
-     transform: translate(0px, -120px) rotate(0deg) scale(1);
-   }
+  .testimonial-card.active {
+    transform: translate(0px, -120px) rotate(0deg) scale(1);
+  }
 
-   .testimonial-card.next {
-     transform: translate(40px, -20px) rotate(5deg) scale(0.9);
-     z-index: 29;
-     opacity: 0.5;
-   }
+  .testimonial-card.next {
+    transform: translate(40px, -20px) rotate(5deg) scale(0.9);
+    z-index: 29;
+    opacity: 0.5;
+  }
 
-   .testimonial-card.prev {
-     transform: translate(-40px, -20px) rotate(-5deg) scale(0.9);
-     z-index: 29;
-     opacity: 0.5;
-   }
- }
+  .testimonial-card.prev {
+    transform: translate(-40px, -20px) rotate(-5deg) scale(0.9);
+    z-index: 29;
+    opacity: 0.5;
+  }
+}

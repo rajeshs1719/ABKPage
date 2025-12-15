@@ -53,6 +53,7 @@ const FAQ: React.FC = () => {
 
       {/* RIGHT SIDE: FAQ Accordion */}
       <div className="faq-content">
+        <h1 className="faq-title">FAQ</h1>
         {faqData.map((item, index) => (
           <div className="faq-item" key={index}>
             <div 

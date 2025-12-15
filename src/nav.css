@@ -1,66 +1,195 @@
-/* =========================================
-   HAMBURGER BUTTON
-========================================= */
+/* src/nav.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+/* --- Base Header Styles --- */
+.navbar {
+  width: 100%;
+  height: 80px;
+  background: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 3%;
+  box-shadow: 0 1px 6px rgba(var(--black-rgb), 0.08);
+  font-family: 'Poppins', sans-serif;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-sizing: border-box;
+}
+
+/* Logo Section */
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  z-index: 1001; /* Keep logo above mobile menu */
+}
+
+.logo-main {
+  height: 52px;
+  object-fit: contain;
+}
+
+/* --- Navigation Links (Desktop) --- */
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--nav-text); /* #222 */
+  font-weight: 400;
+  font-size: 18px;
+  position: relative;
+  transition: color 0.3s ease;
+  padding-bottom: 5px;
+}
+
+/* Active & Hover States */
+.nav-link:hover,
+.nav-link.active {
+  color: var(--nav-green); /* #2F4B36 */
+  font-weight: 600;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--nav-green); /* #2F4B36 */
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* --- Buttons Section --- */
+.nav-buttons {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.btn-outline {
+  padding: 10px 24px;
+  background: transparent;
+  border: 2px solid var(--nav-green); /* #2F4B36 */
+  color: var(--nav-green); /* #2F4B36 */
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-solid {
+  padding: 10px 26px;
+  background: var(--nav-green); /* #2F4B36 */
+  color: var(--white);
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn-outline:hover { 
+    background: #f0fdf4; /* Kept specific light green for hover state */ 
+}
+.btn-solid:hover { 
+    background: #1e3324; /* Kept specific dark green for hover state */ 
+}
+
+/* --- Hamburger Icon (Hidden on Desktop) --- */
 .hamburger {
   display: none;
+  cursor: pointer;
   flex-direction: column;
   gap: 5px;
-  cursor: pointer;
+  z-index: 1001;
 }
 
-.hamburger span {
+.bar {
   width: 25px;
   height: 3px;
-  background: #333;
+  background-color: var(--nav-text); /* #222 */
+  transition: 0.3s ease;
   border-radius: 2px;
 }
+.mobile-contact{
+  display: none;
+}
 
+/* --- Mobile Responsiveness --- */
+@media screen and (max-width: 960px) {
+  .navbar {
+    padding: 0 20px;
+    height: 70px;
+  }
 
-/* =========================================
-   MOBILE NAV (HIDDEN BY DEFAULT)
-========================================= */
-@media (max-width: 768px) {
-  /* Show hamburger */
+  .logo-main {
+    height: 40px;
+  }
+  
+  /* Show Hamburger */
   .hamburger {
     display: flex;
   }
 
-  /* Hide desktop links */
-  ul {
-    position: absolute;
-    top: 90px;
-    left: 0;
-    width: 100%;
-    padding: 20px 0;
-    background: white;
-    flex-direction: column;
-    align-items: center;
-    gap: 25px !important;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.05);
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transition: 0.3s ease;
+  /* Hide Desktop Buttons initially or move them into menu */
+  .nav-buttons {
+    display: none; /* Can be moved inside nav-links for mobile if desired */
   }
 
-  /* When toggled open */
-  .nav-open {
-    max-height: 400px;
-    opacity: 1;
-  }
-
-  /* Hide right buttons */
-  .nav-actions {
-    display: none !important;
-  }
+  .mobile-contact{
+  display: block;
 }
 
 
-/* =========================================
-   TABLETS
-========================================= */
-@media (max-width: 1024px) {
-  ul {
-    gap: 20px;
+
+  /* Mobile Menu Styles */
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Hidden by default */
+    width: 70%;
+    height: 100vh;
+    background: var(--white);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    box-shadow: -2px 0 10px rgba(var(--black-rgb), 0.1);
+    transition: right 0.3s ease-in-out;
+  }
+
+  .nav-links.open {
+    right: 0; /* Slide in */
+  }
+
+  /* Mobile Links Styling */
+  .nav-link {
+    font-size: 22px;
+  }
+  
+  /* Hamburger Animation when Open */
+  .hamburger.open .bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 6px);
+  }
+  .hamburger.open .bar:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.open .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -6px);
   }
 }

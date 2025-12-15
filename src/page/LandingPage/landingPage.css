@@ -1,145 +1,301 @@
-/* Landing Page Container */
+/* src/page/LandingPage/landingPage.css */
+
+/* --- Main Container --- */
 .landing-page-container {
-    width: 100%;
-    min-height: 100vh;
-    font-family: 'Poppins', sans-serif;
-    overflow-x: hidden;
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #f0fdf4 0%, #fff7ed 50%, #fecaca 100%);
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
 }
 
-/* --- Hero Section --- */
-.landing-hero {
-    position: relative;
-    width: 100%;
-    min-height: 90vh;
-    /* Full viewport height */
-    display: flex;
-    align-items: center;
-    padding: 0 10%;
-    /* Left padding to position content */
-
-    /* Background Configuration */
-    background-color: #ffffff;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+/* --- Left Content Section (Text & Buttons) --- */
+.hero-grid {
+  max-width: 1200px;
+  margin-left: 0;
+  padding-left: 5%;
+  padding-top: 7vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* LEFT | RIGHT */
 }
 
-/* Optional Overlay: Helps text pop against busy backgrounds */
-.landing-hero-overlay {
+.hero-content {
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  z-index: 10;
+}
+
+.hero-left {
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  z-index: 10;
+}
+
+.hero-title {
+  font-size: 40px;
+  font-weight: 700;
+  color: #1f2937;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+
+  white-space: nowrap;
+}
+
+.hero-description {
+  font-size: 30px;
+  color: #4b5563;
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.btn-demo {
+  background-color: transparent;
+  border: 1px solid #d1d5db;
+  color: #6D6D6D;
+}
+
+.btn-demo:hover {
+  border-color: #9ca3af;
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.btn-start {
+  background-color: #3A4D2F;
+  /* Dark green from the reference */
+  border: 1px solid #3f4e43;
+  color: white;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.btn-start:hover {
+  background-color: #2f3b32;
+  transform: translateY(-2px);
+}
+
+/* --- Visuals / Layers Wrapper --- */
+.hero-visuals {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, rgba(255, 250, 245, 0.461) 0%, rgba(255, 250, 245, 0.233) 50%, rgba(246, 246, 246, 0) 100%);
+  pointer-events: none;
+  /* Let clicks pass through to background if needed */
   z-index: 1;
 }
 
-.landing-hero-content {
-    position: relative;
-    z-index: 2;
-    /* Ensures content is above overlay */
-    max-width: 650px;
+/* --- Common Layer Styles --- */
+.layer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  opacity: 0;
+  /* Start hidden */
+  transform: translateY(100%);
+  /* Start pushed down */
+  /* Ensure images scale correctly */
+  object-fit: cover;
 }
 
-.landing-title {
-    font-size: 3.5rem;
-    /* Large, bold title */
-    font-weight: 800;
-    color: #000;
-    line-height: 1.1;
-    margin-bottom: 25px;
+/* Specific Layer Adjustments */
+
+/* 1. Background Orange Hills */
+.layer-bg-hills {
+  z-index: 2;
+  /* This matches image_177320.png */
+  animation: slideUp 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s forwards;
+  width: 100%;
 }
 
-.landing-subtitle {
-    font-size: 1.25rem;
-    color: #000000;
-    line-height: 1.6;
-    margin-bottom: 45px;
-    max-width: 500px;
+/* 2. Middle Red Hills */
+.layer-mid-hills {
+  z-index: 3;
+  bottom: -5%;
+  /* Slight overlap adjustment */
+  /* This matches image_177303.png */
+  animation: slideUp 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s forwards;
 }
 
-/* --- Buttons --- */
-.landing-cta-group {
-    display: flex;
-    gap: 25px;
+/* 3. Pagoda & Houses */
+.layer-pagoda {
+  z-index: 4;
+  /* This matches image_17737a.jpg */
+  /* Since the pagoda is on the right in the image, we might need to position it specifically 
+     if the image is transparent. If it's the full width image, stick to standard layout. */
+  right: 0;
+  left: auto;
+  width: auto;
+  /* Preserve aspect ratio */
+  max-height: 100vh;
+  /* Don't get too tall */
+  bottom: 5%;
+
+  animation: slideUp 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.8s forwards;
 }
 
-.Get-Started {
-    background-color: #FF6524;
-    /* Theme Orange */
-    color: #fff;
-    border: none;
-    border-radius: 18px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
-    width: 250px;
-    height: 64px;
+/* 4. Foreground Trees */
+.layer-fg-trees {
+  z-index: 5;
+  /* This matches image_1772fc.png */
+  width: 100%;
+  bottom: -5%;
+  /* animation: slideUp 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.1s forwards; */
+  animation: dropIn 1s ease-out 1.5s forwards, float 5s ease-in-out infinite;
+
 }
 
-.Book-Demo-btn {
-    background-color: #000;
-    /* Black */
-    color: #fff;
-    border: none;
-    padding: 18px 45px;
-    border-radius: 12px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+/* 5. Lanterns (Floating) */
+.lantern {
+  position: absolute;
+  z-index: 6;
+  opacity: 0;
+
+  transform-origin: top center;
+
+  animation:
+    dropIn 1s ease-out forwards,
+    sway 4s ease-in-out infinite;
+
+  animation-delay: 1.5s, 2.5s;
 }
 
+.lantern-1 {
+  top: 30%;
+  left: 45%;
+  width: 100px;
+  height: auto;
+
+  animation-delay: 1.5s, 2.5s;
+}
+
+.lantern-2 {
+  top: 22%;
+  left: 55%;
+  width: 100px;
+  height: auto;
+
+  animation-delay: 1.7s, 2.8s;
+  animation-duration: 1s, 4.5s;
+}
+
+/* --- Animations --- */
+
+/* Slide from bottom to original position */
+@keyframes slideUp {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Fade in for text */
+@keyframes fadeContent {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Drop in for lanterns */
+@keyframes dropIn {
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Gentle floating effect */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-30px);
+  }
+}
+
+@keyframes sway {
+  0% {
+    transform: translateY(0) rotate(-6deg);
+  }
+
+  50% {
+    transform: translateY(-6px) rotate(6deg);
+  }
+
+  100% {
+    transform: translateY(0) rotate(-6deg);
+  }
+}
 
 
 /* --- Responsive Design --- */
-@media (max-width: 1200px) {
-    .landing-title {
-        font-size: 3.5rem;
-    }
-}
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2rem;
+  }
 
-@media (max-width: 900px) {
-    .landing-hero {
-        /* Adjust background alignment for tablets */
-        background-position: 70% center;
-        align-items: flex-start;
-        padding-top: 150px;
-    }
+  .hero-content {
+    text-align: center;
+    margin-top: -200px;
+    /* Pull text up on mobile so visuals don't block it completely */
+    padding: 20px;
+  }
 
-    .landing-hero-overlay {
-        /* Change gradient to vertical for stacked layout feel */
-        background: linear-gradient(180deg, rgba(255, 250, 245, 0.95) 0%, rgba(255, 250, 245, 0.8) 60%, rgba(255, 255, 255, 0.2) 100%);
-    }
-}
+  .hero-buttons {
+    justify-content: center;
+  }
 
-@media (max-width: 600px) {
-    .landing-hero {
-        padding: 120px 20px 40px 20px;
-        background-position: center;
-    }
+  .layer-pagoda {
+    max-height: 60vh;
+    right: -50px;
+    /* Shift slightly if needed */
+  }
 
-    .landing-title {
-        font-size: 2.5rem;
-    }
-
-    .landing-subtitle {
-        font-size: 1rem;
-    }
-
-    .landing-cta-group {
-        flex-direction: column;
-        gap: 15px;
-        width: 100%;
-    }
-
-    .Get-Started,
-    .Book-Demo-btn {
-        width: 100%;
-        padding: 15px 0;
-    }
+  .lantern {
+    display: none;
+    /* Maybe hide lanterns on very small screens to reduce clutter */
+  }
 }

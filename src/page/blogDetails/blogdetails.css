@@ -2,8 +2,10 @@
 .blog-details-container {
   width: 100%;
   min-height: 100vh;
-  background-color: #fffaf5; /* Light creamy background matching the theme */
-  font-family: 'Poppins', sans-serif; /* Assuming a clean sans-serif font */
+  background-color: var(--bg-blog);
+  /* #fffaf5 */
+  font-family: 'Poppins', sans-serif;
+  /* Assuming a clean sans-serif font */
   overflow-x: hidden;
 }
 
@@ -11,7 +13,8 @@
 .blog-hero {
   position: relative;
   width: 100%;
-  height: 300px; /* Adjust based on asset aspect ratio */
+  height: 300px;
+  /* Adjust based on asset aspect ratio */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -31,21 +34,24 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center bottom; /* Shows the mountain/tower better */
+  object-position: center bottom;
+  /* Shows the mountain/tower better */
 }
 
 .blog-hero-content {
   position: relative;
   z-index: 2;
   text-align: center;
-  margin-left: 50%; /* Offset to the right slightly to avoid the Eiffel tower if it's on the left */
+  margin-left: 50%;
+  /* Offset to the right slightly to avoid the Eiffel tower if it's on the left */
   margin-top: -50px;
 }
 
 .hero-title {
   font-size: 3rem;
   font-weight: 800;
-  color: #333;
+  color: var(--text-main);
+  /* #333 */
   margin: 0;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -53,7 +59,8 @@
 
 .hero-subtitle {
   font-size: 1.2rem;
-  color: #555;
+  color: var(--text-light);
+  /* #555 */
   margin-top: 10px;
 }
 
@@ -66,7 +73,7 @@
   margin: 0 auto;
   padding: 0 20px;
   /* Negative margin to pull content up over the hero bg transition line */
-  margin-top: 60px; 
+  margin-top: 60px;
   padding-bottom: 80px;
 }
 
@@ -83,7 +90,7 @@
   width: 300px;
   flex-shrink: 0;
   /* Aspect ratio roughly matching the card asset */
-  min-height: 400px; 
+  min-height: 400px;
 }
 
 .profile-card-bg {
@@ -94,21 +101,23 @@
   height: 100%;
   z-index: 1;
   /* Use fill to stretch the frame if needed, or contain to keep aspect ratio */
-  object-fit: fill; 
-  filter: drop-shadow(0px 10px 20px rgba(0,0,0,0.1));
+  object-fit: fill;
+  filter: drop-shadow(0px 10px 20px rgba(var(--black-rgb), 0.1));
 }
 
 .profile-card-content {
   position: relative;
   z-index: 2;
-  padding: 60px 20px 30px 20px; /* Top padding to clear the flag decoration */
-  
+  padding: 60px 20px 30px 20px;
+  /* Top padding to clear the flag decoration */
+
   /* UPDATED: Left align content inside the card */
   text-align: left;
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Aligns flex children (img) to start */
-  
+  align-items: flex-start;
+  /* Aligns flex children (img) to start */
+
   height: 100%;
 }
 
@@ -118,8 +127,8 @@
   border-radius: 50%;
   overflow: hidden;
   margin-bottom: 20px;
-  border: 4px solid #fff;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  border: 4px solid var(--white);
+  box-shadow: 0 4px 10px rgba(var(--black-rgb), 0.1);
   /* Ensure wrapper itself doesn't stretch oddly if aligning left */
   flex-shrink: 0;
 }
@@ -137,20 +146,23 @@
 .profile-name {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #000;
+  color: var(--black);
+  /* #000 */
   margin: 0 0 5px 0;
 }
 
 .profile-role {
   font-size: 1rem;
-  color: #555;
+  color: var(--text-light);
+  /* #555 */
   margin: 0;
 }
 
 .profile-company {
   font-size: 1rem;
   font-weight: 600;
-  color: #333;
+  color: var(--text-main);
+  /* #333 */
   margin: 0 0 15px 0;
 }
 
@@ -163,13 +175,16 @@
 
 .badge-text {
   font-weight: 700;
-  color: #000;
+  color: var(--black);
+  /* #000 */
 }
 
 .profile-date {
   font-size: 0.9rem;
-  color: #777;
-  border-top: 1px solid #eee;
+  color: var(--text-medium);
+  /* #777 */
+  border-top: 1px solid var(--gray-light);
+  /* #eee mapped to gray-light */
   padding-top: 10px;
   width: 100%;
 }
@@ -177,22 +192,27 @@
 /* --- Story Text Section --- */
 .story-text-container {
   flex-grow: 1;
-  background-color: #ffffff; 
-  padding: 40px; 
+  background-color: var(--white);
+  padding: 40px;
   position: relative;
-  border-radius: 20px; 
-  border-bottom: 12px solid #FF8C42; 
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
+  border-radius: 20px;
+  border-bottom: 12px solid var(--blog-accent);
+  /* #FF8C42 */
+  box-shadow: 0 10px 30px rgba(var(--black-rgb), 0.08);
 }
 
 /* UPDATED: Rocket positioned Top-Left relative to this container */
 .story-rocket {
   position: absolute;
-  top: -50px; /* Pulled further up to sit on the corner */
-  left: -50px; /* Adjusted left position */
-  width: 120px; /* Slightly larger */
+  top: -50px;
+  /* Pulled further up to sit on the corner */
+  left: -50px;
+  /* Adjusted left position */
+  width: 120px;
+  /* Slightly larger */
   height: auto;
-  transform: rotate(-15deg); /* Slight tilt to match the flight path */
+  transform: rotate(-15deg);
+  /* Slight tilt to match the flight path */
   /* animation: floatRocket 3s ease-in-out infinite; */
   z-index: 10;
 }
@@ -205,14 +225,16 @@
 .story-heading {
   font-size: 2rem;
   font-weight: 700;
-  color: #333;
+  color: var(--text-main);
+  /* #333 */
   margin-bottom: 25px;
 }
 
 .story-body {
   font-size: 1.1rem;
   line-height: 1.8;
-  color: #444;
+  color: var(--text-light);
+  /* Mapped #444 to text-light (#555) or similar */
 }
 
 .story-body p {
@@ -226,7 +248,8 @@
 
 .quote-bar {
   width: 4px;
-  background-color: #FF8C42; 
+  background-color: var(--blog-accent);
+  /* #FF8C42 */
   margin-right: 15px;
   border-radius: 2px;
 }
@@ -234,7 +257,8 @@
 .story-quote p {
   font-style: italic;
   font-weight: 600;
-  color: #222;
+  color: var(--text-dark);
+  /* Mapped #222 to text-dark (#1a1a1a) */
   font-size: 1.15rem;
   margin: 0;
 }
@@ -262,23 +286,23 @@
     max-width: 350px;
     margin-bottom: 40px;
   }
-  
+
   .blog-hero {
     height: 400px;
   }
-  
+
   .blog-hero-content {
     margin-left: 0;
   }
-  
+
   .hero-title {
     font-size: 2rem;
   }
 
   .story-text-container {
-    padding: 30px; 
+    padding: 30px;
   }
-  
+
   /* Adjust rocket for mobile to not go off-screen */
   .story-rocket {
     left: 0;
@@ -287,7 +311,7 @@
 }
 
 @media (max-width: 600px) {
-  .story-rocket { 
+  .story-rocket {
     width: 60px;
     top: -40px;
   }
@@ -297,13 +321,16 @@
 .bottom-section-content {
   display: flex;
   flex-direction: column;
-  gap: 60px; /* Space between the full-width cards below */
+  gap: 60px;
+  /* Space between the full-width cards below */
 }
 
 /* --- Journey Section Card --- */
 .journey-section-card {
-  background-color: #FFF6E8; 
-  border: 2px solid #FD7B50;
+  background-color: var(--blog-card-bg);
+  /* #FFF6E8 */
+  border: 2px solid var(--blog-card-border);
+  /* #FD7B50 */
   border-radius: 10px;
   padding: 25px;
   display: flex;
@@ -323,12 +350,13 @@
 .section-title {
   font-size: 36px;
   font-weight: 700;
-  color: #000;
+  color: var(--black);
   margin-bottom: 15px;
 }
 
 .journey-content p {
-  color: #444;
+  color: var(--text-light);
+  /* Mapped #444 to text-light */
   line-height: 1.6;
   font-size: 20px;
 }
@@ -351,9 +379,10 @@
 .features-container {
   display: flex;
   flex-direction: column;
-  margin: 40px 0 ;
-  gap: 60px; 
-  background-color: #FFF8E8;
+  margin: 40px 0;
+  gap: 60px;
+  background-color: var(--blog-feature-bg);
+  /* #FFF8E8 */
 }
 
 
@@ -377,23 +406,24 @@
 .feature-img {
   max-width: 100%;
   height: auto;
-  max-height: 350px; 
+  max-height: 350px;
   object-fit: contain;
 }
 
 .feature-text-col {
-  flex: 1.5; 
+  flex: 1.5;
 }
 
 .feature-title {
   font-size: 36px;
   font-weight: 700;
-  color: #000;
+  color: var(--black);
   margin-bottom: 15px;
 }
 
 .feature-text-col p {
-  color: #444;
+  color: var(--text-light);
+  /* Mapped #444 */
   line-height: 1.7;
   margin-bottom: 15px;
   font-size: 20px;
@@ -404,13 +434,14 @@
   margin-top: 60px;
   padding: 30px 20px;
   text-align: center;
-  background-color: #FFF8E8;
+  background-color: var(--blog-feature-bg);
+  /* #FFF8E8 used here too */
 }
 
 .moments-title {
   font-size: 36px;
   font-weight: 700;
-  color: #000;
+  color: var(--black);
   margin-bottom: 40px;
 }
 
@@ -424,10 +455,11 @@
 .moment-card {
   flex: 1;
   min-width: 200px;
-  height: 220px; /* Fixed height for clean grid */
+  height: 220px;
+  /* Fixed height for clean grid */
   border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 15px rgba(var(--black-rgb), 0.1);
 }
 
 .moment-img {

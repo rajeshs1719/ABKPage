@@ -1,17 +1,12 @@
 import { useEffect, useState } from "react";
-import { LucideMapPin } from "lucide-react";
+import "./gallery.css";
 
-import "./gallery.css"
-
-// --- CONSTANTS & MOCK DATA ---
+// --- CONSTANTS ---
 const COLORS = {
   pinRed: "#e74c3c",
   pinBlue: "#3498db",
   pinPurple: "#9b59b6",
   pinDark: "#333333",
-  bgGreen: "#cddbc8",
-  textDark: "#1a1a1a",
-  textLight: "#555555",
 };
 
 interface GalleryItem {
@@ -21,37 +16,35 @@ interface GalleryItem {
   pinColor: string;
 }
 
-// Updated to accept a page number for pagination simulation
+// Mock API
 const fetchMockApiData = async (page: number = 1): Promise<GalleryItem[]> => {
-  // Simulate network delay
   await new Promise((resolve) => setTimeout(resolve, 800));
 
-  // Page 1: Return the original curated list
   if (page === 1) {
     return [
       {
         id: 1,
         url: "https://picsum.photos/id/1059/400/400",
-        caption: "JAPANESE FESTIVAL 2023",
+        caption: "JAPANESE FESTIVAL",
         pinColor: COLORS.pinRed,
       },
       {
         id: 2,
         url: "https://picsum.photos/id/1062/400/400",
         caption: "STUDENT EXCHANGE",
-        pinColor: COLORS.pinRed,
+        pinColor: COLORS.pinBlue,
       },
       {
         id: 3,
         url: "https://picsum.photos/id/1074/400/400",
         caption: "TEA CEREMONY",
-        pinColor: COLORS.pinRed,
+        pinColor: COLORS.pinPurple,
       },
       {
         id: 4,
         url: "https://picsum.photos/id/103/400/400",
         caption: "OUTDOOR SESSION",
-        pinColor: COLORS.pinRed,
+        pinColor: COLORS.pinDark,
       },
       {
         id: 5,
@@ -63,13 +56,11 @@ const fetchMockApiData = async (page: number = 1): Promise<GalleryItem[]> => {
         id: 6,
         url: "https://picsum.photos/id/158/400/400",
         caption: "DANCE PERFORMANCE",
-        pinColor: COLORS.pinRed,
+        pinColor: COLORS.pinBlue,
       },
     ];
   }
 
-  // Subsequent Pages: Generate random data
-  // We offset the ID to avoid key collisions with previous pages
   const startId = (page - 1) * 6 + 1;
   const captions = [
     "ART CLASS",
@@ -78,16 +69,17 @@ const fetchMockApiData = async (page: number = 1): Promise<GalleryItem[]> => {
     "SPORTS DAY",
     "MUSIC RECITAL",
     "FIELD TRIP",
-    "COMMUNITY SERVICE",
-    "ROBOTICS CLUB"
   ];
-  const pinColors = [COLORS.pinRed, COLORS.pinBlue, COLORS.pinPurple, COLORS.pinDark];
+  const pinColors = [
+    COLORS.pinRed,
+    COLORS.pinBlue,
+    COLORS.pinPurple,
+    COLORS.pinDark,
+  ];
 
   return Array.from({ length: 6 }).map((_, index) => {
     const uniqueId = startId + index;
-    // Use a deterministic way to pick images/colors based on ID so it feels stable
-    const randomImgId = 200 + uniqueId + (index * 5); 
-    
+    const randomImgId = 200 + uniqueId + index * 5;
     return {
       id: uniqueId,
       url: `https://picsum.photos/id/${randomImgId}/400/400`,
@@ -100,12 +92,9 @@ const fetchMockApiData = async (page: number = 1): Promise<GalleryItem[]> => {
 export default function GalleryPage() {
   const [items, setItems] = useState<GalleryItem[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
-  
-  // New state for pagination
   const [loadingMore, setLoadingMore] = useState<boolean>(false);
   const [page, setPage] = useState<number>(1);
 
-  // Initial Load
   useEffect(() => {
     const loadData = async () => {
       try {
@@ -120,14 +109,11 @@ export default function GalleryPage() {
     loadData();
   }, []);
 
-  // Handler for Load More button
   const handleLoadMore = async () => {
     setLoadingMore(true);
     try {
       const nextPage = page + 1;
       const newItems = await fetchMockApiData(nextPage);
-      
-      // Append new items to existing list
       setItems((prevItems) => [...prevItems, ...newItems]);
       setPage(nextPage);
     } catch (error) {
@@ -139,12 +125,7 @@ export default function GalleryPage() {
 
   return (
     <div className="gallery-page-container">
-      {/* INLINE STYLES FOR DEMO ONLY 
-         (In a real app, keep these in your CSS file as provided below)
-      */}
-      
-
-      {/* SECTION 1: Static Hero */}
+      {/* SECTION 1: Adaptive Hero */}
       <section className="hero-section">
         <div className="Gallery-text">
           <h1>
@@ -153,13 +134,15 @@ export default function GalleryPage() {
             Legacy in Pictures
           </h1>
           <p>
-            A visual journey through decades
-            <br />
-            of excellence in Japanese education.
+            A visual journey through decades of excellence in Japanese
+            education.
           </p>
         </div>
 
-        {/* Static Polaroids - Repositioned classes */}
+        {/* Decorative Polaroids 
+          Classes p-1 to p-5 handle positioning.
+          On mobile, p-1 to p-3 form a stack, p-4/p-5 are hidden.
+        */}
         <div className="polaroid p-1">
           <div
             className="pin-head"
@@ -206,17 +189,11 @@ export default function GalleryPage() {
         </div>
       </section>
 
-      {/* SECTION 2: Dynamic Gallery */}
+      {/* SECTION 2: Gallery Grid */}
       <section className="gallery-section">
+        <h1 className="Gallery-Title">Here is a Photo bump of all Activiates, Events, Celebration..</h1>
         {loading ? (
-          <div
-            style={{
-              textAlign: "center",
-              width: "100%",
-              padding: "40px",
-              color: "#666",
-            }}
-          >
+          <div style={{ textAlign: "center", padding: "40px", color: "#666" }}>
             <p>Loading gallery items...</p>
           </div>
         ) : (
@@ -235,12 +212,12 @@ export default function GalleryPage() {
             </div>
 
             <div style={{ textAlign: "center" }}>
-              <button 
-                className="btn-load-more" 
+              <button
+                className="btn-load-more"
                 onClick={handleLoadMore}
                 disabled={loadingMore}
               >
-                {loadingMore ? 'Loading...' : 'Load More Memories'}
+                {loadingMore ? "Developing Memories..." : "Load More Memories"}
               </button>
             </div>
           </>

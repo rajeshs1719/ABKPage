@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500&display=swap');
 
 :root {
   --bg-cream: #fdfbf7;
@@ -22,4 +22,138 @@ body {
   background-color: var(--bg-cream);
   overflow-x: hidden;
   color: #333;
+} */
+
+
+/* This file acts as the bridge. 
+   We define the colors here once using the values from colors.ts.
+*/
+
+/* This file acts as the bridge. 
+   We define the colors here once using the values from colors.ts.
+*/
+
+/* This file acts as the bridge. 
+   We define the colors here once using the values from colors.ts.
+*/
+
+/* This file acts as the bridge. 
+   We define the colors here once using the values from colors.ts.
+*/
+
+/* This file acts as the bridge. 
+   We define the colors here once using the values from colors.ts.
+*/
+
+/* This file acts as the bridge. 
+   We define the colors here once using the values from colors.ts.
+*/
+
+/* This file acts as the bridge. 
+   We define the colors here once using the values from colors.ts.
+*/
+
+:root {
+   /* --- Backgrounds --- */
+   --bg-cream: #fdfbf7;
+   --bg-cream-rgb: 253, 251, 247;
+
+   --bg-sage: #cddbc8;
+   --bg-mist: #eaece5;
+   --bg-pink: #fbcfe8;
+   --bg-pink-light: #fce7f3;
+   --bg-floral-rgb: 255, 250, 240;
+
+   --white: #ffffff;
+   --white-rgb: 255, 255, 255;
+
+   /* --- Brand Colors --- */
+   --primary-green: #3f5540;
+   --theme-orange: #FF6524;
+   --secondary-blue: #2c3e50;
+   --faq-blue: #5555ff;
+   --faq-blue-rgb: 85, 85, 255;
+
+   --black: #000000;
+   --black-rgb: 0, 0, 0;
+
+   /* --- Course Specific Colors --- */
+   --course-primary: #2F4B36;
+   --course-sage: #8DA986;
+   --olive-green: #556B2F;
+
+   /* --- Appreciation Specific Colors --- */
+   --envelope-dark: #eebb73;
+   --envelope-light: #fdd888;
+
+   /* --- Event Specific Colors --- */
+   --event-brown: #3b2a1a;
+   --event-btn-blue: #8CA6AD;
+   --event-green: rgb(58, 77, 47);
+
+   /* --- Contact Specific Colors --- */
+   --contact-navy: #1b2a72;
+   --contact-card-bg: #F5EFE7;
+   --contact-section-lgreen: #D4E4D4;
+   --contact-form-header: #1b1b55;
+   --contact-input-bg: #e8eefc;
+   --contact-input-border: #c9d3f0;
+   --contact-bg: #fbfbfd;
+   --contact-muted: #f4f4f7;
+   --contact-box-border: #dcdcee;
+
+
+   /* --- Blog Details Colors --- */
+   --bg-blog: #fffaf5;
+   --blog-accent: #FF8C42;
+   --blog-card-bg: #FFF6E8;
+   --blog-card-border: #FD7B50;
+   --blog-feature-bg: #FFF8E8;
+
+   /* --- Blog Page Colors --- */
+   --blog-red: #C3002F;
+   --blog-red-hover: #a00026;
+   --blog-red-darker: #A0182D;
+   --blog-red-bright: #B91C1C;
+   --blog-brown: #A03C3C;
+   --blog-brown-dark: #8a3232;
+   --blog-text-brown: #6D342F;
+   --bg-beige: #FDEBD0;
+   --bg-sidebar-beige: #FFE4C4;
+   --bg-blog-cream: #FFFDF5;
+
+   /* --- Nav Colors --- */
+   --nav-green: #2F4B36;
+   --nav-text: #222222;
+
+   /* --- Text Colors --- */
+   --text-main: #333333;
+   --text-light: #555555;
+   --text-dark: #1a1a1a;
+   --text-subtle: #aaaaaa;
+   --text-gray: #6b7280;
+   --text-medium: #777777;
+   --text-charcoal: #1F2937;
+   --text-gray-medium: #4B5563;
+
+   /* --- Utilities --- */
+   --gray-light: #f0f0f0;
+   --gray-pattern: #e5e5e5;
+   --gray-disabled: #95a5a6;
+   --gray-border: #e0e0e0;
+   --gray-medium: #dddddd;
+   --gray-ultra-light: #f9f9f9;
+
+   /* --- Pin Colors --- */
+   --pin-red: #e76f51;
+   --pin-blue: #2a9d8f;
+   --pin-purple: #9b5de5;
+   --pin-green: #2ecc71;
+   --pin-dark: #333333;
+}
+
+body {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
 }

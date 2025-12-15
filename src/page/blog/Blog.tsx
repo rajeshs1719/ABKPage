@@ -1,18 +1,23 @@
 import React, { useState } from "react";
-import "./Blog.css";
-import BlogDetails from "../blogDetails/blogdetails";
-import ProfilePic from "../../assets/idea.png"; // Fallback/Placeholder
-import HeroBg from '../../assets/BlogLeft.png';
-import CardBg from '../../assets/BlogCardmini.png'; // Imported Card Background
+import {
+  ChevronLeft,
+  ChevronRight,
+  ArrowRight,
+  ArrowUpRight,
+} from "lucide-react";
+
+import "./Blog.css"
 
 // --- Types ---
+
 interface BlogPost {
   id: number;
   title: string;
-  description: string;
+  excerpt: string;
+  image: string;
   author: string;
   date: string;
-  image: string;
+  authorImg: string;
 }
 
 interface SuccessStory {
@@ -20,42 +25,56 @@ interface SuccessStory {
   name: string;
   role: string;
   company: string;
-  graduation: string;
-  period: string;
+  detail: string;
   image: string;
 }
 
-// --- Dummy Data ---
-const FEATURED_BLOGS: BlogPost[] = [
+// --- Mock Data (Based on Reference) ---
+
+const BLOG_POSTS: BlogPost[] = [
   {
     id: 1,
     title: "Business Etiquettes in Japan",
-    description:
+    excerpt:
       "How do you create compelling presentations that wow your colleagues and impress your managers?",
+    image:
+      "https://i.pinimg.com/736x/02/cf/84/02cf84c076f8accc1d29c9d74c29a7f0.jpg", // Japan red sun style
     author: "Meera",
     date: "20 Jan 2025",
-    image:
-      "https://media.bizj.us/view/img/7077382/thinkstockphotos-480693371.jpg",
+    authorImg: "https://randomuser.me/api/portraits/women/44.jpg",
   },
   {
     id: 2,
-    title: "Living in Tokyo: A Beginner's Guide",
-    description:
-      "Tips for finding accommodation, navigating the subway, and making friends during your first month.",
-    author: "Shreyas",
-    date: "22 Jan 2025",
+    title: "Mastering Keigo Honorifics",
+    excerpt:
+      "Understanding the subtle nuances of polite language is key to business success in Tokyo.",
     image:
-      "https://images.unsplash.com/photo-1542051841857-5f90071e7989?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      "https://i.pinimg.com/736x/02/cf/84/02cf84c076f8accc1d29c9d74c29a7f0.jpg",
+    author: "Meera",
+    date: "22 Jan 2025",
+    authorImg: "https://randomuser.me/api/portraits/women/44.jpg",
   },
   {
     id: 3,
-    title: "Cracking the JLPT N2",
-    description:
-      "A comprehensive study guide and resource list to help you pass the N2 exam.",
-    author: "Sharan",
-    date: "25 Jan 2025",
+    title: "Living in Kyoto vs Tokyo",
+    excerpt:
+      "A comparative guide for students deciding where to begin their Japanese journey.",
     image:
-      "https://images.unsplash.com/photo-1480796927426-f609979314bd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      "https://i.pinimg.com/736x/02/cf/84/02cf84c076f8accc1d29c9d74c29a7f0.jpg",
+    author: "Meera",
+    date: "25 Jan 2025",
+    authorImg: "https://randomuser.me/api/portraits/women/44.jpg",
+  },
+  {
+    id: 4,
+    title: "The Art of Tea Ceremony",
+    excerpt:
+      "Exploring the meditative practice that defines traditional Japanese culture.",
+    image:
+      "https://i.pinimg.com/736x/02/cf/84/02cf84c076f8accc1d29c9d74c29a7f0.jpg",
+    author: "Meera",
+    date: "28 Jan 2025",
+    authorImg: "https://randomuser.me/api/portraits/women/44.jpg",
   },
 ];
 
@@ -65,248 +84,242 @@ const SUCCESS_STORIES: SuccessStory[] = [
     name: "Shreyas M",
     role: "Software Engineer",
     company: "Rakuten Group",
-    graduation: "JLPT N3 Graduate",
-    period: "June 2022 - March 2023",
-    image: "https://placehold.co/150x150/e0e0e0/333?text=SM",
+    detail: "JLPT N2 Graduate",
+    image: "https://randomuser.me/api/portraits/men/32.jpg",
   },
   {
     id: 2,
     name: "Meera H S",
     role: "Software Engineer",
     company: "Rakuten Group",
-    graduation: "JLPT N3 Graduate",
-    period: "June 2022 - March 2023",
-    image: "https://placehold.co/150x150/e0e0e0/333?text=MH",
+    detail: "JLPT N3 Graduate",
+    image: "https://randomuser.me/api/portraits/women/65.jpg",
   },
   {
     id: 3,
     name: "Sharan K",
     role: "Software Engineer",
     company: "Rakuten Group",
-    graduation: "JLPT N3 Graduate",
-    period: "June 2022 - March 2023",
-    image: "https://placehold.co/150x150/e0e0e0/333?text=SK",
+    detail: "JLPT N3 Graduate - June 2022",
+    image: "https://randomuser.me/api/portraits/men/85.jpg",
   },
   {
     id: 4,
-    name: "Shreyas M",
-    role: "Software Engineer",
-    company: "Rakuten Group",
-    graduation: "JLPT N3 Graduate",
-    period: "June 2022 - March 2023",
-    image: "https://placehold.co/150x150/e0e0e0/333?text=SM",
+    name: "Anjali P",
+    role: "Product Manager",
+    company: "Sony Corp",
+    detail: "JLPT N1 Graduate",
+    image: "https://randomuser.me/api/portraits/women/33.jpg",
   },
   {
     id: 5,
-    name: "Meera H S",
-    role: "Software Engineer",
-    company: "Rakuten Group",
-    graduation: "JLPT N3 Graduate",
-    period: "June 2022 - March 2023",
-    image: "https://placehold.co/150x150/e0e0e0/333?text=MH",
-  },
-  {
-    id: 6,
-    name: "Sharan K",
-    role: "Software Engineer",
-    company: "Rakuten Group",
-    graduation: "JLPT N3 Graduate",
-    period: "June 2022 - March 2023",
-    image: "https://placehold.co/150x150/e0e0e0/333?text=SK",
+    name: "Rohan D",
+    role: "Data Scientist",
+    company: "Line Corp",
+    detail: "JLPT N2 Graduate",
+    image: "https://randomuser.me/api/portraits/men/12.jpg",
   },
 ];
 
-const Blog = () => {
-  const [visibleCount, setVisibleCount] = useState(6);
-  const [blogVisibleCount, setBlogVisibleCount] = useState(3);
-  const [selectedStory, setSelectedStory] = useState<SuccessStory | null>(null);
+// --- Sub-Components ---
 
-  const handleReadStory = (story: SuccessStory) => {
-    setSelectedStory(story);
-  };
+/**
+ * Featured Blog Carousel
+ */
+const FeaturedBlogCarousel: React.FC<{ items: BlogPost[] }> = ({ items }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const itemsToShow = 3;
+  const maxIndex = Math.max(0, items.length - itemsToShow);
 
-  const handleBack = () => {
-    setSelectedStory(null);
-  };
-
-  const scrollToStories = () => {
-    const section = document.getElementById("success-stories-section");
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
-  if (selectedStory) {
-    return <BlogDetails onBack={handleBack} storyData={selectedStory} />;
-  }
+  const goToSlide = (i: number) =>
+    setCurrentIndex(Math.min(Math.max(0, i), maxIndex));
 
   return (
-    <div className="blog-page">
-      {/* --- Top Hero Section --- */}
-      <section className="blog-top-section">
-        <div className="container-custom top-grid">
-          {/* Left Hero Banner */}
-          <div
-            className="hero-banner"
-            style={{ backgroundImage: `url(${HeroBg})` }}
-          >
-            <div className="hero-overlay-content">
-              <h1>
-                From India to Japan <br />
-                <span className="hero-sub">Stories, Culture & Careers</span>
-              </h1>
-              <p>
-                Discover inspiring journeys, Japanese cultural insights, career
-                guidance, and language-learning resources — all in one place.
-              </p>
-              <button className="btn-primary-hero">Join Us</button>
-            </div>
-          </div>
+    <div className="fb-container">
+      <div className="section-header">
+        <span className="dash-line"></span>
+        <h2 className="section-title-text">Featured Blogs</h2>
+      </div>
 
-          {/* Right Sidebar: Vertical Success Cards */}
-          <div className="success-sidebar">
-            <h3>Success Stories</h3>
-            <div className="sidebar-list">
-              {/* Taking the first 2 stories from the main list */}
-              {SUCCESS_STORIES.slice(0, 2).map((story) => (
-                <div 
-                  key={story.id} 
-                  className="sidebar-story-card"
-                  style={{ backgroundImage: `url(${CardBg})` }}
-                >
-                  {/* Avatar Wrapper positioned by CSS to match background */}
-                  <div className="sidebar-card-top">
-                    <div className="sidebar-img-wrapper">
-                      <img src={story.image} alt={story.name} />
+      <div className="fb-track-window">
+        <div
+          className="fb-track"
+          style={{
+            transform: `translateX(-${currentIndex * (100 / itemsToShow)}%)`,
+          }}
+        >
+          {items.map((blog) => (
+            <div key={blog.id} className="fb-card-wrapper">
+              <div className="fb-card">
+                <div className="fb-image-box">
+                  <img src={blog.image} alt={blog.title} />
+                </div>
+                <div className="fb-content">
+                  <div className="fb-title-row">
+                    <h3 className="fb-card-title">{blog.title}</h3>
+                    <div className="arrow-icon">
+                      <ArrowUpRight size={14} />
                     </div>
                   </div>
-                  
-                  {/* Text Content */}
-                  <div className="sidebar-text">
-                      <h4>{story.name}</h4>
-                      <p>
-                        {story.role} <br /> {story.company}
-                      </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-            {/* Updated Button with onClick event */}
-            <button className="btn-block-red" onClick={scrollToStories}>
-              View All
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* --- Featured Blogs Section --- */}
-      <section className="featured-section">
-        <h2 className="section-title">Featured Blogs</h2>
-        <div className="blogs-grid">
-          {FEATURED_BLOGS.slice(0, blogVisibleCount).map((blog) => (
-            <div key={blog.id} className="blog-card">
-              <div className="blog-image-wrapper">
-                <img src={blog.image} alt={blog.title} />
-              </div>
-              <div className="blog-content">
-                <div className="blog-header">
-                  <h3>{blog.title}</h3>
-                  <span className="arrow-icon">↗</span>
-                </div>
-                <p>{blog.description}</p>
-                <div className="blog-meta">
-                  <img
-                    src="https://placehold.co/40x40"
-                    alt={blog.author}
-                    className="author-img"
-                  />
-                  <div className="meta-text">
-                    <span className="author-name">{blog.author}</span>
-                    <span className="blog-date">{blog.date}</span>
+                  <p className="fb-excerpt">{blog.excerpt}</p>
+                  <div className="fb-footer">
+                    <img
+                      src={blog.authorImg}
+                      alt={blog.author}
+                      className="author-img"
+                    />
+                    <div className="author-info">
+                      <span className="author-name">{blog.author}</span>
+                      <span className="post-date">{blog.date}</span>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           ))}
         </div>
-        <div className="center-btn">
-          {blogVisibleCount < FEATURED_BLOGS.length ? (
-            <button
-              className="btn-primary"
-              onClick={() => setBlogVisibleCount((prev) => prev + 3)}
-            >
-              View More
-            </button>
-          ) : FEATURED_BLOGS.length > 3 ? (
-            <button
-              className="btn-primary"
-              onClick={() => setBlogVisibleCount(3)}
-            >
-              View Less
-            </button>
-          ) : null}
-        </div>
-      </section>
+      </div>
 
-      {/* --- Success Stories Section --- */}
-      <section className="stories-section" id="success-stories-section">
-        <h2 className="section-title">
-          From India To Japan : Student Success Stories
-        </h2>
-        <div className="stories-grid">
-          {SUCCESS_STORIES.slice(0, visibleCount).map((story) => (
-            <div
-              key={story.id}
-              className="story-card"
-              style={{ backgroundImage: `url(${CardBg})` }}
-            >
-              {/* Profile Pic Positioned by CSS */}
-              <div className="story-card-top">
-                <div className="main-story-avatar">
-                   <img src={story.image} alt={story.name} />
-                </div>
-              </div>
-
-              <div className="story-card-content">
-                <h3>{story.name}</h3>
-                <p className="role">
-                  {story.role}
-                  <br />
-                  {story.company}
-                </p>
-                
-                <div className="story-info-block">
-                    <p className="grad-badge">{story.graduation}</p>
-                    <p className="period">{story.period}</p>
-                </div>
-
-                <button
-                  className="btn-secondary"
-                  onClick={() => handleReadStory(story)}
-                >
-                  Read My Story
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-        <div className="center-btn">
-          {visibleCount < SUCCESS_STORIES.length ? (
-            <button
-              className="btn-primary"
-              onClick={() => setVisibleCount((prev) => prev + 3)}
-            >
-              View More
-            </button>
-          ) : SUCCESS_STORIES.length > 6 ? (
-            <button className="btn-primary" onClick={() => setVisibleCount(6)}>
-              View Less
-            </button>
-          ) : null}
-        </div>
-      </section>
+      {/* Dots Navigation */}
+      <div className="carousel-dots">
+        {Array.from({ length: maxIndex + 1 }).map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => goToSlide(idx)}
+            className={`dot ${currentIndex === idx ? "active" : ""}`}
+          />
+        ))}
+      </div>
     </div>
   );
 };
 
-export default Blog;
+/**
+ * Active Enlarged Carousel (Success Stories - Bottom Section)
+ */
+const StudentSuccessCarousel: React.FC<{ items: SuccessStory[] }> = ({
+  items,
+}) => {
+  const [activeIndex, setActiveIndex] = useState(2); // Start with Sharan K (index 2)
+
+  const handleNext = () => setActiveIndex((p) => (p + 1) % items.length);
+  const handlePrev = () =>
+    setActiveIndex((p) => (p - 1 + items.length) % items.length);
+
+  return (
+    <div className="ss-full-section">
+      <div className="ss-container">
+        <div className="section-header">
+          <span className="dash-line"></span>
+          <h2 className="section-title-text">Our Success Stories</h2>
+        </div>
+        <h3 className="ss-subtitle">
+          From India To Japan : Student Success Stories
+        </h3>
+
+        <div className="ss-stage">
+          {items.map((item, index) => {
+            let status = "";
+            if (index === activeIndex) status = "active";
+            else if (index === (activeIndex - 1 + items.length) % items.length)
+              status = "prev";
+            else if (index === (activeIndex + 1) % items.length)
+              status = "next";
+            else status = "hidden";
+
+            return (
+              <div key={item.id} className={`ss-card ${status}`}>
+                <div className="ss-card-inner">
+
+                  <div className="ss-profile-img">
+                    <img src={item.image} alt={item.name} />
+                  </div>
+                  <div className="ss-content">
+                    <h3 className="ss-name">{item.name}</h3>
+                    <div className="ss-role">{item.role}</div>
+                    <div className="ss-company">{item.company}</div>
+                    <div className="ss-detail">{item.detail}</div>
+                    <button className="ss-btn">Ready My Story</button>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+
+          <button onClick={handlePrev} className="ss-nav-btn left">
+            <ChevronLeft size={24} />
+          </button>
+          <button onClick={handleNext} className="ss-nav-btn right">
+            <ChevronRight size={24} />
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// --- Main Page Component ---
+
+export default function BlogAndStoriesPage() {
+  return (
+    <>
+      <style>{` `}</style>
+
+      <div className="wrapper">
+        <div className="container">
+          {/* HERO ROW: Banner Left + Success Sidebar Right */}
+          <div className="hero-row">
+            <div className="hero-banner">
+              <h1 className="hero-title">
+                From India to Japan
+                <br />
+                <span style={{ fontSize: "0.6em", fontWeight: 400 }}>
+                  Stories, Culture & Careers
+                </span>
+              </h1>
+              <p className="hero-subtitle">
+                Discover inspiring journeys, Japanese cultural insights, career
+                guidance, and language-learning resources — all in one place.
+              </p>
+              <button className="join-btn">Join Us</button>
+
+
+            </div>
+
+            <div className="hero-sidebar">
+              <h3 className="sidebar-title">Success Stories</h3>
+              <div className="sidebar-list">
+                {/* Show first 4 only */}
+                {SUCCESS_STORIES.slice(0, 4).map((story) => (
+                  <div key={story.id} className="sidebar-item">
+                    <img
+                      src={story.image}
+                      alt={story.name}
+                      className="sb-avatar"
+                    />
+                    <div className="sb-info">
+                      <h4>{story.name}</h4>
+                      <p>
+                        {story.role} - {story.company}
+                      </p>
+                      <p style={{ fontSize: "0.7em", color: "#888" }}>
+                        {story.detail}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <button className="view-all-btn">View All</button>
+            </div>
+          </div>
+
+          {/* FEATURED BLOGS SECTION */}
+          <FeaturedBlogCarousel items={BLOG_POSTS} />
+        </div>
+
+        {/* STUDENT SUCCESS STORIES (Green Background) */}
+        <StudentSuccessCarousel items={SUCCESS_STORIES} />
+      </div>
+    </>
+  );
+}

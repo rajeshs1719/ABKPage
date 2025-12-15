@@ -7,7 +7,7 @@
     gap: 4rem;
     padding: 4rem 2rem;
     min-height: 60vh;
-    background-color: #fff;
+    background-color: var(--white);
     /* or transparent based on your page */
     flex-wrap: wrap;
 }
@@ -49,19 +49,22 @@
 }
 
 /* --- Right Side: FAQ Content --- */
+.faq-title{
+    text-align: center;
+}
 .faq-content {
     flex: 0 0 600px;
-    background-color: #5555ff;
+    background-color: var(--faq-blue); /* #5555ff */
     /* Matches the blue in your image */
     padding: 2.5rem;
     border-radius: 8px;
     /* Sharp or slight radius based on design */
-    color: white;
-    box-shadow: 0 10px 30px rgba(85, 85, 255, 0.2);
+    color: var(--white);
+    box-shadow: 0 10px 30px rgba(var(--faq-blue-rgb), 0.2);
 }
 
 .faq-item {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    border-bottom: 1px solid rgba(var(--white-rgb), 0.3);
 }
 
 .faq-item:last-child {
@@ -80,7 +83,7 @@
 }
 
 .faq-question:hover {
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(var(--white-rgb), 0.9);
 }
 
 .faq-answer {
@@ -90,7 +93,7 @@
     opacity: 0;
     font-size: 0.95rem;
     line-height: 1.6;
-    color: rgba(255, 255, 255, 0.85);
+    color: rgba(var(--white-rgb), 0.85);
 }
 
 .faq-answer.open {

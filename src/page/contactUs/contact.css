@@ -1,12 +1,6 @@
 :root {
-    --navy: #1b2a72;
-    --green: #000000;
-    --card-border: #171647;
+    /* Layout variables kept local */
     --card-radius: 18px;
-    --bg: #fbfbfd;
-    --muted: #f4f4f7;
-    --text: #222;
-    --mono: #1a1a1a;
 }
 
 * {
@@ -19,33 +13,40 @@ body {
 
 /* page + hero */
 .contact-page {
-    background: var(--bg);
+    background: var(--contact-bg);
+    /* #fbfbfd */
     font-family: Georgia, "Times New Roman", serif;
-    color: var(--text);
+    color: var(--text-dark);
+    /* Mapped #222 to text-dark (#1a1a1a) */
     padding-bottom: 60px;
 }
 
 .contact-hero {
-    height: 350px;
-    background-image: url("../../assets/Cuhero.png");
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+  height: 350px;
+  background-image: url("../../assets/BlogStoryBg.jpeg");
+  background-size: cover;
+  background-position: center;
+
+  display: flex;
+  flex-direction: column;   /* ← THIS is missing */
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 12px;                /* optional spacing */
 }
 
-.contact-hero .hero-inner h1 {
-    color: var(--navy);
-    font-size: 44px;
-    margin: 0 0 6px;
+.contact-hero-title{
+    font-size: 40px;
+    display: block;
+
 }
 
-.contact-hero .hero-inner p {
-    margin: 0;
-    color: #344
+.contact-hero-desc{
+    font-size: 30px;
+    font-weight: 500;
+    display: block;
 }
+
 
 .cards-row {
     max-width: 1220px;
@@ -62,11 +63,11 @@ body {
 /* card */
 .chapter-card {
     width: 530px;
-    background: #fff;
+    background: var(--contact-card-bg);
     border-radius: var(--card-radius);
-    border: 4px solid var(--card-border);
+    /* #171647 */
     padding: 30px;
-    box-shadow: 0 8px 20px rgba(15, 15, 30, 0.06);
+    box-shadow: 0 8px 20px rgba(43, 43, 61, 0.324);
     display: flex;
     flex-direction: column;
     gap: 18px;
@@ -95,10 +96,11 @@ body {
 
 .chapter-title {
     margin: 0;
-    font-size: 45px;
+    font-size: 40px;
     line-height: 1.02;
     font-weight: 700;
-    color: var(--green);
+    /* Original was var(--green) which was #000000 */
+    color: var(--black);
     transform: translateY(-6px);
     /* subtle vertical nudge to match ref */
 }
@@ -107,7 +109,8 @@ body {
 .chapter-address {
     margin: 0;
     font-size: 16px;
-    color: #222;
+    /* Original #222 */
+    color: var(--text-dark);
     line-height: 1.6;
     padding-right: 8px;
 }
@@ -125,8 +128,9 @@ body {
 }
 
 .btn.direction {
-    background: var(--navy);
-    color: #fff;
+    background: var(--event-green);
+    /* #1b2a72 */
+    color: var(--white);
     width: 220px;
     justify-content: center;
     box-shadow: 0 6px 0 rgba(27, 42, 114, 0.12);
@@ -134,10 +138,11 @@ body {
 
 /* contact box */
 .contact-box {
-    background: linear-gradient(#fff, #fff);
+    background: linear-gradient(var(--white), var(--white));
     border-radius: 10px;
     padding: 18px;
-    border: 2px solid #e6e6e6;
+    border: 2px solid var(--gray-pattern);
+    /* Mapped #e6e6e6 to gray-pattern */
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -161,7 +166,8 @@ body {
 }
 
 .mono {
-    color: var(--mono);
+    /* Original var(--mono) was #1a1a1a */
+    color: var(--text-dark);
     font-weight: 500
 }
 
@@ -177,8 +183,9 @@ body {
 
 /* primary left */
 .btn.primary {
-    background: var(--navy);
-    color: #fff;
+    background: var(--event-green);
+    /* #1b2a72 */
+    color: var(--white);
     padding: 12px 22px;
     border-radius: 10px;
     width: 48%;
@@ -188,8 +195,8 @@ body {
 /* outline right */
 .btn.outline {
     background: transparent;
-    border: 2px solid var(--navy);
-    color: var(--navy);
+    border: 2px solid var(--event-green);
+    color: var(--event-green);
     padding: 12px 22px;
     width: 48%;
     border-radius: 10px;
@@ -292,6 +299,7 @@ body {
     width: 22px;
     height: 22px;
     object-fit: contain;
+    fill: var(--event-green);
 }
 
 
@@ -301,28 +309,31 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 28px;
-    background-color: #23216E;
+    background-color: var(--contact-section-lgreen);
+    /* #23216E */
     padding: 23px;
     width: 100%;
 }
 
 .learn-box {
-    background: #fff;
+    background: var(--white);
     border-radius: 14px;
     padding: 28px;
-    border: 2px solid #dcdcee;
+    border: 2px solid var(--contact-box-border);
+    /* #dcdcee */
 }
 
 .learn-box h2 {
     font-size: 26px;
     margin: 0 0 8px;
-    color: #000;
+    color: var(--black);
 }
 
 .learn-box .sub {
     margin: 0;
     font-size: 18px;
     color: #444;
+    /* Specific shade kept or could map to text-light */
 }
 
 .learn-box .desc {
@@ -340,11 +351,13 @@ body {
     margin: 0;
     font-size: 16px;
     color: #18185a;
+    /* Very specific deep blue, kept separate or could map to navy */
 }
 
 .learn-item span {
     font-size: 14px;
-    color: #555;
+    color: var(--text-light);
+    /* #555 */
 }
 
 .learn-icon {
@@ -383,17 +396,19 @@ body {
 /* White card with border */
 .form-wrapper {
     position: relative;
-    border: 2px solid #1b1b55;
+    border: 2px solid var(--event-green);
+    /* #1b1b55 used for border too */
     border-radius: 14px;
     padding: 0;
-    background: white;
+    background: var(--white);
 }
 
 /* Dark top bar */
 .form-top-bar {
     height: 70px;
-    background: #1b1b55;
-    border-bottom: 2px solid #1b1b55;
+    background: var(--event-green);
+    /* #1b1b55 */
+    border-bottom: 2px solid var(--contact-form-header);
     border-radius: 14px 14px 0 0;
 }
 
@@ -401,8 +416,9 @@ body {
 .form-icon-circle {
     width: 70px;
     height: 70px;
-    background: white;
-    border: 4px solid #1b1b55;
+    background: var(--white);
+    border: 4px solid var(--event-green);
+    /* #1b1b55 */
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -449,8 +465,10 @@ body {
 
 .form-field input,
 .form-field textarea {
-    background: #e8eefc;
-    border: 2px solid #c9d3f0;
+    background: var(--contact-section-lgreen);
+    /* #e8eefc */
+    border: 2px solid var(--contact-input-border);
+    /* #c9d3f0 */
     border-radius: 8px;
     padding: 12px;
     font-size: 15px;
@@ -468,8 +486,9 @@ textarea {
 }
 
 .btn-submit {
-    background: #1b1b55;
-    color: white;
+    background: var(--event-green);
+    /* #1b1b55 */
+    color: var(--white);
     padding: 12px 28px;
     font-size: 17px;
     border-radius: 8px;

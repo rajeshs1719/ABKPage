@@ -1,87 +1,86 @@
-/* --- GLOBAL RESETS --- */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@400;500&family=Courier+Prime&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@400;500;600&family=Courier+Prime&display=swap');
 
+/* --- GLOBAL LAYOUT --- */
 .gallery-page-container {
     font-family: 'Poppins', sans-serif;
     overflow-x: hidden;
     width: 100%;
+    background-color: var(--bg-cream);
 }
 
 /* --- HERO SECTION --- */
 .hero-section {
     position: relative;
     min-height: 90vh;
-    /* Slightly taller to accommodate aligned images */
+    /* Full height on desktop */
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    /* Center text vertically */
-    padding: 80px 20px;
+    /* justify-content: center; */
+    padding: 40px 20px;
     overflow: hidden;
-    /* Hide polaroids that stick out */
-    background-color: #fdfbf7;
-    /* Fallback pattern if images fail */
-    background-image: radial-gradient(#e5e5e5 1px, transparent 1px);
-    background-size: 20px 20px;
-    margin-bottom: 10px;
+    /* Subtle Pattern Background */
+    background-color: var(--bg-cream);
+    background-image: radial-gradient(var(--gray-pattern) 1px, transparent 1px);
+    background-size: 24px 24px;
 }
 
+/* Text Container with Glassmorphism */
 .Gallery-text {
-    text-align: center;
-    max-width: 700px;
-    z-index: 60;
-    /* Higher than hover state of polaroids so text is always readable */
-    position: relative;
-    background: rgba(253, 251, 247, 0.6);
-    /* Subtle backdrop to ensure readability */
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    /* No negative margin needed with proper flex centering */
-    margin-top: -250px;
+  text-align: center;
+  max-width: 850px;
+  z-index: 80;
+  position: relative;
+  padding:20px 72px;
+  border-radius: 28px;
+  
 }
+
 
 .Gallery-text h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 3.5rem;
-    color: #1a1a1a;
-    margin-bottom: 20px;
+    font-size: 4rem;
+    color: var(--black); /* Mapped #1a1a1a to black */
+    margin-bottom: 16px;
     line-height: 1.1;
     letter-spacing: -1px;
 }
 
 .Gallery-text p {
-    color: #444;
+    color: var(--text-light);
     line-height: 1.6;
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     font-weight: 300;
+    margin: 0;
 }
 
-/* --- POLAROID STYLING --- */
+/* --- POLAROID STYLES --- */
 .polaroid {
-    background: white;
+    background: var(--white);
     padding: 12px 12px 45px 12px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 10px 25px rgba(var(--black-rgb), 0.15);
     position: absolute;
-    width: 200px;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    width: 220px;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     z-index: 10;
+    will-change: transform;
 }
 
 .polaroid:hover {
     transform: scale(1.1) rotate(0deg) !important;
-    z-index: 50;
-    /* Bring to front on hover, but below text z-index(60) if they overlap */
-    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.25);
+    z-index: 70;
+    /* Highest priority on hover */
+    box-shadow: 0 25px 50px rgba(var(--black-rgb), 0.3);
+    cursor: pointer;
 }
 
 .polaroid img {
     width: 100%;
-    height: 180px;
+    height: 200px;
     object-fit: cover;
-    background-color: #eee;
-    filter: sepia(0.2);
-    transition: filter 0.3s;
+    background-color: var(--gray-light);
+    filter: sepia(0.15);
+    transition: filter 0.3s ease;
 }
 
 .polaroid:hover img {
@@ -96,229 +95,291 @@
     right: 0;
     font-family: 'Courier Prime', monospace;
     font-size: 14px;
-    color: #555;
-    letter-spacing: 1px;
+    color: var(--text-main); /* Mapped #444 to text-main (#333) */
+    font-weight: 600;
+    letter-spacing: 0.5px;
 }
 
-/* --- PINS --- */
+/* Pin Head */
 .pin-head {
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 14px;
     border-radius: 50%;
     position: absolute;
     top: -6px;
     left: 50%;
     transform: translateX(-50%);
-    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.3);
+    box-shadow: 1px 2px 4px rgba(var(--black-rgb), 0.3);
     z-index: 5;
 }
 
-/* --- POSITIONING (STAGGERED TO FIX OVERLAP) --- */
+/* --- DESKTOP SCATTER POSITIONS --- */
+/* Using percentages keeps it relative to screen size */
 
-/* Top Left - Moved higher and further left */
 .p-1 {
-    top: 2%;
-    left: 2%;
+    top: 8%;
+    left: 8%;
+    transform: rotate(-12deg);
+}
+
+.p-2 {
+    top: 8%;
+    right: 10%;
+    transform: rotate(10deg);
+}
+
+.p-3 {
+    bottom: 8%;
+    left: 22%;
+    transform: rotate(6deg);
+}
+
+.p-4 {
+    bottom: 8%;
+    right: 22%;
     transform: rotate(-8deg);
 }
 
-/* Top Right - Moved higher and further right */
-.p-2 {
-    top: 2%;
-    right: 2%;
-    transform: rotate(8deg);
-}
-
-/* Bottom Row - Staggered inwards to avoid vertical overlap with top row */
-
-/* Bottom Left */
-.p-3 {
-    bottom: 5%;
-    left: 12%;
-    transform: rotate(5deg);
-}
-
-/* Center Bottom */
-.p-4 {
-    bottom: 5%;
-    left: 40%;
-    transform: rotate(5deg);
+/* Center floater usually behind text, moves on hover */
+.p-5 {
+    top: 50%;
+    left: 42%;
+    transform: rotate(1deg);
     z-index: 5;
 }
 
-/* Bottom Right */
-.p-5 {
-    bottom: 5%;
-    right: 12%;
-    transform: rotate(-5deg);
+/* --- GALLERY GRID SECTION --- */
+.gallery-section {
+    padding: 30px 8%;
+    min-height: 100vh;
+    background-color: var(--bg-mist); /* Updated to new variable */
 }
 
-/* --- GALLERY SECTION --- */
-.gallery-section {
-    padding: 100px 10%;
-    min-height: 100vh;
-    background-color: #eaece5;
-    /* Soft sage backup */
+.Gallery-Title{
+   margin: 15px 0;
 }
 
 .gallery-grid {
     display: grid;
+    /* Auto-fill creates responsive columns automatically */
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 60px 40px;
+    gap: 50px;
     margin-bottom: 60px;
 }
 
 .gallery-item {
-    background: white;
-    padding: 10px 10px 50px 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    background: var(--white);
+    padding: 10px 10px 60px 10px;
+    box-shadow: 0 4px 10px rgba(var(--black-rgb), 0.05);
     position: relative;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     border-radius: 2px;
 }
 
-.gallery-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-}
-
-/* Random rotation effect for grid items */
-.gallery-item:nth-child(3n+1) {
+/* Organic rotation for grid items (Desktop only) */
+.gallery-item:nth-child(even) {
     transform: rotate(1deg);
 }
 
-.gallery-item:nth-child(3n+2) {
-    transform: rotate(-1.5deg);
-}
-
-.gallery-item:nth-child(3n+3) {
-    transform: rotate(0.5deg);
+.gallery-item:nth-child(odd) {
+    transform: rotate(-1deg);
 }
 
 .gallery-item:hover {
-    transform: scale(1.02) rotate(0deg) !important;
+    transform: translateY(-5px) rotate(0deg) !important;
+    box-shadow: 0 15px 30px rgba(var(--black-rgb), 0.15);
+    z-index: 2;
 }
 
 .gallery-item img {
     width: 100%;
-    height: 260px;
+    height: 280px;
     object-fit: cover;
     display: block;
 }
 
-.gallery-pin {
-    width: 14px;
-    height: 14px;
+.gallery-item .gallery-pin {
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
     position: absolute;
-    top: -7px;
+    top: -6px;
     left: 50%;
     transform: translateX(-50%);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    z-index: 2;
+    box-shadow: 0 2px 4px rgba(var(--black-rgb), 0.2);
 }
 
 .gallery-caption {
     text-align: center;
     position: absolute;
-    bottom: 15px;
+    bottom: 20px;
     width: 100%;
     left: 0;
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
-    font-size: 13px;
-    color: #333;
+    font-size: 14px;
+    color: var(--text-main);
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
 }
 
+/* Load More Button */
 .btn-load-more {
-    background-color: #2c3e50;
-    color: white;
-    padding: 16px 48px;
+    background-color: var(--secondary-blue);
+    color: var(--white);
+    padding: 16px 50px;
     border: none;
     font-size: 14px;
+    font-weight: 600;
     letter-spacing: 2px;
     text-transform: uppercase;
     cursor: pointer;
     transition: all 0.3s;
     border-radius: 50px;
+    box-shadow: 0 5px 15px rgba(44, 62, 80, 0.2);
 }
 
 .btn-load-more:hover {
-    background-color: #e74c3c;
+    background-color: var(--pin-red); /* Mapped hover red to existing Pin Red */
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+    box-shadow: 0 8px 20px rgba(231, 76, 60, 0.3);
 }
 
-/* --- RESPONSIVE --- */
+.btn-load-more:disabled {
+    background-color: var(--gray-disabled);
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* --- RESPONSIVE MEDIA QUERIES --- */
+
+/* Tablet & Small Laptop */
 @media (max-width: 1024px) {
     .Gallery-text h1 {
-        font-size: 2.5rem;
+        font-size: 3rem;
     }
 
-    .p-2,
-    .p-3 {
-        display: none;
+    .hero-section {
+        min-height: 70vh;
     }
 
-    /* Hide some to reduce clutter on tablets */
+    .polaroid {
+        width: 180px;
+    }
+
+    /* Pull closer to center */
     .p-1 {
         top: 5%;
+        left: 2%;
+    }
+
+    .p-2 {
+        top: 5%;
+        right: 2%;
+    }
+
+    .p-3 {
+        bottom: 5%;
         left: 5%;
     }
 
-    .p-5 {
+    .p-4 {
         bottom: 5%;
         right: 5%;
     }
 
-    .p-4 {
+    .p-5 {
         display: none;
     }
+
+    /* Hide center one to prevent text overlap */
 }
 
+/* Mobile */
 @media (max-width: 768px) {
     .hero-section {
+        padding: 60px 15px;
+        justify-content: flex-start;
+        /* Start from top */
         min-height: auto;
-        padding: 60px 20px 120px 20px;
+        padding-bottom: 180px;
+        /* Space for the stacked images at bottom */
+    }
+
+    .Gallery-text {
+        padding: 25px;
+        margin-top: 20px;
     }
 
     .Gallery-text h1 {
-        font-size: 2rem;
+        font-size: 2.2rem;
     }
 
-    /* On mobile, stack them neatly at the bottom or hide */
+    .Gallery-text p {
+        font-size: 1rem;
+    }
+
+    /* --- MOBILE FAN STACK --- */
+    /* Instead of hiding, we stack them at the bottom */
+    .polaroid {
+        width: 160px;
+        height: auto;
+        padding-bottom: 35px;
+
+        /* Reset absolute positioning to center bottom */
+        top: auto;
+        left: 50%;
+        bottom: 40px;
+        margin-left: -80px;
+        /* Center horizontally (half width) */
+    }
+
+    .polaroid img {
+        height: 150px;
+    }
+
+    .polaroid .caption {
+        font-size: 12px;
+        bottom: 10px;
+    }
+
+    /* Fan Arrangement */
     .p-1 {
-        top: auto;
-        bottom: 20px;
-        left: 5%;
-        transform: rotate(-5deg);
-        width: 140px;
+        transform: rotate(-10deg) translateX(-50px);
+        z-index: 10;
     }
 
+    .p-2 {
+        transform: rotate(0deg);
+        z-index: 20;
+        bottom: 50px;
+    }
+
+    /* Center one slightly higher */
+    .p-3 {
+        transform: rotate(10deg) translateX(50px);
+        z-index: 10;
+    }
+
+    /* Hide extras to reduce clutter */
+    .p-4,
     .p-5 {
-        top: auto;
-        bottom: 20px;
-        right: 5%;
-        transform: rotate(5deg);
-        width: 140px;
-    }
-
-    .p-2,
-    .p-3,
-    .p-4 {
         display: none;
     }
 
-    /* Clean look for mobile */
+    /* Grid Clean Up */
+    .gallery-section {
+        padding: 60px 20px;
+    }
 
     .gallery-grid {
         grid-template-columns: 1fr;
-        gap: 40px;
+        /* Single column */
+        gap: 30px;
     }
 
-    .gallery-item {
-        transform: rotate(0deg) !important;
+    /* Remove rotation on mobile for cleaner scroll */
+    .gallery-item:nth-child(n) {
+        transform: rotate(0deg);
     }
 }
