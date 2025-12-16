@@ -150,7 +150,8 @@
   box-shadow: 0 10px 25px rgba(var(--black-rgb), 0.2);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap:20;
+  /* justify-content: space-between; */
   transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
   transform-origin: center bottom;
   box-sizing: border-box;
@@ -208,10 +209,10 @@
 }
 
 .card-text {
+  margin-top: 20px;
   font-size: 0.9rem;
   line-height: 1.4;
   color: var(--gray-border);
-  /* Mapped #e0e0e0 to gray-border */
   font-style: italic;
 }
 
@@ -227,6 +228,11 @@
   font-size: 0.75rem;
   color: var(--text-subtle);
   /* #aaa */
+}
+
+.card-author{
+  display: flex;
+  gap: 20;
 }
 
 /* --- Responsive Design --- */
@@ -312,4 +318,16 @@
     z-index: 29;
     opacity: 0.5;
   }
+}
+
+.profile-pic{
+  margin-right: 10px;
+  background-color: #fff;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+}
+
+.profile-pic img {
+  border-radius: 50%;
 }

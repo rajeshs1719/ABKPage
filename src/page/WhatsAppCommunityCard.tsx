@@ -174,6 +174,7 @@ export default function WhatsAppCommunityCard() {
           height: 180px;
           width: 100%;
           max-width: 576px;
+          border: solid red 1px;
         }
 
         .community-card-globe {
