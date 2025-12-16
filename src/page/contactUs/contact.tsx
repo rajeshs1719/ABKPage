@@ -1,5 +1,5 @@
 import React from "react";
-import "./Contact.css";
+import "./contact.css";
 
 
 /* replace these with your actual assets */

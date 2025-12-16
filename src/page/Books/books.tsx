@@ -1,8 +1,11 @@
 import React, { useState } from "react";
-import "./books.css";
+
+// You can remove this import since we are using Tailwind now
+// import "./books.css";
 
 import GreenBook from "../../assets/GreenBookCover.png";
 import RedBook from "../../assets/RedBookCover.png";
+import CourBg from "../../assets/EventBg.png";
 
 // Sample Books Data
 const booksData = [
@@ -74,7 +77,7 @@ const Books: React.FC = () => {
       // 2. CLOSE the book if open, then move to NEXT
       setIsOpen(false);
 
-      // Wait for close animation (matches CSS duration)
+      // Wait for close animation (matches duration)
       setTimeout(() => {
         if (currentIndex < booksData.length - 1) {
           setCurrentIndex((prev) => prev + 1);
@@ -90,88 +93,159 @@ const Books: React.FC = () => {
     window.scrollBy({ top: window.innerHeight * 0.8, behavior: "smooth" });
   };
 
-  const getPositionClass = (index: number) => {
-    if (index === currentIndex) return isOpen ? "active open" : "active";
-    if (index === currentIndex - 1) return "prev";
-    if (index === currentIndex + 1) return "next";
-    if (index < currentIndex - 1) return "hidden-left";
-    return "hidden-right";
+  // --- Dynamic Class Generation for Tailwind ---
+  const getPositionStyles = (index: number) => {
+    // 1. ACTIVE
+    if (index === currentIndex) {
+      if (isOpen) {
+        // Active & Open: Shifted right slightly
+        return "z-20 cursor-pointer [transform:translateX(20px)_translateZ(20px)] sm:[transform:translateX(150px)_translateZ(50px)]";
+      }
+      // Active & Closed
+      return "z-20 [transform:translateX(0)_translateZ(0)_rotateY(0deg)]";
+    }
+
+    // 2. PREV (Left)
+    if (index === currentIndex - 1) {
+      return "z-10 opacity-70 pointer-events-none brightness-[0.85] [transform:translateX(-150px)_translateZ(-100px)_rotateY(20deg)] sm:[transform:translateX(-380px)_translateZ(-150px)_rotateY(25deg)]";
+    }
+
+    // 3. NEXT (Right)
+    if (index === currentIndex + 1) {
+      return "z-10 opacity-70 pointer-events-none brightness-[0.85] [transform:translateX(150px)_translateZ(-100px)_rotateY(-20deg)] sm:[transform:translateX(380px)_translateZ(-150px)_rotateY(-25deg)]";
+    }
+
+    // 4. HIDDEN LEFT
+    if (index < currentIndex - 1) {
+      return "opacity-0 [transform:translateX(-700px)_translateZ(-300px)]";
+    }
+
+    // 5. HIDDEN RIGHT
+    return "opacity-0 [transform:translateX(700px)_translateZ(-300px)]";
   };
 
   return (
-    <div className="books-container">
-      <div className="books-header">
-        <h1>Our Courses</h1>
-        <p>Click to open. Click again to continue.</p>
+    // Main Container
+    <div
+      className="relative w-full flex flex-col items-center justify-center font-sans overflow-hidden p-8 bg-gradient-to-b from-white to-[#FBD5EB] [perspective:2000px]"
+      style={{
+        backgroundImage: `url(${CourBg})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      {/* Helper styles for specific pseudo-elements (Book Stack Effect) */}
+      <style>{`
+        /* Paper Stack Effect (Thickness on right) */
+        .right-page-stack::after {
+          content: '';
+          position: absolute;
+          top: 2px;
+          right: 0;
+          width: 38px;
+          height: 98%;
+          background: linear-gradient(90deg, #f5f5f5, #e0e0e0);
+          transform: rotateY(90deg) translateX(19px);
+          transform-origin: right;
+        }
+        
+        /* Spine Effect (On the Cover) */
+        .book-spine::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 40px;
+          height: 100%;
+          background-color: inherit;
+          filter: brightness(0.7);
+          transform: rotateY(90deg) translateX(-20px) translateZ(-20px);
+          transform-origin: left;
+        }
+      `}</style>
+
+      {/* Header */}
+      <div className="absolute top-[4%] text-center z-20">
+        <h1 className="text-[40px] text-[#1a1a1a] mb-2 font-bold">
+          Our Courses
+        </h1>
+        <p className="text-gray-500">Click to open. Click again to continue.</p>
       </div>
 
-      <div className="book-stage">
+      {/* Book Stage */}
+      <div className="relative w-full h-[500px] flex justify-center items-center pt-[10%] [transform-style:preserve-3d]">
         {booksData.map((book, index) => {
           const bgImage = index % 2 === 0 ? RedBook : GreenBook;
+          const isBookOpen = index === currentIndex && isOpen;
+
           return (
             <div
               key={book.id}
-              className={`book-wrapper ${getPositionClass(index)}`}
               onClick={() => handleInteraction(index)}
+              className={`absolute w-[260px] h-[380px] sm:w-[300px] sm:h-[440px] cursor-pointer origin-center transition-all duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] [transform-style:preserve-3d] ${getPositionStyles(
+                index
+              )}`}
             >
-              {/* ROTATING GROUP: Contains Front Cover & Left Page */}
-              <div className="cover-group">
-                {/* FRONT COVER (Visible when closed) */}
+              {/* --- ROTATING GROUP: Contains Front Cover & Left Page --- */}
+              <div
+                className={`absolute top-0 left-0 w-full h-full [transform-style:preserve-3d] origin-left transition-transform duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] z-10 ${
+                  isBookOpen ? "[transform:rotateY(-180deg)]" : ""
+                }`}
+              >
+                {/* --- FRONT COVER (Visible when closed) --- */}
                 <div
-                  key={book.id}
-                  className="book-cover"
+                  className="book-spine absolute top-0 left-0 w-[90%] h-[80%] rounded-[4px_8px_8px_4px] [backface-visibility:hidden] shadow-[5px_5px_20px_rgba(0,0,0,0.25)] z-[2] flex flex-col justify-center items-center p-8 text-center text-white transition-transform duration-[800ms]"
                   style={{
                     backgroundImage: `url(${bgImage})`,
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                   }}
                 >
-                  {/* <div className="decoration-circle">
-                    <span>本</span>
-                  </div> */}
-                  <div className="cover-label">
-                    <h2>{book.title}</h2>
-                    <div className="bookDes">
-                      <span>{book.subtitle}</span>
-                      <p>{book.shortDesc}</p>
+                  <div className="absolute bottom-[12%] left-0 right-0 text-center px-2.5 text-[#3e2723]">
+                    <h2 className="text-[35px] mx-[25px] my-[50px] font-extrabold text-left text-white leading-tight">
+                      {book.title}
+                    </h2>
+                    <div className="w-[200px] ml-[35px] mb-[-3px] px-[5px]">
+                      <span className="block text-left text-[18px] text-[black]">
+                        {book.subtitle}
+                      </span>
+                      <p className="block text-left text-[18px] text-[black]">
+                        {book.shortDesc}
+                      </p>
                     </div>
                   </div>
                 </div>
 
-                {/* LEFT PAGE (Visible when open - Back of Cover) */}
-                <div className="left-page">
-                  <div className="page-header">{book.title}</div>
-                  <div
-                    className="page-content"
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      textAlign: "center",
-                    }}
-                  >
-                    <p style={{ fontStyle: "italic", fontSize: "1.1rem" }}>
-                      "{book.summary}"
-                    </p>
+                {/* --- LEFT PAGE (Visible when open - Back of Cover) --- */}
+                <div className="absolute top-0 left-0 w-[90%] h-[80%] rounded-[4px_8px_8px_4px] [backface-visibility:hidden] shadow-[5px_5px_20px_rgba(0,0,0,0.25)] z-[1] bg-white [transform:rotateY(180deg)] flex flex-col justify-center items-center p-8 border-r border-gray-300 transition-transform duration-[800ms]">
+                  <div className="text-xl font-bold mb-4 text-[#333] text-center border-b-2 border-[#f0f0f0] pb-2 w-full">
+                    {book.title}
                   </div>
-                  <div className="page-number">Page 1</div>
+                  <div className="flex flex-grow items-center text-center text-[0.95rem] leading-[1.6] text-[#555] overflow-y-auto ">
+                    <p className="italic text-[1.1rem]">"{book.summary}"</p>
+                  </div>
+                  <div className="mt-auto text-[0.8rem] text-[#aaa] text-center w-full">
+                    Page 1
+                  </div>
                 </div>
               </div>
 
-              {/* RIGHT PAGE (Stationary - Visible when open) */}
-              <div className="right-page">
-                <div className="page-header">Details</div>
-                <div className="page-content">
+              {/* --- RIGHT PAGE (Stationary - Visible when open) --- */}
+              <div className="right-page-stack absolute top-0 left-0 w-[90%] h-[80%] rounded-[4px_8px_8px_4px] [backface-visibility:hidden] shadow-[5px_5px_20px_rgba(0,0,0,0.25)] z-[5] bg-white flex flex-col p-8 border-l border-[#eee] transition-transform duration-[800ms]">
+                <div className="text-xl font-bold mb-4 text-[#333] text-center border-b-2 border-[#f0f0f0] pb-2 w-full">
+                  Details
+                </div>
+                <div className="flex-grow text-[0.95rem] leading-[1.6] text-[#555] overflow-y-auto">
                   <p>{book.content}</p>
                 </div>
-
-                {/* Button Removed - Entire book is clickable now */}
-
-                <div className="page-number">Page 2</div>
+                <div className="mt-auto text-[0.8rem] text-[#aaa] text-center w-full">
+                  Page 2
+                </div>
               </div>
 
-              {/* BACK COVER (Static Background) */}
+              {/* --- BACK COVER (Static Background) --- */}
               <div
-                className="book-back"
+                className="absolute top-0 left-0 w-[90%] h-[80%] rounded-[4px_8px_8px_4px] [backface-visibility:hidden] shadow-[5px_5px_20px_rgba(0,0,0,0.25)] z-[1] transition-transform duration-[800ms] [transform:translateZ(-2px)]"
                 style={{ backgroundColor: book.color }}
               ></div>
             </div>

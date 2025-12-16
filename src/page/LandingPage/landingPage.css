@@ -16,6 +16,8 @@
   display: grid;
   grid-template-columns: 1fr 2fr;
   /* LEFT | RIGHT */
+  margin: 0 auto;
+  padding: 2rem 1rem;
 }
 
 .hero-content {
@@ -34,6 +36,7 @@
   align-items: flex-start;
   text-align: left;
   z-index: 10;
+  padding: 2rem 1rem;
 }
 
 .LP-hero-title {
@@ -55,6 +58,7 @@
 .hero-buttons {
   display: flex;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .btn {
@@ -269,30 +273,218 @@
 
 
 /* --- Responsive Design --- */
-@media (max-width: 768px) {
-  .hero-title {
-    font-size: 2rem;
+
+/* Tablets (768px - 1024px) */
+@media (max-width: 1024px) {
+  .hero-grid {
+    max-width: 100%;
+    padding: 2rem 1.5rem;
   }
 
-  .hero-content {
-    text-align: center;
-    margin-top: -200px;
-    /* Pull text up on mobile so visuals don't block it completely */
-    padding: 20px;
+  .hero-left {
+    max-width: 450px;
+    padding: 1.5rem 1rem;
+  }
+
+  .LP-hero-title {
+    font-size: 36px;
+  }
+
+  .hero-description {
+    font-size: 22px;
+  }
+
+  .layer-pagoda {
+    max-height: 85vh;
+  }
+}
+
+/* Small Tablets and Large Phones (481px - 768px) */
+@media (max-width: 768px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    padding: 1.5rem 1rem;
+    gap: 2rem;
+  }
+
+  .hero-left {
+    max-width: 100%;
+    padding: 1rem;
+  }
+
+  .LP-hero-title {
+    font-size: 32px;
+    white-space: normal;
+    word-wrap: break-word;
+  }
+
+  .hero-description {
+    font-size: 20px;
   }
 
   .hero-buttons {
-    justify-content: center;
+    width: 100%;
+  }
+
+  .btn {
+    flex: 1 1 auto;
+    min-width: 140px;
+  }
+
+  /* Adjust visual layers for tablets */
+  .layer-bg-hills {
+    bottom: -10%;
+  }
+
+  .layer-mid-hills {
+    bottom: -8%;
+  }
+
+  .layer-pagoda {
+    max-height: 70vh;
+    right: -20px;
+  }
+
+  .layer-fg-trees {
+    bottom: -8%;
+  }
+
+  .lantern-1 {
+    top: 25%;
+    left: 42%;
+    width: 80px;
+  }
+
+  .lantern-2 {
+    top: 18%;
+    left: 52%;
+    width: 80px;
+  }
+}
+
+/* Mobile Phones (up to 480px) */
+@media (max-width: 480px) {
+  .hero-grid {
+    padding: 1rem 0.75rem;
+  }
+
+  .hero-left {
+    padding: 0.5rem;
+  }
+
+  .LP-hero-title {
+    font-size: 28px;
+    margin-bottom: 1rem;
+  }
+
+  .hero-description {
+    font-size: 18px;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 0.875rem 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  /* Adjust visual layers for mobile */
+  .layer-bg-hills {
+    bottom: -5%;
+  }
+
+  .layer-mid-hills {
+    bottom: -5%;
   }
 
   .layer-pagoda {
     max-height: 60vh;
-    right: -50px;
-    /* Shift slightly if needed */
+    right: -30px;
+  }
+
+  .layer-fg-trees {
+    bottom: -5%;
+  }
+
+  /* Hide lanterns on very small screens */
+  .lantern {
+    display: none;
+  }
+}
+
+/* Very Small Mobile (up to 375px) */
+@media (max-width: 375px) {
+  .LP-hero-title {
+    font-size: 24px;
+  }
+
+  .hero-description {
+    font-size: 16px;
+  }
+
+  .btn {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+  }
+
+  .layer-pagoda {
+    max-height: 55vh;
+  }
+}
+
+/* Landscape Mode for Mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero-grid {
+    padding: 1rem;
+  }
+
+  .hero-left {
+    padding: 0.5rem;
+  }
+
+  .LP-hero-title {
+    font-size: 24px;
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-description {
+    font-size: 16px;
+    margin-bottom: 1rem;
+  }
+
+  .hero-buttons {
+    gap: 0.75rem;
+  }
+
+  .btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+
+  .layer-bg-hills,
+  .layer-mid-hills,
+  .layer-pagoda,
+  .layer-fg-trees {
+    max-height: 80vh;
   }
 
   .lantern {
     display: none;
-    /* Maybe hide lanterns on very small screens to reduce clutter */
+  }
+}
+
+/* Large Screens (1440px+) */
+@media (min-width: 1440px) {
+  .hero-grid {
+    max-width: 1400px;
+  }
+
+  .hero-left {
+    max-width: 600px;
   }
 }

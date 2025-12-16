@@ -32,7 +32,8 @@
   font-size: 2.2rem;
   /* Slightly smaller to save vertical space */
   font-weight: 800;
-  color: var(--black);
+  color: #2F4B36;
+
   margin-bottom: 0.5rem;
 }
 
@@ -142,7 +143,8 @@
   width: 270px;
   height: 320px;
   /* Reduced height to avoid header collision */
-  background-color: var(--text-dark);
+  /* background-color: var(--text-dark); */
+  background-color: #2F4B36;
   /* #1a1a1a */
   color: var(--white);
   padding: 1.5rem;
