@@ -15,25 +15,29 @@ const testimonials = [
     text: "The designs are absolutely stunning and the user experience is flawless. I highly recommend their services.",
     author: "Shreyas R",
     company: "Rakuten Group",
+    profile_pic: "https://randomuser.me/api/portraits/women/44.jpg"
   },
   {
     id: 2,
     text: "Professional, timely, and incredibly talented. They transformed our vision into reality with such ease.",
     author: "Sarah Jenkins",
     company: "Design Co.",
+    profile_pic: "https://randomuser.me/api/portraits/men/1.jpg"
   },
   {
     id: 3,
     text: "An amazing journey working with this team. The attention to detail is what sets them apart from the rest.",
     author: "Mike Thompson",
     company: "Tech Solutions",
+    profile_pic: "https://randomuser.me/api/portraits/men/4.jpg"
   },
   {
     id: 4,
     text: "Exceeded our expectations in every way. The final product was polished, performant, and beautiful.",
     author: "Emily White",
     company: "Creative Studio",
-  },
+    profile_pic: "https://randomuser.me/api/portraits/women/44.jpg"
+  }
 ];
 
 const Appreciation: React.FC = () => {
@@ -110,12 +114,18 @@ const Appreciation: React.FC = () => {
                 className={`testimonial-card ${getCardClass(index)}`}
                 onClick={(e) => handleCardClick(e, index)}
               >
-                <div className="card-stars">★★★★★</div>
-                <div className="card-text">"{t.text}"</div>
-                <div className="card-author">
+                 <div className="card-author">
+                  <div className='profile-pic'><img src={t.profile_pic} alt="profile_pic"/></div>
+                  <div>
                   <h4>{t.author}</h4>
                   <span>{t.company}</span>
+                  </div>
+
                 </div>
+                  <div className="card-stars">★★★★★</div>
+                
+                <div className="card-text">"{t.text}"</div>
+               
               </div>
             ))}
           </div>
