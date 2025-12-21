@@ -12,7 +12,7 @@ export default function Course() {
 
       {/* --- HERO SECTION --- */}
       <section className="course-hero">
-        <div className="hero-content">
+        <div className="course-hero-content">
           <div className="hero-image-container">
             <img
               src={heroImage}

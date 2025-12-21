@@ -10,14 +10,18 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "framer-motion": "^12.23.26",
+    "axios": "^1.13.2",
+    "clsx": "^2.1.1",
     "cobe": "^0.6.5",
+    "framer-motion": "^12.23.26",
+    "gsap": "^3.14.2",
     "lucide-react": "^0.556.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-globe.gl": "^2.37.0",
     "react-router-dom": "^7.10.1",
     "sakura-js": "^1.1.1",
+    "tailwind-merge": "^3.4.0",
     "three": "^0.182.0"
   },
   "devDependencies": {

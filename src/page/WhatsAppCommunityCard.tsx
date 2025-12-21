@@ -29,7 +29,13 @@ const GLOBE_CONFIG = {
   ],
 };
 
-function Globe({ className, config = GLOBE_CONFIG }: { className?: string; config?: COBEOptions }) {
+function Globe({
+  className,
+  config = GLOBE_CONFIG,
+}: {
+  className?: string;
+  config?: COBEOptions;
+}) {
   let phi = 0;
   let width = 0;
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -86,12 +92,16 @@ function Globe({ className, config = GLOBE_CONFIG }: { className?: string; confi
       <canvas
         ref={canvasRef}
         onPointerDown={(e) =>
-          updatePointerInteraction(e.clientX - pointerInteractionMovement.current)
+          updatePointerInteraction(
+            e.clientX - pointerInteractionMovement.current
+          )
         }
         onPointerUp={() => updatePointerInteraction(null)}
         onPointerOut={() => updatePointerInteraction(null)}
         onMouseMove={(e) => updateMovement(e.clientX)}
-        onTouchMove={(e) => e.touches[0] && updateMovement(e.touches[0].clientX)}
+        onTouchMove={(e) =>
+          e.touches[0] && updateMovement(e.touches[0].clientX)
+        }
       />
     </div>
   );
@@ -112,7 +122,8 @@ export default function WhatsAppCommunityCard() {
           border: 1px solid #e5e7eb;
           box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
           padding: 64px 24px;
-          margin-top: 192px;
+          margin: 40px auto;
+
         }
 
         .community-card-inner {
@@ -150,11 +161,11 @@ export default function WhatsAppCommunityCard() {
           align-items: center;
           gap: 8px;
           border-radius: 9999px;
-          background: #111827;
+          background: #ffffffff;
           padding: 8px 20px;
           font-size: 0.875rem;
           font-weight: 600;
-          color: #ffffff;
+          color: #1F2937;
           border: none;
           cursor: pointer;
           transition: background 0.2s;
@@ -174,9 +185,7 @@ export default function WhatsAppCommunityCard() {
           height: 180px;
           width: 100%;
           max-width: 576px;
-          border: solid red 1px;
         }
-
         .community-card-globe {
           position: absolute;
           bottom: -80px;
@@ -190,8 +199,11 @@ export default function WhatsAppCommunityCard() {
         }
 
         .community-card-globe canvas {
-          width: 100%;
-          height: 100%;
+          position: absolute;
+          width: 75%;
+          height: 75%;
+          bottom: 10px;
+          right: -40px;
           opacity: 0;
           transition: opacity 0.5s;
           contain: layout paint size;
@@ -227,9 +239,11 @@ export default function WhatsAppCommunityCard() {
         <div className="community-card-inner">
           <div className="community-card-content">
             <h1 className="community-card-title">
-              Join Our <span className="community-card-highlight">Global Community</span>{" "}
+              Join Our{" "}
+              <span className="community-card-highlight">Global Community</span>{" "}
               <span className="community-card-description">
-                Connect with developers worldwide. Share knowledge, get support, and build amazing things together on WhatsApp.
+                Connect with developers worldwide. Share knowledge, get support,
+                and build amazing things together on WhatsApp.
               </span>
             </h1>
             <button className="community-card-button">

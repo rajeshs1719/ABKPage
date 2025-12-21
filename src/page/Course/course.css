@@ -30,7 +30,7 @@
     background-position: center;
 }
 
-.hero-content {
+.course-hero-content{
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -39,7 +39,6 @@
     margin: 0 auto;
     flex-direction: row;
     flex-wrap: nowrap;
-
 }
 
 .hero-image-container {

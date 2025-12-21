@@ -195,7 +195,7 @@ body {
 /* outline right */
 .btn.outline {
     background: transparent;
-    border: 2px solid var(--event-green);
+    border: 1px solid var(--event-green);
     color: var(--event-green);
     padding: 12px 22px;
     width: 48%;

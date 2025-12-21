@@ -91,7 +91,7 @@ const Appreciation: React.FC = () => {
     >
       {/* TEMPORARY CSS FOR PREVIEW - Remove this block locally */}
 
-      <div className="header-section">
+      <div className="App-header-section">
         <h1>Words of Appreciation</h1>
         <p>
           Testimonials of our students and partners describing their experience.

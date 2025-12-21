@@ -17,7 +17,7 @@
 }
 
 /* --- Header --- */
-.header-section {
+.App-header-section {
   text-align: center;
   margin-bottom: 0.5rem;
   /* Reduced margin */
@@ -28,7 +28,7 @@
   flex-shrink: 0;
 }
 
-.header-section h1 {
+.App-header-section h1 {
   font-size: 2.2rem;
   /* Slightly smaller to save vertical space */
   font-weight: 800;
@@ -37,7 +37,7 @@
   margin-bottom: 0.5rem;
 }
 
-.header-section p {
+.App-header-section p {
   color: var(--text-light);
   /* Mapped #444 to text-light (#555) */
   max-width: 500px;
@@ -239,7 +239,7 @@
 
 /* --- Responsive Design --- */
 @media (max-width: 768px) {
-  .header-section h1 {
+  .App-header-section h1 {
     font-size: 1.8rem;
   }
 
@@ -284,11 +284,11 @@
     padding-top: 1.5rem;
   }
 
-  .header-section h1 {
+  .App-header-section h1 {
     font-size: 1.5rem;
   }
 
-  .header-section p {
+  .App-header-section p {
     font-size: 0.85rem;
   }
 

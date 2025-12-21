@@ -1,4 +1,3 @@
-
 import { useRef, useState } from "react";
 import {
   View,
@@ -32,7 +31,7 @@ export default function Index() {
 
   // Phase 1: Globe rises from bottom (0 -> SCREEN_HEIGHT)
   // Phase 2: Bento grid fades in (SCREEN_HEIGHT -> SCREEN_HEIGHT * 1.5)
-  
+
   const globeTranslateY = scrollY.interpolate({
     inputRange: [0, SCREEN_HEIGHT],
     outputRange: [SCREEN_HEIGHT * 0.55, 0],
@@ -108,8 +107,7 @@ export default function Index() {
                 },
               ]}
             >
-             
- <Text style={styles.cardTitle}>{BENTO_ITEMS[0].title}</Text>
+              <Text style={styles.cardTitle}>{BENTO_ITEMS[0].title}</Text>
               <Text style={styles.cardDesc}>{BENTO_ITEMS[0].description}</Text>
             </View>
 
@@ -270,10 +268,7 @@ ed with bento */}
         {[0, 1, 2].map((i) => (
           <View
             key={i}
-            style={[
-              styles.dot,
-              currentSection === i && styles.dotActive,
-            ]}
+            style={[styles.dot, currentSection === i && styles.dotActive]}
           />
         ))}
       </View>

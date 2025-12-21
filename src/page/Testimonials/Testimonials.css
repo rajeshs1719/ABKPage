@@ -1,0 +1,12 @@
+.testimonials2 {
+  padding: 4rem 1rem;
+  background: white;
+}
+
+.testimonials2 .title {
+  text-align: center;
+  color: black;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
