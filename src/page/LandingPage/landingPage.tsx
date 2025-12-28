@@ -3,7 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 // --- IMAGE IMPORTS ---
-import bg from "../../assets/Home/LpBg.svg";
+// import bg from "../../assets/Home/LpBg.svg";
 import img1 from "../../assets/Home/LpCloud.svg";
 import img2 from "../../assets/Home/2.svg";
 import img3 from "../../assets/Home/3.svg";
@@ -147,7 +147,7 @@ export default function Hero() {
   return (
     <section
       ref={heroRef}
-      className="relative w-full h-screen overflow-hidden select-none bg-gradient-to-b from-[#ffd6d6] via-[#fff7ed] to-[#f7b3b3] z-0"
+      className="relative w-full h-screen overflow-hidden select-none bg-gradient-to-b from-[#F5EFE7] to-[#E64646] z-0"
     >
       {/* PETAL STYLES */}
       <style>{`
@@ -180,7 +180,7 @@ export default function Hero() {
       `}</style>
 
       {/* Background Layers */}
-      <img src={bg} className={`${layerBaseClass} z-[0]`} alt="" />
+      {/* <img src={bg} className={`${layerBaseClass} z-[0]`} alt="" /> */}
       <img src={img1} className={`${layerBaseClass} z-[1]`} alt="" />
       <img src={img2} className={`${layerBaseClass} z-[2]`} alt="" />
       <img src={img3} className={`${layerBaseClass} z-[3]`} alt="" />
@@ -191,27 +191,25 @@ export default function Hero() {
       {/* Lanterns */}
       <img
         src={lantern1}
-        className="lantern absolute z-[10] w-[50px] md:w-[64px] h-auto top-[15%] left-[10%]"
+        className="lantern absolute z-[10] w-[50px] md:w-[64px] h-auto top-[30%] left-[20%]"
         alt=""
       />
       <img
         src={lantern2}
-        className="lantern absolute z-[10] w-[60px] md:w-[80px] h-auto top-[30%] right-[12%]"
+        className="lantern absolute z-[10] w-[60px] md:w-[80px] h-auto top-[30%] left-[30%]"
         alt=""
       />
 
       {/* Content */}
-      <div className="hero-content absolute inset-0 flex flex-col items-center justify-center text-center px-6 z-20 text-white">
-        <h1 className="text-[2.5rem] md:text-[4.5rem] leading-tight mb-4 drop-shadow-[0_8px_20px_rgba(0,0,0,0.4)] font-bold">
-          Welcome To Temple
+      <div className="hero-content absolute inset-0 flex flex-col items-start text-left px-6 z-20 mx-10">
+        <h1 className="text-[64px] md:text-[64px] leading-tight mb-4 drop-shadow-[0_8px_20px_rgba(0,0,0,0.4)] font-bold mt-20 text-black">
+          Start your Japanese learning journey here!
         </h1>
-        <p className="text-[1rem] md:text-[1.2rem] max-w-[700px] mb-8 drop-shadow-[0_4px_10px_rgba(0,0,0,0.3)]">
-          Start your Japanese learning journey here with peace and harmony.
+        <p className="text-[24px] md:text-[24px] max-w-[700px] text-left mb-8 drop-shadow-[0_4px_10px_rgba(0,0,0,0.3)]">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed
+          massa blandit, faucibus quam sed, feugiat massa.
         </p>
         <div className="flex gap-4">
-          <button className="px-8 py-3 bg-white/10 backdrop-blur-md border border-white/30 text-white rounded-xl hover:bg-white/20 transition-all">
-            Book Demo
-          </button>
           <button className="px-8 py-3 bg-[#3A4D2F] text-white rounded-xl shadow-lg hover:bg-[#2f3b32] transition-all">
             Get Started
           </button>

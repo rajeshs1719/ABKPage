@@ -10,6 +10,7 @@ import Blog from "./page/blog/Blog";
 import Course from "./page/Course/course";
 import BlogDetails from "./page/blogDetails/blogdetails";
 import Testimonials from "./page/Testimonials/Testimonials";
+import AboutUs from "./page/aboutUs/aboutUs";
 
 export default function App() {
   return (
@@ -24,8 +25,7 @@ export default function App() {
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/blog/:id" element={<BlogDetails />} />
           <Route path="/testimonials" element={<Testimonials />} />
-
-
+          <Route path="/aboutus" element={<AboutUs />} />
 
           {/* Redirect unknown routes */}
           <Route path="*" element={<Navigate to="/" replace />} />

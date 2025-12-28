@@ -251,10 +251,10 @@ const Books = () => {
                       {book.title}
                     </h2>
                     <div className="text-left">
-                      <span className="block text-[20px] sm:text-[20px] text-white/90 font-medium ml-5 ">
+                      <span className="block text-[20px] sm:text-[20px] text-black/90 font-medium ml-5 ">
                         {book.subtitle}
                       </span>
-                      <p className="block text-[20px] sm:text-[20px] text-white font-bold ml-5 ">
+                      <p className="block text-[20px] sm:text-[20px] text-black font-bold ml-5 ">
                         {book.shortDesc}
                       </p>
                     </div>
@@ -295,7 +295,7 @@ const Books = () => {
         })}
       </div>
 
-      <div className="absolute bottom-[8%] flex items-center gap-3 z-30">
+      <div className="absolute bottom-[5%] flex items-center gap-3 z-30">
         {booksData.map((_, index) => (
           <button
             key={index}

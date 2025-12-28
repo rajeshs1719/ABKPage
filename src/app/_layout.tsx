@@ -4,16 +4,8 @@ import { NavLink } from "react-router-dom";
 import logoMain from "../assets/logo.png";
 
 // Note: In your local environment, keep these imports
-// import "../nav.css";
-// import logoMain from "../assets/logo.png";
-// import Footer from "../page/Footer/Footer";
-
-// Mock Components for preview
-const Footer = () => (
-  <footer className="footer-mock">
-    <p>© 2024 ABK Japanese Language School. All rights reserved.</p>
-  </footer>
-);
+import "../nav.css";
+import Footer from "../page/Footer/Footer";
 
 export default function App({ children }: { children?: ReactNode }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -64,6 +56,7 @@ export default function App({ children }: { children?: ReactNode }) {
           z-index: 1000;
           box-sizing: border-box;
         }
+
 
         .logo-main {
           height: 52px;
@@ -285,7 +278,11 @@ export default function App({ children }: { children?: ReactNode }) {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/testimonials" className="nav-link" onClick={closeMenu}>
+            <NavLink
+              to="/testimonials"
+              className="nav-link"
+              onClick={closeMenu}
+            >
               Testimonials
             </NavLink>
           </li>
@@ -350,16 +347,13 @@ export default function App({ children }: { children?: ReactNode }) {
                   N2 Level
                 </NavLink>
               </li>
-              <li>
-                <NavLink
-                  to="/course/n1"
-                  className="dropdown-item"
-                  onClick={closeMenu}
-                >
-                  N1 Level
-                </NavLink>
-              </li>
             </ul>
+          </li>
+
+          <li>
+            <NavLink to="/aboutus" className="nav-link" onClick={closeMenu}>
+              About Us
+            </NavLink>
           </li>
 
           <li className="mobile-contact">
