@@ -140,6 +140,7 @@ const FeaturedBlogCarousel: React.FC<{ items: BlogPost[] }> = ({ items }) => {
   };
 
   return (
+    <div className="fg-bg">
     <div className="fb-container">
       <div className="section-header">
         <span className="dash-line"></span>
@@ -195,6 +196,7 @@ const FeaturedBlogCarousel: React.FC<{ items: BlogPost[] }> = ({ items }) => {
           />
         ))}
       </div>
+    </div>
     </div>
   );
 };

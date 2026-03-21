@@ -1,7 +1,6 @@
 import React from "react";
 import "./contact.css";
 
-
 /* replace these with your actual assets */
 import Thumb1 from "../../assets/CuSamplePic.png";
 import Thumb2 from "../../assets/CuSamplePic.png";
@@ -15,7 +14,6 @@ import IconLocation from "../../assets/Icons/Vector.png";
 
 interface ChapterCardProps {
   title1: string;
-  title2: string;
   address: string;
   director: string;
   email: string;
@@ -26,7 +24,6 @@ interface ChapterCardProps {
 
 function ChapterCard({
   title1,
-  title2,
   address,
   director,
   email,
@@ -35,12 +32,15 @@ function ChapterCard({
   gallery = [],
 }: ChapterCardProps) {
   return (
-    <article className="chapter-card">
+    <article
+      className="chapter-card"
+      style={{
+        background: "linear-gradient(180deg, #FDF8F1 0%, #FFDAC7 100%)",
+      }}
+    >
       <div className="card-top">
         <div className="chapter-title-wrap">
-          <h2 className="chapter-title">
-            {title1} <br /> {title2}
-          </h2>
+          <h2 className="chapter-title">{title1}</h2>
         </div>
       </div>
 
@@ -53,10 +53,9 @@ function ChapterCard({
 
       <div className="contact-box">
         <div className="contact-row">
-            <img src={IconPerson} className="contact-icon-img" alt="director" /> 
-            <div className="mono">Director: {director}</div>
-          </div>
-
+          <img src={IconPerson} className="contact-icon-img" alt="director" />
+          <div className="mono">Director: {director}</div>
+        </div>
 
         <div className="contact-row">
           <img src={IconMail} className="contact-icon-img" alt="email" />
@@ -92,13 +91,14 @@ export default function Contact() {
     <main className="contact-page">
       <header className="contact-hero" aria-hidden>
         <h1 className="contact-hero-title">Get in touch</h1>
-        <span className="contact-hero-desc">We’re here to help you begin your Japanese journey with us!</span>
+        <span className="contact-hero-desc">
+          We’re here to help you begin your Japanese journey with us!
+        </span>
       </header>
 
       <section className="cards-row">
         <ChapterCard
-          title1="Bangalore"
-          title2="Chapter"
+          title1="Bangalore Chapter"
           address="44, 100 Feet Road, Double Decker Flyover, Vysya Bank Colony, BTM 2nd Stage, Bengaluru 560 076."
           director="Uma Ramasubramanian"
           email="abkaots.blr@gmail.com"
@@ -108,8 +108,7 @@ export default function Contact() {
         />
 
         <ChapterCard
-          title1="Coimbatore"
-          title2="Chapter"
+          title1="Coimbatore Chapter"
           address="44, 100 Feet Road, Double Decker Flyover, Vysya Bank Colony, BTM 2nd Stage, Bengaluru 560 076."
           director="Uma Ramasubramanian"
           email="abkaots.cbe@gmail.com"
@@ -120,7 +119,12 @@ export default function Contact() {
       </section>
 
       {/* LEARN JAPANESE ONLINE SECTION */}
-      <section className="learn-section">
+      <section
+        className="learn-section"
+        style={{
+          background: "linear-gradient(270deg, #FFDAC7 0%, #FDF8F2 100%)",
+        }}
+      >
         <div className="learn-box">
           <h2>Learn Japanese Online</h2>
 

@@ -128,7 +128,7 @@ body {
 }
 
 .btn.direction {
-    background: var(--event-green);
+    background: rgb(58, 77, 47);
     /* #1b2a72 */
     color: var(--white);
     width: 220px;
@@ -183,7 +183,7 @@ body {
 
 /* primary left */
 .btn.primary {
-    background: var(--event-green);
+    background: rgb(58, 77, 47);
     /* #1b2a72 */
     color: var(--white);
     padding: 12px 22px;
@@ -195,8 +195,8 @@ body {
 /* outline right */
 .btn.outline {
     background: transparent;
-    border: 1px solid var(--event-green);
-    color: var(--event-green);
+    border: 1px solid rgb(58, 77, 47);
+    color: rgb(58, 77, 47);
     padding: 12px 22px;
     width: 48%;
     border-radius: 10px;
@@ -465,7 +465,7 @@ body {
 
 .form-field input,
 .form-field textarea {
-    background: var(--contact-section-lgreen);
+    background: #ffdac7c1;
     /* #e8eefc */
     border: 2px solid var(--contact-input-border);
     /* #c9d3f0 */
@@ -488,7 +488,7 @@ textarea {
 .btn-submit {
     background: var(--event-green);
     /* #1b1b55 */
-    color: var(--white);
+    color: var(--black);
     padding: 12px 28px;
     font-size: 17px;
     border-radius: 8px;

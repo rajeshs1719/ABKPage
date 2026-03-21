@@ -141,8 +141,11 @@ export default function GalleryPage() {
       <section
         className="relative min-h-[100vh] md:min-h-[85vh] lg:min-h-[100vh] flex flex-col items-center justify-center px-4 sm:px-5 py-16 md:py-20 overflow-hidden bg-[#fdfcf8]"
         style={{
-          backgroundImage: "radial-gradient(#d4d4d4 1px, transparent 1px)",
-          backgroundSize: "24px 24px",
+          backgroundImage:
+            "url('/GalleryHeroBg.png'), radial-gradient(#d1d1d1 1px, transparent 1px)",
+          backgroundSize: "cover, 24px 24px",
+          backgroundPosition: "center, center",
+          backgroundRepeat: "no-repeat, repeat",
         }}
       >
         <div className="text-center max-w-[850px] z-[80] relative p-5 md:p-[20px_72px] rounded-[28px]">
@@ -224,7 +227,12 @@ export default function GalleryPage() {
       </section>
 
       {/* SECTION 2: Gallery Grid */}
-      <section className="px-5 sm:px-8 md:px-[8%] py-8 md:py-[30px] min-h-screen bg-[#f8f9fa]">
+      <section
+        className="px-5 sm:px-8 md:px-[8%] py-8 md:py-[30px] min-h-screen"
+        style={{
+          background: "linear-gradient(90deg, #FDF8F2 0%,  #FFDAC7 100% )",
+        }}
+      >
         <h1 className="my-4 text-2xl sm:text-3xl md:text-4xl font-semibold text-[#333]">
           Here is a Photo bump of all Activities, Events, Celebration..
         </h1>

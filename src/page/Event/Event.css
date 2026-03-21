@@ -55,7 +55,7 @@
 }
 
 .community-btn {
-  background: var(--event-green);
+  background: rgb(58, 77, 47);
   /* Mapped from #27512a */
   color: var(--white);
   padding: 12px 22px;

@@ -185,6 +185,10 @@ button {
 }
 
 /* --- FEATURED BLOGS --- */
+.fg-bg{
+  background-color: #F5EFE7;
+}
+
 .fb-container {
   padding: 4rem 0;
   max-width: 1200px;
@@ -340,11 +344,9 @@ button {
 
 /* --- STUDENT SUCCESS (GREEN SECTION) --- */
 .ss-full-section {
-  background-color: var(--light-green-bg);
-
+  background: linear-gradient(270deg, #FEE5C1 0%, #FDF8F2 100%);
   padding: 4rem 0 6rem 0;
   width: 100%;
-  margin-top: 2rem;
 }
 
 .ss-container {
