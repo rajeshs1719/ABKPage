@@ -1,24 +1,32 @@
 import React, { useState, ReactNode } from "react";
 import { NavLink } from "react-router-dom";
 
+// Note: In your local environment, uncomment these imports
 import logoMain from "../assets/logo.png";
-
-// Note: In your local environment, keep these imports
 import "../nav.css";
 import Footer from "../page/Footer/Footer";
+
+// --- PLACEHOLDERS FOR PREVIEW ENVIRONMENT ---
+// const logoMain = "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=150&h=52&fit=crop";
+// const Footer = () => <div className="footer-mock" style={{ padding: '2rem', textAlign: 'center', background: '#111', color: '#fff', marginTop: '50px' }}>Mock Footer</div>;
 
 export default function App({ children }: { children?: ReactNode }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCourseDropdownOpen, setIsCourseDropdownOpen] = useState(false);
+  
+  // FIX: Added the missing state for the About Us dropdown
+  const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
     setIsCourseDropdownOpen(false);
+    setIsAboutDropdownOpen(false);
   };
 
   const closeMenu = () => {
     setIsMenuOpen(false);
     setIsCourseDropdownOpen(false);
+    setIsAboutDropdownOpen(false);
   };
 
   const toggleCourseDropdown = (e: React.MouseEvent) => {
@@ -27,6 +35,22 @@ export default function App({ children }: { children?: ReactNode }) {
       e.preventDefault();
       setIsCourseDropdownOpen(!isCourseDropdownOpen);
     }
+  };
+
+  // FIX: Added the React.MouseEvent type to 'e' to prevent TypeScript errors
+  const toggleAboutDropdown = (e: React.MouseEvent) => {
+    if (window.innerWidth <= 960) {
+      e.preventDefault();
+      setIsAboutDropdownOpen(!isAboutDropdownOpen);
+    }
+  };
+
+  const handleAboutMouseEnter = () => {
+    if (window.innerWidth > 960) setIsAboutDropdownOpen(true);
+  };
+
+  const handleAboutMouseLeave = () => {
+    if (window.innerWidth > 960) setIsAboutDropdownOpen(false);
   };
 
   return (
@@ -350,10 +374,59 @@ export default function App({ children }: { children?: ReactNode }) {
             </ul>
           </li>
 
-          <li>
-            <NavLink to="/aboutus" className="nav-link" onClick={closeMenu}>
-              About Us
-            </NavLink>
+          <li
+            className="nav-item-dropdown"
+            onMouseEnter={handleAboutMouseEnter}
+            onMouseLeave={handleAboutMouseLeave}
+          >
+            <div className="nav-link dropdown-trigger">
+              {/* The text itself remains a link to the main About Us page */}
+              <NavLink
+                to="/aboutus"
+                onClick={closeMenu}
+                className="hover:text-inherit"
+              >
+                About Us
+              </NavLink>
+
+              {/* The chevron acts as the dropdown toggle for mobile */}
+              <svg
+                className="chevron"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                onClick={toggleAboutDropdown}
+                style={{ cursor: "pointer", marginLeft: "5px" }}
+              >
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+
+            <ul
+              className={`dropdown-menu ${isAboutDropdownOpen ? "mobile-open" : ""}`}
+            >
+              <li>
+                <NavLink
+                  to="/director/bangalore"
+                  className="dropdown-item"
+                  onClick={closeMenu}
+                >
+                  Bangalore Chapter
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/director/coimbatore"
+                  className="dropdown-item"
+                  onClick={closeMenu}
+                >
+                  Coimbatore Chapter
+                </NavLink>
+              </li>
+            </ul>
           </li>
 
           <li className="mobile-contact">

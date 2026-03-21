@@ -11,6 +11,8 @@ import Course from "./page/Course/course";
 import BlogDetails from "./page/blogDetails/blogdetails";
 import Testimonials from "./page/Testimonials/Testimonials";
 import AboutUs from "./page/aboutUs/aboutUs";
+import DirectorMessagePage, { directorsData } from "./page/aboutUs/DirectorMessagePage";
+
 
 export default function App() {
   return (
@@ -29,6 +31,14 @@ export default function App() {
 
           {/* Redirect unknown routes */}
           <Route path="*" element={<Navigate to="/" replace />} />
+          <Route
+            path="/director/bangalore"
+            element={<DirectorMessagePage data={directorsData.bangalore} />}
+          />
+          <Route
+            path="/director/coimbatore"
+            element={<DirectorMessagePage data={directorsData.coimbatore} />}
+          />
         </Routes>
       </Layout>
     </BrowserRouter>
