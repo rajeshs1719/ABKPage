@@ -6,15 +6,18 @@ import logoMain from "../assets/logo.png";
 import "../nav.css";
 import Footer from "../page/Footer/Footer";
 
-// --- PLACEHOLDERS FOR PREVIEW ENVIRONMENT ---
-// const logoMain = "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=150&h=52&fit=crop";
-// const Footer = () => <div className="footer-mock" style={{ padding: '2rem', textAlign: 'center', background: '#111', color: '#fff', marginTop: '50px' }}>Mock Footer</div>;
+// --- DYNAMIC COURSES LIST ---
+const coursesList = [
+  { id: "genban-nihongo", title: "Genban Nihongo" },
+  { id: "kaiwa-mastery", title: "Business Kaiwa" },
+  { id: "ssw", title: "SSW" },
+  { id: "summercamp", title: "Summer Camp" },
+  { id: "jlptandnat", title: "JLPT and NAT" },
+];
 
-export default function App({ children }: { children?: ReactNode }) {
+export default function Layout({ children }: { children?: ReactNode }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCourseDropdownOpen, setIsCourseDropdownOpen] = useState(false);
-  
-  // FIX: Added the missing state for the About Us dropdown
   const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -30,27 +33,25 @@ export default function App({ children }: { children?: ReactNode }) {
   };
 
   const toggleCourseDropdown = (e: React.MouseEvent) => {
-    // Only toggle (prevent link navigation) on screens smaller than 960px (per your nav.css)
-    if (window.innerWidth <= 960) {
+    if (window.innerWidth <= 1100) {
       e.preventDefault();
       setIsCourseDropdownOpen(!isCourseDropdownOpen);
     }
   };
 
-  // FIX: Added the React.MouseEvent type to 'e' to prevent TypeScript errors
   const toggleAboutDropdown = (e: React.MouseEvent) => {
-    if (window.innerWidth <= 960) {
+    if (window.innerWidth <= 1100) {
       e.preventDefault();
       setIsAboutDropdownOpen(!isAboutDropdownOpen);
     }
   };
 
   const handleAboutMouseEnter = () => {
-    if (window.innerWidth > 960) setIsAboutDropdownOpen(true);
+    if (window.innerWidth > 1100) setIsAboutDropdownOpen(true);
   };
 
   const handleAboutMouseLeave = () => {
-    if (window.innerWidth > 960) setIsAboutDropdownOpen(false);
+    if (window.innerWidth > 1100) setIsAboutDropdownOpen(false);
   };
 
   return (
@@ -61,19 +62,19 @@ export default function App({ children }: { children?: ReactNode }) {
         :root {
           --white: #ffffff;
           --black-rgb: 0, 0, 0;
-          --nav-text: #222222;
+          --nav-text: #333333;
           --nav-green: #2F4B36;
         }
 
         .navbar {
           width: 100%;
-          height: 80px;
+          height: 85px; /* Slightly taller for breathing room */
           background: var(--white);
           display: flex;
           align-items: center;
           justify-content: space-between;
-          padding: 0 5%;
-          box-shadow: 0 1px 6px rgba(var(--black-rgb), 0.08);
+          padding: 0 4%; /* Gives comfortable breathing room on edges */
+          box-shadow: 0 2px 10px rgba(0,0,0,0.06); /* Softer, modern shadow */
           font-family: 'Poppins', sans-serif;
           position: sticky;
           top: 0;
@@ -81,9 +82,15 @@ export default function App({ children }: { children?: ReactNode }) {
           box-sizing: border-box;
         }
 
+        .nav-left {
+          display: flex;
+          align-items: center;
+          height: 100%;
+        }
 
         .logo-main {
-          height: 52px;
+          height: 55px; /* Optimized height */
+          max-width: 320px; /* Prevents extremely wide logos from breaking layout */
           object-fit: contain;
         }
 
@@ -91,7 +98,7 @@ export default function App({ children }: { children?: ReactNode }) {
           list-style: none;
           display: flex;
           align-items: center;
-          gap: 48px;
+          gap: 32px; /* Reduced from 48px to fit the wide logo better */
           margin: 0;
           padding: 0;
         }
@@ -99,67 +106,79 @@ export default function App({ children }: { children?: ReactNode }) {
         .nav-link {
           text-decoration: none;
           color: var(--nav-text);
-          font-weight: 400;
-          font-size: 18px;
+          font-weight: 500; /* Set to 500 for better readability */
+          font-size: 16px; /* Reduced from 18px for a cleaner look */
           position: relative;
           transition: color 0.3s ease;
-          padding-bottom: 5px;
           display: flex;
           align-items: center;
-          gap: 5px;
+          gap: 6px; /* Spacing between text and chevron */
           cursor: pointer;
+          height: 100%;
         }
 
         .nav-link:hover, .nav-link.active {
           color: var(--nav-green);
-          font-weight: 600;
         }
 
         /* --- DROPDOWN SPECIFIC STYLES --- */
         .nav-item-dropdown {
           position: relative;
+          display: flex;
+          align-items: center;
+          height: 100%;
+        }
+
+        .dropdown-trigger {
+          display: flex;
+          align-items: center;
         }
 
         .chevron {
-          width: 16px;
-          height: 16px;
+          width: 14px;
+          height: 14px;
           transition: transform 0.3s ease;
+          margin-top: 2px; /* Optical alignment fix */
         }
 
         .dropdown-menu {
           position: absolute;
-          top: 100%;
+          top: 45px; /* Positioned slightly below the text */
           left: 50%;
           transform: translateX(-50%) translateY(10px);
           background: var(--white);
-          box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-          border-radius: 8px;
-          min-width: 180px;
+          box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+          border-radius: 12px;
+          border: 1px solid #f0f0f0;
+          min-width: 220px;
           opacity: 0;
           visibility: hidden;
           transition: all 0.3s ease;
-          padding: 0.5rem 0;
+          padding: 0.8rem 0;
           list-style: none;
           z-index: 1001;
         }
 
         .dropdown-item {
-          display: block;
-          padding: 0.8rem 1.5rem;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 0.7rem 1.5rem;
           color: var(--nav-text);
           text-decoration: none;
-          font-size: 16px;
+          font-size: 15px; /* Slightly smaller than main nav */
           transition: background 0.2s ease, color 0.2s ease;
           font-weight: 400;
         }
 
-        .dropdown-item:hover {
-          background: #f0fdf4;
+        .dropdown-item:hover, .dropdown-item.active {
+          background: #f4fbf6;
           color: var(--nav-green);
+          font-weight: 500;
         }
 
         /* Desktop Hover Behavior */
-        @media (min-width: 961px) {
+        @media (min-width: 1101px) {
           .nav-item-dropdown:hover .dropdown-menu {
             opacity: 1;
             visibility: visible;
@@ -174,110 +193,127 @@ export default function App({ children }: { children?: ReactNode }) {
         .nav-buttons {
           display: flex;
           align-items: center;
-          gap: 18px;
+          margin-left: 10px;
         }
 
         .btn-solid {
-          padding: 10px 26px;
+          padding: 11px 26px;
           background: var(--nav-green);
           color: var(--white);
           border: none;
-          border-radius: 6px;
-          font-size: 16px;
-          font-weight: 500;
+          border-radius: 50px; /* Modern pill shape */
+          font-size: 15px;
+          font-weight: 600;
+          letter-spacing: 0.5px;
           cursor: pointer;
-          transition: background 0.3s ease;
+          transition: all 0.3s ease;
+          box-shadow: 0 4px 12px rgba(47, 75, 54, 0.2);
         }
 
-        .btn-solid:hover { background: #1e3324; }
+        .btn-solid:hover { 
+          background: #233a29; 
+          transform: translateY(-1px);
+          box-shadow: 0 6px 16px rgba(47, 75, 54, 0.3);
+        }
 
         .hamburger {
           display: none;
           cursor: pointer;
           flex-direction: column;
-          gap: 5px;
+          justify-content: space-between;
+          height: 18px;
+          width: 26px;
           z-index: 1001;
         }
 
         .bar {
-          width: 25px;
-          height: 3px;
+          width: 100%;
+          height: 2px;
           background-color: var(--nav-text);
           transition: 0.3s ease;
           border-radius: 2px;
         }
 
-        .mobile-contact{
-        display:none;}
+        .mobile-contact {
+          display: none;
+        }
 
         /* --- MOBILE RESPONSIVENESS --- */
-        @media screen and (max-width: 960px) {
-          .navbar { padding: 0 20px; height: 70px; }
-          .logo-main { height: 40px; }
+        /* Increased breakpoint to 1100px to accommodate the wide logo and many links */
+        @media screen and (max-width: 1100px) {
+          .navbar { padding: 0 5%; height: 75px; }
+          .logo-main { height: 45px; }
           .hamburger { display: flex; }
           .nav-buttons { display: none; }
-          .mobile-contact { display: block; width: 100%; }
-          .mobile-btn { width: 100%; margin-top: 10px; }
+          .mobile-contact { display: block; width: 100%; margin-top: 15px; }
+          .mobile-btn { width: 100%; text-align: center; }
 
           .nav-links {
             position: fixed;
             top: 0;
             right: -100%;
-            width: 70%;
+            width: 100%;
+            max-width: 400px;
             height: 100vh;
             background: var(--white);
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 25px;
-            box-shadow: -2px 0 10px rgba(0,0,0,0.1);
-            transition: right 0.3s ease-in-out;
-            padding: 20px;
+            justify-content: flex-start;
+            align-items: flex-start;
+            gap: 20px;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 90px 40px 40px 40px;
+            overflow-y: auto;
           }
 
           .nav-links.open { right: 0; }
 
+          .nav-link { font-size: 18px; width: 100%; }
+
           /* Mobile Dropdown Interaction */
+          .nav-item-dropdown { flex-direction: column; align-items: flex-start; width: 100%; }
+          .dropdown-trigger { width: 100%; justify-content: space-between; }
+          
           .dropdown-menu {
-            position: static;
-            opacity: 1;
-            visibility: visible;
+            position: relative;
+            top: 0;
+            left: 0;
             transform: none;
             box-shadow: none;
+            border: none;
             max-height: 0;
-            overflow: hidden;
             width: 100%;
-            padding: 0;
-            transition: max-height 0.3s ease;
-            background: #fcfcfc;
+            padding: 0 0 0 15px; /* Indent sub-items */
+            margin-top: 5px;
+            border-left: 2px solid #e0e0e0;
+            border-radius: 0;
+            background: transparent;
+            visibility: visible;
+            opacity: 1;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
           }
 
           .dropdown-menu.mobile-open {
-            max-height: 400px;
-            padding: 10px 0;
+            max-height: 500px;
+            padding-top: 10px;
+            padding-bottom: 10px;
           }
 
-          .nav-item-dropdown { width: 100%; text-align: center; }
-          .dropdown-trigger { justify-content: center; width: 100%; }
-          .dropdown-item { padding: 0.5rem; font-size: 18px; }
+          .dropdown-item { padding: 0.6rem 0; font-size: 16px; color: #555; }
 
+          /* Hamburger animations */
           .hamburger.open .bar:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
           .hamburger.open .bar:nth-child(2) { opacity: 0; }
           .hamburger.open .bar:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
-        }
-
-        .footer-mock {
-          background: #1a1a1a;
-          color: #999;
-          padding: 2rem 5%;
-          text-align: center;
-          margin-top: 50px;
         }
       `}</style>
 
       <nav className="navbar">
         <div className="nav-left">
-          <img src={logoMain} alt="ABK Logo" className="logo-main" />
+          <NavLink to="/" onClick={closeMenu}>
+            <img src={logoMain} alt="ABK - AOTS DOSOKAI Logo" className="logo-main" />
+          </NavLink>
         </div>
 
         <ul className={`nav-links ${isMenuOpen ? "open" : ""}`}>
@@ -302,75 +338,31 @@ export default function App({ children }: { children?: ReactNode }) {
             </NavLink>
           </li>
           <li>
-            <NavLink
-              to="/testimonials"
-              className="nav-link"
-              onClick={closeMenu}
-            >
+            <NavLink to="/testimonials" className="nav-link" onClick={closeMenu}>
               Testimonials
             </NavLink>
           </li>
 
-          {/* COURSE DROPDOWN */}
+          {/* DYNAMIC COURSE DROPDOWN */}
           <li className="nav-item-dropdown">
-            <div
-              className="nav-link dropdown-trigger"
-              onClick={toggleCourseDropdown}
-            >
-              <span>JLPT & NAT</span>
-              <svg
-                className="chevron"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
+            <div className="nav-link dropdown-trigger" onClick={toggleCourseDropdown}>
+              <span>Courses</span>
+              <svg className={`chevron ${isCourseDropdownOpen && window.innerWidth <= 1100 ? "rotate-180" : ""}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <polyline points="6 9 12 15 18 9"></polyline>
               </svg>
             </div>
-            <ul
-              className={`dropdown-menu ${
-                isCourseDropdownOpen ? "mobile-open" : ""
-              }`}
-            >
-              <li>
-                <NavLink
-                  to="/course"
-                  className="dropdown-item"
-                  onClick={closeMenu}
-                >
-                  N5 Level
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/course"
-                  className="dropdown-item"
-                  onClick={closeMenu}
-                >
-                  N4 Level
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/course/n3"
-                  className="dropdown-item"
-                  onClick={closeMenu}
-                >
-                  N3 Level
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/course/n2"
-                  className="dropdown-item"
-                  onClick={closeMenu}
-                >
-                  N2 Level
-                </NavLink>
-              </li>
+            <ul className={`dropdown-menu ${isCourseDropdownOpen ? "mobile-open" : ""}`}>
+              {coursesList.map((course) => (
+                <li key={course.id}>
+                  <NavLink
+                    to={`/course/${course.id}`}
+                    className={({ isActive }) => `dropdown-item ${isActive ? "active" : ""}`}
+                    onClick={closeMenu}
+                  >
+                    {course.title}
+                  </NavLink>
+                </li>
+              ))}
             </ul>
           </li>
 
@@ -379,50 +371,23 @@ export default function App({ children }: { children?: ReactNode }) {
             onMouseEnter={handleAboutMouseEnter}
             onMouseLeave={handleAboutMouseLeave}
           >
-            <div className="nav-link dropdown-trigger">
-              {/* The text itself remains a link to the main About Us page */}
-              <NavLink
-                to="/aboutus"
-                onClick={closeMenu}
-                className="hover:text-inherit"
-              >
+            <div className="nav-link dropdown-trigger" onClick={toggleAboutDropdown}>
+              <NavLink to="/aboutus" onClick={closeMenu} style={{ textDecoration: "none", color: "inherit" }}>
                 About Us
               </NavLink>
-
-              {/* The chevron acts as the dropdown toggle for mobile */}
-              <svg
-                className="chevron"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                onClick={toggleAboutDropdown}
-                style={{ cursor: "pointer", marginLeft: "5px" }}
-              >
+              <svg className={`chevron ${isAboutDropdownOpen && window.innerWidth <= 1100 ? "rotate-180" : ""}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <polyline points="6 9 12 15 18 9"></polyline>
               </svg>
             </div>
 
-            <ul
-              className={`dropdown-menu ${isAboutDropdownOpen ? "mobile-open" : ""}`}
-            >
+            <ul className={`dropdown-menu ${isAboutDropdownOpen ? "mobile-open" : ""}`}>
               <li>
-                <NavLink
-                  to="/director/bangalore"
-                  className="dropdown-item"
-                  onClick={closeMenu}
-                >
+                <NavLink to="/director/bangalore" className="dropdown-item" onClick={closeMenu}>
                   Bangalore Chapter
                 </NavLink>
               </li>
               <li>
-                <NavLink
-                  to="/director/coimbatore"
-                  className="dropdown-item"
-                  onClick={closeMenu}
-                >
+                <NavLink to="/director/coimbatore" className="dropdown-item" onClick={closeMenu}>
                   Coimbatore Chapter
                 </NavLink>
               </li>
@@ -430,7 +395,7 @@ export default function App({ children }: { children?: ReactNode }) {
           </li>
 
           <li className="mobile-contact">
-            <NavLink to="/contact" onClick={closeMenu}>
+            <NavLink to="/contact" onClick={closeMenu} style={{ width: '100%', textDecoration: 'none' }}>
               <button className="btn-solid mobile-btn">Contact Us</button>
             </NavLink>
           </li>
@@ -442,10 +407,7 @@ export default function App({ children }: { children?: ReactNode }) {
           </NavLink>
         </div>
 
-        <div
-          className={`hamburger ${isMenuOpen ? "open" : ""}`}
-          onClick={toggleMenu}
-        >
+        <div className={`hamburger ${isMenuOpen ? "open" : ""}`} onClick={toggleMenu}>
           <span className="bar"></span>
           <span className="bar"></span>
           <span className="bar"></span>
