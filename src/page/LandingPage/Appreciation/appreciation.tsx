@@ -7,7 +7,7 @@ import React, { useState } from "react";
 // ==========================================
 
 import "./appreciation.css";
-import AppBG from "../../assets/AppreciationBg.png"
+import AppBG from "../../../assets/AppreciationBg.png"
 
 const testimonials = [
   {

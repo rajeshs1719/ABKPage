@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
 // Import your images
-import ThinkingImg from '../../assets/thinking.png';
-import IdeaImg from '../../assets/idea.png';
+import ThinkingImg from '../../../assets/thinking.png';
+import IdeaImg from '../../../assets/idea.png';
 
 // FAQ Data structure
 const faqData = [

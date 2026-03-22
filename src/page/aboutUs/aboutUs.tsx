@@ -5,7 +5,7 @@ import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
 import abbg from "../../assets/aboutUs/aubg.png";
 import AboutUsWho from "../../assets/aboutUs/abwwa.png";
 import AboutClass from "../../assets/aboutUs/abclass.png";
-import uma from "../../assets/faculty/uma.png";
+import uma from "../../assets/faculty/umaFrame.png";
 import ravi from "../../assets/faculty/RaviFrame.png";
 import shivani from "../../assets/faculty/Shivani.png";
 
@@ -481,7 +481,7 @@ const AboutUs = () => {
                 className="text-center mb-16"
               >
                 <h2 className="text-[48px] font-serif font-bold text-[#1a3628]">
-                  Meet Our Sensei
+                  Meet Our Trainers
                 </h2>
                 <div className="flex items-center justify-center gap-4 mt-4">
                   <span className="w-12 h-[1px] bg-[#c62828]"></span>
@@ -510,7 +510,7 @@ const AboutUs = () => {
                         <img
                           src={teacher.image}
                           alt={teacher.name}
-                          className="w-full h-full object-cover"
+                          className="w-full h-full object-cover "
                         />
                       </div>
                     </div>

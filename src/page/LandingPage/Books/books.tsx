@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { API } from "../../services/api";
-import type { BookData } from "../../services/api";
-
+import { API } from "../../../services/api";
+import type { BookData } from "../../../services/api";
 
 // Locally defined interface to replace external import
 
-import RedBook from "../../assets/RedBookCover.png";
-import GreenBook from "../../assets/GreenBookCover.png";
-import CourBg from "../../assets/EventBg.png";
+import RedBook from "../../../assets/RedBookCover.png";
+import GreenBook from "../../../assets/GreenBookCover.png";
+import CourBg from "../../../assets/EventBg.png";
 // Placeholder images to replace local asset resolution errors
 
 // Default Fallback Data (Original)
@@ -229,7 +228,7 @@ const Books = () => {
               key={book.id}
               onClick={() => handleInteraction(index)}
               className={`absolute w-[240px] h-[350px] sm:w-[300px] sm:h-[440px] origin-center transition-all duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] [transform-style:preserve-3d] ${getPositionStyles(
-                index
+                index,
               )}`}
             >
               <div

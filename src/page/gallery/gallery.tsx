@@ -162,7 +162,7 @@ export default function GalleryPage() {
 
         {/* Decorative Polaroids */}
         {/* Top Left - Desktop / Mobile Top Left */}
-        <div className="polaroid-hover absolute w-[130px] sm:w-[150px] md:w-[180px] lg:w-[200px] bg-white p-2.5 sm:p-3 pb-8 sm:pb-9 md:pb-11 shadow-[0_10px_25px_rgba(0,0,0,0.15)] transition-all duration-500 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] z-10 cursor-pointer top-[5%] sm:top-[6%] md:top-[8%] left-[2%] sm:left-[3%] md:left-[5%] lg:left-[10%] -rotate-[8deg] sm:-rotate-[10deg] md:-rotate-[12deg]">
+        <div className="polaroid-hover absolute w-[130px] sm:w-[150px] md:w-[180px] lg:w-[200px] bg-white p-2.5 sm:p-3 pb-8 sm:pb-9 md:pb-11 shadow-[0_10px_25px_rgba(0,0,0,0.15)] transition-all duration-500 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] z-10 cursor-pointer top-[5%] sm:top-[6%] md:top-[8%] left-[2%] sm:left-[3%] md:left-[5%] lg:left-[12%] -rotate-[8deg] sm:-rotate-[10deg] md:-rotate-[12deg]">
           <div
             className="w-3 sm:w-3.5 h-3 sm:h-3.5 rounded-full absolute -top-1.5 left-1/2 -translate-x-1/2 shadow-[1px_2px_4px_rgba(0,0,0,0.3)] z-[5]"
             style={{ backgroundColor: COLORS.pinPurple }}
@@ -178,7 +178,7 @@ export default function GalleryPage() {
         </div>
 
         {/* Top Right */}
-        <div className="polaroid-hover absolute w-[130px] sm:w-[150px] md:w-[180px] lg:w-[200px] bg-white p-2.5 sm:p-3 pb-8 sm:pb-9 md:pb-11 shadow-[0_10px_25px_rgba(0,0,0,0.15)] transition-all duration-500 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] z-10 cursor-pointer top-[5%] sm:top-[6%] md:top-[8%] right-[2%] sm:right-[3%] md:right-[5%] lg:right-[10%] rotate-[8deg] sm:rotate-[9deg] md:rotate-[10deg]">
+        <div className="polaroid-hover absolute w-[130px] sm:w-[150px] md:w-[180px] lg:w-[200px] bg-white p-2.5 sm:p-3 pb-8 sm:pb-9 md:pb-11 shadow-[0_10px_25px_rgba(0,0,0,0.15)] transition-all duration-500 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] z-10 cursor-pointer top-[5%] sm:top-[6%] md:top-[8%] right-[2%] sm:right-[3%] md:right-[5%] lg:right-[12%] rotate-[8deg] sm:rotate-[9deg] md:rotate-[10deg]">
           <div
             className="w-3 sm:w-3.5 h-3 sm:h-3.5 rounded-full absolute -top-1.5 left-1/2 -translate-x-1/2 shadow-[1px_2px_4px_rgba(0,0,0,0.3)] z-[5]"
             style={{ backgroundColor: COLORS.pinBlue }}
@@ -194,7 +194,7 @@ export default function GalleryPage() {
         </div>
 
         {/* Bottom Left */}
-        <div className="polaroid-hover absolute w-[130px] sm:w-[150px] md:w-[180px] lg:w-[200px] bg-white p-2.5 sm:p-3 pb-8 sm:pb-9 md:pb-11 shadow-[0_10px_25px_rgba(0,0,0,0.15)] transition-all duration-500 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] z-10 cursor-pointer bottom-[5%] sm:bottom-[7%] md:bottom-[10%] left-[5%] sm:left-[6%] md:left-[8%] lg:left-[15%] rotate-[6deg] md:rotate-[6deg]">
+        <div className="polaroid-hover absolute w-[130px] sm:w-[150px] md:w-[180px] lg:w-[200px] bg-white p-2.5 sm:p-3 pb-8 sm:pb-9 md:pb-11 shadow-[0_10px_25px_rgba(0,0,0,0.15)] transition-all duration-500 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] z-10 cursor-pointer bottom-[5%] sm:bottom-[7%] md:bottom-[10%] left-[5%] sm:left-[6%] md:left-[8%] lg:left-[5%] rotate-[6deg] md:rotate-[6deg]">
           <div
             className="w-3 sm:w-3.5 h-3 sm:h-3.5 rounded-full absolute -top-1.5 left-1/2 -translate-x-1/2 shadow-[1px_2px_4px_rgba(0,0,0,0.3)] z-[5]"
             style={{ backgroundColor: COLORS.pinDark }}
@@ -210,7 +210,7 @@ export default function GalleryPage() {
         </div>
 
         {/* Bottom Right */}
-        <div className="polaroid-hover absolute w-[130px] sm:w-[150px] md:w-[180px] lg:w-[200px] bg-white p-2.5 sm:p-3 pb-8 sm:pb-9 md:pb-11 shadow-[0_10px_25px_rgba(0,0,0,0.15)] transition-all duration-500 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] z-10 cursor-pointer bottom-[5%] sm:bottom-[7%] md:bottom-[10%] right-[5%] sm:right-[6%] md:right-[8%] lg:right-[15%] -rotate-[6deg] md:-rotate-[8deg]">
+        <div className="polaroid-hover absolute w-[130px] sm:w-[150px] md:w-[180px] lg:w-[200px] bg-white p-2.5 sm:p-3 pb-8 sm:pb-9 md:pb-11 shadow-[0_10px_25px_rgba(0,0,0,0.15)] transition-all duration-500 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] z-10 cursor-pointer bottom-[5%] sm:bottom-[7%] md:bottom-[10%] right-[5%] sm:right-[6%] md:right-[8%] lg:right-[5%] -rotate-[6deg] md:-rotate-[8deg]">
           <div
             className="w-3 sm:w-3.5 h-3 sm:h-3.5 rounded-full absolute -top-1.5 left-1/2 -translate-x-1/2 shadow-[1px_2px_4px_rgba(0,0,0,0.3)] z-[5]"
             style={{ backgroundColor: COLORS.pinPurple }}

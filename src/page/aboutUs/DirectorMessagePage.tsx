@@ -39,7 +39,7 @@ export const directorsData = {
         thumbnail: videoThumb2,
       },
     ],
-    closing: "Donec lobortis risus a elit. Etiam tempor. Ut ullamcorper, ligula eu tempor congue, eros est euismod turpis.",
+    closing: "Language is the bridge between civilizations. Our mission is to make that bridge a work of art through disciplined study.",
   },
   coimbatore: {
     pageTitle: "DIRECTOR'S MESSAGE",
@@ -68,7 +68,7 @@ export const directorsData = {
         thumbnail: videoThumb1,
       },
     ],
-    closing: "Aliquam quam lectus, facilisis auctor, ultrices ut, elementum vulputate, nunc. Sed adipiscing ornare risus.",
+    closing: "We don't just teach Japanese; we instill the cultural nuance of Omotenashi and Kaizen in every student's journey.",
   },
 };
 
