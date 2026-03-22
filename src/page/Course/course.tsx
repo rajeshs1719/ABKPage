@@ -15,301 +15,493 @@ import {
   Film,
   CheckCircle,
   Award,
+  ClipboardCheck,
+  MessageCircle,
+  Mic,
+  Factory,
+  Puzzle,
+  Palette,
+  TrendingUp,
+  Globe
 } from "lucide-react";
 
 // --- MOCK JSON DATA ---
 // You can eventually move this to a separate file (e.g., data/courses.js) and import it
 const coursesData = [
   {
-    id: "genban-nihongo",
-    index: 1, // Odd index -> Text Left, Animation Right
+    id: "genba-no-nihongo",
+    index: 1,
     title: "Genba no Nihongo",
     titleHighlight: "Nihongo",
     description:
-      "Building strong foundations through immersive learning. Master practical Japanese for a global future.",
-    kanji: "学",
+      "Workplace Japanese training focused on real job-site communication, industry vocabulary, and practical situations faced by foreign workers in Japan.",
+    kanji: "現場",
     floatingCards: [
-      { jp: "こんにちは", romaji: "HELLO (KONNICHIWA)", color: "bg-[#1C3022]" },
-      { jp: "はじめまして", romaji: "NICE TO MEET YOU", color: "bg-[#1C3022]" },
       {
-        jp: "日本語を勉強します",
-        romaji: "I STUDY JAPANESE",
+        jp: "おはようございます",
+        romaji: "GOOD MORNING",
+        color: "bg-[#1C3022]",
+      },
+      { jp: "報告します", romaji: "I REPORT", color: "bg-[#1C3022]" },
+      {
+        jp: "問題があります",
+        romaji: "THERE IS A PROBLEM",
         color: "bg-[#A7202B]",
       },
     ],
-    aboutTitle: "What is SSW?",
+    aboutTitle: "What is Genba no Nihongo?",
     aboutDesc:
-      "The Specified Skilled Worker (SSW) is a status of residence created by the Japanese government to welcome foreign nationals with specific skills and expertise to work in various industrial fields.",
+      "Genba no Nihongo is a practical Japanese training program designed for foreign workers to communicate effectively at actual job sites in Japan. It focuses on real workplace conversations, task-based learning, and understanding Japanese work culture.",
     aboutCards: [
       {
-        title: "Visa Opportunity",
-        desc: "Direct path to a 5-year working visa in Japan with potential for renewal and family sponsorship.",
-        icon: Plane,
+        title: "Real Workplace Language",
+        desc: "Learn the exact Japanese used in factories, construction sites, IT environments, and technical training workplaces.",
+        icon: Briefcase,
       },
       {
-        title: "Career Growth",
-        desc: "Access to 14 industrial sectors including nursing care, construction, and food service.",
-        icon: Briefcase,
+        title: "Task-Based Learning",
+        desc: "Training is built around real scenarios like reporting issues, following instructions, and communicating with supervisors.",
+        icon: ClipboardCheck,
       },
     ],
     specifics: [
-      { label: "DURATION", value: "6 Months Intensive", icon: Clock },
-      { label: "MODE", value: "Hybrid Learning", icon: MonitorSmartphone },
+      { label: "DURATION", value: "25 Hours", icon: Clock },
+      {
+        label: "MODE",
+        value: "Practical / Scenario-Based",
+        icon: MonitorSmartphone,
+      },
       {
         label: "ELIGIBILITY",
-        value: "JLPT N4 / JFT-Basic",
+        value: "JLPT/NAT N5 or N4",
         icon: GraduationCap,
       },
-      { label: "SUPPORT", value: "100% Placement", icon: Headphones },
+      { label: "FOCUS", value: "Workplace Communication", icon: Headphones },
     ],
     mastery: [
       {
-        title: "01. Grammar & Structure",
+        title: "01. Workplace Conversations",
         content:
-          "Master essential Japanese sentence patterns, verb conjugations, and particles required for the N4 level and everyday workplace communication.",
+          "Understand and practice real conversations used between workers and supervisors, including instructions, reporting, and safety communication.",
       },
       {
         title: "02. Industry Vocabulary",
         content:
-          "Learn specialized vocabulary tailored to your chosen SSW field, ensuring you can understand instructions and communicate effectively on the job.",
+          "Learn essential terminology used across sectors like manufacturing, construction, and technical training environments.",
       },
       {
-        title: "03. Listening & Speaking",
+        title: "03. Situational Communication",
         content:
-          "Intensive conversational practice focusing on real-world scenarios, polite Japanese (Keigo), and natural pronunciation.",
+          "Handle real scenarios such as asking questions, reporting problems, understanding signs, and following workplace procedures.",
       },
       {
-        title: "04. SSW Exam Prep",
+        title: "04. Work Culture & Behavior",
         content:
-          "Comprehensive preparation for both the Japanese language evaluation and the industry-specific skills tests required for the SSW visa.",
+          "Develop awareness of Japanese workplace etiquette, hierarchy, discipline, and expected professional behavior.",
       },
     ],
     masteryImage:
-      "https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&q=80&w=1000",
+      "https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&q=80&w=1000",
     activities: {
-      origami:
-        "https://images.unsplash.com/photo-1528459461582-70b555819777?auto=format&fit=crop&q=80&w=800",
+      workplace:
+        "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=800",
     },
   },
   {
-    id: "kaiwa-mastery",
-    index: 2, // Even index -> Text Right, Animation Left
-    title: "Business Kaiwa",
-    titleHighlight: "Kaiwa",
+    id: "kaiwa-course",
+    index: 2,
+    title: "Kaiwa",
+    titleHighlight: "Conversation",
     description:
-      "Elevate your spoken Japanese. Perfect your Keigo and business etiquette for seamless professional interactions in Japan.",
-    kanji: "話",
+      "Japanese conversation course focused on speaking, listening, and real-life communication. Designed to build fluency, confidence, and natural expression in everyday situations.",
+    kanji: "会話",
     floatingCards: [
-      { jp: "お疲れ様です", romaji: "GOOD WORK TODAY", color: "bg-[#1C3022]" },
+      { jp: "元気ですか？", romaji: "HOW ARE YOU?", color: "bg-[#1C3022]" },
       {
-        jp: "承知いたしました",
-        romaji: "UNDERSTOOD (POLITE)",
+        jp: "もう一度お願いします",
+        romaji: "PLEASE SAY IT AGAIN",
         color: "bg-[#1C3022]",
       },
       {
-        jp: "よろしくお願いいたします",
-        romaji: "PLEASE TAKE CARE OF IT",
+        jp: "わかりました",
+        romaji: "I UNDERSTAND",
         color: "bg-[#A7202B]",
       },
     ],
-    aboutTitle: "Why Business Kaiwa?",
+    aboutTitle: "What is Kaiwa?",
     aboutDesc:
-      "Navigating the Japanese corporate environment requires more than just basic vocabulary. It requires a deep understanding of hierarchy, politeness levels (Keigo), and reading the room (Kuuki wo yomu).",
+      "Kaiwa (会話) means 'conversation' in Japanese and focuses on the ability to speak and understand the language in real-life situations. Unlike grammar-based study, Kaiwa emphasizes practical communication, fluency, and confidence.",
     aboutCards: [
       {
-        title: "Corporate Readiness",
-        desc: "Step into any Japanese office with confidence, knowing exactly how to address superiors and clients.",
-        icon: Briefcase,
+        title: "Real-Life Communication",
+        desc: "Learn to speak Japanese naturally in everyday situations like introductions, shopping, travel, and social interactions.",
+        icon: MessageCircle,
       },
       {
-        title: "Cultural Nuance",
-        desc: "Go beyond words. Learn the unspoken rules of Japanese business culture and etiquette.",
-        icon: CheckCircle,
+        title: "Confidence Building",
+        desc: "Regular speaking practice helps overcome hesitation and improves pronunciation, listening, and response speed.",
+        icon: Mic,
       },
     ],
     specifics: [
-      { label: "DURATION", value: "3 Months Part-time", icon: Clock },
-      { label: "MODE", value: "Online Live Classes", icon: MonitorSmartphone },
+      { label: "DURATION", value: "40–50 Hours (Level Based)", icon: Clock },
       {
-        label: "ELIGIBILITY",
-        value: "JLPT N3 Equivalent",
+        label: "MODE",
+        value: "Interactive / Speaking-Focused",
+        icon: MonitorSmartphone,
+      },
+      {
+        label: "LEVELS",
+        value: "Basic / Intermediate / Advanced",
         icon: GraduationCap,
       },
-      { label: "SUPPORT", value: "Interview Prep", icon: Headphones },
+      { label: "FOCUS", value: "Fluency & Communication", icon: Headphones },
     ],
     mastery: [
       {
-        title: "01. Sonkeigo & Kenjougo",
+        title: "01. Everyday Conversations",
         content:
-          "Master respectful and humble language, crucial for client interactions and speaking with superiors.",
+          "Practice common real-life situations such as greetings, introductions, asking questions, shopping, and traveling.",
       },
       {
-        title: "02. Telephone Etiquette",
+        title: "02. Listening & Response",
         content:
-          "Learn the specific phrases and flow for answering calls, taking messages, and making inquiries in a Japanese office.",
+          "Improve the ability to understand spoken Japanese and respond naturally in conversations with correct timing and tone.",
       },
       {
-        title: "03. Email & Writing",
+        title: "03. Pronunciation & Fluency",
         content:
-          "Structure formal business emails, write reports, and understand common corporate abbreviations.",
+          "Develop clear pronunciation, natural rhythm, and sentence flow through repeated speaking and guided correction.",
       },
       {
-        title: "04. Meeting Facilitation",
+        title: "04. Role-Play & Interaction",
         content:
-          "How to interject, present ideas, and express disagreement politely in a Japanese meeting setting.",
+          "Engage in role-plays and group activities that simulate real-world scenarios to build confidence and spontaneity.",
       },
     ],
     masteryImage:
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=1000",
+      "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=1000",
     activities: {
-      origami:
-        "https://images.unsplash.com/photo-1542204165-65bf26472b9b?auto=format&fit=crop&q=80&w=800",
+      conversation:
+        "https://images.unsplash.com/photo-1515169067868-5387ec356754?auto=format&fit=crop&q=80&w=800",
     },
   },
-   {
+  {
     id: "ssw",
-    index: 3, // Odd index -> Text Left, Animation Right
+    index: 3,
     title: "SSW",
-    titleHighlight: "Nihongo",
+    titleHighlight: "Specified Skilled Worker",
     description:
-      "Building strong foundations through immersive learning. Master practical Japanese for a global future.",
-    kanji: "学",
+      "Comprehensive training program designed to prepare candidates for the Specified Skilled Worker (SSW) visa, focusing on Japanese language proficiency, practical communication, and industry-specific skills.",
+    kanji: "特定",
     floatingCards: [
-      { jp: "こんにちは", romaji: "HELLO (KONNICHIWA)", color: "bg-[#1C3022]" },
-      { jp: "はじめまして", romaji: "NICE TO MEET YOU", color: "bg-[#1C3022]" },
+      { jp: "働きます", romaji: "I WORK", color: "bg-[#1C3022]" },
+      { jp: "大丈夫です", romaji: "IT IS OK", color: "bg-[#1C3022]" },
       {
-        jp: "日本語を勉強します",
-        romaji: "I STUDY JAPANESE",
+        jp: "指示を守ります",
+        romaji: "I FOLLOW INSTRUCTIONS",
         color: "bg-[#A7202B]",
       },
     ],
     aboutTitle: "What is SSW?",
     aboutDesc:
-      "The Specified Skilled Worker (SSW) is a status of residence created by the Japanese government to welcome foreign nationals with specific skills and expertise to work in various industrial fields.",
+      "Specified Skilled Worker (SSW) is a Japanese work visa program introduced to address labor shortages by allowing foreign nationals with practical skills and basic Japanese ability to work in specific industries.",
     aboutCards: [
       {
-        title: "Visa Opportunity",
-        desc: "Direct path to a 5-year working visa in Japan with potential for renewal and family sponsorship.",
+        title: "Work Visa Opportunity",
+        desc: "SSW Type 1 allows candidates to work in Japan for up to 5 years with equal pay and legal employment benefits.",
         icon: Plane,
       },
       {
-        title: "Career Growth",
-        desc: "Access to 14 industrial sectors including nursing care, construction, and food service.",
-        icon: Briefcase,
+        title: "High-Demand Sectors",
+        desc: "Access to multiple industries like manufacturing, construction, food service, and caregiving where Japan faces labor shortages.",
+        icon: Factory,
       },
     ],
     specifics: [
-      { label: "DURATION", value: "6 Months Intensive", icon: Clock },
-      { label: "MODE", value: "Hybrid Learning", icon: MonitorSmartphone },
+      {
+        label: "DURATION",
+        value: "Depends on Level (Language + Skill Prep)",
+        icon: Clock,
+      },
+      {
+        label: "MODE",
+        value: "Exam-Oriented Training",
+        icon: MonitorSmartphone,
+      },
       {
         label: "ELIGIBILITY",
-        value: "JLPT N4 / JFT-Basic",
+        value: "JLPT N4 / JFT-Basic (A2 Level)",
         icon: GraduationCap,
       },
-      { label: "SUPPORT", value: "100% Placement", icon: Headphones },
+      { label: "GOAL", value: "SSW Visa + Job Placement", icon: Headphones },
     ],
     mastery: [
       {
-        title: "01. Grammar & Structure",
+        title: "01. Japanese Language Preparation",
         content:
-          "Master essential Japanese sentence patterns, verb conjugations, and particles required for the N4 level and everyday workplace communication.",
+          "Train to achieve JLPT N4 or JFT-Basic level, focusing on practical Japanese used in daily life and workplaces.",
       },
       {
-        title: "02. Industry Vocabulary",
+        title: "02. Skills Exam Preparation",
         content:
-          "Learn specialized vocabulary tailored to your chosen SSW field, ensuring you can understand instructions and communicate effectively on the job.",
+          "Prepare for industry-specific skill tests required for sectors such as manufacturing, food service, construction, and caregiving.",
       },
       {
-        title: "03. Listening & Speaking",
+        title: "03. Everyday Life in Japan",
         content:
-          "Intensive conversational practice focusing on real-world scenarios, polite Japanese (Keigo), and natural pronunciation.",
+          "Learn communication required for daily living in Japan including housing, transport, workplace interaction, and social behavior.",
       },
       {
-        title: "04. SSW Exam Prep",
+        title: "04. Work Readiness & Integration",
         content:
-          "Comprehensive preparation for both the Japanese language evaluation and the industry-specific skills tests required for the SSW visa.",
+          "Understand Japanese work culture, discipline, and expectations to adapt quickly to real job environments.",
       },
     ],
     masteryImage:
-      "https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&q=80&w=1000",
+      "https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&q=80&w=1000",
     activities: {
-      origami:
-        "https://images.unsplash.com/photo-1528459461582-70b555819777?auto=format&fit=crop&q=80&w=800",
+      training:
+        "https://images.unsplash.com/photo-1581091012184-5c2c0c5d5f64?auto=format&fit=crop&q=80&w=800",
     },
   },
   {
     id: "summercamp",
-    index: 4, // Even index -> Text Right, Animation Left
-    title: "Summer Camp",
-    titleHighlight: "Kaiwa",
+    index: 4,
+    title: "Kids Summer Camp",
+    titleHighlight: "Camp",
     description:
-      "Elevate your spoken Japanese. Perfect your Keigo and business etiquette for seamless professional interactions in Japan.",
-    kanji: "話",
+      "A fun, activity-based Japanese learning program designed for children to explore language, culture, and creativity through games, crafts, and interactive sessions.",
+    kanji: "子供",
     floatingCards: [
-      { jp: "お疲れ様です", romaji: "GOOD WORK TODAY", color: "bg-[#1C3022]" },
+      { jp: "こんにちは", romaji: "HELLO", color: "bg-[#1C3022]" },
       {
-        jp: "承知いたしました",
-        romaji: "UNDERSTOOD (POLITE)",
+        jp: "いっしょにやろう",
+        romaji: "LET’S DO IT TOGETHER",
         color: "bg-[#1C3022]",
       },
       {
-        jp: "よろしくお願いいたします",
-        romaji: "PLEASE TAKE CARE OF IT",
+        jp: "たのしい！",
+        romaji: "FUN!",
         color: "bg-[#A7202B]",
       },
     ],
-    aboutTitle: "Why Business Kaiwa?",
+    aboutTitle: "What is Kids Summer Camp?",
     aboutDesc:
-      "Navigating the Japanese corporate environment requires more than just basic vocabulary. It requires a deep understanding of hierarchy, politeness levels (Keigo), and reading the room (Kuuki wo yomu).",
+      "A short-term immersive Japanese learning program designed for children during vacation. It combines basic language learning with fun cultural activities to create a natural and engaging learning environment.",
     aboutCards: [
       {
-        title: "Corporate Readiness",
-        desc: "Step into any Japanese office with confidence, knowing exactly how to address superiors and clients.",
-        icon: Briefcase,
+        title: "Learning Through Play",
+        desc: "Children learn Japanese naturally through games, songs, stories, and hands-on activities instead of traditional classroom methods.",
+        icon: Puzzle,
       },
       {
-        title: "Cultural Nuance",
-        desc: "Go beyond words. Learn the unspoken rules of Japanese business culture and etiquette.",
-        icon: CheckCircle,
+        title: "Cultural Exploration",
+        desc: "Exposure to Japanese culture through origami, anime, crafts, and interactive experiences keeps children engaged and curious.",
+        icon: Palette,
       },
     ],
     specifics: [
-      { label: "DURATION", value: "3 Months Part-time", icon: Clock },
-      { label: "MODE", value: "Online Live Classes", icon: MonitorSmartphone },
+      { label: "DURATION", value: "7 Days (3 Hours/Day)", icon: Clock },
       {
-        label: "ELIGIBILITY",
-        value: "JLPT N3 Equivalent",
+        label: "MODE",
+        value: "Activity-Based Learning",
+        icon: MonitorSmartphone,
+      },
+      {
+        label: "AGE GROUP",
+        value: "Kids (5–13 Years)",
         icon: GraduationCap,
       },
-      { label: "SUPPORT", value: "Interview Prep", icon: Headphones },
+      { label: "FOCUS", value: "Fun + Basic Japanese", icon: Headphones },
     ],
     mastery: [
       {
-        title: "01. Sonkeigo & Kenjougo",
+        title: "01. Basic Japanese Skills",
         content:
-          "Master respectful and humble language, crucial for client interactions and speaking with superiors.",
+          "Learn simple greetings, numbers, days, and basic vocabulary through songs, repetition, and interactive activities.",
       },
       {
-        title: "02. Telephone Etiquette",
+        title: "02. Creative Activities",
         content:
-          "Learn the specific phrases and flow for answering calls, taking messages, and making inquiries in a Japanese office.",
+          "Engage in hands-on learning with origami, drawing, crafts, and simple Japanese-themed creative projects.",
       },
       {
-        title: "03. Email & Writing",
+        title: "03. Interactive Learning",
         content:
-          "Structure formal business emails, write reports, and understand common corporate abbreviations.",
+          "Participate in games, storytelling, anime sessions, and group activities that encourage natural language usage.",
       },
       {
-        title: "04. Meeting Facilitation",
+        title: "04. Confidence & Social Skills",
         content:
-          "How to interject, present ideas, and express disagreement politely in a Japanese meeting setting.",
+          "Build confidence in speaking and interacting with others through fun group participation and guided communication.",
       },
     ],
     masteryImage:
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=1000",
+      "https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&q=80&w=1000",
     activities: {
-      origami:
-        "https://images.unsplash.com/photo-1542204165-65bf26472b9b?auto=format&fit=crop&q=80&w=800",
+      kids: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80&w=800",
+    },
+  },
+  {
+    id: "exam-day-confidence",
+    index: 5,
+    title: "Exam Day",
+    titleHighlight: "Confidence",
+    description:
+      "Intensive revision and test-readiness program designed to improve performance, accuracy, and confidence before the JLPT examination through mock tests and exam-focused strategies.",
+    kanji: "試験",
+    floatingCards: [
+      { jp: "大丈夫", romaji: "IT’S OK", color: "bg-[#1C3022]" },
+      { jp: "落ち着いて", romaji: "STAY CALM", color: "bg-[#1C3022]" },
+      {
+        jp: "時間に注意",
+        romaji: "WATCH THE TIME",
+        color: "bg-[#A7202B]",
+      },
+    ],
+    aboutTitle: "What is Exam Day Confidence?",
+    aboutDesc:
+      "A focused preparation program conducted before the JLPT exam to strengthen accuracy, time management, and mental readiness through revision and full-length mock tests based on actual exam patterns.",
+    aboutCards: [
+      {
+        title: "Real Exam Simulation",
+        desc: "Practice with full-length mock tests under timed conditions to experience actual JLPT exam pressure and format.",
+        icon: ClipboardCheck,
+      },
+      {
+        title: "Performance Optimization",
+        desc: "Identify weak areas, improve speed, and apply exam strategies to maximize scores without learning new content.",
+        icon: TrendingUp,
+      },
+    ],
+    specifics: [
+      {
+        label: "DURATION",
+        value: "Short-Term (Pre-Exam Intensive)",
+        icon: Clock,
+      },
+      { label: "MODE", value: "Mock Test + Revision", icon: MonitorSmartphone },
+      {
+        label: "ELIGIBILITY",
+        value: "JLPT N5–N2 Students",
+        icon: GraduationCap,
+      },
+      { label: "FOCUS", value: "Accuracy + Time Management", icon: Headphones },
+    ],
+    mastery: [
+      {
+        title: "01. Full-Length Mock Tests",
+        content:
+          "Attempt multiple mock exams designed to replicate actual JLPT format, helping build stamina and familiarity with question patterns.",
+      },
+      {
+        title: "02. Time Management Strategy",
+        content:
+          "Learn how to allocate time across sections and avoid getting stuck on difficult questions during the exam.",
+      },
+      {
+        title: "03. Error Analysis & Revision",
+        content:
+          "Analyze mistakes from mock tests to identify weak areas and reinforce key grammar, vocabulary, and reading skills.",
+      },
+      {
+        title: "04. Exam Strategy & Mindset",
+        content:
+          "Develop practical strategies like answering patterns, guessing techniques, and maintaining focus under pressure.",
+      },
+    ],
+    masteryImage:
+      "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=1000",
+    activities: {
+      exam: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=800",
+    },
+  },
+  {
+    id: "corporate-training",
+    index: 6,
+    title: "Corporate",
+    titleHighlight: "Training",
+    description:
+      "Customized Japanese language and communication training designed for companies to improve workplace communication, productivity, and cross-cultural collaboration.",
+    kanji: "企業",
+    floatingCards: [
+      {
+        jp: "よろしくお願いいたします",
+        romaji: "FORMAL GREETING",
+        color: "bg-[#1C3022]",
+      },
+      {
+        jp: "会議を始めます",
+        romaji: "START THE MEETING",
+        color: "bg-[#1C3022]",
+      },
+      {
+        jp: "報告・連絡・相談",
+        romaji: "REPORT • INFORM • CONSULT",
+        color: "bg-[#A7202B]",
+      },
+    ],
+    aboutTitle: "What is Corporate Training?",
+    aboutDesc:
+      "Corporate training is a customized language program designed for organizations to improve employee communication, business etiquette, and workplace efficiency when working with Japanese clients, teams, or operations.",
+    aboutCards: [
+      {
+        title: "Business Communication",
+        desc: "Focus on meetings, emails, presentations, and professional Japanese including polite and formal expressions used in corporate environments.",
+        icon: Briefcase,
+      },
+      {
+        title: "Cross-Cultural Understanding",
+        desc: "Train employees to understand Japanese work culture, hierarchy, and communication style to avoid misunderstandings and improve collaboration.",
+        icon: Globe,
+      },
+    ],
+    specifics: [
+      {
+        label: "DURATION",
+        value: "Custom (Based on Company Needs)",
+        icon: Clock,
+      },
+      {
+        label: "MODE",
+        value: "Online / Onsite / Hybrid",
+        icon: MonitorSmartphone,
+      },
+      {
+        label: "ELIGIBILITY",
+        value: "Working Professionals / Teams",
+        icon: GraduationCap,
+      },
+      { label: "FOCUS", value: "Business Communication", icon: Headphones },
+    ],
+    mastery: [
+      {
+        title: "01. Business Japanese",
+        content:
+          "Learn formal Japanese (Keigo), email writing, meeting communication, and professional expressions used in corporate settings.",
+      },
+      {
+        title: "02. Workplace Scenarios",
+        content:
+          "Practice real situations like client interactions, presentations, negotiations, and internal communication.",
+      },
+      {
+        title: "03. Industry-Specific Training",
+        content:
+          "Customized vocabulary and communication training tailored to specific industries such as IT, manufacturing, or services.",
+      },
+      {
+        title: "04. Cross-Cultural Communication",
+        content:
+          "Understand Japanese business etiquette, hierarchy, and communication styles to work effectively in multicultural teams.",
+      },
+    ],
+    masteryImage:
+      "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=1000",
+    activities: {
+      corporate:
+        "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800",
     },
   },
 ];
@@ -333,7 +525,12 @@ export default function Course() {
       <AboutSection course={courseData} />
       <CourseSpecifics course={courseData} />
       <MasterySection course={courseData} />
-      <ActivitiesSection course={courseData} />
+
+      {/* Show ActivitiesSection ONLY for the Summer Camp course */}
+      {courseData.id === "summercamp" && (
+        <ActivitiesSection course={courseData} />
+      )}
+
       <CTASection />
       <SuccessStories />
       <WhyChooseSection />

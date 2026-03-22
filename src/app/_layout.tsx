@@ -8,10 +8,12 @@ import Footer from "../page/Footer/Footer";
 
 // --- DYNAMIC COURSES LIST ---
 const coursesList = [
-  { id: "genban-nihongo", title: "Genban Nihongo" },
-  { id: "kaiwa-mastery", title: "Business Kaiwa" },
+  { id: "genba-no-nihongo", title: "Genba no Nihongo" },
+  { id: "kaiwa-course", title: "Kaiwa" },
   { id: "ssw", title: "SSW" },
-  { id: "summercamp", title: "Summer Camp" },
+  { id: "summercamp", title: "Kids Summer Camp" },
+  { id: "exam-day-confidence", title: "Exam Day" },
+  { id: "corporate-training", title: "Corporate" },
   { id: "jlptandnat", title: "JLPT and NAT" },
 ];
 

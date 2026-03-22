@@ -1,16 +1,18 @@
 import React from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 // --- YOUR LOCAL IMPORTS (Uncomment these in your local environment) ---
 import coimbatoreImg from "../../assets/faculty/Ravi.png";
 import bangaloreImg from "../../assets/faculty/uma.png";
 
 // --- PLACEHOLDER IMAGES (For preview environment) ---
+
 const videoThumb1 =
   "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=600&auto=format&fit=crop";
 const videoThumb2 =
   "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=600&auto=format&fit=crop";
 
+// --- JSON DATA (WITH LOREM IPSUM) ---
 export const directorsData = {
   bangalore: {
     pageTitle: "DIRECTOR'S MESSAGE",
@@ -78,12 +80,14 @@ export const directorsData = {
   },
 };
 
+// --- ICONS ---
 const PlayIcon = () => (
   <svg
     width="54"
     height="54"
     viewBox="0 0 24 24"
     fill="none"
+    xmlns="http://www.w3.org/2000/svg"
     className="transition-transform duration-300 transform group-hover:scale-110 drop-shadow-md"
   >
     <circle cx="12" cy="12" r="11" fill="rgba(255, 255, 255, 0.9)" />
@@ -91,11 +95,13 @@ const PlayIcon = () => (
   </svg>
 );
 
+// --- REUSABLE COMPONENT ---
 const DirectorMessagePage = ({ data = directorsData.bangalore }) => {
   return (
     <div className="w-full bg-[#FAFAFA] min-h-screen font-sans text-gray-800 pb-24 selection:bg-[#2F4B36] selection:text-white">
-      {/* 1. TOP BANNER - Key added to refresh text animation */}
+      {/* 1. TOP BANNER (Calm, elegant green) */}
       <div className="relative w-full h-[250px] md:h-[300px] bg-[#223626] overflow-hidden flex items-center justify-center">
+        {/* Soft abstract noise/pattern overlay */}
         <div
           className="absolute inset-0 opacity-[0.03]"
           style={{
@@ -104,108 +110,89 @@ const DirectorMessagePage = ({ data = directorsData.bangalore }) => {
             backgroundSize: "24px 24px",
           }}
         ></div>
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={data.name + "-banner"}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.6 }}
-            className="relative z-10 text-center px-6"
-          >
-            <div className="w-12 h-[2px] bg-[#d4af37] mx-auto mb-4 opacity-80"></div>
-            <h1 className="text-3xl md:text-5xl font-serif text-white tracking-wide uppercase">
-              {data.pageTitle}
-            </h1>
-          </motion.div>
-        </AnimatePresence>
+
+        {/* Center Title */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="relative z-10 text-center px-6"
+        >
+          <div className="w-12 h-[2px] bg-[#d4af37] mx-auto mb-4 opacity-80"></div>
+          <h1 className="text-3xl md:text-5xl font-serif text-white tracking-wide">
+            {data.pageTitle}
+          </h1>
+        </motion.div>
       </div>
 
       {/* MAIN CONTENT WRAPPER */}
       <div className="max-w-7xl mx-auto px-6 md:px-12 -mt-16 md:-mt-20 relative z-20">
-        {/* 2. PROFILE & INTRO SECTION */}
-        {/* The 'key' here ensures the entire card re-animates when switching directors */}
-        <motion.div
-          key={data.name + "-profile"}
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-          className="bg-white rounded-[20px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-8 md:p-14 flex flex-col lg:flex-row gap-12 lg:gap-16"
-        >
+        {/* 2. PROFILE & INTRO SECTION (Grid Layout) */}
+        <div className="bg-white rounded-[20px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-8 md:p-14 flex flex-col lg:flex-row gap-12 lg:gap-16">
           {/* Profile Image Column */}
-          <div className="w-full lg:w-[35%] shrink-0">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="w-full lg:w-[35%] shrink-0"
+          >
+            {/* Image with decorative offset background */}
             <div className="relative w-full aspect-[3/4] max-w-[400px] mx-auto lg:mx-0">
               <div className="absolute inset-0 bg-[#E8ECE9] rounded-[15px] transform translate-x-4 translate-y-4"></div>
-              <motion.img
-                key={data.image}
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8 }}
+              <img
                 src={data.image}
                 alt={data.name}
                 className="relative w-full h-full object-cover rounded-[15px] shadow-lg z-10 grayscale-[15%] hover:grayscale-0 transition-all duration-500"
               />
             </div>
-          </div>
+          </motion.div>
 
           {/* Intro Text Column */}
-          <div className="w-full lg:w-[65%] flex flex-col justify-center">
-            <motion.h2
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.2 }}
-              className="text-3xl md:text-[40px] font-bold text-[#1a2e20] mb-2 font-serif leading-tight"
-            >
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+            className="w-full lg:w-[65%] flex flex-col justify-center"
+          >
+            <h2 className="text-3xl md:text-[40px] font-bold text-[#1a2e20] mb-2 font-serif leading-tight">
               {data.name}
-            </motion.h2>
-            <motion.h3
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.3 }}
-              className="text-lg md:text-xl text-[#6b7280] mb-8 font-light tracking-wide flex items-center gap-3"
-            >
+            </h2>
+            <h3 className="text-lg md:text-xl text-[#6b7280] mb-8 font-light tracking-wide flex items-center gap-3">
               <span className="w-8 h-[1px] bg-[#d4af37]"></span>
               {data.role}
-            </motion.h3>
+            </h3>
 
             <div className="space-y-6 text-[#4b5563] leading-relaxed text-[16px] md:text-[17px]">
               {data.introParagraphs.map((para, idx) => (
-                <motion.p
-                  key={idx}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.4 + idx * 0.1 }}
-                  className="font-light"
-                >
+                <p key={idx} className="font-light">
                   {para}
-                </motion.p>
+                </p>
               ))}
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
 
         {/* 3. MAIN PARAGRAPHS */}
-        <div className="mt-16 max-w-4xl mx-auto space-y-8 text-[#4b5563] leading-relaxed text-[16px] md:text-[17px] px-4 md:px-0">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6 }}
+          className="mt-16 max-w-4xl mx-auto space-y-8 text-[#4b5563] leading-relaxed text-[16px] md:text-[17px] px-4 md:px-0"
+        >
           {data.mainParagraphs.map((para, idx) => (
-            <motion.p
-              key={data.name + "-para-" + idx} // Key includes director name to re-trigger
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: idx * 0.1 }}
-              className="font-light"
-            >
+            <p key={idx} className="font-light">
               {para}
-            </motion.p>
+            </p>
           ))}
-        </div>
+        </motion.div>
 
         {/* 4. VIDEOS SECTION */}
         <motion.div
-          key={data.name + "-videos"}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6 }}
           className="mt-24 pt-16 border-t border-gray-200"
         >
           <div className="text-center mb-12">
@@ -217,14 +204,8 @@ const DirectorMessagePage = ({ data = directorsData.bangalore }) => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
             {data.videos.map((video, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.2 }}
-                className="flex flex-col group cursor-pointer"
-              >
+              <div key={idx} className="flex flex-col group cursor-pointer">
+                {/* Fixed Border Radius applied here: rounded-[15px] */}
                 <div className="relative w-full aspect-video rounded-[15px] overflow-hidden bg-gray-100 shadow-md mb-6">
                   <img
                     src={video.thumbnail}
@@ -238,20 +219,20 @@ const DirectorMessagePage = ({ data = directorsData.bangalore }) => {
                 <h4 className="text-[17px] text-[#374151] font-medium leading-snug px-2">
                   {video.caption}
                 </h4>
-              </motion.div>
+              </div>
             ))}
           </div>
         </motion.div>
 
         {/* 5. CLOSING MESSAGE */}
         <motion.div
-          key={data.name + "-closing"}
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           className="mt-24 mb-10 max-w-3xl mx-auto text-center"
         >
           <div className="bg-white px-8 py-10 rounded-[15px] shadow-[0_4px_20px_rgb(0,0,0,0.03)] border border-gray-100 relative">
+            {/* Decorative Quotes */}
             <span className="absolute text-[#E8ECE9] text-8xl font-serif -top-6 left-6 leading-none select-none">
               "
             </span>

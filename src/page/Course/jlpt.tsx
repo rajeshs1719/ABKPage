@@ -11,76 +11,74 @@ import {
 
 // --- MOCK DATA FOR JLPT LEVELS ---
 const jlptLevels = [
-  {
+{
     id: "n5",
-    level: "N5",
+    level: "N5", 
     tag: "BEGINNER",
     title: "Foundation",
-    desc: "Start your Japanese journey. Grasp basic sentence structures, essential vocabulary, and everyday expressions to navigate simple, daily situations in Japan.",
-    duration: "3 Months",
-    mode: "Hybrid",
+    desc: "Start your Japanese journey with this integrated course for the JLPT & NAT N5 exam. It is structured to prepare students for certification by the Japan Foundation, which is a worldwide standard.",
+    duration: "120 HOURS", 
+    mode: "Offline & Online", 
     curriculum: [
-      "Mastery of Hiragana and Katakana",
-      "Basic greetings and daily expressions",
-      "Simple sentence construction and particles",
-      "Vocabulary for daily life (shopping, ordering food)",
+      "Mastery of Hiragana, Katakana, and 110 Kanji",
+      "25 lessons covering essential Grammar and Vocabulary",
+      "Conversation practice through native Japanese audio and video",
+      "Listening comprehension, reading, and 3 simulation mock tests",
     ],
-    // Unsplash placeholder for studying/reading
-    img: "https://images.unsplash.com/photo-1491147334573-44cbb4602074?auto=format&fit=crop&q=80&w=800",
+    // Updated image: Desk with notebooks and study materials
+    img: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&q=80&w=800",
   },
   {
     id: "n4",
-    level: "N4",
+    level: "N4", 
     tag: "ELEMENTARY",
     title: "Expansion",
-    desc: "Build on your basics. Learn to comprehend more complex daily conversations, read basic materials, and express your thoughts more clearly.",
-    duration: "4 Months",
-    mode: "Hybrid",
+    desc: "Build on your basics with intensive coaching and exhaustive revision for the N4 JLPT / NAT 4Q exams. Learn to comprehend more complex daily conversations and express your thoughts more clearly.",
+    duration: "120 HOURS", 
+    mode: "Offline & Online", 
     curriculum: [
-      "Advanced verb conjugations (Te-form, Ta-form)",
-      "Expressing giving and receiving",
-      "Reading simple essays and notices",
-      "Conversations for travel and basic work scenarios",
+      "200 new Kanji for N4, in addition to the 110 from the N5 level",
+      "Expanded Grammar, Listening, and Reading comprehension",
+      "Conversation practice through native Japanese enacted videos",
+      "Pre-exam revision exercises and 3 sets of simulation mock tests",
     ],
-    // Unsplash placeholder for a potted plant (growth/expansion)
-    img: "https://images.unsplash.com/photo-1491147334573-44cbb4602074?auto=format&fit=crop&q=80&w=800",
+    // Updated image: A bonsai tree representing growth and care
+    img: "https://images.unsplash.com/photo-1513407030348-c983a97b98d8?auto=format&fit=crop&q=80&w=800",
   },
   {
     id: "n3",
-    level: "N3",
+    level: "N3", 
     tag: "INTERMEDIATE",
     title: "Bridge",
-    desc: "Transition from beginner to advanced. Understand natural-speed conversations and read moderately complex articles with confidence.",
-    duration: "6 Months",
-    mode: "Hybrid & Online",
+    desc: "Transition from beginner to advanced. This integrated course covers intensive coaching for the JLPT & NAT 3Q exams with exhaustive revision to help you understand natural-speed conversations.",
+    duration: "140 HOURS", 
+    mode: "Offline & Online", 
     curriculum: [
-      "Nuanced expressions and complex sentence structures",
-      "Reading newspaper headlines and articles",
-      "Understanding natural, conversational Japanese",
-      "Keigo (polite language) fundamentals",
+      "300 new Kanji for N3, building upon N5 and N4 knowledge",
+      "Advanced level grammar alongside listening and reading comprehension",
+      "Advanced conversation practice through native Japanese enacted videos",
+      "Comprehensive revision exercises and 3 sets of simulation mock tests",
     ],
-    // Unsplash placeholder for a bridge in nature
-    img: "https://images.unsplash.com/photo-1491147334573-44cbb4602074?auto=format&fit=crop&q=80&w=800",
-
+    // Unsplash: A traditional Japanese bridge representing the transition to advanced
+    img: "https://images.unsplash.com/photo-1513407030348-c983a97b98d8?auto=format&fit=crop&q=80&w=800",
   },
   {
     id: "n2",
-    level: "N2",
+    level: "N2", 
     tag: "UPPER INTERMEDIATE",
     title: "Summit Climb",
-    desc: "Achieve business-level fluency. Master complex grammar, read extensive materials, and communicate fluently in professional settings.",
-    duration: "6 Months",
-    mode: "Online Live",
+    desc: "Achieve fluency. This integrated course provides intensive coaching for the N2 JLPT / NAT 2Q exams, covering advanced grammar and extensive materials to communicate fluently.",
+    duration: "190 HOURS - 8 months", 
+    mode: "Offline & Online", 
     curriculum: [
-      "Advanced business Japanese and Keigo",
-      "Comprehending complex news and literature",
-      "Writing professional emails and reports",
-      "Debating and expressing detailed opinions",
+      "500 new Kanji for N2, in addition to N5, N4, and N3 levels ",
+      "Mastery of advanced level grammar for N2 and N3 ",
+      "High-level listening, reading comprehension, and conversational videos",
+      "Pre-exam revision exercises and 3 simulation mock test sets",
     ],
-    // Unsplash placeholder for a mountain summit
-    img: "https://images.unsplash.com/photo-1491147334573-44cbb4602074?auto=format&fit=crop&q=80&w=800",
+    // Unsplash: Mount Fuji representing the summit of the learning journey
+    img: "https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?auto=format&fit=crop&q=80&w=800",
   },
-
 ];
 
 export default function JLPTPage() {
