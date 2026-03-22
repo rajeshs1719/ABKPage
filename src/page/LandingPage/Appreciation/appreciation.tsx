@@ -2,12 +2,13 @@ import React, { useState } from "react";
 
 // ==========================================
 // INSTRUCTIONS FOR LOCAL USE:
-// 1. Uncomment the import below.
-// 2. Remove the <style> block inside the component.
+// 1. Uncomment your local AppBG import and remove the placeholder.
+// 2. Remove the <style> block inside the component and import your CSS.
 // ==========================================
 
 import "./appreciation.css";
 import AppBG from "../../../assets/AppreciationBg.png"
+// const AppBG = "https://images.unsplash.com/photo-1557683316-973673baf926?q=80&w=2000&auto=format&fit=crop"; // Placeholder for preview
 
 const testimonials = [
   {
@@ -37,10 +38,14 @@ const testimonials = [
     author: "Emily White",
     company: "Creative Studio",
     profile_pic: "https://randomuser.me/api/portraits/women/44.jpg"
+  },
+  {
+    id: 5,
+    isViewMore: true // Special flag for the final card
   }
 ];
 
-const Appreciation: React.FC = () => {
+const App = () => {
   const [isEnvelopeOpen, setIsEnvelopeOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -52,7 +57,7 @@ const Appreciation: React.FC = () => {
   };
 
   // 2. Click Card to cycle
-  const handleCardClick = (e: React.MouseEvent, index: number) => {
+  const handleCardClick = (e, index) => {
     e.stopPropagation();
 
     // Only active card is clickable
@@ -62,13 +67,13 @@ const Appreciation: React.FC = () => {
       // Move to next card
       setCurrentIndex(currentIndex + 1);
     } else {
-      // End of stack -> For demo purposes we can log or reset
+      // End of stack
       console.log("End of testimonials");
     }
   };
 
   // 3. Determine class based on position relative to 'currentIndex'
-  const getCardClass = (index: number) => {
+  const getCardClass = (index) => {
     if (!isEnvelopeOpen) return "hidden";
 
     if (index === currentIndex) return "active"; // Center (Top of Arc)
@@ -81,64 +86,80 @@ const Appreciation: React.FC = () => {
   };
 
   return (
-    <div
-      className="appreciation-container"
-      style={{
-        backgroundImage: `url(${AppBG})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
-      {/* TEMPORARY CSS FOR PREVIEW - Remove this block locally */}
+    <>
 
-      <div className="App-header-section">
-        <h1>Testimonials</h1>
-        <p>
-          Testimonials of our students and partners describing their experience.
-        </p>
-      </div>
+      <div
+        className="appreciation-container"
+        style={{
+          backgroundImage: `url(${AppBG})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <div className="App-header-section">
+          <h1>Testimonials</h1>
+          <p>
+            Testimonials of our students and partners describing their experience.
+          </p>
+        </div>
 
-      <div className="interaction-area">
-        <div
-          className={`envelope-wrapper ${isEnvelopeOpen ? "active open" : ""}`}
-          onClick={handleEnvelopeClick}
-        >
-          {/* Back of envelope */}
-          <div className="envelope-back"></div>
+        <div className="interaction-area">
+          <div
+            className={`envelope-wrapper ${isEnvelopeOpen ? "active open" : ""}`}
+            onClick={handleEnvelopeClick}
+          >
+            {/* Back of envelope */}
+            <div className="envelope-back"></div>
 
-          {/* Cards Container */}
-          <div className="card-stack">
-            {testimonials.map((t, index) => (
-              <div
-                key={t.id}
-                className={`testimonial-card ${getCardClass(index)}`}
-                onClick={(e) => handleCardClick(e, index)}
-              >
-                 <div className="card-author">
-                  <div className='profile-pic'><img src={t.profile_pic} alt="profile_pic"/></div>
-                  <div>
-                  <h4>{t.author}</h4>
-                  <span>{t.company}</span>
-                  </div>
-
+            {/* Cards Container */}
+            <div className="card-stack">
+              {testimonials.map((t, index) => (
+                <div
+                  key={t.id}
+                  className={`testimonial-card ${getCardClass(index)}`}
+                  onClick={(e) => handleCardClick(e, index)}
+                >
+                  {/* If it's the View More card, render the link layout instead of standard layout */}
+                  {t.isViewMore ? (
+                    <div className="view-more-container">
+                      <h3>Want to hear more from our Students?</h3>
+                      <a 
+                        href="/testimonials" 
+                        className="view-more-btn"
+                        onClick={(e) => e.stopPropagation()} // Prevent card click logic if they click the link directly
+                      >
+                        View More
+                      </a>
+                    </div>
+                  ) : (
+                    <>
+                      <div className="card-author">
+                        <div className='profile-pic'>
+                          <img src={t.profile_pic} alt="profile_pic" />
+                        </div>
+                        <div>
+                          <h4>{t.author}</h4>
+                          <span>{t.company}</span>
+                        </div>
+                      </div>
+                      <div className="card-stars">★★★★★</div>
+                      <div className="card-text">"{t.text}"</div>
+                    </>
+                  )}
                 </div>
-                  <div className="card-stars">★★★★★</div>
-                
-                <div className="card-text">"{t.text}"</div>
-               
-              </div>
-            ))}
+              ))}
+            </div>
+
+            {/* Front Pocket */}
+            <div className="envelope-pocket"></div>
+
+            {/* Flap */}
+            <div className="envelope-flap"></div>
           </div>
-
-          {/* Front Pocket */}
-          <div className="envelope-pocket"></div>
-
-          {/* Flap */}
-          <div className="envelope-flap"></div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
-export default Appreciation;
+export default App;

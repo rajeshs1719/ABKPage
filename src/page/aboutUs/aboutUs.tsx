@@ -18,8 +18,7 @@ const directorsData = [
     role: "Director & Senior Faculty",
     quote:
       "Language is the bridge between civilizations. Our mission is to make that bridge a work of art through disciplined study.",
-    image:
-      uma,
+    image: uma,
     videoThumbnail:
       "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=600&auto=format&fit=crop",
     linkedinUrl: "https://www.linkedin.com/",
@@ -31,8 +30,7 @@ const directorsData = [
     role: "Director & Senior Faculty",
     quote:
       "We don't just teach Japanese; we instill the cultural nuance of Omotenashi and Kaizen in every student's journey.",
-    image:
-      ravi,
+    image: ravi,
     videoThumbnail:
       "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=600&auto=format&fit=crop",
     linkedinUrl: "https://www.linkedin.com/",
@@ -46,8 +44,7 @@ const teachersData = [
     specialty: "JLPT N3 Specialist",
     tags: ["GRAMMAR", "KANJI"],
     experience: "8+ years of expertise",
-    image:
-      shivani,
+    image: shivani,
     linkedinUrl: "https://www.linkedin.com/",
   },
   {
@@ -56,8 +53,7 @@ const teachersData = [
     specialty: "Speaking & Phonics",
     tags: ["SPEAKING", "DIALECT"],
     experience: "5+ years of expertise",
-    image:
-      shivani,
+    image: shivani,
     linkedinUrl: "https://www.linkedin.com/",
   },
   {
@@ -66,8 +62,7 @@ const teachersData = [
     specialty: "Exam Prep Lead",
     tags: ["JLPT N1/N2", "EXAM PREP"],
     experience: "12+ years of expertise",
-    image:
-      shivani,
+    image: shivani,
     linkedinUrl: "https://www.linkedin.com/",
   },
   {
@@ -76,8 +71,7 @@ const teachersData = [
     specialty: "Cultural Liaison",
     tags: ["TEA CEREMONY", "ARTS"],
     experience: "6+ years of expertise",
-    image:
-      shivani,
+    image: shivani,
     linkedinUrl: "https://www.linkedin.com/",
   },
   {
@@ -86,8 +80,7 @@ const teachersData = [
     specialty: "Beginner Fundamentals",
     tags: ["HIRAGANA", "KATAKANA"],
     experience: "4+ years of expertise",
-    image:
-      shivani,
+    image: shivani,
     linkedinUrl: "https://www.linkedin.com/",
   },
   {
@@ -96,8 +89,7 @@ const teachersData = [
     specialty: "Business Japanese",
     tags: ["CORPORATE", "ETIQUETTE"],
     experience: "10+ years of expertise",
-    image:
-      shivani,
+    image: shivani,
     linkedinUrl: "https://www.linkedin.com/",
   },
 ];
@@ -196,85 +188,105 @@ const AboutUs = () => {
       </motion.section>
 
       {/* WHO WE ARE */}
-      <section className="max-w-7xl mx-auto px-6 py-20">
-        <motion.div
-          className="text-center mb-14"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          variants={fadeInUp}
-        >
-          <h2 className="text-[48px] font-semibold mb-4">Who we are?</h2>
-          <p className="text-gray-600 max-w-3xl text-[24px] mx-auto text-lg">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed
-            massa blandit, faucibus quam sed, feugiat massa.
-          </p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+      <div className="min-h-screen bg-white text-gray-900 font-sans">
+        <section className="max-w-7xl mx-auto px-6 py-16 md:py-24">
+          {/* Header Section */}
           <motion.div
-            className="md:col-span-2"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <img
-              src={AboutUsWho}
-              alt="About ABK"
-              className="w-full h-[50vh] object-cover rounded-2xl shadow-lg"
-            />
-          </motion.div>
-
-          <motion.div
-            className="flex flex-col gap-6"
-            variants={staggerContainer}
+            className="text-center mb-12 lg:mb-16"
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-50px" }}
+            variants={fadeInUp}
           >
+            <h2 className="text-3xl md:text-4xl lg:text-[48px] font-bold mb-4 md:mb-6 tracking-tight">
+              Who we are?
+            </h2>
+            <p className="text-gray-600 max-w-3xl mx-auto text-base md:text-lg lg:text-[22px] leading-relaxed px-4">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+              sed massa blandit, faucibus quam sed, feugiat massa.
+            </p>
+          </motion.div>
+
+          {/* Content Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 items-stretch">
+            {/* Image Container */}
             <motion.div
-              variants={fadeInUp}
-              whileHover={{ scale: 1.02 }}
-              className="bg-[#6f8f3c] text-white rounded-2xl p-8 flex-1 shadow-md"
+              className="lg:col-span-2 w-full flex"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              <h3 className="text-2xl font-semibold mb-4">Our Mission</h3>
-              <p className="text-base leading-relaxed">
-                To promote Japanese language and culture through structured,
-                accessible, and high-quality education while empowering learners
-                with real-world skills.
-              </p>
+              <img
+                src={AboutUsWho}
+                alt="About ABK"
+                // Using aspect-video on mobile to prevent massive heights, and h-full on desktop to match card heights
+                // Note: If your image contains text/logos and CANNOT be cropped at all, change 'object-cover' to 'object-contain bg-gray-50'
+                className="w-full h-auto aspect-video lg:aspect-auto lg:h-full object-cover rounded-2xl shadow-lg border border-gray-100"
+              />
             </motion.div>
 
+            {/* Cards Container */}
             <motion.div
-              variants={fadeInUp}
-              whileHover={{ scale: 1.02 }}
-              className="bg-gray-200 text-gray-800 rounded-2xl p-8 flex-1 shadow-md"
+              className="flex flex-col gap-6"
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
             >
-              <h3 className="text-2xl font-semibold mb-4">Our Vision</h3>
-              <p className="text-base leading-relaxed">
-                To become a globally recognized institution fostering cultural
-                exchange, professional growth, and lifelong learning.
-              </p>
+              {/* Mission Card */}
+              <motion.div
+                variants={fadeInUp}
+                whileHover={{ scale: 1.02, translateY: -4 }}
+                transition={{ type: "spring", stiffness: 300 }}
+                className="bg-[#6f8f3c] text-white rounded-2xl p-6 md:p-8 flex-1 flex flex-col justify-center shadow-lg hover:shadow-xl cursor-default"
+              >
+                <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">
+                  Our Mission
+                </h3>
+                <p className="text-sm md:text-base leading-relaxed text-white/90">
+                  To promote Japanese language and culture through structured,
+                  accessible, and high-quality education while empowering
+                  learners with real-world skills.
+                </p>
+              </motion.div>
+
+              {/* Vision Card */}
+              <motion.div
+                variants={fadeInUp}
+                whileHover={{ scale: 1.02, translateY: -4 }}
+                transition={{ type: "spring", stiffness: 300 }}
+                className="bg-gray-100 text-gray-800 rounded-2xl p-6 md:p-8 flex-1 flex flex-col justify-center shadow-md hover:shadow-xl cursor-default border border-gray-200"
+              >
+                <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">
+                  Our Vision
+                </h3>
+                <p className="text-sm md:text-base leading-relaxed text-gray-600">
+                  To become a globally recognized institution fostering cultural
+                  exchange, professional growth, and lifelong learning.
+                </p>
+              </motion.div>
             </motion.div>
-          </motion.div>
-        </div>
-      </section>
+          </div>
+        </section>
+      </div>
 
       {/* WHAT DO WE DO */}
-      <section className="max-w-7xl mx-auto px-6 py-16">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16 overflow-hidden">
         <motion.h2
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          className="text-[48px] font-semibold mb-10 text-left"
+          // Center text on mobile, left-align on desktop. Scaled font sizes.
+          className="text-3xl md:text-4xl lg:text-[48px] font-bold mb-8 lg:mb-12 text-center lg:text-left text-gray-900 tracking-tight"
         >
           What Do We Do?
         </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+        {/* Change to lg:grid-cols-2 to give text more breathing room on medium tablets */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           <motion.div
-            className="space-y-6"
+            className="space-y-4 sm:space-y-6"
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
@@ -288,7 +300,8 @@ const AboutUs = () => {
               <motion.p
                 key={i}
                 variants={fadeInUp}
-                className="text-lg text-gray-700 text-[22px] leading-relaxed"
+                // Fluid typography: Base on mobile, lg on tablets, 22px on desktop
+                className="text-base sm:text-lg lg:text-[22px] text-gray-700 leading-relaxed text-center lg:text-left"
               >
                 {text}
               </motion.p>
@@ -300,11 +313,13 @@ const AboutUs = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
+            className="w-full mt-4 lg:mt-0"
           >
             <img
               src={AboutClass}
               alt="Classroom"
-              className="rounded-xl object-cover w-full h-[30vh] shadow-xl"
+              // Responsive height: 250px on mobile, 350px on tablets, 450px on large desktops
+              className="rounded-2xl object-cover w-full h-[250px] sm:h-[350px] lg:h-[450px] shadow-2xl"
             />
           </motion.div>
         </div>

@@ -118,7 +118,7 @@ export default function WhatsAppCommunityCard() {
           margin: 0 auto;
           overflow: hidden;
           border-radius: 24px;
-          background: #0080ff;
+          background: #fefefe;
           border: 1px solid #e5e7eb;
           box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
           padding: 64px 24px;

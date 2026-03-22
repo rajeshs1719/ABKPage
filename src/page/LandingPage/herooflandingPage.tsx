@@ -1,4 +1,4 @@
-import { useLayoutEffect, useEffect, useRef } from "react";
+import { useLayoutEffect, useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -18,14 +18,49 @@ const PETAL_COUNT = 70; // Adjusted for performance
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Hero() {
-  const heroRef = useRef();
+  const heroRef = useRef(null);
+  const [isAnimComplete, setIsAnimComplete] = useState(false);
 
-  // 1. PETAL GENERATOR LOGIC
+  // 1. SCROLL LOCK LOGIC
+  useEffect(() => {
+    if (!isAnimComplete) {
+      const scrollY = window.scrollY;
+
+      // Lock scroll
+      document.body.style.position = "fixed";
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.left = "0";
+      document.body.style.right = "0";
+      document.body.style.width = "100%";
+    } else {
+      // Unlock scroll
+      const scrollY = document.body.style.top;
+
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.left = "";
+      document.body.style.right = "";
+      document.body.style.width = "";
+
+      // Restore scroll position
+      window.scrollTo(0, parseInt(scrollY || "0") * -1);
+    }
+
+    return () => {
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.left = "";
+      document.body.style.right = "";
+      document.body.style.width = "";
+    };
+  }, [isAnimComplete]);
+
+  // 2. PETAL GENERATOR LOGIC
   useEffect(() => {
     const container = heroRef.current;
     if (!container) return;
 
-    const petals = [];
+    const petals: HTMLDivElement[] = [];
 
     for (let i = 0; i < PETAL_COUNT; i++) {
       const petal = document.createElement("div");
@@ -54,7 +89,21 @@ export default function Hero() {
     };
   }, []);
 
-  // 2. GSAP ENTRANCE & PARALLAX LOGIC
+  useEffect(() => {
+    const preventScroll = (e) => e.preventDefault();
+
+    if (!isAnimComplete) {
+      window.addEventListener("wheel", preventScroll, { passive: false });
+      window.addEventListener("touchmove", preventScroll, { passive: false });
+    }
+
+    return () => {
+      window.removeEventListener("wheel", preventScroll);
+      window.removeEventListener("touchmove", preventScroll);
+    };
+  }, [isAnimComplete]);
+
+  // 3. GSAP ENTRANCE & PARALLAX LOGIC
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       // Setup Initial States
@@ -62,7 +111,12 @@ export default function Hero() {
       gsap.set(".lantern", { y: 150, opacity: 0 });
       gsap.set(".hero-content > *", { y: 60, opacity: 0 });
 
-      const tl = gsap.timeline({ delay: 0.2 });
+      const tl = gsap.timeline({
+        delay: 0.2,
+        onComplete: () => {
+          setIsAnimComplete(true);
+        },
+      });
 
       // Slide up layers individually
       tl.to(".layer", {
@@ -81,7 +135,7 @@ export default function Hero() {
             ease: "back.out(1.4)",
             stagger: 0.2,
           },
-          "-=0.8"
+          "-=0.8",
         )
         .to(
           ".hero-content > *",
@@ -92,11 +146,11 @@ export default function Hero() {
             ease: "power2.out",
             stagger: 0.2,
           },
-          "-=0.5"
+          "-=0.5",
         );
 
       // Scroll Trigger Parallax
-      gsap.utils.toArray(".layer").forEach((layer, i) => {
+      gsap.utils.toArray(".layer").forEach((layer: any, i) => {
         gsap.to(layer, {
           y: (i + 1) * 30,
           ease: "none",
@@ -123,9 +177,9 @@ export default function Hero() {
     return () => ctx.revert();
   }, []);
 
-  // 3. MOUSE MOVE LOGIC
+  // 4. MOUSE MOVE LOGIC
   useEffect(() => {
-    const handleMove = (e) => {
+    const handleMove = (e: MouseEvent) => {
       const x = e.clientX / window.innerWidth - 0.5;
       const y = e.clientY / window.innerHeight - 0.5;
 
@@ -191,26 +245,26 @@ export default function Hero() {
       {/* Lanterns */}
       <img
         src={lantern1}
-        className="lantern absolute z-[10] w-[50px] md:w-[64px] h-auto top-[30%] left-[20%]"
+        className="lantern absolute z-[10] w-[40px] md:w-[64px] h-auto top-[20%] md:top-[30%] left-[10%] md:left-[20%]"
         alt=""
       />
       <img
         src={lantern2}
-        className="lantern absolute z-[10] w-[60px] md:w-[80px] h-auto top-[30%] left-[30%]"
+        className="lantern absolute z-[10] w-[50px] md:w-[80px] h-auto top-[25%] md:top-[30%] left-[80%] md:left-[30%]"
         alt=""
       />
 
       {/* Content */}
-      <div className="hero-content absolute inset-0 flex flex-col items-start text-left px-6 z-20 mx-10">
-        <h1 className="text-[64px] md:text-[64px] leading-tight mb-4 drop-shadow-[0_8px_20px_rgba(0,0,0,0.4)] font-bold mt-20 text-black">
+      <div className="hero-content absolute inset-0 flex flex-col items-start text-left px-6 md:px-16 lg:px-24 z-20">
+        <h1 className="text-[40px] sm:text-[48px] md:text-[64px] leading-tight mb-4 drop-shadow-[0_8px_20px_rgba(0,0,0,0.4)] font-bold mt-24 md:mt-32 text-black max-w-4xl">
           Start your Japanese learning journey here!
         </h1>
-        <p className="text-[24px] md:text-[24px] max-w-[700px] text-left mb-8 drop-shadow-[0_4px_10px_rgba(0,0,0,0.3)]">
+        <p className="text-[18px] sm:text-[20px] md:text-[24px] max-w-[700px] text-left mb-8 drop-shadow-[0_4px_10px_rgba(0,0,0,0.3)]">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed
           massa blandit, faucibus quam sed, feugiat massa.
         </p>
         <div className="flex gap-4">
-          <button className="px-8 py-3 bg-[#3A4D2F] text-white rounded-xl shadow-lg hover:bg-[#2f3b32] transition-all">
+          <button className="px-6 py-3 md:px-8 md:py-3 bg-[#3A4D2F] text-white rounded-xl shadow-lg hover:bg-[#2f3b32] transition-all text-sm md:text-base">
             Get Started
           </button>
         </div>

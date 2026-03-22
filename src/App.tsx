@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./app/_layout";
 
-import Home from "./page/Home";
+import Home from "./page/LandingPage/Home";
 import GalleryPage from "./page/gallery/gallery";
 import Events from "./page/Event/Event";
 import ContactUs from "./page/contactUs/contact";
@@ -34,10 +34,7 @@ export default function App() {
             element={<Navigate to="/course/genban-nihongo" replace />}
           />
 
-          <Route
-            path="/course/jlptandnat"
-            element={<JLPTPage/>}
-          />
+          <Route path="/course/jlptandnat" element={<JLPTPage />} />
 
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/blog/:id" element={<BlogDetails />} />

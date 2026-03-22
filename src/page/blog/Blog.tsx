@@ -1,32 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight, ArrowUpRight } from "lucide-react";
 
-import blogleft from '../../assets/BlogLeft.png'
-
 // --- Mock Navigation (To allow running in single file without Router setup) ---
 const useNavigate = () => {
   return (path) => console.log("Navigating to:", path);
 };
-
-// --- Types (Implied for standard JS, but keeping structure intact) ---
-interface BlogPost {
-  id: number;
-  title: string;
-  excerpt: string;
-  image: string;
-  author: string;
-  date: string;
-  authorImg: string;
-}
-
-interface SuccessStory {
-  id: number;
-  name: string;
-  role: string;
-  company: string;
-  detail: string;
-  image: string;
-}
 
 // --- Mock Data ---
 const BLOG_POSTS = [
@@ -84,6 +62,8 @@ const SUCCESS_STORIES = [
     company: "Rakuten Group",
     detail: "JLPT N2 Graduate",
     image: "https://randomuser.me/api/portraits/men/32.jpg",
+    description:
+      "Moving to Japan was a life-changing experience. The work culture at Rakuten is dynamic, and achieving my JLPT N2 certification was the key to my seamless integration into the engineering team.",
   },
   {
     id: 2,
@@ -92,6 +72,8 @@ const SUCCESS_STORIES = [
     company: "Rakuten Group",
     detail: "JLPT N3 Graduate",
     image: "https://randomuser.me/api/portraits/women/65.jpg",
+    description:
+      "The journey from learning basic hiragana to writing production code in Tokyo has been incredible. The support system and structured language curriculum made all the difference.",
   },
   {
     id: 3,
@@ -100,6 +82,8 @@ const SUCCESS_STORIES = [
     company: "Rakuten Group",
     detail: "JLPT N3 Graduate - June 2022",
     image: "https://randomuser.me/api/portraits/men/85.jpg",
+    description:
+      "Adapting to the Japanese work environment was challenging but rewarding. My N3 proficiency helped me communicate effectively and build strong relationships with my international team.",
   },
   {
     id: 4,
@@ -108,6 +92,8 @@ const SUCCESS_STORIES = [
     company: "Sony Corp",
     detail: "JLPT N1 Graduate",
     image: "https://randomuser.me/api/portraits/women/33.jpg",
+    description:
+      "Managing cross-functional teams requires deep cultural and linguistic understanding. Reaching N1 level empowered me to confidently lead major product initiatives in Tokyo.",
   },
   {
     id: 5,
@@ -116,6 +102,8 @@ const SUCCESS_STORIES = [
     company: "Line Corp",
     detail: "JLPT N2 Graduate",
     image: "https://randomuser.me/api/portraits/men/12.jpg",
+    description:
+      "Japan's tech sector is booming with opportunities. The combination of my technical skills and Japanese language ability opened doors I never thought possible.",
   },
 ];
 
@@ -230,16 +218,9 @@ const FeaturedBlogCarousel = ({ items }) => {
 };
 
 /**
- * Active Enlarged Carousel (Success Stories - Bottom Section)
+ * Grid Layout (Success Stories - Bottom Section)
  */
-const StudentSuccessCarousel = ({ items }) => {
-  const [activeIndex, setActiveIndex] = useState(2); // Start with Sharan K
-  const navigate = useNavigate();
-
-  const handleNext = () => setActiveIndex((p) => (p + 1) % items.length);
-  const handlePrev = () =>
-    setActiveIndex((p) => (p - 1 + items.length) % items.length);
-
+const StudentSuccessGrid = ({ items }) => {
   return (
     <div
       id="success-stories-section"
@@ -257,97 +238,43 @@ const StudentSuccessCarousel = ({ items }) => {
           From India To Japan: Student Success Stories
         </h3>
 
-        {/* 3D Carousel Stage */}
-        <div className="relative h-[450px] flex justify-center items-center w-full max-w-5xl mx-auto">
-          {items.map((item, index) => {
-            // Determine position statuses
-            let status = "";
-            if (index === activeIndex) status = "active";
-            else if (index === (activeIndex - 1 + items.length) % items.length)
-              status = "prev";
-            else if (index === (activeIndex + 1) % items.length)
-              status = "next";
-            else status = "hidden";
+        {/* Grid Container for Cards (3 per row) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
+          {items.map((item) => (
+            <div
+              key={item.id}
+              className="bg-white rounded-2xl overflow-hidden flex flex-col items-start p-8 text-left border-b-[6px] border-[#3f5238] shadow-lg relative group transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
+            >
+              {/* Subtle Background Deco */}
+              <div className="absolute top-0 right-0 w-32 h-32 bg-green-50 rounded-bl-full -z-0 opacity-50 transition-colors group-hover:bg-green-100"></div>
 
-            // Tailwind classes based on status
-            const baseCardClasses =
-              "absolute w-[280px] md:w-[320px] transition-all duration-500 ease-out";
-            let stateClasses = "";
-
-            if (status === "active") {
-              stateClasses =
-                "z-30 translate-x-0 scale-100 md:scale-110 opacity-100 pointer-events-auto shadow-2xl";
-            } else if (status === "prev") {
-              stateClasses =
-                "z-20 -translate-x-1/2 md:-translate-x-[90%] scale-90 opacity-40 md:opacity-70 pointer-events-none";
-            } else if (status === "next") {
-              stateClasses =
-                "z-20 translate-x-1/2 md:translate-x-[90%] scale-90 opacity-40 md:opacity-70 pointer-events-none";
-            } else {
-              stateClasses =
-                "opacity-0 scale-75 pointer-events-none hidden md:block z-10";
-            }
-
-            return (
-              <div
-                key={item.id}
-                className={`${baseCardClasses} ${stateClasses}`}
-              >
-                <div className="bg-white rounded-2xl overflow-hidden flex flex-col items-start p-8 text-left border-b-[6px] border-[#3f5238] shadow-lg h-full relative group">
-                  {/* Subtle Background Deco */}
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-green-50 rounded-bl-full -z-0 opacity-50 transition-colors group-hover:bg-green-100"></div>
-
-                  <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-white shadow-md mb-6 z-10 relative">
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-
-                  <div className="z-10 w-full flex flex-col flex-grow">
-                    <h3 className="text-2xl font-extrabold text-gray-900 mb-1">
-                      {item.name}
-                    </h3>
-                    <div className="text-sm font-semibold text-gray-600">
-                      {item.role}
-                    </div>
-                    <div className="text-sm text-gray-500 mb-4">
-                      {item.company}
-                    </div>
-                    <div className="text-sm text-gray-800 font-medium mb-6 bg-gray-50 py-2 px-3 rounded-md border border-gray-100 inline-block self-start">
-                      {item.detail}
-                    </div>
-
-                    <div className="mt-auto pt-2">
-                      <button
-                        className="w-full bg-[#3f5238] text-white py-3 px-4 rounded-lg font-semibold text-sm hover:bg-[#2c3927] transition-colors shadow-md shadow-green-900/20"
-                        onClick={() => navigate(`/blog/${item.id}`)}
-                      >
-                        Read My Story
-                      </button>
-                    </div>
-                  </div>
-                </div>
+              <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-white shadow-md mb-6 z-10 relative">
+                <img
+                  src={item.image}
+                  alt={item.name}
+                  className="w-full h-full object-cover"
+                />
               </div>
-            );
-          })}
 
-          {/* Navigation Arrows */}
-          <button
-            onClick={handlePrev}
-            className="absolute left-0 md:left-4 lg:-left-12 z-40 bg-white p-3 rounded-full shadow-lg text-gray-600 hover:text-white hover:bg-[#3f5238] transition-all focus:outline-none"
-            aria-label="Previous story"
-          >
-            <ChevronLeft size={24} />
-          </button>
-          <button
-            onClick={handleNext}
-            className="absolute right-0 md:right-4 lg:-right-12 z-40 bg-white p-3 rounded-full shadow-lg text-gray-600 hover:text-white hover:bg-[#3f5238] transition-all focus:outline-none"
-            aria-label="Next story"
-          >
-            <ChevronRight size={24} />
-          </button>
+              <div className="z-10 w-full flex flex-col flex-grow">
+                <h3 className="text-2xl font-extrabold text-gray-900 mb-1">
+                  {item.name}
+                </h3>
+                <div className="text-sm font-semibold text-gray-600">
+                  {item.role}
+                </div>
+                <div className="text-sm text-gray-500 mb-4">{item.company}</div>
+                <div className="text-sm text-gray-800 font-medium mb-4 bg-gray-50 py-2 px-3 rounded-md border border-gray-100 inline-block self-start">
+                  {item.detail}
+                </div>
+
+                {/* Description Text directly in the card */}
+                <p className="text-sm text-gray-600 leading-relaxed border-t border-gray-100 pt-4 mt-auto">
+                  {item.description}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
@@ -435,7 +362,7 @@ export default function App() {
 
               {/* Scrollable list takes up the remaining height perfectly */}
               <div className="flex flex-col gap-4 flex-grow overflow-y-auto custom-scrollbar pr-3">
-                {SUCCESS_STORIES.slice(0, 4).map((story) => (
+                {SUCCESS_STORIES.map((story) => (
                   <div
                     key={story.id}
                     className="flex items-center gap-4 bg-[#fbfaf8] p-4 rounded-2xl border-l-[4px] border-[#3f5238] hover:bg-white hover:shadow-md transition-all cursor-pointer group"
@@ -477,8 +404,8 @@ export default function App() {
         {/* FEATURED BLOGS SECTION */}
         <FeaturedBlogCarousel items={BLOG_POSTS} />
 
-        {/* STUDENT SUCCESS STORIES */}
-        <StudentSuccessCarousel items={SUCCESS_STORIES} />
+        {/* STUDENT SUCCESS STORIES - NOW A GRID */}
+        <StudentSuccessGrid items={SUCCESS_STORIES} />
       </div>
     </div>
   );

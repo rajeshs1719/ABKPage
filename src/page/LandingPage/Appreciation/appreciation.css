@@ -1,18 +1,26 @@
+:root {
+  --bg-pink: #fdf2f8;
+  --white: #ffffff;
+  --text-light: #555555;
+  --envelope-dark: #eebb73;
+  --envelope-light: #fdd888;
+  --black-rgb: 0, 0, 0;
+  --gray-border: #a1a1aa;
+  --text-subtle: #d1d5db;
+}
+
 /* --- Main Container --- */
 .appreciation-container {
   width: 100%;
   height: 100vh;
-  /* Fixed height to viewport */
   display: flex;
   flex-direction: column;
   align-items: center;
   background: linear-gradient(180deg, var(--bg-pink) 0%, var(--white) 60%);
   font-family: 'Inter', sans-serif;
   overflow: hidden;
-  /* STRICTLY REMOVE SCROLL BARS */
   position: relative;
   padding-top: 2rem;
-  /* Reduced top padding */
   box-sizing: border-box;
 }
 
@@ -20,9 +28,7 @@
 .App-header-section {
   text-align: center;
   margin-bottom: 0.5rem;
-  /* Reduced margin */
   z-index: 50;
-  /* Ensure header stays visible/on top if needed, though we aim for no overlap */
   padding: 0 1rem;
   position: relative;
   flex-shrink: 0;
@@ -30,16 +36,13 @@
 
 .App-header-section h1 {
   font-size: 2.2rem;
-  /* Slightly smaller to save vertical space */
   font-weight: 800;
   color: #2F4B36;
-
   margin-bottom: 0.5rem;
 }
 
 .App-header-section p {
   color: var(--text-light);
-  /* Mapped #444 to text-light (#555) */
   max-width: 500px;
   margin: 0 auto;
   font-size: 0.95rem;
@@ -50,16 +53,12 @@
   position: relative;
   width: 100%;
   flex: 1;
-  /* Take remaining height */
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  /* Align envelope to bottom */
   perspective: 1200px;
   padding-bottom: 40px;
-  /* Space from bottom edge */
   overflow: visible;
-  /* Allow card to stick out top */
   z-index: 10;
 }
 
@@ -68,11 +67,8 @@
   position: relative;
   width: 320px;
   height: 200px;
-  /* Slightly shorter envelope */
   cursor: pointer;
   transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
-  /* transform: translateY(100px); */
-  /* Start lower */
   z-index: 10;
 }
 
@@ -86,7 +82,6 @@
   width: 100%;
   height: 100%;
   background-color: var(--envelope-dark);
-  /* #eebb73 */
   border-radius: 0 0 5px 5px;
   z-index: 1;
 }
@@ -98,7 +93,6 @@
   width: 100%;
   height: 100%;
   background-color: var(--envelope-light);
-  /* #fdd888 */
   clip-path: polygon(0 100%, 100% 100%, 50% 45%);
   z-index: 20;
   pointer-events: none;
@@ -111,7 +105,6 @@
   width: 100%;
   height: 100%;
   background-color: var(--envelope-light);
-  /* #fdd888 */
   clip-path: polygon(0 0, 100% 0, 50% 55%);
   transform-origin: top;
   transition: transform 0.6s ease-in-out, z-index 0.6s;
@@ -132,28 +125,22 @@
   height: 100%;
   z-index: 5;
   overflow: visible;
-
 }
 
 .testimonial-card {
   position: absolute;
   left: 25px;
-  /* (320 - 280) / 2 */
   bottom: 10px;
   width: 270px;
   height: 320px;
-  /* Reduced height to avoid header collision */
-  /* background-color: var(--text-dark); */
   background-color: #2F4B36;
-  /* #1a1a1a */
   color: var(--white);
   padding: 1.5rem;
   border-radius: 12px;
   box-shadow: 0 10px 25px rgba(var(--black-rgb), 0.2);
   display: flex;
   flex-direction: column;
-  gap:20;
-  /* justify-content: space-between; */
+  gap: 20px;
   transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
   transform-origin: center bottom;
   box-sizing: border-box;
@@ -167,7 +154,6 @@
 }
 
 .testimonial-card.active {
-  /* Reduced upward translation so it doesn't hit the header */
   transform: translate(0px, -150px) rotate(0deg) scale(1);
   opacity: 1;
   z-index: 30;
@@ -211,7 +197,7 @@
 }
 
 .card-text {
-  margin-top: 20px;
+  margin-top: 10px;
   font-size: 0.9rem;
   line-height: 1.4;
   color: var(--gray-border);
@@ -229,12 +215,61 @@
 .card-author span {
   font-size: 0.75rem;
   color: var(--text-subtle);
-  /* #aaa */
 }
 
-.card-author{
+.card-author {
   display: flex;
-  gap: 20;
+  gap: 15px;
+  align-items: center;
+}
+
+.profile-pic {
+  background-color: #fff;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.profile-pic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- View More Card Specific Styles --- */
+.view-more-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+  gap: 1.5rem;
+}
+
+.view-more-container h3 {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.view-more-btn {
+  background-color: var(--envelope-light);
+  color: #2F4B36;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.view-more-btn:hover {
+  transform: scale(1.05);
+  background-color: var(--white);
 }
 
 /* --- Responsive Design --- */
@@ -248,7 +283,6 @@
     height: 180px;
   }
 
-  /* Smaller card for mobile to ensure fit */
   .testimonial-card {
     width: 240px;
     height: 280px;
@@ -297,7 +331,6 @@
     height: 160px;
   }
 
-  /* Even compact card for small phones */
   .testimonial-card {
     width: 220px;
     height: 260px;
@@ -320,16 +353,4 @@
     z-index: 29;
     opacity: 0.5;
   }
-}
-
-.profile-pic{
-  margin-right: 10px;
-  background-color: #fff;
-  border-radius: 50%;
-  height: 50px;
-  width: 50px;
-}
-
-.profile-pic img {
-  border-radius: 50%;
 }

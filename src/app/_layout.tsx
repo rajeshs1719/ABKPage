@@ -1,4 +1,4 @@
-import React, { useState, ReactNode } from "react";
+import React, { useState, ReactNode, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
 // Note: In your local environment, uncomment these imports
@@ -20,10 +20,25 @@ export default function Layout({ children }: { children?: ReactNode }) {
   const [isCourseDropdownOpen, setIsCourseDropdownOpen] = useState(false);
   const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false);
 
+  // Prevent background scrolling when mobile menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isMenuOpen]);
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-    setIsCourseDropdownOpen(false);
-    setIsAboutDropdownOpen(false);
+    // Reset dropdowns when closing the main menu
+    if (isMenuOpen) {
+      setIsCourseDropdownOpen(false);
+      setIsAboutDropdownOpen(false);
+    }
   };
 
   const closeMenu = () => {
@@ -57,24 +72,24 @@ export default function Layout({ children }: { children?: ReactNode }) {
   return (
     <div className="layout-container">
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
         :root {
           --white: #ffffff;
           --black-rgb: 0, 0, 0;
-          --nav-text: #333333;
+          --nav-text: #2c3e35;
           --nav-green: #2F4B36;
         }
 
         .navbar {
           width: 100%;
-          height: 85px; /* Slightly taller for breathing room */
+          height: 85px;
           background: var(--white);
           display: flex;
           align-items: center;
           justify-content: space-between;
-          padding: 0 4%; /* Gives comfortable breathing room on edges */
-          box-shadow: 0 2px 10px rgba(0,0,0,0.06); /* Softer, modern shadow */
+          padding: 0 4%;
+          box-shadow: 0 2px 10px rgba(0,0,0,0.06);
           font-family: 'Poppins', sans-serif;
           position: sticky;
           top: 0;
@@ -89,8 +104,8 @@ export default function Layout({ children }: { children?: ReactNode }) {
         }
 
         .logo-main {
-          height: 55px; /* Optimized height */
-          max-width: 320px; /* Prevents extremely wide logos from breaking layout */
+          height: 55px;
+          max-width: 320px;
           object-fit: contain;
         }
 
@@ -98,7 +113,7 @@ export default function Layout({ children }: { children?: ReactNode }) {
           list-style: none;
           display: flex;
           align-items: center;
-          gap: 32px; /* Reduced from 48px to fit the wide logo better */
+          gap: 32px;
           margin: 0;
           padding: 0;
         }
@@ -106,13 +121,13 @@ export default function Layout({ children }: { children?: ReactNode }) {
         .nav-link {
           text-decoration: none;
           color: var(--nav-text);
-          font-weight: 500; /* Set to 500 for better readability */
-          font-size: 16px; /* Reduced from 18px for a cleaner look */
+          font-weight: 500;
+          font-size: 16px;
           position: relative;
           transition: color 0.3s ease;
           display: flex;
           align-items: center;
-          gap: 6px; /* Spacing between text and chevron */
+          gap: 6px;
           cursor: pointer;
           height: 100%;
         }
@@ -121,7 +136,7 @@ export default function Layout({ children }: { children?: ReactNode }) {
           color: var(--nav-green);
         }
 
-        /* --- DROPDOWN SPECIFIC STYLES --- */
+        /* --- DESKTOP DROPDOWN STYLES --- */
         .nav-item-dropdown {
           position: relative;
           display: flex;
@@ -138,12 +153,12 @@ export default function Layout({ children }: { children?: ReactNode }) {
           width: 14px;
           height: 14px;
           transition: transform 0.3s ease;
-          margin-top: 2px; /* Optical alignment fix */
+          margin-top: 2px;
         }
 
         .dropdown-menu {
           position: absolute;
-          top: 45px; /* Positioned slightly below the text */
+          top: 60px;
           left: 50%;
           transform: translateX(-50%) translateY(10px);
           background: var(--white);
@@ -166,7 +181,7 @@ export default function Layout({ children }: { children?: ReactNode }) {
           padding: 0.7rem 1.5rem;
           color: var(--nav-text);
           text-decoration: none;
-          font-size: 15px; /* Slightly smaller than main nav */
+          font-size: 15px;
           transition: background 0.2s ease, color 0.2s ease;
           font-weight: 400;
         }
@@ -177,7 +192,6 @@ export default function Layout({ children }: { children?: ReactNode }) {
           font-weight: 500;
         }
 
-        /* Desktop Hover Behavior */
         @media (min-width: 1101px) {
           .nav-item-dropdown:hover .dropdown-menu {
             opacity: 1;
@@ -201,7 +215,7 @@ export default function Layout({ children }: { children?: ReactNode }) {
           background: var(--nav-green);
           color: var(--white);
           border: none;
-          border-radius: 50px; /* Modern pill shape */
+          border-radius: 50px;
           font-size: 15px;
           font-weight: 600;
           letter-spacing: 0.5px;
@@ -229,7 +243,7 @@ export default function Layout({ children }: { children?: ReactNode }) {
         .bar {
           width: 100%;
           height: 2px;
-          background-color: var(--nav-text);
+          background-color: #1a1a1a;
           transition: 0.3s ease;
           border-radius: 2px;
         }
@@ -239,70 +253,105 @@ export default function Layout({ children }: { children?: ReactNode }) {
         }
 
         /* --- MOBILE RESPONSIVENESS --- */
-        /* Increased breakpoint to 1100px to accommodate the wide logo and many links */
         @media screen and (max-width: 1100px) {
           .navbar { padding: 0 5%; height: 75px; }
           .logo-main { height: 45px; }
           .hamburger { display: flex; }
           .nav-buttons { display: none; }
-          .mobile-contact { display: block; width: 100%; margin-top: 15px; }
-          .mobile-btn { width: 100%; text-align: center; }
+          
+          .mobile-contact { 
+            display: block; 
+            width: 100%; 
+            margin-top: 15px; 
+            margin-bottom: 40px; 
+          }
+          .mobile-btn { width: 100%; text-align: center; padding: 14px 0; font-size: 16px; }
 
           .nav-links {
             position: fixed;
             top: 0;
             right: -100%;
             width: 100%;
-            max-width: 400px;
+            max-width: 450px;
             height: 100vh;
             background: var(--white);
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: flex-start;
-            gap: 20px;
+            
+            /* Native scrolling */
+            display: block; 
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            
             box-shadow: -5px 0 15px rgba(0,0,0,0.1);
             transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            padding: 90px 40px 40px 40px;
-            overflow-y: auto;
+            padding: 90px 30px 40px 30px;
           }
 
           .nav-links.open { right: 0; }
+          
+          .nav-links > li {
+            margin-bottom: 0; /* Remove massive gaps */
+            width: 100%;
+            height: auto; /* CRITICAL FIX: Stops links from stretching to 100% height */
+          }
 
-          .nav-link { font-size: 18px; width: 100%; }
+          .nav-link { 
+            font-size: 18px; 
+            font-weight: 500;
+            color: #333;
+            width: 100%; 
+            height: auto; /* CRITICAL FIX */
+            padding: 14px 0; /* Normal touch target padding */
+            justify-content: space-between; 
+          }
 
-          /* Mobile Dropdown Interaction */
-          .nav-item-dropdown { flex-direction: column; align-items: flex-start; width: 100%; }
-          .dropdown-trigger { width: 100%; justify-content: space-between; }
+          /* Mobile Dropdown Interaction (Accordion) */
+          .nav-item-dropdown { display: block; width: 100%; height: auto; }
+          .dropdown-trigger { width: 100%; justify-content: space-between; padding: 14px 0; }
           
           .dropdown-menu {
             position: relative;
-            top: 0;
-            left: 0;
+            top: 0; left: 0;
             transform: none;
             box-shadow: none;
-            border: none;
-            max-height: 0;
             width: 100%;
-            padding: 0 0 0 15px; /* Indent sub-items */
-            margin-top: 5px;
-            border-left: 2px solid #e0e0e0;
-            border-radius: 0;
             background: transparent;
-            visibility: visible;
-            opacity: 1;
+            
+            /* Collapsed State */
+            max-height: 0;
             overflow: hidden;
-            transition: max-height 0.4s ease;
+            transition: max-height 0.4s ease, opacity 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            
+            /* Zero padding when closed to ensure no gap */
+            border: none;
+            margin: 0;
+            padding: 0;
           }
 
           .dropdown-menu.mobile-open {
             max-height: 500px;
-            padding-top: 10px;
-            padding-bottom: 10px;
+            opacity: 1;
+            visibility: visible;
+            
+            /* UI styles when open */
+            border-top: 1px solid #e0e0e0;
+            border-left: 2px solid #e0e0e0;
+            margin-top: 4px;
+            margin-bottom: 8px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            padding-left: 15px;
+            border-radius: 0;
           }
 
-          .dropdown-item { padding: 0.6rem 0; font-size: 16px; color: #555; }
+          .dropdown-item { 
+            padding: 10px 0; 
+            font-size: 16px; 
+            color: #555; 
+          }
 
-          /* Hamburger animations */
+          /* Hamburger animations to X */
           .hamburger.open .bar:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
           .hamburger.open .bar:nth-child(2) { opacity: 0; }
           .hamburger.open .bar:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
@@ -347,10 +396,14 @@ export default function Layout({ children }: { children?: ReactNode }) {
           <li className="nav-item-dropdown">
             <div className="nav-link dropdown-trigger" onClick={toggleCourseDropdown}>
               <span>Courses</span>
-              <svg className={`chevron ${isCourseDropdownOpen && window.innerWidth <= 1100 ? "rotate-180" : ""}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <svg 
+                className={`chevron ${isCourseDropdownOpen && window.innerWidth <= 1100 ? "rotate-180" : ""}`} 
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+              >
                 <polyline points="6 9 12 15 18 9"></polyline>
               </svg>
             </div>
+            
             <ul className={`dropdown-menu ${isCourseDropdownOpen ? "mobile-open" : ""}`}>
               {coursesList.map((course) => (
                 <li key={course.id}>
@@ -372,15 +425,23 @@ export default function Layout({ children }: { children?: ReactNode }) {
             onMouseLeave={handleAboutMouseLeave}
           >
             <div className="nav-link dropdown-trigger" onClick={toggleAboutDropdown}>
-              <NavLink to="/aboutus" onClick={closeMenu} style={{ textDecoration: "none", color: "inherit" }}>
+              <span style={{ textDecoration: "none", color: "inherit", pointerEvents: "none" }}>
                 About Us
-              </NavLink>
-              <svg className={`chevron ${isAboutDropdownOpen && window.innerWidth <= 1100 ? "rotate-180" : ""}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              </span>
+              <svg 
+                className={`chevron ${isAboutDropdownOpen && window.innerWidth <= 1100 ? "rotate-180" : ""}`} 
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+              >
                 <polyline points="6 9 12 15 18 9"></polyline>
               </svg>
             </div>
 
             <ul className={`dropdown-menu ${isAboutDropdownOpen ? "mobile-open" : ""}`}>
+              <li>
+                <NavLink to="/aboutus" className="dropdown-item" onClick={closeMenu}>
+                  Overview
+                </NavLink>
+              </li>
               <li>
                 <NavLink to="/director/bangalore" className="dropdown-item" onClick={closeMenu}>
                   Bangalore Chapter

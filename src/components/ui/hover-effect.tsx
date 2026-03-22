@@ -19,7 +19,7 @@ export function HoverEffect({
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <div className={cn("grid md:grid-cols-2 lg:grid-cols-3 gap-6", className)}>
+    <div className={cn("grid md:grid-cols-2 lg:grid-cols-3 gap-6 ", className)}>
       {items.map((item, idx) => (
         <div
           key={idx}
@@ -50,7 +50,7 @@ export function HoverEffect({
                 <div className="text-sm font-medium text-white">
                   {item.name}
                 </div>
-                <div className="text-xs text-neutral-400">
+                <div className="text-xs text-neutral-200">
                   {item.role}
                 </div>
               </div>
@@ -74,7 +74,7 @@ function Card({
   return (
     <div
       className={cn(
-        "relative z-10 rounded-2xl h-full w-full bg-black p-6 border border-neutral-800 group-hover:border-neutral-600 transition",
+        "relative z-10 rounded-2xl h-full w-full bg-[#436e4e] p-6 border border-neutral-800 group-hover:border-neutral-600 transition ",
         className
       )}
     >
@@ -91,7 +91,7 @@ function CardDescription({
   children: React.ReactNode;
 }) {
   return (
-    <p className={cn("text-sm text-neutral-300 leading-relaxed", className)}>
+    <p className={cn("text-sm text-white leading-relaxed", className)}>
       {children}
     </p>
   );

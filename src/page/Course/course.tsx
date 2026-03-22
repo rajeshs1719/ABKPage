@@ -23,7 +23,7 @@ const coursesData = [
   {
     id: "genban-nihongo",
     index: 1, // Odd index -> Text Left, Animation Right
-    title: "Genban Nihongo",
+    title: "Genba no Nihongo",
     titleHighlight: "Nihongo",
     description:
       "Building strong foundations through immersive learning. Master practical Japanese for a global future.",

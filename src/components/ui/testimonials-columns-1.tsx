@@ -28,7 +28,7 @@ export function TestimonialsColumn({
           ease: "linear",
           repeat: Infinity,
         }}
-        className="flex flex-col gap-6"
+        className="flex flex-col gap-6 "
       >
         {[...testimonials, ...testimonials].map((t, i) => (
           <div
