@@ -294,7 +294,7 @@ export default function JLPTPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-4">
-              Why Study with Zen Nihongo?
+              Why Study with ABK AOTS?
             </h2>
             <p className="text-green-100/70 max-w-2xl mx-auto">
               Join thousands of successful students who have achieved their

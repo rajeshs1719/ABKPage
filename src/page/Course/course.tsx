@@ -22,8 +22,10 @@ import {
   Puzzle,
   Palette,
   TrendingUp,
-  Globe
+  Globe,
 } from "lucide-react";
+
+import MasterImg from '../../assets/mastering.png'
 
 // --- MOCK JSON DATA ---
 // You can eventually move this to a separate file (e.g., data/courses.js) and import it
@@ -100,8 +102,7 @@ const coursesData = [
           "Develop awareness of Japanese workplace etiquette, hierarchy, discipline, and expected professional behavior.",
       },
     ],
-    masteryImage:
-      "https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&q=80&w=1000",
+    masteryImage: MasterImg,
     activities: {
       workplace:
         "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=800",
@@ -179,8 +180,7 @@ const coursesData = [
           "Engage in role-plays and group activities that simulate real-world scenarios to build confidence and spontaneity.",
       },
     ],
-    masteryImage:
-      "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=1000",
+    masteryImage: MasterImg,
     activities: {
       conversation:
         "https://images.unsplash.com/photo-1515169067868-5387ec356754?auto=format&fit=crop&q=80&w=800",
@@ -258,8 +258,7 @@ const coursesData = [
           "Understand Japanese work culture, discipline, and expectations to adapt quickly to real job environments.",
       },
     ],
-    masteryImage:
-      "https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&q=80&w=1000",
+    masteryImage: MasterImg,
     activities: {
       training:
         "https://images.unsplash.com/photo-1581091012184-5c2c0c5d5f64?auto=format&fit=crop&q=80&w=800",
@@ -337,8 +336,8 @@ const coursesData = [
           "Build confidence in speaking and interacting with others through fun group participation and guided communication.",
       },
     ],
-    masteryImage:
-      "https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&q=80&w=1000",
+    masteryImage: MasterImg,
+
     activities: {
       kids: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80&w=800",
     },
@@ -411,8 +410,7 @@ const coursesData = [
           "Develop practical strategies like answering patterns, guessing techniques, and maintaining focus under pressure.",
       },
     ],
-    masteryImage:
-      "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=1000",
+    masteryImage: MasterImg,
     activities: {
       exam: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=800",
     },
@@ -497,8 +495,7 @@ const coursesData = [
           "Understand Japanese business etiquette, hierarchy, and communication styles to work effectively in multicultural teams.",
       },
     ],
-    masteryImage:
-      "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=1000",
+    masteryImage: MasterImg,
     activities: {
       corporate:
         "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800",
