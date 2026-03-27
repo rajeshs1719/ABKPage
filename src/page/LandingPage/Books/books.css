@@ -23,13 +23,13 @@
 .books-header h1 {
   font-size: 40px;
   color: var(--text-dark);
-  /* Mapped #1f2937 to text-dark (#1a1a1a) */
+  /* Mapped var(--color-text-primary) to text-dark (var(--color-text-primary)) */
   margin-bottom: 0.5rem;
 }
 
 .books-header p {
   color: var(--text-gray-lite);
-  /* Mapped #6b7280 */
+  /* Mapped var(--color-text-muted) */
 }
 
 /* --- The Book Stage --- */
@@ -140,7 +140,7 @@
   left: 0;
   right: 0;
   text-align: center;
-  color: #3e2723;
+  color: var(--color-text-primary);
   /* Dark brown text */
   padding: 0 10px;
 }
@@ -204,7 +204,7 @@
   align-items: center;
   padding: 2rem;
   border-right: 1px solid var(--gray-medium);
-  /* #ddd */
+  /* var(--color-neutral-bg) */
 }
 
 /* Spine Effect (On the Cover) */
@@ -229,8 +229,8 @@
   display: flex;
   flex-direction: column;
   padding: 2rem;
-  border-left: 1px solid #eeeeee;
-  /* Keeping #eee separate or map to gray-light */
+  border-left: 1px solid var(--color-neutral-bg);
+  /* Keeping var(--color-neutral-bg) separate or map to gray-light */
 }
 
 /* --- PAGE CONTENT STYLING --- */
@@ -239,10 +239,10 @@
   font-weight: bold;
   margin-bottom: 1rem;
   color: var(--text-main);
-  /* #333 */
+  /* var(--color-text-primary) */
   text-align: center;
   border-bottom: 2px solid var(--gray-light);
-  /* #f0f0f0 */
+  /* var(--color-surface) */
   padding-bottom: 0.5rem;
   width: 100%;
 }
@@ -251,7 +251,7 @@
   font-size: 0.95rem;
   line-height: 1.6;
   color: var(--text-light);
-  /* #555 */
+  /* var(--color-text-muted) */
   flex-grow: 1;
   overflow-y: auto;
 }
@@ -260,7 +260,7 @@
   margin-top: auto;
   font-size: 0.8rem;
   color: var(--text-subtle);
-  /* #999 mapped to text-subtle (#aaa) */
+  /* var(--color-primary-light) mapped to text-subtle (var(--color-neutral-bg)) */
   text-align: center;
   width: 100%;
 }
@@ -268,7 +268,7 @@
 /* --- BACK COVER (Static) --- */
 .book-back {
   background-color: var(--text-main);
-  /* #333 */
+  /* var(--color-text-primary) */
   transform: translateZ(-2px);
   z-index: 1;
 }
@@ -294,8 +294,8 @@
   right: 0;
   width: 38px;
   height: 98%;
-  background: linear-gradient(90deg, #f5f5f5, var(--gray-border));
-  /* #e0e0e0 */
+  background: linear-gradient(90deg, var(--color-surface), var(--gray-border));
+  /* var(--color-neutral-bg) */
   transform: rotateY(90deg) translateX(19px);
   transform-origin: right;
 }

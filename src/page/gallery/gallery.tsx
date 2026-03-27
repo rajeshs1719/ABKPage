@@ -25,37 +25,37 @@ const fetchMockApiData = async (page: number = 1): Promise<GalleryItem[]> => {
         id: 1,
         url: "https://picsum.photos/id/1059/400/400",
         caption: "JAPANESE FESTIVAL",
-        pinColor: COLORS.pinRed,
+        pinColor: COLORS.error,
       },
       {
         id: 2,
         url: "https://picsum.photos/id/1062/400/400",
         caption: "STUDENT EXCHANGE",
-        pinColor: COLORS.pinBlue,
+        pinColor: COLORS.info,
       },
       {
         id: 3,
         url: "https://picsum.photos/id/1074/400/400",
         caption: "TEA CEREMONY",
-        pinColor: COLORS.pinPurple,
+        pinColor: COLORS.accent,
       },
       {
         id: 4,
         url: "https://picsum.photos/id/103/400/400",
         caption: "OUTDOOR SESSION",
-        pinColor: COLORS.pinDark,
+        pinColor: COLORS.textPrimary,
       },
       {
         id: 5,
         url: "https://picsum.photos/id/124/400/400",
         caption: "GRADUATION DAY",
-        pinColor: COLORS.pinRed,
+        pinColor: COLORS.error,
       },
       {
         id: 6,
         url: "https://picsum.photos/id/158/400/400",
         caption: "DANCE PERFORMANCE",
-        pinColor: COLORS.pinBlue,
+        pinColor: COLORS.info,
       },
     ];
   }
@@ -70,10 +70,10 @@ const fetchMockApiData = async (page: number = 1): Promise<GalleryItem[]> => {
     "FIELD TRIP",
   ];
   const pinColors = [
-    COLORS.pinRed,
-    COLORS.pinBlue,
-    COLORS.pinPurple,
-    COLORS.pinDark,
+    COLORS.error,
+    COLORS.info,
+    COLORS.accent,
+    COLORS.textPrimary,
   ];
 
   return Array.from({ length: 6 }).map((_, index) => {
@@ -123,7 +123,7 @@ export default function GalleryPage() {
   };
 
   return (
-    <div className="font-[Poppins,sans-serif] overflow-x-hidden w-full bg-[#fdfcf8]">
+    <div className="font-[Poppins,sans-serif] overflow-x-hidden w-full bg-white">
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@400;500;600&family=Courier+Prime&display=swap');
         
@@ -139,7 +139,7 @@ export default function GalleryPage() {
 
       {/* SECTION 1: Adaptive Hero */}
       <section
-        className="relative min-h-[100vh] md:min-h-[85vh] lg:min-h-[100vh] flex flex-col items-center justify-center px-4 sm:px-5 py-16 md:py-20 overflow-hidden bg-[#fdfcf8]"
+        className="relative min-h-[100vh] md:min-h-[85vh] lg:min-h-[100vh] flex flex-col items-center justify-center px-4 sm:px-5 py-16 md:py-20 overflow-hidden bg-white"
         style={{
           backgroundImage:
             "url('/GalleryHeroBg.png'), radial-gradient(#d1d1d1 1px, transparent 1px)",
@@ -149,12 +149,12 @@ export default function GalleryPage() {
         }}
       >
         <div className="text-center max-w-[850px] z-[80] relative p-5 md:p-[20px_72px] rounded-[28px]">
-          <h1 className="font-[Playfair_Display,serif] text-4xl sm:text-5xl md:text-6xl lg:text-[4rem] text-[#1a1a1a] mb-4 leading-tight tracking-tight">
+          <h1 className="font-[Playfair_Display,serif] text-4xl sm:text-5xl md:text-6xl lg:text-[4rem] text-text-primary mb-4 leading-tight tracking-tight">
             Our Learning
             <br />
             Legacy in Pictures
           </h1>
-          <p className="text-[#666] leading-relaxed text-lg md:text-xl font-light m-0">
+          <p className="text-text-muted leading-relaxed text-lg md:text-xl font-light m-0">
             A visual journey through decades of excellence in Japanese
             education.
           </p>
@@ -165,14 +165,14 @@ export default function GalleryPage() {
         <div className="polaroid-hover absolute w-[130px] sm:w-[150px] md:w-[180px] lg:w-[200px] bg-white p-2.5 sm:p-3 pb-8 sm:pb-9 md:pb-11 shadow-[0_10px_25px_rgba(0,0,0,0.15)] transition-all duration-500 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] z-10 cursor-pointer top-[5%] sm:top-[6%] md:top-[8%] left-[2%] sm:left-[3%] md:left-[5%] lg:left-[12%] -rotate-[8deg] sm:-rotate-[10deg] md:-rotate-[12deg]">
           <div
             className="w-3 sm:w-3.5 h-3 sm:h-3.5 rounded-full absolute -top-1.5 left-1/2 -translate-x-1/2 shadow-[1px_2px_4px_rgba(0,0,0,0.3)] z-[5]"
-            style={{ backgroundColor: COLORS.pinPurple }}
+            style={{ backgroundColor: COLORS.accent }}
           />
           <img
             src="https://picsum.photos/id/1015/300/300"
             alt="Legacy"
             className="w-full h-[130px] sm:h-[150px] md:h-[180px] lg:h-[190px] object-cover bg-gray-200 sepia-[0.15] hover:sepia-0 transition-[filter] duration-300"
           />
-          <div className="text-center absolute bottom-2 sm:bottom-2.5 md:bottom-[15px] left-0 right-0 font-[Courier_Prime,monospace] text-[10px] sm:text-xs text-[#333] font-semibold tracking-wide">
+          <div className="text-center absolute bottom-2 sm:bottom-2.5 md:bottom-[15px] left-0 right-0 font-[Courier_Prime,monospace] text-[10px] sm:text-xs text-text-primary font-semibold tracking-wide">
             CULTURAL FEST
           </div>
         </div>
@@ -181,14 +181,14 @@ export default function GalleryPage() {
         <div className="polaroid-hover absolute w-[130px] sm:w-[150px] md:w-[180px] lg:w-[200px] bg-white p-2.5 sm:p-3 pb-8 sm:pb-9 md:pb-11 shadow-[0_10px_25px_rgba(0,0,0,0.15)] transition-all duration-500 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] z-10 cursor-pointer top-[5%] sm:top-[6%] md:top-[8%] right-[2%] sm:right-[3%] md:right-[5%] lg:right-[12%] rotate-[8deg] sm:rotate-[9deg] md:rotate-[10deg]">
           <div
             className="w-3 sm:w-3.5 h-3 sm:h-3.5 rounded-full absolute -top-1.5 left-1/2 -translate-x-1/2 shadow-[1px_2px_4px_rgba(0,0,0,0.3)] z-[5]"
-            style={{ backgroundColor: COLORS.pinBlue }}
+            style={{ backgroundColor: COLORS.info }}
           />
           <img
             src="https://picsum.photos/id/1011/300/300"
             alt="Legacy"
             className="w-full h-[130px] sm:h-[150px] md:h-[180px] lg:h-[190px] object-cover bg-gray-200 sepia-[0.15] hover:sepia-0 transition-[filter] duration-300"
           />
-          <div className="text-center absolute bottom-2 sm:bottom-2.5 md:bottom-[15px] left-0 right-0 font-[Courier_Prime,monospace] text-[10px] sm:text-xs text-[#333] font-semibold tracking-wide">
+          <div className="text-center absolute bottom-2 sm:bottom-2.5 md:bottom-[15px] left-0 right-0 font-[Courier_Prime,monospace] text-[10px] sm:text-xs text-text-primary font-semibold tracking-wide">
             BATCH 1998
           </div>
         </div>
@@ -197,14 +197,14 @@ export default function GalleryPage() {
         <div className="polaroid-hover absolute w-[130px] sm:w-[150px] md:w-[180px] lg:w-[200px] bg-white p-2.5 sm:p-3 pb-8 sm:pb-9 md:pb-11 shadow-[0_10px_25px_rgba(0,0,0,0.15)] transition-all duration-500 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] z-10 cursor-pointer bottom-[5%] sm:bottom-[7%] md:bottom-[10%] left-[5%] sm:left-[6%] md:left-[8%] lg:left-[5%] rotate-[6deg] md:rotate-[6deg]">
           <div
             className="w-3 sm:w-3.5 h-3 sm:h-3.5 rounded-full absolute -top-1.5 left-1/2 -translate-x-1/2 shadow-[1px_2px_4px_rgba(0,0,0,0.3)] z-[5]"
-            style={{ backgroundColor: COLORS.pinDark }}
+            style={{ backgroundColor: COLORS.textPrimary }}
           />
           <img
             src="https://picsum.photos/id/1025/300/300"
             alt="Legacy"
             className="w-full h-[130px] sm:h-[150px] md:h-[180px] lg:h-[190px] object-cover bg-gray-200 sepia-[0.15] hover:sepia-0 transition-[filter] duration-300"
           />
-          <div className="text-center absolute bottom-2 sm:bottom-2.5 md:bottom-[15px] left-0 right-0 font-[Courier_Prime,monospace] text-[10px] sm:text-xs text-[#333] font-semibold tracking-wide">
+          <div className="text-center absolute bottom-2 sm:bottom-2.5 md:bottom-[15px] left-0 right-0 font-[Courier_Prime,monospace] text-[10px] sm:text-xs text-text-primary font-semibold tracking-wide">
             VISITORS
           </div>
         </div>
@@ -213,14 +213,14 @@ export default function GalleryPage() {
         <div className="polaroid-hover absolute w-[130px] sm:w-[150px] md:w-[180px] lg:w-[200px] bg-white p-2.5 sm:p-3 pb-8 sm:pb-9 md:pb-11 shadow-[0_10px_25px_rgba(0,0,0,0.15)] transition-all duration-500 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] z-10 cursor-pointer bottom-[5%] sm:bottom-[7%] md:bottom-[10%] right-[5%] sm:right-[6%] md:right-[8%] lg:right-[5%] -rotate-[6deg] md:-rotate-[8deg]">
           <div
             className="w-3 sm:w-3.5 h-3 sm:h-3.5 rounded-full absolute -top-1.5 left-1/2 -translate-x-1/2 shadow-[1px_2px_4px_rgba(0,0,0,0.3)] z-[5]"
-            style={{ backgroundColor: COLORS.pinPurple }}
+            style={{ backgroundColor: COLORS.accent }}
           />
           <img
             src="https://picsum.photos/id/106/300/300"
             alt="Legacy"
             className="w-full h-[130px] sm:h-[150px] md:h-[180px] lg:h-[190px] object-cover bg-gray-200 sepia-[0.15] hover:sepia-0 transition-[filter] duration-300"
           />
-          <div className="text-center absolute bottom-2 sm:bottom-2.5 md:bottom-[15px] left-0 right-0 font-[Courier_Prime,monospace] text-[10px] sm:text-xs text-[#333] font-semibold tracking-wide">
+          <div className="text-center absolute bottom-2 sm:bottom-2.5 md:bottom-[15px] left-0 right-0 font-[Courier_Prime,monospace] text-[10px] sm:text-xs text-text-primary font-semibold tracking-wide">
             MEMORIES
           </div>
         </div>
@@ -233,11 +233,11 @@ export default function GalleryPage() {
           background: "linear-gradient(90deg, #FDF8F2 0%,  #FFDAC7 100% )",
         }}
       >
-        <h1 className="my-4 text-2xl sm:text-3xl md:text-4xl font-semibold text-[#333]">
+        <h1 className="my-4 text-2xl sm:text-3xl md:text-4xl font-semibold text-text-primary">
           Here is a Photo bump of all Activities, Events, Celebration..
         </h1>
         {loading ? (
-          <div className="text-center py-10 text-[#666]">
+          <div className="text-center py-10 text-text-muted">
             <p>Loading gallery items...</p>
           </div>
         ) : (
@@ -259,7 +259,7 @@ export default function GalleryPage() {
                     alt={item.caption}
                     className="w-full h-[250px] sm:h-[260px] md:h-[280px] object-cover block"
                   />
-                  <div className="text-center absolute bottom-5 w-full left-0 font-[Poppins,sans-serif] font-medium text-sm text-[#333] uppercase tracking-widest">
+                  <div className="text-center absolute bottom-5 w-full left-0 font-[Poppins,sans-serif] font-medium text-sm text-text-primary uppercase tracking-widest">
                     {item.caption}
                   </div>
                 </div>
@@ -268,7 +268,7 @@ export default function GalleryPage() {
 
             <div className="text-center">
               <button
-                className="bg-[#2c3e50] text-white px-8 sm:px-12 py-3 sm:py-4 border-none text-sm font-semibold tracking-[2px] uppercase cursor-pointer transition-all duration-300 rounded-full shadow-[0_5px_15px_rgba(44,62,80,0.2)] hover:bg-[#e74c3c] hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(231,76,60,0.3)] disabled:bg-[#ccc] disabled:cursor-not-allowed disabled:transform-none"
+                className="bg-text-muted text-white px-8 sm:px-12 py-3 sm:py-4 border-none text-sm font-semibold tracking-[2px] uppercase cursor-pointer transition-all duration-300 rounded-full shadow-[0_5px_15px_rgba(44,62,80,0.2)] hover:bg-primary hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(231,76,60,0.3)] disabled:bg-neutral-bg disabled:cursor-not-allowed disabled:transform-none"
                 onClick={handleLoadMore}
                 disabled={loadingMore}
               >

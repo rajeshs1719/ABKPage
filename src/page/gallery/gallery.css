@@ -40,7 +40,7 @@
 .Gallery-text h1 {
     font-family: 'Playfair Display', serif;
     font-size: 4rem;
-    color: var(--black); /* Mapped #1a1a1a to black */
+    color: var(--black); /* Mapped var(--color-text-primary) to black */
     margin-bottom: 16px;
     line-height: 1.1;
     letter-spacing: -1px;
@@ -95,7 +95,7 @@
     right: 0;
     font-family: 'Courier Prime', monospace;
     font-size: 14px;
-    color: var(--text-main); /* Mapped #444 to text-main (#333) */
+    color: var(--text-main); /* Mapped var(--color-text-muted) to text-main (var(--color-text-primary)) */
     font-weight: 600;
     letter-spacing: 0.5px;
 }

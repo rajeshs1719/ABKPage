@@ -93,9 +93,9 @@ const PlayIcon = () => (
 
 const DirectorMessagePage = ({ data = directorsData.bangalore }) => {
   return (
-    <div className="w-full bg-[#FAFAFA] min-h-screen font-sans text-gray-800 pb-24 selection:bg-[#2F4B36] selection:text-white">
+    <div className="w-full bg-white min-h-screen font-sans text-gray-800 pb-24 selection:bg-text-muted selection:text-white">
       {/* 1. TOP BANNER - Key added to refresh text animation */}
-      <div className="relative w-full h-[250px] md:h-[300px] bg-[#223626] overflow-hidden flex items-center justify-center">
+      <div className="relative w-full h-[250px] md:h-[300px] bg-text-primary overflow-hidden flex items-center justify-center">
         <div
           className="absolute inset-0 opacity-[0.03]"
           style={{
@@ -113,7 +113,7 @@ const DirectorMessagePage = ({ data = directorsData.bangalore }) => {
             transition={{ duration: 0.6 }}
             className="relative z-10 text-center px-6"
           >
-            <div className="w-12 h-[2px] bg-[#d4af37] mx-auto mb-4 opacity-80"></div>
+            <div className="w-12 h-[2px] bg-primary-light mx-auto mb-4 opacity-80"></div>
             <h1 className="text-3xl md:text-5xl font-serif text-white tracking-wide uppercase">
               {data.pageTitle}
             </h1>
@@ -135,7 +135,7 @@ const DirectorMessagePage = ({ data = directorsData.bangalore }) => {
           {/* Profile Image Column */}
           <div className="w-full lg:w-[35%] shrink-0">
             <div className="relative w-full aspect-[3/4] max-w-[400px] mx-auto lg:mx-0">
-              <div className="absolute inset-0 bg-[#E8ECE9] rounded-[15px] transform translate-x-4 translate-y-4"></div>
+              <div className="absolute inset-0 bg-neutral-bg rounded-[15px] transform translate-x-4 translate-y-4"></div>
               <motion.img
                 key={data.image}
                 initial={{ opacity: 0, scale: 0.95 }}
@@ -154,7 +154,7 @@ const DirectorMessagePage = ({ data = directorsData.bangalore }) => {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-3xl md:text-[40px] font-bold text-[#1a2e20] mb-2 font-serif leading-tight"
+              className="text-3xl md:text-[40px] font-bold text-text-primary mb-2 font-serif leading-tight"
             >
               {data.name}
             </motion.h2>
@@ -162,13 +162,13 @@ const DirectorMessagePage = ({ data = directorsData.bangalore }) => {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3 }}
-              className="text-lg md:text-xl text-[#6b7280] mb-8 font-light tracking-wide flex items-center gap-3"
+              className="text-lg md:text-xl text-text-muted mb-8 font-light tracking-wide flex items-center gap-3"
             >
-              <span className="w-8 h-[1px] bg-[#d4af37]"></span>
+              <span className="w-8 h-[1px] bg-primary-light"></span>
               {data.role}
             </motion.h3>
 
-            <div className="space-y-6 text-[#4b5563] leading-relaxed text-[16px] md:text-[17px]">
+            <div className="space-y-6 text-text-muted leading-relaxed text-[16px] md:text-[17px]">
               {data.introParagraphs.map((para, idx) => (
                 <motion.p
                   key={idx}
@@ -185,7 +185,7 @@ const DirectorMessagePage = ({ data = directorsData.bangalore }) => {
         </motion.div>
 
         {/* 3. MAIN PARAGRAPHS */}
-        <div className="mt-16 max-w-4xl mx-auto space-y-8 text-[#4b5563] leading-relaxed text-[16px] md:text-[17px] px-4 md:px-0">
+        <div className="mt-16 max-w-4xl mx-auto space-y-8 text-text-muted leading-relaxed text-[16px] md:text-[17px] px-4 md:px-0">
           {data.mainParagraphs.map((para, idx) => (
             <motion.p
               key={data.name + "-para-" + idx} // Key includes director name to re-trigger
@@ -209,10 +209,10 @@ const DirectorMessagePage = ({ data = directorsData.bangalore }) => {
           className="mt-24 pt-16 border-t border-gray-200"
         >
           <div className="text-center mb-12">
-            <h3 className="text-3xl font-serif text-[#1a2e20] mb-3">
+            <h3 className="text-3xl font-serif text-text-primary mb-3">
               {data.videosTitle}
             </h3>
-            <div className="w-16 h-[2px] bg-[#d4af37] mx-auto"></div>
+            <div className="w-16 h-[2px] bg-primary-light mx-auto"></div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
@@ -235,7 +235,7 @@ const DirectorMessagePage = ({ data = directorsData.bangalore }) => {
                     <PlayIcon />
                   </div>
                 </div>
-                <h4 className="text-[17px] text-[#374151] font-medium leading-snug px-2">
+                <h4 className="text-[17px] text-text-muted font-medium leading-snug px-2">
                   {video.caption}
                 </h4>
               </motion.div>
@@ -252,10 +252,10 @@ const DirectorMessagePage = ({ data = directorsData.bangalore }) => {
           className="mt-24 mb-10 max-w-3xl mx-auto text-center"
         >
           <div className="bg-white px-8 py-10 rounded-[15px] shadow-[0_4px_20px_rgb(0,0,0,0.03)] border border-gray-100 relative">
-            <span className="absolute text-[#E8ECE9] text-8xl font-serif -top-6 left-6 leading-none select-none">
+            <span className="absolute text-neutral-bg text-8xl font-serif -top-6 left-6 leading-none select-none">
               "
             </span>
-            <p className="text-[#1a2e20] text-lg md:text-xl italic font-serif relative z-10 leading-relaxed">
+            <p className="text-text-primary text-lg md:text-xl italic font-serif relative z-10 leading-relaxed">
               {data.closing}
             </p>
           </div>

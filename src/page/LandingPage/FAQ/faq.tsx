@@ -67,7 +67,7 @@ const FAQ: React.FC = () => {
       </div>
 
       {/* RIGHT SIDE: FAQ Accordion */}
-      <div className="flex-none w-full md:w-[600px] bg-[#5555ff] p-6 sm:p-10 rounded-lg text-white shadow-[0_10px_30px_rgba(85,85,255,0.2)]">
+      <div className="flex-none w-full md:w-[600px] bg-info p-6 sm:p-10 rounded-lg text-white shadow-[0_10px_30px_rgba(85,85,255,0.2)]">
         <h1 className="text-center text-2xl font-bold mb-4">FAQ</h1>
         
         {faqData.map((item, index) => (

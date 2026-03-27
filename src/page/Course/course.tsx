@@ -42,13 +42,13 @@ const coursesData = [
       {
         jp: "おはようございます",
         romaji: "GOOD MORNING",
-        color: "bg-[#1C3022]",
+        color: "bg-text-primary",
       },
-      { jp: "報告します", romaji: "I REPORT", color: "bg-[#1C3022]" },
+      { jp: "報告します", romaji: "I REPORT", color: "bg-text-primary" },
       {
         jp: "問題があります",
         romaji: "THERE IS A PROBLEM",
-        color: "bg-[#A7202B]",
+        color: "bg-error",
       },
     ],
     aboutTitle: "What is Genba no Nihongo?",
@@ -117,16 +117,16 @@ const coursesData = [
       "Japanese conversation course focused on speaking, listening, and real-life communication. Designed to build fluency, confidence, and natural expression in everyday situations.",
     kanji: "会話",
     floatingCards: [
-      { jp: "元気ですか？", romaji: "HOW ARE YOU?", color: "bg-[#1C3022]" },
+      { jp: "元気ですか？", romaji: "HOW ARE YOU?", color: "bg-text-primary" },
       {
         jp: "もう一度お願いします",
         romaji: "PLEASE SAY IT AGAIN",
-        color: "bg-[#1C3022]",
+        color: "bg-text-primary",
       },
       {
         jp: "わかりました",
         romaji: "I UNDERSTAND",
-        color: "bg-[#A7202B]",
+        color: "bg-error",
       },
     ],
     aboutTitle: "What is Kaiwa?",
@@ -195,12 +195,12 @@ const coursesData = [
       "Comprehensive training program designed to prepare candidates for the Specified Skilled Worker (SSW) visa, focusing on Japanese language proficiency, practical communication, and industry-specific skills.",
     kanji: "特定",
     floatingCards: [
-      { jp: "働きます", romaji: "I WORK", color: "bg-[#1C3022]" },
-      { jp: "大丈夫です", romaji: "IT IS OK", color: "bg-[#1C3022]" },
+      { jp: "働きます", romaji: "I WORK", color: "bg-text-primary" },
+      { jp: "大丈夫です", romaji: "IT IS OK", color: "bg-text-primary" },
       {
         jp: "指示を守ります",
         romaji: "I FOLLOW INSTRUCTIONS",
-        color: "bg-[#A7202B]",
+        color: "bg-error",
       },
     ],
     aboutTitle: "What is SSW?",
@@ -273,16 +273,16 @@ const coursesData = [
       "A fun, activity-based Japanese learning program designed for children to explore language, culture, and creativity through games, crafts, and interactive sessions.",
     kanji: "子供",
     floatingCards: [
-      { jp: "こんにちは", romaji: "HELLO", color: "bg-[#1C3022]" },
+      { jp: "こんにちは", romaji: "HELLO", color: "bg-text-primary" },
       {
         jp: "いっしょにやろう",
         romaji: "LET’S DO IT TOGETHER",
-        color: "bg-[#1C3022]",
+        color: "bg-text-primary",
       },
       {
         jp: "たのしい！",
         romaji: "FUN!",
-        color: "bg-[#A7202B]",
+        color: "bg-error",
       },
     ],
     aboutTitle: "What is Kids Summer Camp?",
@@ -351,12 +351,12 @@ const coursesData = [
       "Intensive revision and test-readiness program designed to improve performance, accuracy, and confidence before the JLPT examination through mock tests and exam-focused strategies.",
     kanji: "試験",
     floatingCards: [
-      { jp: "大丈夫", romaji: "IT’S OK", color: "bg-[#1C3022]" },
-      { jp: "落ち着いて", romaji: "STAY CALM", color: "bg-[#1C3022]" },
+      { jp: "大丈夫", romaji: "IT’S OK", color: "bg-text-primary" },
+      { jp: "落ち着いて", romaji: "STAY CALM", color: "bg-text-primary" },
       {
         jp: "時間に注意",
         romaji: "WATCH THE TIME",
-        color: "bg-[#A7202B]",
+        color: "bg-error",
       },
     ],
     aboutTitle: "What is Exam Day Confidence?",
@@ -427,17 +427,17 @@ const coursesData = [
       {
         jp: "よろしくお願いいたします",
         romaji: "FORMAL GREETING",
-        color: "bg-[#1C3022]",
+        color: "bg-text-primary",
       },
       {
         jp: "会議を始めます",
         romaji: "START THE MEETING",
-        color: "bg-[#1C3022]",
+        color: "bg-text-primary",
       },
       {
         jp: "報告・連絡・相談",
         romaji: "REPORT • INFORM • CONSULT",
-        color: "bg-[#A7202B]",
+        color: "bg-error",
       },
     ],
     aboutTitle: "What is Corporate Training?",
@@ -626,7 +626,7 @@ const HeroSection = ({ course }: any) => {
   const isLeftAligned = course.index % 2 !== 0;
 
   return (
-    <section className="bg-[#0A1A10] text-white min-h-[85vh] flex items-center relative overflow-hidden py-20 px-6 lg:px-20">
+    <section className="bg-text-primary text-white min-h-[85vh] flex items-center relative overflow-hidden py-20 px-6 lg:px-20">
       <div className="absolute top-20 right-1/4 w-2 h-2 rounded-full bg-red-500"></div>
       <div className="absolute bottom-20 right-10 w-4 h-4 rounded-full border border-yellow-500"></div>
 
@@ -637,7 +637,7 @@ const HeroSection = ({ course }: any) => {
         <div className="flex-1 space-y-8 z-10 text-center lg:text-left">
           <h1 className="text-5xl lg:text-7xl font-serif font-bold leading-tight">
             {course.title.replace(course.titleHighlight, "")}
-            <span className="text-[#F4D35E] italic block">
+            <span className="text-secondary italic block">
               {course.titleHighlight}
             </span>
           </h1>
@@ -647,7 +647,7 @@ const HeroSection = ({ course }: any) => {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center gap-4 pt-4 justify-center lg:justify-start">
-            <button className="w-full sm:w-auto px-8 py-3.5 bg-[#A7202B] hover:bg-red-700 transition-colors rounded-full font-semibold text-white">
+            <button className="w-full sm:w-auto px-8 py-3.5 bg-error hover:bg-red-700 transition-colors rounded-full font-semibold text-white">
               Start Learning
             </button>
             <button className="w-full sm:w-auto px-8 py-3.5 bg-transparent border border-green-700 hover:border-green-500 hover:bg-green-900/30 transition-colors rounded-full font-semibold text-white flex items-center justify-center gap-2">
@@ -663,12 +663,12 @@ const HeroSection = ({ course }: any) => {
 
           <div className="orbit-system relative">
             {/* Decorative planetary outer rings */}
-            <div className="absolute inset-0 rounded-full border border-[#F4D35E]/10 scale-[1.3] animate-[pulse_4s_ease-in-out_infinite]"></div>
-            <div className="absolute inset-0 rounded-full border border-[#F4D35E]/5 scale-[1.6] animate-[pulse_6s_ease-in-out_infinite_reverse]"></div>
+            <div className="absolute inset-0 rounded-full border border-secondary/10 scale-[1.3] animate-[pulse_4s_ease-in-out_infinite]"></div>
+            <div className="absolute inset-0 rounded-full border border-secondary/5 scale-[1.6] animate-[pulse_6s_ease-in-out_infinite_reverse]"></div>
 
             {/* Enhanced Center Kanji Circle */}
-            <div className="orbit-center-glow relative w-48 h-48 rounded-full bg-gradient-to-br from-[#15311d] to-[#0A1A10] flex items-center justify-center z-10 shadow-[0_0_50px_rgba(244,211,94,0.15)] border border-[#F4D35E]/30 before:absolute before:inset-0 before:rounded-full before:bg-[#F4D35E]/5 before:backdrop-blur-md">
-              <span className="text-7xl font-serif relative z-10 bg-clip-text text-transparent bg-gradient-to-b from-[#F4D35E] to-[#d4af37] drop-shadow-[0_0_15px_rgba(244,211,94,0.6)]">
+            <div className="orbit-center-glow relative w-48 h-48 rounded-full bg-gradient-to-br from-text-primary to-text-primary flex items-center justify-center z-10 shadow-[0_0_50px_rgba(244,211,94,0.15)] border border-secondary/30 before:absolute before:inset-0 before:rounded-full before:bg-secondary/5 before:backdrop-blur-md">
+              <span className="text-7xl font-serif relative z-10 bg-clip-text text-transparent bg-gradient-to-b from-secondary to-primary-light drop-shadow-[0_0_15px_rgba(244,211,94,0.6)]">
                 {course.kanji}
               </span>
             </div>
@@ -720,7 +720,7 @@ const AboutSection = ({ course }: any) => {
 
       <div className="max-w-7xl mx-auto relative z-10 flex flex-col lg:flex-row gap-16 items-center">
         <div className="flex-1 space-y-6">
-          <h2 className="text-4xl lg:text-5xl font-serif font-bold text-[#1a1a1a] red-underline pb-4 inline-block">
+          <h2 className="text-4xl lg:text-5xl font-serif font-bold text-text-primary red-underline pb-4 inline-block">
             {course.aboutTitle}
           </h2>
           <p className="text-gray-800/80 text-lg leading-relaxed max-w-lg mt-8 font-medium">
@@ -734,10 +734,10 @@ const AboutSection = ({ course }: any) => {
             return (
               <div
                 key={idx}
-                className="bg-[#FCFCFA] rounded-2xl p-8 shadow-[0_8px_30px_rgb(0,0,0,0.05)] flex-1 border border-white hover:-translate-y-1 transition-transform duration-300"
+                className="bg-white rounded-2xl p-8 shadow-[0_8px_30px_rgb(0,0,0,0.05)] flex-1 border border-white hover:-translate-y-1 transition-transform duration-300"
               >
-                <Icon className="w-8 h-8 text-[#6B5A24] mb-6" />
-                <h3 className="text-xl font-bold font-serif text-[#1a1a1a] mb-3">
+                <Icon className="w-8 h-8 text-text-muted mb-6" />
+                <h3 className="text-xl font-bold font-serif text-text-primary mb-3">
                   {card.title}
                 </h3>
                 <p className="text-gray-600 text-sm leading-relaxed">
@@ -754,10 +754,10 @@ const AboutSection = ({ course }: any) => {
 
 const CourseSpecifics = ({ course }: any) => {
   return (
-    <section className="bg-[#FDFDF9] py-20 px-6 lg:px-20 border-b border-gray-200/50">
+    <section className="bg-white py-20 px-6 lg:px-20 border-b border-gray-200/50">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16 space-y-3">
-          <h2 className="text-3xl lg:text-4xl font-serif font-bold text-[#1a1a1a]">
+          <h2 className="text-3xl lg:text-4xl font-serif font-bold text-text-primary">
             Course Specifics
           </h2>
           <p className="text-gray-500">
@@ -771,14 +771,14 @@ const CourseSpecifics = ({ course }: any) => {
             return (
               <div
                 key={idx}
-                className="bg-[#F5F5F0] rounded-2xl p-6 border border-gray-100 hover:shadow-md transition-shadow"
+                className="bg-surface rounded-2xl p-6 border border-gray-100 hover:shadow-md transition-shadow"
               >
-                <Icon className="w-6 h-6 text-[#2F4B36] mb-8" />
+                <Icon className="w-6 h-6 text-text-muted mb-8" />
                 <div className="space-y-1">
                   <p className="text-xs font-semibold tracking-wider text-gray-500 uppercase">
                     {spec.label}
                   </p>
-                  <p className="text-lg font-bold font-serif text-[#1a1a1a]">
+                  <p className="text-lg font-bold font-serif text-text-primary">
                     {spec.value}
                   </p>
                 </div>
@@ -796,7 +796,7 @@ const MasterySection = ({ course }: any) => {
   const isLeftAligned = course.index % 2 !== 0;
 
   return (
-    <section className="bg-[#0A1A10] text-white py-24 px-6 lg:px-20">
+    <section className="bg-text-primary text-white py-24 px-6 lg:px-20">
       <div
         className={`max-w-7xl mx-auto flex flex-col ${isLeftAligned ? "lg:flex-row" : "lg:flex-row-reverse"} gap-16 lg:gap-24 items-center`}
       >
@@ -813,12 +813,12 @@ const MasterySection = ({ course }: any) => {
                   className="w-full py-4 flex items-center justify-between text-left group"
                 >
                   <span
-                    className={`text-xl font-serif font-medium transition-colors ${openIndex === idx ? "text-[#F4D35E]" : "text-white group-hover:text-gray-300"}`}
+                    className={`text-xl font-serif font-medium transition-colors ${openIndex === idx ? "text-secondary" : "text-white group-hover:text-gray-300"}`}
                   >
                     {item.title}
                   </span>
                   {openIndex === idx ? (
-                    <Minus className="w-5 h-5 text-[#F4D35E]" />
+                    <Minus className="w-5 h-5 text-secondary" />
                   ) : (
                     <Plus className="w-5 h-5 text-gray-400 group-hover:text-white" />
                   )}
@@ -826,7 +826,7 @@ const MasterySection = ({ course }: any) => {
                 <div
                   className={`overflow-hidden transition-all duration-300 ease-in-out ${openIndex === idx ? "max-h-40 opacity-100" : "max-h-0 opacity-0"}`}
                 >
-                  <p className="text-green-100/70 pb-4 pl-8 border-l-2 border-[#F4D35E] ml-2 mt-2">
+                  <p className="text-green-100/70 pb-4 pl-8 border-l-2 border-secondary ml-2 mt-2">
                     {item.content}
                   </p>
                 </div>
@@ -850,14 +850,14 @@ const MasterySection = ({ course }: any) => {
 
 const ActivitiesSection = ({ course }: any) => {
   return (
-    <section className="bg-[#FDFDF9] py-24 px-6 lg:px-20">
+    <section className="bg-white py-24 px-6 lg:px-20">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
           <div>
-            <p className="text-[#A7202B] font-bold text-xs tracking-widest uppercase mb-2">
+            <p className="text-error font-bold text-xs tracking-widest uppercase mb-2">
               What we do
             </p>
-            <h2 className="text-4xl lg:text-5xl font-serif font-bold text-[#1a1a1a]">
+            <h2 className="text-4xl lg:text-5xl font-serif font-bold text-text-primary">
               Festival of Activities
             </h2>
           </div>
@@ -868,13 +868,13 @@ const ActivitiesSection = ({ course }: any) => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-auto lg:h-[500px]">
-          <div className="lg:col-span-1 bg-[#6A7162] rounded-3xl p-8 text-white flex flex-col justify-end relative overflow-hidden min-h-[350px] group">
+          <div className="lg:col-span-1 bg-text-muted rounded-3xl p-8 text-white flex flex-col justify-end relative overflow-hidden min-h-[350px] group">
             <img
               src={course.activities.origami}
               alt="Origami Art"
               className="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-60 group-hover:scale-105 transition-transform duration-700"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#4A5142]/90 via-transparent to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-text-muted/90 via-transparent to-transparent"></div>
             <div className="relative z-10">
               <h3 className="text-3xl font-serif font-bold italic mb-3">
                 The Art of Origami
@@ -888,28 +888,28 @@ const ActivitiesSection = ({ course }: any) => {
 
           <div className="lg:col-span-2 flex flex-col gap-6">
             <div className="flex flex-col sm:flex-row gap-6 h-full lg:h-1/2">
-              <div className="flex-1 bg-[#FF5A60] rounded-3xl p-8 text-white flex flex-col justify-center relative overflow-hidden group hover:-translate-y-1 transition-transform">
+              <div className="flex-1 bg-primary rounded-3xl p-8 text-white flex flex-col justify-center relative overflow-hidden group hover:-translate-y-1 transition-transform">
                 <User className="w-8 h-8 mb-4 opacity-80" />
                 <h3 className="text-xl font-bold mb-1">Basic Japanese</h3>
                 <p className="text-white/80 text-sm">
                   Fun greetings & numbers.
                 </p>
               </div>
-              <div className="flex-1 bg-[#FDE28A] rounded-3xl p-8 text-[#1a1a1a] flex flex-col justify-center relative overflow-hidden group hover:-translate-y-1 transition-transform">
+              <div className="flex-1 bg-secondary rounded-3xl p-8 text-text-primary flex flex-col justify-center relative overflow-hidden group hover:-translate-y-1 transition-transform">
                 <Gamepad2 className="w-8 h-8 mb-4 opacity-80" />
                 <h3 className="text-xl font-bold mb-1">Traditional Games</h3>
-                <p className="text-[#1a1a1a]/70 text-sm">
+                <p className="text-text-primary/70 text-sm">
                   Kendama and Fukuwarai fun.
                 </p>
               </div>
             </div>
 
-            <div className="bg-[#E6F4EA] rounded-3xl p-8 flex flex-col sm:flex-row items-center gap-6 h-full lg:h-1/2 hover:-translate-y-1 transition-transform">
+            <div className="bg-neutral-bg rounded-3xl p-8 flex flex-col sm:flex-row items-center gap-6 h-full lg:h-1/2 hover:-translate-y-1 transition-transform">
               <div className="bg-white p-4 rounded-2xl shadow-sm">
-                <Film className="w-8 h-8 text-[#2F4B36]" />
+                <Film className="w-8 h-8 text-text-muted" />
               </div>
               <div>
-                <h3 className="text-xl font-bold text-[#1a1a1a] mb-2">
+                <h3 className="text-xl font-bold text-text-primary mb-2">
                   Anime Storytelling
                 </h3>
                 <p className="text-gray-600 text-sm max-w-md">
@@ -926,12 +926,12 @@ const ActivitiesSection = ({ course }: any) => {
 };
 
 const CTASection = () => (
-  <section className="bg-[#B91C1C] py-12 px-6 lg:px-20 border-b-8 border-[#8B1515]">
+  <section className="bg-error py-12 px-6 lg:px-20 border-b-8 border-error">
     <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
       <h2 className="text-3xl font-serif font-bold text-white">
         Start Your Journey to Japan Today
       </h2>
-      <button className="bg-white text-[#B91C1C] px-8 py-3.5 rounded-full font-bold shadow-lg hover:bg-gray-100 transition-colors whitespace-nowrap">
+      <button className="bg-white text-error px-8 py-3.5 rounded-full font-bold shadow-lg hover:bg-gray-100 transition-colors whitespace-nowrap">
         Get Started Now
       </button>
     </div>
@@ -964,10 +964,10 @@ const SuccessStories = () => {
   ];
 
   return (
-    <section className="bg-[#FDFDF9] py-24 px-6 lg:px-20">
+    <section className="bg-white py-24 px-6 lg:px-20">
       <div className="max-w-7xl mx-auto">
         <div className="mb-12">
-          <h2 className="text-3xl font-serif font-bold text-[#1a1a1a] mb-2">
+          <h2 className="text-3xl font-serif font-bold text-text-primary mb-2">
             Success Stories
           </h2>
           <p className="text-gray-500 italic">
@@ -979,7 +979,7 @@ const SuccessStories = () => {
           {stories.map((story, i) => (
             <div
               key={i}
-              className="bg-[#F5F5F0] rounded-2xl p-8 border border-gray-100"
+              className="bg-surface rounded-2xl p-8 border border-gray-100"
             >
               <div className="flex items-center gap-4 mb-6">
                 <img
@@ -988,8 +988,8 @@ const SuccessStories = () => {
                   className="w-12 h-12 rounded-full object-cover"
                 />
                 <div>
-                  <h4 className="font-bold text-[#1a1a1a]">{story.name}</h4>
-                  <p className="text-[#A7202B] text-xs font-bold tracking-wider">
+                  <h4 className="font-bold text-text-primary">{story.name}</h4>
+                  <p className="text-error text-xs font-bold tracking-wider">
                     {story.role}
                   </p>
                 </div>
@@ -1025,9 +1025,9 @@ const WhyChooseSection = () => {
   ];
 
   return (
-    <section className="bg-[#EBEBE6] py-20 px-6 lg:px-20 border-t border-gray-300">
+    <section className="bg-neutral-bg py-20 px-6 lg:px-20 border-t border-gray-300">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-3xl font-serif font-bold text-center text-[#1a1a1a] mb-12">
+        <h2 className="text-3xl font-serif font-bold text-center text-text-primary mb-12">
           Why Choose ABK AOTS?
         </h2>
 
@@ -1037,10 +1037,10 @@ const WhyChooseSection = () => {
             return (
               <div key={i} className="flex gap-4">
                 <div className="mt-1 bg-white p-2 rounded-lg shadow-sm h-max">
-                  <Icon className="w-6 h-6 text-[#B91C1C]" />
+                  <Icon className="w-6 h-6 text-error" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-[#1a1a1a] text-lg mb-2">
+                  <h4 className="font-bold text-text-primary text-lg mb-2">
                     {point.title}
                   </h4>
                   <p className="text-gray-600 text-sm leading-relaxed">

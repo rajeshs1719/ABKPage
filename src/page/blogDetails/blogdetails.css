@@ -3,7 +3,7 @@
   width: 100%;
   min-height: 100vh;
   background-color: var(--bg-blog);
-  /* #fffaf5 */
+  /* var(--color-surface) */
   font-family: 'Poppins', sans-serif;
   /* Assuming a clean sans-serif font */
   overflow-x: hidden;
@@ -51,7 +51,7 @@
   font-size: 3rem;
   font-weight: 800;
   color: var(--text-main);
-  /* #333 */
+  /* var(--color-text-primary) */
   margin: 0;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -60,7 +60,7 @@
 .hero-subtitle {
   font-size: 1.2rem;
   color: var(--text-light);
-  /* #555 */
+  /* var(--color-text-muted) */
   margin-top: 10px;
 }
 
@@ -147,14 +147,14 @@
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--black);
-  /* #000 */
+  /* var(--color-black) */
   margin: 0 0 5px 0;
 }
 
 .profile-role {
   font-size: 1rem;
   color: var(--text-light);
-  /* #555 */
+  /* var(--color-text-muted) */
   margin: 0;
 }
 
@@ -162,7 +162,7 @@
   font-size: 1rem;
   font-weight: 600;
   color: var(--text-main);
-  /* #333 */
+  /* var(--color-text-primary) */
   margin: 0 0 15px 0;
 }
 
@@ -176,15 +176,15 @@
 .badge-text {
   font-weight: 700;
   color: var(--black);
-  /* #000 */
+  /* var(--color-black) */
 }
 
 .profile-date {
   font-size: 0.9rem;
   color: var(--text-medium);
-  /* #777 */
+  /* var(--color-text-muted) */
   border-top: 1px solid var(--gray-light);
-  /* #eee mapped to gray-light */
+  /* var(--color-neutral-bg) mapped to gray-light */
   padding-top: 10px;
   width: 100%;
 }
@@ -197,7 +197,7 @@
   position: relative;
   border-radius: 20px;
   border-bottom: 12px solid var(--blog-accent);
-  /* #FF8C42 */
+  /* var(--color-primary-light) */
   box-shadow: 0 10px 30px rgba(var(--black-rgb), 0.08);
 }
 
@@ -226,7 +226,7 @@
   font-size: 2rem;
   font-weight: 700;
   color: var(--text-main);
-  /* #333 */
+  /* var(--color-text-primary) */
   margin-bottom: 25px;
 }
 
@@ -234,7 +234,7 @@
   font-size: 1.1rem;
   line-height: 1.8;
   color: var(--text-light);
-  /* Mapped #444 to text-light (#555) or similar */
+  /* Mapped var(--color-text-muted) to text-light (var(--color-text-muted)) or similar */
 }
 
 .story-body p {
@@ -249,7 +249,7 @@
 .quote-bar {
   width: 4px;
   background-color: var(--blog-accent);
-  /* #FF8C42 */
+  /* var(--color-primary-light) */
   margin-right: 15px;
   border-radius: 2px;
 }
@@ -258,7 +258,7 @@
   font-style: italic;
   font-weight: 600;
   color: var(--text-dark);
-  /* Mapped #222 to text-dark (#1a1a1a) */
+  /* Mapped var(--color-text-primary) to text-dark (var(--color-text-primary)) */
   font-size: 1.15rem;
   margin: 0;
 }
@@ -328,9 +328,9 @@
 /* --- Journey Section Card --- */
 .journey-section-card {
   background-color: var(--blog-card-bg);
-  /* #FFF6E8 */
+  /* var(--color-surface) */
   border: 2px solid var(--blog-card-border);
-  /* #FD7B50 */
+  /* var(--color-primary-light) */
   border-radius: 10px;
   padding: 25px;
   display: flex;
@@ -356,7 +356,7 @@
 
 .journey-content p {
   color: var(--text-light);
-  /* Mapped #444 to text-light */
+  /* Mapped var(--color-text-muted) to text-light */
   line-height: 1.6;
   font-size: 20px;
 }
@@ -382,7 +382,7 @@
   margin: 40px 0;
   gap: 60px;
   background-color: var(--blog-feature-bg);
-  /* #FFF8E8 */
+  /* var(--color-surface) */
 }
 
 
@@ -423,7 +423,7 @@
 
 .feature-text-col p {
   color: var(--text-light);
-  /* Mapped #444 */
+  /* Mapped var(--color-text-muted) */
   line-height: 1.7;
   margin-bottom: 15px;
   font-size: 20px;
@@ -435,7 +435,7 @@
   padding: 30px 20px;
   text-align: center;
   background-color: var(--blog-feature-bg);
-  /* #FFF8E8 used here too */
+  /* var(--color-surface) used here too */
 }
 
 .moments-title {

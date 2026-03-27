@@ -1,12 +1,12 @@
-:root {
-  --bg-pink: var(--color-surface);
-  --white: var(--color-white);
-  --text-light: var(--color-text-muted);
-  --envelope-dark: var(--color-primary-light);
-  --envelope-light: var(--color-secondary);
+﻿:root {
+  --bg-pink: #fdf2f8;
+  --white: #ffffff;
+  --text-light: #555555;
+  --envelope-dark: #eebb73;
+  --envelope-light: #fdd888;
   --black-rgb: 0, 0, 0;
-  --gray-border: var(--color-primary-light);
-  --text-subtle: var(--color-neutral-bg);
+  --gray-border: #a1a1aa;
+  --text-subtle: #d1d5db;
 }
 
 /* --- Main Container --- */
@@ -37,7 +37,7 @@
 .App-header-section h1 {
   font-size: 2.2rem;
   font-weight: 800;
-  color: var(--color-text-muted);
+  color: #2F4B36;
   margin-bottom: 0.5rem;
 }
 
@@ -133,7 +133,7 @@
   bottom: 10px;
   width: 270px;
   height: 320px;
-  background-color: var(--color-text-muted);
+  background-color: #2F4B36;
   color: var(--white);
   padding: 1.5rem;
   border-radius: 12px;
@@ -224,7 +224,7 @@
 }
 
 .profile-pic {
-  background-color: var(--color-white);
+  background-color: #fff;
   border-radius: 50%;
   height: 50px;
   width: 50px;
@@ -258,7 +258,7 @@
 
 .view-more-btn {
   background-color: var(--envelope-light);
-  color: var(--color-text-muted);
+  color: #2F4B36;
   padding: 12px 24px;
   border-radius: 30px;
   font-weight: bold;

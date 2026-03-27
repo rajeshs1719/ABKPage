@@ -239,7 +239,7 @@ const AboutUs = () => {
                 variants={fadeInUp}
                 whileHover={{ scale: 1.02, translateY: -4 }}
                 transition={{ type: "spring", stiffness: 300 }}
-                className="bg-[#6f8f3c] text-white rounded-2xl p-6 md:p-8 flex-1 flex flex-col justify-center shadow-lg hover:shadow-xl cursor-default"
+                className="bg-text-muted text-white rounded-2xl p-6 md:p-8 flex-1 flex flex-col justify-center shadow-lg hover:shadow-xl cursor-default"
               >
                 <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">
                   Our Mission
@@ -345,7 +345,7 @@ const AboutUs = () => {
               transition={{ delay: 0.1 }}
               className="flex items-center gap-8 px-6 py-8 md:border-r border-black/10"
             >
-              <span className="text-[48px] font-bold whitespace-nowrap text-[#6f8f3c]">
+              <span className="text-[48px] font-bold whitespace-nowrap text-text-muted">
                 <Counter value={40} suffix="k+" />
               </span>
               <div className="text-[32px] font-semibold leading-tight text-left">
@@ -360,7 +360,7 @@ const AboutUs = () => {
               transition={{ delay: 0.2 }}
               className="flex items-center gap-8 px-6 py-8 md:border-r border-black/10"
             >
-              <span className="text-[48px] font-bold whitespace-nowrap text-[#6f8f3c]">
+              <span className="text-[48px] font-bold whitespace-nowrap text-text-muted">
                 <Counter value={100} suffix="k+" />
               </span>
               <div className="text-[32px] font-semibold leading-tight text-left">
@@ -375,7 +375,7 @@ const AboutUs = () => {
               transition={{ delay: 0.3 }}
               className="flex items-center gap-8 px-6 py-8"
             >
-              <span className="text-[48px] font-bold whitespace-nowrap text-[#6f8f3c]">
+              <span className="text-[48px] font-bold whitespace-nowrap text-text-muted">
                 <Counter value={4.8} suffix="/5" decimals={1} />
               </span>
               <div className="text-[32px] font-semibold leading-tight text-left">
@@ -388,21 +388,21 @@ const AboutUs = () => {
 
       {/* NEW DIRECTORS SECTION */}
 
-      <section className="py-16 text-center bg-[#fdfaf5]">
+      <section className="py-16 text-center bg-surface">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
           <h2 className="text-[48px] font-semibold mb-8">Our Teachers</h2>
-          <section className="bg-[#fdfaf5] py-24 relative overflow-hidden">
+          <section className="bg-surface py-24 relative overflow-hidden">
             <div className="max-w-6xl mx-auto px-6 relative">
               {/* Vertical Divider (Desktop Only) */}
               <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-[1px] bg-gray-300">
                 {/* Center dot on line */}
-                <div className="absolute top-[10%] left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-[#8e733f]"></div>
+                <div className="absolute top-[10%] left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-text-muted"></div>
 
-                <div className="absolute top-[90%] left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-[#8e733f]"></div>
+                <div className="absolute top-[90%] left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-text-muted"></div>
               </div>
 
               <div className="flex flex-col md:flex-row gap-16 md:gap-0">
@@ -442,13 +442,13 @@ const AboutUs = () => {
                     </div>
 
                     {/* Text Content */}
-                    <h4 className="text-[#c62828] text-sm tracking-[0.2em] font-bold uppercase mb-2">
+                    <h4 className="text-error text-sm tracking-[0.2em] font-bold uppercase mb-2">
                       {director.chapter}
                     </h4>
-                    <h3 className="text-4xl font-serif font-bold text-[#1a3628] mb-2">
+                    <h3 className="text-4xl font-serif font-bold text-text-primary mb-2">
                       {director.name}
                     </h3>
-                    <p className="text-[#8e733f] font-medium mb-6">
+                    <p className="text-text-muted font-medium mb-6">
                       {director.role}
                     </p>
                     <p className="text-gray-600 text-lg leading-relaxed max-w-sm mb-10 italic">
@@ -474,7 +474,7 @@ const AboutUs = () => {
                       href={director.linkedinUrl}
                       target="_blank"
                       rel="noreferrer"
-                      className="flex items-center gap-4 text-[#1a3628] font-bold text-sm tracking-widest hover:text-[#c62828] transition-colors"
+                      className="flex items-center gap-4 text-text-primary font-bold text-sm tracking-widest hover:text-error transition-colors"
                     >
                       <LinkedInIcon />
                       VIEW PROFILE
@@ -486,7 +486,7 @@ const AboutUs = () => {
           </section>
 
           {/* NEW SENSEI SECTION */}
-          <section className="bg-[#fdfaf5] py-2">
+          <section className="bg-surface py-2">
             <div className="max-w-6xl mx-auto px-6">
               {/* Section Header */}
               <motion.div
@@ -495,13 +495,13 @@ const AboutUs = () => {
                 viewport={{ once: true }}
                 className="text-center mb-16"
               >
-                <h2 className="text-[48px] font-serif font-bold text-[#1a3628]">
+                <h2 className="text-[48px] font-serif font-bold text-text-primary">
                   Meet Our Trainers
                 </h2>
                 <div className="flex items-center justify-center gap-4 mt-4">
-                  <span className="w-12 h-[1px] bg-[#c62828]"></span>
-                  <div className="w-2 h-2 rotate-45 bg-[#8e733f]"></div>
-                  <span className="w-12 h-[1px] bg-[#c62828]"></span>
+                  <span className="w-12 h-[1px] bg-error"></span>
+                  <div className="w-2 h-2 rotate-45 bg-text-muted"></div>
+                  <span className="w-12 h-[1px] bg-error"></span>
                 </div>
               </motion.div>
 
@@ -521,7 +521,7 @@ const AboutUs = () => {
                   >
                     {/* Sensei Avatar */}
                     <div className="w-44 h-44 rounded-full p-1 bg-gradient-to-b from-gray-200 to-gray-50 shadow-inner mb-6 relative overflow-hidden">
-                      <div className="w-full h-full rounded-full bg-[#cbd5e1] overflow-hidden">
+                      <div className="w-full h-full rounded-full bg-neutral-bg overflow-hidden">
                         <img
                           src={teacher.image}
                           alt={teacher.name}
@@ -531,10 +531,10 @@ const AboutUs = () => {
                     </div>
 
                     {/* Name & Specialty */}
-                    <h3 className="text-2xl font-serif font-bold text-[#1a3628] mb-1">
+                    <h3 className="text-2xl font-serif font-bold text-text-primary mb-1">
                       {teacher.name}
                     </h3>
-                    <p className="text-[#c62828] font-medium mb-4">
+                    <p className="text-error font-medium mb-4">
                       {teacher.specialty}
                     </p>
 
@@ -561,7 +561,7 @@ const AboutUs = () => {
                         href={teacher.linkedinUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="flex items-center gap-2 text-[#0077b5] text-sm font-semibold hover:text-blue-800 transition-colors"
+                        className="flex items-center gap-2 text-accent text-sm font-semibold hover:text-blue-800 transition-colors"
                       >
                         <LinkedInIcon />
                         Connect on LinkedIn

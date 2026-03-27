@@ -201,7 +201,7 @@ export default function Hero() {
   return (
     <section
       ref={heroRef}
-      className="relative w-full h-screen overflow-hidden select-none bg-gradient-to-b from-[#F5EFE7] to-[#E64646] z-0"
+      className="relative w-full h-screen overflow-hidden select-none bg-gradient-to-b from-surface to-primary z-0"
     >
       {/* PETAL STYLES */}
       <style>{`
@@ -264,7 +264,7 @@ export default function Hero() {
           massa blandit, faucibus quam sed, feugiat massa.
         </p>
         <div className="flex gap-4">
-          <button className="px-6 py-3 md:px-8 md:py-3 bg-[#3A4D2F] text-white rounded-xl shadow-lg hover:bg-[#2f3b32] transition-all text-sm md:text-base">
+          <button className="px-6 py-3 md:px-8 md:py-3 bg-text-muted text-white rounded-xl shadow-lg hover:bg-text-primary transition-all text-sm md:text-base">
             Get Started
           </button>
         </div>

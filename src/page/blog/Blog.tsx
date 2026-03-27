@@ -131,7 +131,7 @@ const FeaturedBlogCarousel = ({ items }) => {
   const goToSlide = (i) => setCurrentIndex(Math.min(Math.max(0, i), maxIndex));
 
   return (
-    <div className="bg-[#F5EFE7] w-full py-16">
+    <div className="bg-surface w-full py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex items-center gap-4 mb-8">
@@ -168,7 +168,7 @@ const FeaturedBlogCarousel = ({ items }) => {
                       <h3 className="text-lg font-bold text-gray-900 leading-tight max-w-[85%]">
                         {blog.title}
                       </h3>
-                      <div className="text-gray-400 hover:text-[#3f5238] transition-colors cursor-pointer">
+                      <div className="text-gray-400 hover:text-text-muted transition-colors cursor-pointer">
                         <ArrowUpRight size={18} />
                       </div>
                     </div>
@@ -205,7 +205,7 @@ const FeaturedBlogCarousel = ({ items }) => {
               onClick={() => goToSlide(idx)}
               className={`h-2 rounded-full transition-all duration-300 ${
                 currentIndex === idx
-                  ? "w-6 bg-[#c41e3a]"
+                  ? "w-6 bg-error"
                   : "w-2 bg-gray-300 hover:bg-gray-400"
               }`}
               aria-label={`Go to slide ${idx + 1}`}
@@ -224,7 +224,7 @@ const StudentSuccessGrid = ({ items }) => {
   return (
     <div
       id="success-stories-section"
-      className="w-full bg-gradient-to-l from-[#FEE5C1] to-[#FDF8F2] py-16 lg:py-24 overflow-hidden"
+      className="w-full bg-gradient-to-l from-neutral-bg to-surface py-16 lg:py-24 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Section Header */}
@@ -243,7 +243,7 @@ const StudentSuccessGrid = ({ items }) => {
           {items.map((item) => (
             <div
               key={item.id}
-              className="bg-white rounded-2xl overflow-hidden flex flex-col items-start p-8 text-left border-b-[6px] border-[#3f5238] shadow-lg relative group transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
+              className="bg-white rounded-2xl overflow-hidden flex flex-col items-start p-8 text-left border-b-[6px] border-text-muted shadow-lg relative group transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
             >
               {/* Subtle Background Deco */}
               <div className="absolute top-0 right-0 w-32 h-32 bg-green-50 rounded-bl-full -z-0 opacity-50 transition-colors group-hover:bg-green-100"></div>
@@ -292,7 +292,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#fdfaf6] font-sans text-gray-800 flex flex-col">
+    <div className="min-h-screen bg-surface font-sans text-gray-800 flex flex-col">
       {/* Google Font Import (Noto Sans) */}
       <style
         dangerouslySetInnerHTML={{
@@ -348,7 +348,7 @@ export default function App() {
                   career guidance, and language-learning resources — all in one
                   place.
                 </p>
-                <button className="bg-[#c41e3a] text-white px-8 py-3.5 rounded-xl font-bold text-base sm:text-lg shadow-[0_8px_20px_rgba(196,30,58,0.3)] hover:bg-[#a01830] transition-all hover:-translate-y-0.5 transform tracking-wide">
+                <button className="bg-error text-white px-8 py-3.5 rounded-xl font-bold text-base sm:text-lg shadow-[0_8px_20px_rgba(196,30,58,0.3)] hover:bg-error transition-all hover:-translate-y-0.5 transform tracking-wide">
                   Join Us
                 </button>
               </div>
@@ -365,7 +365,7 @@ export default function App() {
                 {SUCCESS_STORIES.map((story) => (
                   <div
                     key={story.id}
-                    className="flex items-center gap-4 bg-[#fbfaf8] p-4 rounded-2xl border-l-[4px] border-[#3f5238] hover:bg-white hover:shadow-md transition-all cursor-pointer group"
+                    className="flex items-center gap-4 bg-white p-4 rounded-2xl border-l-[4px] border-text-muted hover:bg-white hover:shadow-md transition-all cursor-pointer group"
                   >
                     <img
                       src={story.image}
@@ -376,7 +376,7 @@ export default function App() {
                       <h4 className="font-bold text-gray-900 text-sm leading-tight">
                         {story.name}
                       </h4>
-                      <p className="text-xs font-semibold text-[#3f5238] mt-1">
+                      <p className="text-xs font-semibold text-text-muted mt-1">
                         {story.role}{" "}
                         <span className="text-gray-400 mx-1">•</span>{" "}
                         <span className="font-normal text-gray-600">
@@ -393,7 +393,7 @@ export default function App() {
 
               <button
                 onClick={scrollToSuccessStories}
-                className="w-full mt-6 bg-[#3f5238] text-white py-4 rounded-xl font-bold text-sm hover:bg-[#2c3927] transition-all shadow-[0_8px_15px_rgba(63,82,56,0.2)] hover:-translate-y-0.5"
+                className="w-full mt-6 bg-text-muted text-white py-4 rounded-xl font-bold text-sm hover:bg-text-primary transition-all shadow-[0_8px_15px_rgba(63,82,56,0.2)] hover:-translate-y-0.5"
               >
                 View All Stories
               </button>

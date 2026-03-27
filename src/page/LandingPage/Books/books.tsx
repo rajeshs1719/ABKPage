@@ -148,7 +148,7 @@ const Books = () => {
 
   return (
     <div
-      className="relative min-h-screen w-full flex flex-col items-center justify-center font-sans overflow-hidden p-8 bg-gradient-to-b from-white to-[#FBD5EB] [perspective:2000px]"
+      className="relative min-h-screen w-full flex flex-col items-center justify-center font-sans overflow-hidden p-8 bg-gradient-to-b from-white to-neutral-bg [perspective:2000px]"
       style={{
         backgroundImage: `linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), url(${CourBg})`,
         backgroundSize: "cover",
@@ -186,7 +186,7 @@ const Books = () => {
       `}</style>
 
       <div className="absolute top-[4%] text-center z-20">
-        <h1 className="text-[32px] sm:text-[40px] text-[#1a1a1a] mb-2 font-bold leading-tight">
+        <h1 className="text-[32px] sm:text-[40px] text-text-primary mb-2 font-bold leading-tight">
           Our Courses
         </h1>
         <p className="text-gray-500 text-sm sm:text-base px-4">
@@ -262,27 +262,27 @@ const Books = () => {
 
                 {/* LEFT PAGE (Back of Cover) */}
                 <div className="absolute top-0 left-0 w-full h-full rounded-[4px_8px_8px_4px] [backface-visibility:hidden] shadow-[5px_5px_20px_rgba(0,0,0,0.25)] z-[1] bg-white [transform:rotateY(180deg)] flex flex-col justify-center items-center p-6 sm:p-10 border-r border-gray-300 transition-transform duration-[800ms]">
-                  <div className="text-lg sm:text-xl font-bold mb-4 text-[#333] text-center border-b-2 border-[#f0f0f0] pb-2 w-full">
+                  <div className="text-lg sm:text-xl font-bold mb-4 text-text-primary text-center border-b-2 border-surface pb-2 w-full">
                     {book.title}
                   </div>
-                  <div className="flex flex-grow items-center text-center text-[0.85rem] sm:text-[1rem] leading-[1.6] text-[#555] overflow-y-auto no-scrollbar">
+                  <div className="flex flex-grow items-center text-center text-[0.85rem] sm:text-[1rem] leading-[1.6] text-text-muted overflow-y-auto no-scrollbar">
                     <p className="italic">"{book.summary}"</p>
                   </div>
-                  <div className="mt-auto text-[0.7rem] text-[#aaa] text-center w-full">
+                  <div className="mt-auto text-[0.7rem] text-neutral-bg text-center w-full">
                     Page 1
                   </div>
                 </div>
               </div>
 
               {/* RIGHT PAGE (Stationary) */}
-              <div className="right-page-stack absolute top-0 left-0 w-full h-full rounded-[4px_8px_8px_4px] [backface-visibility:hidden] shadow-[5px_5px_20px_rgba(0,0,0,0.25)] z-[5] bg-white flex flex-col p-6 sm:p-10 border-l border-[#eee] transition-transform duration-[800ms]">
-                <div className="text-lg sm:text-xl font-bold mb-4 text-[#333] text-center border-b-2 border-[#f0f0f0] pb-2 w-full">
+              <div className="right-page-stack absolute top-0 left-0 w-full h-full rounded-[4px_8px_8px_4px] [backface-visibility:hidden] shadow-[5px_5px_20px_rgba(0,0,0,0.25)] z-[5] bg-white flex flex-col p-6 sm:p-10 border-l border-neutral-bg transition-transform duration-[800ms]">
+                <div className="text-lg sm:text-xl font-bold mb-4 text-text-primary text-center border-b-2 border-surface pb-2 w-full">
                   Details
                 </div>
-                <div className="flex-grow text-[0.85rem] sm:text-[1rem] leading-[1.6] text-[#555] overflow-y-auto no-scrollbar">
+                <div className="flex-grow text-[0.85rem] sm:text-[1rem] leading-[1.6] text-text-muted overflow-y-auto no-scrollbar">
                   <p>{book.content}</p>
                 </div>
-                <div className="mt-auto text-[0.7rem] text-[#aaa] text-center w-full">
+                <div className="mt-auto text-[0.7rem] text-neutral-bg text-center w-full">
                   Page 2
                 </div>
               </div>

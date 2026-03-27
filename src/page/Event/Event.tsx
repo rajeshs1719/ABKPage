@@ -179,7 +179,7 @@ export default function Events() {
   });
 
   return (
-    <main className="min-h-screen bg-[#fdfcf8] font-serif text-[#3b2a1a]">
+    <main className="min-h-screen bg-white font-serif text-text-primary">
       {/* HERO BANNER */}
       <section
         className="h-[90vh] bg-cover bg-center flex items-center px-5 sm:px-10 md:px-16 lg:px-20 relative"
@@ -196,7 +196,7 @@ export default function Events() {
             Celebrate language, culture and creativity through our vibrant
             events and traditions.
           </p>
-          <button className="bg-[#27512a] hover:bg-[#1e3f20] text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors duration-300 shadow-lg">
+          <button className="bg-text-primary hover:bg-text-primary text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors duration-300 shadow-lg">
             Join Our Community
           </button>
         </div>

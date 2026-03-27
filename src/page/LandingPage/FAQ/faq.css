@@ -54,7 +54,7 @@
 }
 .faq-content {
     flex: 0 0 600px;
-    background-color: var(--faq-blue); /* #5555ff */
+    background-color: var(--faq-blue); /* var(--color-info) */
     /* Matches the blue in your image */
     padding: 2.5rem;
     border-radius: 8px;
